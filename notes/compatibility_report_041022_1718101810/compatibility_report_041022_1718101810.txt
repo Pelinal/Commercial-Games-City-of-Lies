@@ -1,0 +1,61 @@
+Converting GML script: ${project_dir}\scripts\message\message.gml
+Converted builtin - line 32: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 32: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted description /// @description message(text)/// @param text
+
+Converting GML script: ${project_dir}\scripts\message_batch\message_batch.gml
+Converted builtin - line 15: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 15: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted description /// @description message_batch(text_list, batch)/// @param text_list
+/// @param  batch
+
+Converting GML script: ${project_dir}\scripts\message_nametag\message_nametag.gml
+Converted builtin - line 7: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 7: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted description /// @description message_nametag(name_list, batch)/// @param name_list
+/// @param  batch
+
+Converting GML script: ${project_dir}\scripts\inventory_initialise\inventory_initialise.gml
+Converted description /// @description inventory_initialise()
+
+Font fnt_textbox_10 has been converted to font family Power Red and Green (Regular)
+GameMaker Studio 1 font texture has been backed up at ${project_dir}\fonts\fnt_textbox_10\fnt_textbox_10.gms1.png
+Converting GML script: ${project_dir}\objects\obj_player\Create_0.gml
+Converted description /// @description  Variables and Initialisation
+
+Converting GML script: ${project_dir}\objects\obj_player\Step_0.gml
+Error: variable 'message' has same name as a built-in (function, constant or variable), it must be renamed to function correctly
+Converted description /// @description  Movement, Collision and Animations
+
+Converting GML script: ${project_dir}\objects\obj_door\Create_0.gml
+Converted description /// @description  Initialisation and Variables
+
+Converting GML script: ${project_dir}\objects\obj_messagebox\Create_0.gml
+Converted description /// @description  Variables + Indicator
+
+Converting GML script: ${project_dir}\objects\obj_messagebox\Step_0.gml
+Converted description /// @description  Destroy when SPACE is pressed.
+
+Converting GML script: ${project_dir}\objects\obj_messagebox\Draw_0.gml
+Converted description /// @description  Draw text
+
+Converting GML script: ${project_dir}\objects\obj_nametag\Create_0.gml
+Converted description /// @description  Variables 
+
+Converting GML script: ${project_dir}\objects\obj_nametag\Step_0.gml
+Converted description /// @description  Destroy when SPACE is pressed.
+
+Converting GML script: ${project_dir}\objects\obj_nametag\Draw_0.gml
+Converted description /// @description  Draw name text
+
+Converting GML script: ${project_dir}\objects\obj_inventory\Create_0.gml
+Converted description /// @description  Initialise
+
+Game speed set to 60
+String not found: ConversionLog_ScriptNameInUse
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'

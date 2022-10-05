@@ -8,11 +8,11 @@ function inventory_weapon_initialise() {
 	global.w_library[2] = [3, "Dagger", 10, 10] // Blunted Dagger
 }
 
-function inventory_weapon_add(id, amount) {
+function inventory_weapon_add(item, amount) {
 	// Adds the specified amount of a Weapon
 	owned = false
 	for (i = 0; i < array_length(global.weapons)-1; i ++) {
-		if global.weapons[i][0] == id {
+		if global.weapons[i][0] == item {
 			global.weapons[i][1] += amount
 			owned = true
 			break
@@ -20,14 +20,14 @@ function inventory_weapon_add(id, amount) {
 	}
 	
 	if !owned {
-		array_push(global.weapons, [id, amount])
+		array_push(global.weapons, [item, amount])
 	}
 }
 
-function inventory_weapon_remove(id, amount) {
+function inventory_weapon_remove(item, amount) {
 	// Removes the specified amount of a Weapon
 	for (i = 0; i < array_length(global.weapons)-1; i ++) {
-		if global.weapons[i][0] == id {
+		if global.weapons[i][0] == item {
 			global.weapons[i][1] -= amount
 			
 			if global.weapons[i][1] <= 0 { array_delete(global.weapons, i, 1) }
@@ -36,10 +36,10 @@ function inventory_weapon_remove(id, amount) {
 	}
 }
 
-function inventory_weapon_delete(id) { 
+function inventory_weapon_delete(item) { 
 	// Deletes a record from Weapons
 	for (i = 0; i < array_length(global.weapons)-1; i ++) {
-		if global.weapons[i][0] == id {
+		if global.weapons[i][0] == item {
 			array_delete(global.weapons, i, 1)
 			break
 		}

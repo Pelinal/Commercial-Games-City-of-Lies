@@ -8,11 +8,11 @@ function inventory_armour_initialise() {
 	global.ar_library[2] = [6, "Medium", 7.5, 10] // Drifer's Jacket
 }
 
-function inventory_armour_add(id, amount) {
+function inventory_armour_add(item, amount) {
 	// Adds the specified amount of an Armour
 	owned = false
 	for (i = 0; i < array_length(global.armours)-1; i ++) {
-		if global.armours[i][0] == id {
+		if global.armours[i][0] == item {
 			global.armours[i][1] += amount
 			owned = true
 			break
@@ -20,14 +20,14 @@ function inventory_armour_add(id, amount) {
 	}
 	
 	if !owned {
-		array_push(global.armours, [id, amount])
+		array_push(global.armours, [item, amount])
 	}
 }
 
-function inventory_armour_remove(id, amount) {
+function inventory_armour_remove(item, amount) {
 	// Removes the specified amount of an Armour
 	for (i = 0; i < array_length(global.armours)-1; i ++) {
-		if global.armours[i][0] == id {
+		if global.armours[i][0] == item {
 			global.armours[i][1] -= amount
 			
 			if global.armours[i][1] <= 0 { array_delete(global.armours, i, 1) }
@@ -36,10 +36,10 @@ function inventory_armour_remove(id, amount) {
 	}
 }
 
-function inventory_armour_delete(id) { 
+function inventory_armour_delete(item) { 
 	// Deletes a record from Armours
 	for (i = 0; i < array_length(global.armours)-1; i ++) {
-		if global.armours[i][0] == id {
+		if global.armours[i][0] == item {
 			array_delete(global.armours, i, 1)
 			break
 		}

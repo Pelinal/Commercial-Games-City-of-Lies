@@ -162,15 +162,37 @@ function inventory_populate(category) {
 	}
 }
 
-function inventory_check(id) {
-	// Searches all Inventories for specified item id
+function inventory_check(item) {
+	// Searches all Inventories for specified item item
 	
-	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == id	{ return true }
-	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == id			{ return true }
-	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == id			{ return true }
-	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == id	{ return true }
-	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == id			{ return true }
-	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == id			{ return true }
+	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ return true }
+	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ return true }
+	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ return true }
+	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ return true }
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ return true }
+	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ return true }
 	
 	return false
+}
+
+function inventory_remove(item, amount) {
+	// Searches all Inventories for item, then removes it
+	
+	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ inventory_consumable_remove(item, amount) }
+	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ inventory_weapon_remove(item, amount)		}
+	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ inventory_armour_remove(item, amount)		}
+	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ inventory_accessory_remove(item, amount)	}
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ inventory_keyitem_remove(item, amount)	}
+	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ inventory_material_remove(item, amount)	}
+}
+
+function inventory_delete(item, amount) {
+	// Searches all Inventories for item, then deletes all copies of it
+	
+	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ inventory_consumable_delete(item, amount) }
+	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ inventory_weapon_delete(item, amount)		}
+	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ inventory_armour_delete(item, amount)		}
+	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ inventory_accessory_delete(item, amount)	}
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ inventory_keyitem_delete(item, amount)	}
+	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ inventory_material_delete(item, amount)	}
 }

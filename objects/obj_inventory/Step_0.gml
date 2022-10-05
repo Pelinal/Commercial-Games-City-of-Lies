@@ -16,4 +16,5 @@ if keyboard_check_pressed(vk_escape) && visible {
 	global.immobile = false
 	
 	instance_destroy(obj_inventory_tabs)
+	instance_destroy(obj_inventory_dropdown)
 }

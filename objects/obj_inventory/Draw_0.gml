@@ -4,13 +4,33 @@ draw_self()
 draw_set_alpha(1)
 draw_set_colour(c_white)
 
+// Gold, Other Currencies (TBA), Health etc.
+draw_set_font(fnt_inventory_12)
+draw_text(x + 384, y + 390, "Gold: " + string(global.gold))
+
+draw_set_colour(c_grey)
+draw_rectangle(x + 384, y + 420, (x + 384) + (global.max_hp) * 3, y + 432, false) 
+draw_set_colour(c_red)
+draw_rectangle(x + 384, y + 420, (x + 384) + (global.hp) * 3, y + 432, false)
+
+draw_set_colour(c_grey)
+draw_rectangle(x + 384, y + 440, (x + 384) + (global.max_mp) * 3, y + 452, false) 
+draw_set_colour(c_blue)
+draw_rectangle(x + 384, y + 440, (x + 384) + (global.mp) * 3, y + 452, false)
+
+draw_set_colour(c_grey)
+draw_rectangle(x + 384, y + 460, (x + 384) + (global.max_sp) * 3, y + 472, false) 
+draw_set_colour(c_green)
+draw_rectangle(x + 384, y + 460, (x + 384) + (global.sp) * 3, y + 472, false)
+
 if overview_id != -1 {
 	// Name
+	draw_set_colour(c_white)
 	draw_set_font(fnt_inventory_20)
 	draw_text(x + 384, y + 160, global.library[overview_id][0])
 	
 	// Icon
-	draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 384, y + 400)
+	draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 644, y + 160)
 	
 	// Description
 	draw_set_font(fnt_inventory_12)
@@ -41,9 +61,9 @@ if overview_id != -1 {
 		for (i = 0; i < array_length(global.ar_library); i ++) {
 			if global.ar_library[i][0] == overview_id {
 				draw_text(x + 384, y + 256, "Type: " + global.ar_library[i][1])
-				draw_text(x + 384, y + 288, "Armour: " + string(global.ar_library[i][2]) + " PTS")
-				draw_text(x + 384, y + 320, "Value: " + string(global.ar_library[i][3]) + " Gold")
-				
+				draw_text(x + 384, y + 288, "Slot: " + string(global.ar_library[i][4]))
+				draw_text(x + 384, y + 320, "Armour: " + string(global.ar_library[i][2]) + " PTS")
+				draw_text(x + 384, y + 352, "Value: " + string(global.ar_library[i][3]) + " Gold")
 			}
 		}
 	}

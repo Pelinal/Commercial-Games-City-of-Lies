@@ -9,7 +9,7 @@ function inventory_keyitem_initialise() {
 function inventory_keyitem_add(item, amount) {
 	// Adds the specified amount of a Key Item
 	owned = false
-	for (i = 0; i < array_length(global.keyitems)-1; i ++) {
+	for (i = 0; i < array_length(global.keyitems); i ++) {
 		if global.keyitems[i][0] == item {
 			global.keyitems[i][1] += amount
 			owned = true
@@ -24,7 +24,7 @@ function inventory_keyitem_add(item, amount) {
 
 function inventory_keyitem_remove(item, amount) {
 	// Removes the specified amount of a Key Item
-	for (i = 0; i < array_length(global.keyitems)-1; i ++) {
+	for (i = 0; i < array_length(global.keyitems); i ++) {
 		if global.keyitems[i][0] == item {
 			global.keyitems[i][1] -= amount
 			
@@ -36,7 +36,7 @@ function inventory_keyitem_remove(item, amount) {
 
 function inventory_keyitem_delete(item) { 
 	// Deletes a record from Key Items
-	for (i = 0; i < array_length(global.keyitems)-1; i ++) {
+	for (i = 0; i < array_length(global.keyitems); i ++) {
 		if global.keyitems[i][0] == item {
 			array_delete(global.keyitems, i, 1)
 			break

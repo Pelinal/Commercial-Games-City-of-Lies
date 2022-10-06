@@ -1,3 +1,4 @@
 /// @description Show Button
-
-image_index = 1
+if visible {
+	image_index = 1
+}

@@ -2,16 +2,22 @@
 
 function inventory_armour_initialise() {
 	// Create Item Library // ID corresponds with Index
-	// Index 0: ID, Index 1: Type, Index 3: Armour Rating, Index 4: Price
-	global.ar_library[0] = [4, "Heavy", 10, 10] // Dented Chainmail
-	global.ar_library[1] = [5, "Light", 5, 10] // Tattered Robes
-	global.ar_library[2] = [6, "Medium", 7.5, 10] // Drifer's Jacket
+	// Index 0: ID, Index 1: Type, Index 2: Armour Rating, Index 3: Price, Index 4: Slot Type
+	global.ar_library[0] = [4, "Heavy", 10, 10, "Torso"]		// Dented Chainmail
+	global.ar_library[1] = [5, "Light", 5, 10, "Torso"]			// Tattered Robes
+	global.ar_library[2] = [6, "Medium", 7.5, 10, "Torso"]		// Drifer's Jacket
+	
+	// Create Global Equipped Armour list
+	global.armour_equipped[0] = -1		// 0 - Head
+	global.armour_equipped[1] = -1		// 1 - Torso
+	global.armour_equipped[2] = -1		// 2 - Hands
+	global.armour_equipped[3] = -1		// 4 - Feet
 }
 
 function inventory_armour_add(item, amount) {
 	// Adds the specified amount of an Armour
 	owned = false
-	for (i = 0; i < array_length(global.armours)-1; i ++) {
+	for (i = 0; i < array_length(global.armours); i ++) {
 		if global.armours[i][0] == item {
 			global.armours[i][1] += amount
 			owned = true
@@ -26,7 +32,7 @@ function inventory_armour_add(item, amount) {
 
 function inventory_armour_remove(item, amount) {
 	// Removes the specified amount of an Armour
-	for (i = 0; i < array_length(global.armours)-1; i ++) {
+	for (i = 0; i < array_length(global.armours); i ++) {
 		if global.armours[i][0] == item {
 			global.armours[i][1] -= amount
 			
@@ -38,10 +44,49 @@ function inventory_armour_remove(item, amount) {
 
 function inventory_armour_delete(item) { 
 	// Deletes a record from Armours
-	for (i = 0; i < array_length(global.armours)-1; i ++) {
+	for (i = 0; i < array_length(global.armours); i ++) {
 		if global.armours[i][0] == item {
 			array_delete(global.armours, i, 1)
 			break
 		}
+	}
+}
+
+/// Unique Functions ///
+function inventory_armour_equip(item) {
+	// Equip Specified armour
+	for (i = 0; i < array_length(global.ar_library); i ++) {
+		if global.ar_library[i][0] == item {
+			type = global.ar_library[i][1]
+			slot = global.ar_library[i][4]
+		} 
+	}
+	
+	if type == "Heavy" && global.class == "warrior" ||
+	   type == "Medium" && global.class == "rogue"  ||
+	   type == "Light" && global.class == "mage"    {
+		if slot == "Head"		{ global.armour_equipped[0] = item }
+		else if slot == "Torso" { global.armour_equipped[1] = item }
+		else if slot == "Hands" { global.armour_equipped[2] = item }
+		else if slot == "Feet"	{ global.armour_equipped[3] = item }
+	}
+}
+
+function inventory_armour_unequip(item) {
+	// Unequip your armour
+	if global.armour_equipped[0] == item		{ global.armour_equipped[1] = -1 }
+	else if global.armour_equipped[1] == item	{ global.armour_equipped[2] = -1 }
+	else if global.armour_equipped[2] == item	{ global.armour_equipped[3] = -1 }
+	else if global.armour_equipped[3] == item	{ global.armour_equipped[4] = -1 }
+}
+
+function inventory_armour_check_equipped(item) {
+	// Checks if specific weapon is equipped
+	if global.armour_equipped[0] == item ||
+	   global.armour_equipped[1] == item ||
+	   global.armour_equipped[2] == item ||
+	   global.armour_equipped[3] == item {
+		
+	   return true
 	}
 }

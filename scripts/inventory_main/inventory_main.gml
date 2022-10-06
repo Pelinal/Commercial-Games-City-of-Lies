@@ -1,7 +1,7 @@
 /// @description inventory_main
 function inventory_initialise() {
 	// Create Global Variables and Perform startup
-	// Index 0: Item ID, Index 1: Amount
+	// Index 0: Item ID, Index 1: Amount // for equippables only Index 2: Equipped (true/false)
 	
 	global.consumables = []
 	global.weapons = []
@@ -115,7 +115,13 @@ function inventory_populate(category) {
 		y_margin += 32
 	}
 	
-	if y_margin > 420 { obj_inventory.scrollbar = true }
+	if y_margin > 432 {
+		obj_inventory.scrollbar = true
+		
+		with instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar) {
+			max_scroll = (y_margin - 432) / 32
+		}
+	}
 	
 	// Create Tab Buttons
 	with instance_create(obj_inventory.x + 16, obj_inventory.y + 24, obj_inventory_tabs) {
@@ -178,21 +184,34 @@ function inventory_check(item) {
 function inventory_remove(item, amount) {
 	// Searches all Inventories for item, then removes it
 	
-	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ inventory_consumable_remove(item, amount) }
-	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ inventory_weapon_remove(item, amount)		}
-	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ inventory_armour_remove(item, amount)		}
-	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ inventory_accessory_remove(item, amount)	}
-	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ inventory_keyitem_remove(item, amount)	}
-	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ inventory_material_remove(item, amount)	}
+	if global.current_menu == "consumables"			{ inventory_consumable_remove(item, amount) }
+	else if global.current_menu == "weapons"		{ inventory_weapon_remove(item, amount)		}
+	else if global.current_menu == "armours"		{ inventory_armour_remove(item, amount)		}
+	else if global.current_menu == "accessories"	{ inventory_accessory_remove(item, amount)	}
+	else if global.current_menu == "key items"		{ inventory_keyitem_remove(item, amount)	}
+	else if global.current_menu == "materials"		{ inventory_material_remove(item, amount)	}
 }
 
 function inventory_delete(item, amount) {
 	// Searches all Inventories for item, then deletes all copies of it
 	
-	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ inventory_consumable_delete(item, amount) }
-	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ inventory_weapon_delete(item, amount)		}
-	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ inventory_armour_delete(item, amount)		}
-	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ inventory_accessory_delete(item, amount)	}
-	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ inventory_keyitem_delete(item, amount)	}
-	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ inventory_material_delete(item, amount)	}
+	if global.current_menu == "consumables"			{ inventory_consumable_delete(item, amount) }
+	else if global.current_menu == "weapons"		{ inventory_weapon_delete(item, amount)		}
+	else if global.current_menu == "armours"		{ inventory_armour_delete(item, amount)		}
+	else if global.current_menu == "accessories"	{ inventory_accessory_delete(item, amount)	}
+	else if global.current_menu == "key items"		{ inventory_keyitem_delete(item, amount)	}
+	else if global.current_menu == "materials"		{ inventory_material_delete(item, amount)	}
+}
+
+function inventory_check_equipped(item) {
+	// Global Check for equipped item, across all lists
+	if global.weapon_equipped == item				{ return true }
+	else if global.armour_equipped[0] == item		{ return true }
+	else if global.armour_equipped[1] == item		{ return true }
+	else if global.armour_equipped[2] == item		{ return true }
+	else if global.armour_equipped[3] == item		{ return true }
+	else if global.accessory_equipped[0] == item	{ return true }
+	else if global.accessory_equipped[1] == item	{ return true }
+	else if global.accessory_equipped[2] == item	{ return true }
+	else { return false }
 }

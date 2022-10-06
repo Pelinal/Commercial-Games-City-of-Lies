@@ -1,3 +1,4 @@
 /// @description Hide Button
-
-image_index = 0
+if visible {
+	image_index = 0
+}

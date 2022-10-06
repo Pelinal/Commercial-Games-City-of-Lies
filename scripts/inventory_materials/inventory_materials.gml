@@ -11,7 +11,7 @@ function inventory_material_initialise() {
 function inventory_material_add(item, amount) {
 	// Adds the specified amount of a Material
 	owned = false
-	for (i = 0; i < array_length(global.materials)-1; i ++) {
+	for (i = 0; i < array_length(global.materials); i ++) {
 		if global.materials[i][0] == item {
 			global.materials[i][1] += amount
 			owned = true
@@ -26,7 +26,7 @@ function inventory_material_add(item, amount) {
 
 function inventory_material_remove(item, amount) {
 	// Removes the specified amount of a Material
-	for (i = 0; i < array_length(global.materials)-1; i ++) {
+	for (i = 0; i < array_length(global.materials); i ++) {
 		if global.materials[i][0] == item {
 			global.materials[i][1] -= amount
 			
@@ -38,7 +38,7 @@ function inventory_material_remove(item, amount) {
 
 function inventory_material_delete(item) { 
 	// Deletes a record from Materials
-	for (i = 0; i < array_length(global.materials)-1; i ++) {
+	for (i = 0; i < array_length(global.materials); i ++) {
 		if global.materials[i][0] == item {
 			array_delete(global.materials, i, 1)
 			break

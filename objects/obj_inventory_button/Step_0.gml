@@ -4,6 +4,6 @@ if obj_inventory.visible == false {
 	instance_destroy(self)
 }
 
-if y >= 420 {
+if y > obj_inventory.y + 432 || y < obj_inventory.y + 160 {
 	visible = false
-}
+} else { visible = true }

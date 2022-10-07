@@ -2,8 +2,8 @@
 
 if (keyboard_check_pressed(vk_tab) || keyboard_check_pressed(ord("I"))) && !visible {
 	visible = true
-	x = view_xview + 67
-	y = view_yview + 64
+	x = camera_get_view_x(view_camera[0]) + 67
+	y = camera_get_view_y(view_camera[0])
 	global.immobile = true
 	inventory_populate(global.current_menu)
 }

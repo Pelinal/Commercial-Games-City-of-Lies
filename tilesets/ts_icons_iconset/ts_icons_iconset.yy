@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "ts_icons_iconset",
   "spriteId": {
-    "name": "ts_icons",
-    "path": "sprites/ts_icons/ts_icons.yy",
+    "name": "spr_ts_icons",
+    "path": "sprites/spr_ts_icons/spr_ts_icons.yy",
   },
   "tileWidth": 32,
   "tileHeight": 32,

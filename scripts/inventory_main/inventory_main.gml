@@ -118,9 +118,8 @@ function inventory_populate(category) {
 	if y_margin > 432 {
 		obj_inventory.scrollbar = true
 		
-		with instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar) {
-			max_scroll = (y_margin - 432) / 32
-		}
+		instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar)
+		obj_scrollbar.max_scroll = (y_margin - 432) / 32
 	}
 	
 	// Create Tab Buttons

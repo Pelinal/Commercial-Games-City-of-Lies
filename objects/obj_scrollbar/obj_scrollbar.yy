@@ -28,7 +28,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Interface",
-    "path": "folders/Objects/Interface.yy",
+    "name": "Inventory",
+    "path": "folders/Objects/Interface/Inventory.yy",
   },
 }

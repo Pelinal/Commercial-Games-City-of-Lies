@@ -4,6 +4,10 @@ function inventory_accessory_initialise() {
 	// Create Item Library // ID corresponds with Index
 	// Index 0: ID, Index 1: Type, Index 2: Effect, Index 3: Price
 	global.ac_library[0] = [7, "Ring", "None", 0] // Signet Ring
+	global.ac_library[1] = [68, "Necklace", "None", 50]		// Robe Charm
+	global.ac_library[2] = [69, "Necklace", "None", 80]		// Lariat
+	global.ac_library[3] = [70, "Necklace", "None", 180]	// Silver Lariat
+	global.ac_library[4] = [71, "Necklace", "None", 340]	// Gold Pendant
 	
 	// Create Global Equipped Accessories List
 	global.accessory_equipped[0] = -1	// 0 - Ring 1

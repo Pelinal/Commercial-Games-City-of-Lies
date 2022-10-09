@@ -6,6 +6,15 @@ function inventory_armour_initialise() {
 	global.ar_library[0] = [4, "Heavy", 10, 10, "Torso"]		// Dented Chainmail
 	global.ar_library[1] = [5, "Light", 5, 10, "Torso"]			// Tattered Robes
 	global.ar_library[2] = [6, "Medium", 7.5, 10, "Torso"]		// Drifer's Jacket
+	global.ar_library[3] = [59, "Light", 0, 10, "Torso"]		// Rags
+	global.ar_library[4] = [60, "Light", 0, 30, "Torso"]		// Kirtle
+	global.ar_library[5] = [61, "Light", 0, 30, "Torso"]		// Tunic
+	global.ar_library[6] = [62, "Light", 0, 80, "Torso"]		// Dress
+	global.ar_library[7] = [63, "Light", 0, 100, "Torso"]		// Suit
+	global.ar_library[8] = [64, "Light", 0, 10, "Feet"]			// Sandals
+	global.ar_library[9] = [65, "Light", 2, 40, "Feet"]			// Boots
+	global.ar_library[10] = [66, "Light", 3, 90, "Feet"]		// Fur-Lined Boots
+	global.ar_library[11] = [67, "Light", 0, 110, "Feet"]		// Dress Shoes
 	
 	// Create Global Equipped Armour list
 	global.armour_equipped[0] = -1		// 0 - Head

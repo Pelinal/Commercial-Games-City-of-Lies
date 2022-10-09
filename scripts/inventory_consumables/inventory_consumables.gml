@@ -4,6 +4,28 @@ function inventory_consumable_initialise() {
 	// Create Item Library // ID corresponds with Index
 	// Index 0: ID, Index 1: Effect, Index 3: Effect Value, Index 4: Price
 	global.c_library[0] = [0, "Restore Health", 30, 100] // 30 HP Potion
+	global.c_library[1] = [33, "Restore Stamina", 5, 20] // Carrot
+	global.c_library[2] = [34, "Restore Stamina", 5, 20] // Onion
+	global.c_library[3] = [35, "Restore Health", 5, 20] // Potato
+	global.c_library[4] = [36, "Restore Health", 15, 60] // Raw Meat
+	global.c_library[5] = [37, "Restore Health", 15, 60] // Fish
+	global.c_library[6] = [38, "Restore Stamina", 10, 20] // Mushroom
+	global.c_library[7] = [39, "Restore Stamina", 10, 20] // Orange
+	global.c_library[8] = [40, "Restore Stamina", 5, 20] // Grapes
+	global.c_library[9] = [41, "Restore Health", 10, 20] // Apple
+	global.c_library[10] = [42, "Restore Health", 25, 40] // Bread
+	global.c_library[11] = [43, "Restore Stamina", 10, 30] // Egg
+	global.c_library[12] = [44, "Restore Health", 10, 30] // Cheese
+	global.c_library[13] = [45, "Restore Mana", 10, 30] // Blueberry
+	global.c_library[14] = [46, "Restore Stamina", 5, 20] // Cherry
+	global.c_library[15] = [47, "Damage Health", 10, 30] // Salt
+	global.c_library[16] = [48, "None", 0, 30] // Flour
+	global.c_library[17] = [49, "Damage Stamina", 30, 120] // Wine
+	global.c_library[18] = [50, "Restore Health", 5, 20] // Tomato
+	global.c_library[19] = [51, "Loopy Shroom Effect", 1, 100] // Loopy Shroom
+	global.c_library[20] = [53, "Restore Health and Stamina", 20, 40] // Water
+	global.c_library[21] = [54, "Damage Stamina", 50, 80] // Whiskey
+	global.c_library[22] = [57, "Rope Effect", 1, 100] // Rope
 }
 
 function inventory_consumable_add(item, amount) {
@@ -61,15 +83,60 @@ function inventory_consumable_use(item) {
 			global.hp += item_effect_value
 			if global.hp > global.max_hp { global.hp = global.max_hp }
 		break
-		
+		case "Damage Health":
+			global.hp -= item_effect_value
+			if global.hp < 0 { global.hp = 0 }
+		break
 		case "Restore Mana":
 			global.mp += item_effect_value
 			if global.mp > global.max_mp { global.mp = global.max_mp }
 		break
-		
+		case "Damage Mana":
+			global.mp -= item_effect_value
+			if global.mp < 0 { global.mp = 0 }
+		break
 		case "Restore Stamina":
 			global.sp += item_effect_value
 			if global.sp > global.max_sp { global.sp = global.max_sp }
+		break
+		case "Damage Stamina":
+			global.sp -= item_effect_value
+			if global.sp < 0 { global.sp = 0 }
+		break
+		case "Restore Health and Stamina":
+			global.sp += item_effect_value
+			global.hp += item_effect_value
+			if global.sp > global.max_sp { global.sp = global.max_sp }
+			if global.hp > global.max_hp { global.hp = global.max_hp }
+		break
+		case "Restore Health and Mana":
+			global.mp += item_effect_value
+			global.hp += item_effect_value
+			if global.mp > global.max_mp { global.mp = global.max_mp }
+			if global.hp > global.max_hp { global.hp = global.max_hp }
+		break
+		case "Restore Mana and Stamina":
+			global.mp += item_effect_value
+			global.sp += item_effect_value
+			if global.mp > global.max_mp { global.mp = global.max_mp }
+			if global.sp > global.max_sp { global.sp = global.max_sp }
+		break
+		case "Restore all Attributes":
+			global.mp += item_effect_value
+			global.sp += item_effect_value
+			global.hp += item_effect_value
+			if global.mp > global.max_mp { global.mp = global.max_mp }
+			if global.sp > global.max_sp { global.sp = global.max_sp }
+			if global.hp > global.max_hp { global.hp = global.max_hp }
+		break
+		case "Loopy Shroom Effect":
+			// TBA - Will temporarily change shaders to random colours
+		break
+		case "Rope Effect":
+			// TBA - Used to escape dungeons
+		break
+		case "None":
+			// Does nothing
 		break
 	}
 }

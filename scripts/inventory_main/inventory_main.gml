@@ -11,19 +11,81 @@ function inventory_initialise() {
 	global.materials = []
 
 	// Create Item Library // ID corresponds with Index
-	// Index 0: Item Name, Index 1: Description
-	global.library[0] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts."]
-	global.library[1] = ["Rusted Sword", "A blunt, rusted old sword. You should probably consider replacing it."]
-	global.library[2] = ["Rotten Staff", "Rotten, but still useful. Who knows for how much longer though."]
-	global.library[3] = ["Blunt Dagger", "Aren't daggers for stabbing? How you gonna stab anyone with this dull blade?"]
-	global.library[4] = ["Dented Chainmail", "This chainmail has clearly been pulled off a corpse, probably one of a soldier."]
-	global.library[5] = ["Tattered Robes", "This frail fabric seems as though a gentle breeze might loosen its poorly-woven threads."]
-	global.library[6] = ["Drifter's Jacket", "Perfect for looking like an impoverished criminal."]
-	global.library[7] = ["Signet Ring", "A blemished old ring. It is the only thing you have to remind you of your parents, whom you have never met."]
-	global.library[8] = ["Orders", "Your orders from the crime boss Qula K'in, she has sent you on a mission to steal from the Palace of Obedience."]
-	global.library[9] = ["Copper Ore", "The most common form of ore in Komsos, used for low-tier weapons and armour. Bring to a Smith to forge it."]
-	global.library[10] = ["Capitolina Prima", "This green herb is commonly found along the riverbanks of The Capital. Its name means 'Capital's First'."]
-	global.library[11] = ["Impure Solite", "A weakly powered chunk of Solite ore. A small amount of magical energy may be extracted from it."]
+	// Index 0: Item Name, Index 1: Description, Index 2: Inventory List
+	// Starter Items
+	global.library[0] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
+	global.library[1] = ["Rusted Sword", "A blunt, rusted old sword. You should probably consider\nreplacing it.", global.weapons]
+	global.library[2] = ["Rotten Staff", "Rotten, but still useful. Who knows for how much longer\nthough.", global.weapons]
+	global.library[3] = ["Blunt Dagger", "Aren't daggers for stabbing? How you gonna stab anyone\nwith this dull blade?", global.weapons]
+	global.library[4] = ["Dented Chainmail", "This chainmail has clearly been pulled off a corpse,\nprobably one of a soldier.", global.armours]
+	global.library[5] = ["Tattered Robes", "This frail fabric seems as though a gentle breeze\nmight loosen its poorly-woven threads.", global.armours]
+	global.library[6] = ["Drifter's Jacket", "Perfect for looking like an impoverished criminal.", global.armours]
+	global.library[7] = ["Signet Ring", "A blemished old ring. It is the only thing you have to\nremind you of your parents, whom you have never met.", global.accessories]
+	global.library[8] = ["Orders", "Your orders from the Peacemakers.", global.keyitems]
+	global.library[9] = ["Copper Ore", "The most common form of ore in Komsos, used for low-tier\nweapons and armour. Bring to a Smith to forge it.", global.materials]
+	global.library[10] = ["Capitolina Prima", "This green herb is commonly found along the river\nbanks of The Capital. Its name means 'Capital's First'.", global.materials]
+	global.library[11] = ["Impure Solite", "A weakly powered chunk of Solite ore. A small amount\nof magical energy may be extracted from it.", global.materials]
+	// Item Addition #1 - Loot System
+	global.library[12] = ["Clover", "Four leaf clovers are the result of their contact with magical\nenergy, traces of this still remain.", global.materials]
+	global.library[13] = ["Thickthistle", "A more bulbous variant of the common thistle, without\nflowers. It can be used during alchemy.", global.materials]
+	global.library[14] = ["Capitolina Secunda", "The twin of the more common Capitolina Prima, it can be used to restore magical energy.", global.materials]
+	global.library[15] = ["Whitebulb", "Named after its unique white bulbs, Whitebulb is a powerful\nmedicinal herb.", global.materials]
+	global.library[16] = ["Nettle", "A nettle. Perhaps the most common weed in all Kosmos.", global.materials]
+	global.library[17] = ["Iron Ore", "A highly common ore, mined across the continent and used as a\nstandard for most tools.", global.materials]
+	global.library[18] = ["Corundum Ore", "An ore with similar colouration to copper, it can be made\ninto an alloy with iron to form steel.", global.materials]
+	global.library[19] = ["Meteoric Ore", "A rare variant of iron ore, can be combined with other ores\nto forge excellent gear.", global.materials]
+	global.library[20] = ["Crystaline Ore", "Mysterious ore that has be permanently altered by the presence\nof magic entites. If it can be forged, the results would be spectacular.", global.materials]
+	global.library[21] = ["Wood", "Cut from trees, has a variety of uses.", global.materials]
+	global.library[22] = ["Leather", "Obtained from hunting, can be used when making weapons and armour.", global.materials]
+	global.library[23] = ["Solite Dust", "A crushed mixture of solite and other trace minerals.", global.materials]
+	global.library[24] = ["Pure Solite", "Perfectly pure solite, stores intense magic energy.", global.materials]
+	global.library[25] = ["Cerephelium", "A recently formed solite crystal, the magic it possesses is almost\ntoo much, staring at it for too long may make you blind.", global.materials]
+	global.library[26] = ["Emerald", "Green gem commonly used in jewelry or for enchanting. Associated with\nstamina.", global.materials]
+	global.library[27] = ["Garnet", "Red gem commonly used in jewelry or for enchanting. Associated with\nhealth.", global.materials]
+	global.library[28] = ["Glacial Ice", "A piece of ice so ancient that it has permanently frozen. Can be\nused in enchanting.", global.materials]
+	global.library[29] = ["Ruby", "Red gem commonly used in jewelry or enchanting. Associated with fire.", global.materials]
+	global.library[30] = ["Topaz", "Blue gem commonly used in jewelry or for enchanting. Associated with\nmana., global.materials"]
+	global.library[31] = ["Coral", "Coral from the seabed of 'River' Severnis, can be used in enchanting.", global.materials]
+	global.library[32] = ["Gold Dust", "Fragile metals such as gold can be ground into dust to be used in\nprocesses such as enchanting.", global.materials]
+	global.library[33] = ["Carrot", "Cruchy, a reindeer's favourite snack.", global.consumables]
+	global.library[34] = ["Onion", "Please don't cry, the onion will be fine.", global.consumables]
+	global.library[35] = ["Potato", "Grows upon the corpses of its fallen brethren.", global.consumables]
+	global.library[36] = ["Raw Meat", "Miscellaenous meat... horse perhaps?", global.consumables]
+	global.library[37] = ["Fish", "Smells like fish.", global.consumables]
+	global.library[38] = ["Mushroom", "The edible kind, not the other kind.", global.consumables]
+	global.library[39] = ["Orange", "Grows on orchards on the outskirts of the city.", global.consumables]
+	global.library[40] = ["Grapes", "Commonly grown by farmers in the New City to the west.", global.consumables]
+	global.library[41] = ["Apple", "Crunchy and sweet, a classic.", global.consumables]
+	global.library[42] = ["Bread", "The most popular food in all Kosmos, goes well with almost anything.", global.consumables]
+	global.library[43] = ["Egg", "From a chicken.", global.consumables]
+	global.library[44] = ["Cheese", "One of the many kinds of cheese, this one is unique to The Capital.", global.consumables]
+	global.library[45] = ["Blueberry", "It is a berry, and it is also blue.", global.consumables]
+	global.library[46] = ["Cherry", "A red berry with a strong taste.", global.consumables]
+	global.library[47] = ["Salt", "Collected from salt mines along the northern coastline.", global.consumables]
+	global.library[48] = ["Flour", "The product of grain being grinded into dust.", global.consumables]
+	global.library[49] = ["Wine", "A fancy beverage, unless you get the cheap back-alley kind.", global.consumables]
+	global.library[50] = ["Tomato", "Used for a variety of tasty meals.", global.consumables]
+	global.library[51] = ["Loopy Shroom", "Rumour has it, that this mushroom allows one to see into the past...\nor it just makes you high.", global.consumables]
+	global.library[52] = ["Cloth", "Has a wide variety of practical uses, primarily in clothing.", global.materials]
+	global.library[53] = ["Water", "Where there is water, there is life", global.consumables]
+	global.library[54] = ["Whiskey", "The strong stuff.", global.consumables]
+	global.library[55] = ["Wool", "Sheared from a now very chilly sheep.", global.materials]
+	global.library[56] = ["Feather", "Used by fletchers to make arrows.", global.materials]
+	global.library[57] = ["Rope", "Can be used to get out of certain situations.", global.consumables]
+	global.library[58] = ["Gold Ingot", "Gold smelted into a shiny ingot. Good for selling or making jewelry", global.materials]
+	global.library[59] = ["Rags", "Typical beggar attire.", global.armours]
+	global.library[60] = ["Kirtle", "A kirtle is a common form of women's attire used by the lower class.", global.armours]
+	global.library[61] = ["Tunic", "The most common form of clothing in Kosmos. Mainly used by peasants.", global.armours]
+	global.library[62] = ["Dress", "A stylish dress, perfect for attending parties.", global.armours]
+	global.library[63] = ["Suit", "A stylish suit, perfect for attending parties.", global.armours]
+	global.library[64] = ["Sandals", "Well worn woven sandals, they make your feet itch.", global.armours]
+	global.library[65] = ["Boots", "Sturdy footwear destined to take a beating.", global.armours]
+	global.library[66] = ["Fur-Lined Boots", "They look like boots, but real boots aren't as likely to break.\nWarm though", global.armours]
+	global.library[67] = ["Dress Shoes", "Shoes for dresses.", global.armours]
+	global.library[68] = ["Robe Charm", "A commoner's charm attached to a rope.", global.accessories]
+	global.library[69] = ["Lariat", "A form of twist-braid necklace, perhaps meant to bring good luck.", global.accessories]
+	global.library[70] = ["Silver Lariat", "An intricately crafted silver necklace with embedded gems.", global.accessories]
+	global.library[71] = ["Gold Pendant", "Gold gold gold, everyone loves gold.", global.accessories]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -44,8 +106,68 @@ function inventory_initialise() {
 	global.icons[7] = 611		// Signet Ring
 	global.icons[8] = 227		// Orders
 	global.icons[9] = 344		// Copper Ore
-	global.icons[10] = 309		// Capitolina Prima
+	global.icons[10] = 200		// Capitolina Prima
 	global.icons[11] = 343		// Impure Solite
+	global.icons[12] = 202		// Clover
+	global.icons[13] = 203		// Thistle
+	global.icons[14] = 201		// Capitolina Secunda
+	global.icons[15] = 204		// White Bulb
+	global.icons[16] = 309		// Nettle
+	global.icons[17] = 350		// Iron Ore
+	global.icons[18] = 344		// Corundum Ore
+	global.icons[19] = 545		// Meteoric Ore
+	global.icons[20] = 346		// Crystaline Ore
+	global.icons[21] = 331		// Wood
+	global.icons[22] = 333		// Leather
+	global.icons[23] = 349		// Solite Dust
+	global.icons[24] = 345		// Pure Solite
+	global.icons[25] = 342		// Cerephelium
+	global.icons[26] = 347		// Emerald
+	global.icons[27] = 341		// Garnet
+	global.icons[28] = 351		// Glacial Ice
+	global.icons[29] = 358		// Ruby
+	global.icons[30] = 359		// Topaz
+	global.icons[31] = 364		// Coral
+	global.icons[32] = 365		// Gold Dust
+	global.icons[33] = 288		// Carrot
+	global.icons[34] = 289		// Onion
+	global.icons[35] = 290		// Potato
+	global.icons[36] = 291		// Raw Meat
+	global.icons[37] = 292		// Fish
+	global.icons[38] = 293		// Mushroom
+	global.icons[39] = 295		// Orange
+	global.icons[40] = 296		// Grapes
+	global.icons[41] = 297		// Apple
+	global.icons[42] = 298		// Bread
+	global.icons[43] = 299		// Egg
+	global.icons[44] = 301		// Cheese
+	global.icons[45] = 302		// Blueberry
+	global.icons[46] = 303		// Cherry
+	global.icons[47] = 306		// Salt
+	global.icons[48] = 307		// Flour
+	global.icons[49] = 308		// Wine
+	global.icons[50] = 317		// Tomato
+	global.icons[51] = 319		// Loopy Shroom
+	global.icons[52] = 320		// Cloth
+	global.icons[53] = 366		// Water
+	global.icons[54] = 220		// Whiskey
+	global.icons[55] = 321		// Wool
+	global.icons[56] = 337		// Feather
+	global.icons[57] = 275		// Rope
+	global.icons[58] = 360		// Gold Ingot
+	global.icons[59] = 443		// Rags
+	global.icons[60] = 439		// Kirtle
+	global.icons[61] = 440		// Tunic
+	global.icons[62] = 441		// Dress
+	global.icons[63] = 442		// Formal Wear
+	global.icons[64] = 470		// Sandals
+	global.icons[65] = 467		// Boots
+	global.icons[66] = 477		// Fur-Lined Boots
+	global.icons[67] = 475		// Dress Shoes
+	global.icons[68] = 514		// Rope Charm
+	global.icons[69] = 521		// Lariat
+	global.icons[70] = 522		// Silver Lariat
+	global.icons[71] = 524		// Gold Pendant
 	
 }
 
@@ -102,25 +224,25 @@ function inventory_populate(category) {
 	}
 	else { show_message("Error: specified category does not exist.") }
 	
-	x_margin = obj_inventory.x + 32
-	y_margin = obj_inventory.y + 160
+	//x_margin = obj_inventory.x + 32
+	//y_margin = obj_inventory.y + 160
 	
-	// Create List Buttons
-	for (i = 0; i < array_length(pop_list); i ++) {
-		instance_create(x_margin, y_margin, obj_inventory_button) {}
-		if obj_inventory_button.row_id == -1 {	
-			obj_inventory_button.row_id = i
-			obj_inventory_button.item_id = pop_list[i][0]
-		}
-		y_margin += 32
-	}
+	//// Create List Buttons
+	//for (i = 0; i < array_length(pop_list); i ++) {
+	//	instance_create(x_margin, y_margin, obj_inventory_button)
+	//	if obj_inventory_button.row_id == -1 {	
+	//		obj_inventory_button.row_id = i
+	//		obj_inventory_button.item_id = pop_list[i][0]
+	//	}
+	//	y_margin += 32
+	//}
 	
-	if y_margin > 432 {
-		obj_inventory.scrollbar = true
+	//if y_margin > 432 {
+	//	obj_inventory.scrollbar = true
 		
-		instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar)
-		obj_scrollbar.max_scroll = (y_margin - 432) / 32
-	}
+	//	instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar)
+	//	obj_scrollbar.max_scroll = (y_margin - 432) / 32
+	//}
 	
 	// Create Tab Buttons
 	with instance_create(obj_inventory.x + 16, obj_inventory.y + 24, obj_inventory_tabs) {
@@ -164,6 +286,20 @@ function inventory_populate(category) {
 			default_index = 10
 			tab = "materials"
 		}
+	}
+}
+
+function inventory_add(item, amount) {
+	// Adds an item to the corresponding inventory
+	category = global.library[item][2]
+	owned = false
+	for (i = 0; i < array_length(category); i ++) if category[i][0] == item {
+		category[i][1] += amount
+		owned = true
+	}
+	
+	if !owned {
+		array_push(category, [item, amount])
 	}
 }
 

@@ -1,6 +1,8 @@
 /// @description  Initialise
 // Define Variables and Libraries
 inventory_initialise()
+// Loot system initialise
+loot_initialise()
 
 depth = -10
 scrollbar = false
@@ -17,9 +19,12 @@ can_equip = false
 can_destroy = false
 item_selected = false
 
-// TEMP - for testing functionality only
 
+
+// TEMP - for testing functionality only
 inventory_consumable_add(0, 3)
+inventory_consumable_add(33, 3)
+inventory_consumable_add(34, 3)
 inventory_weapon_add(1, 1)
 inventory_armour_add(4, 1)
 inventory_accessory_add(7, 1)

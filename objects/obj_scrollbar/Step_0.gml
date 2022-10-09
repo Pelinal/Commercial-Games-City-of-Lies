@@ -9,3 +9,4 @@ if max_scroll >= 1 {
 if scroll_value < max_scroll { scroll_value = 0 }
 if scroll_value > max_scroll { scroll_value = max_scroll }
 
+if obj_inventory.visible == false { instance_destroy(self) }

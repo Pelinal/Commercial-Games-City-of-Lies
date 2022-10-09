@@ -22,8 +22,11 @@ global.max_mp = 100		// Player Max Mana
 global.sp = 100			// Player Stamina
 global.max_sp = 100		// Player Max Stamina
 
-// Class
-global.class = "warrior"
+// General
+global.class = "warrior"	// Player Class
+global.level = 1			// Player Level
+global.exp = 0				// Player Current EXP
+global.exp_req = 1000		// Player EXP needed for next level
 
 // Combat Stats
 global.atk = 5		// Attack

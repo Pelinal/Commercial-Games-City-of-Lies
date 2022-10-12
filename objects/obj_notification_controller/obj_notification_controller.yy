@@ -1,16 +1,13 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_loot_menu",
-  "spriteId": {
-    "name": "spr_loot_tab",
-    "path": "sprites/spr_loot_tab/spr_loot_tab.yy",
-  },
+  "name": "obj_notification_controller",
+  "spriteId": null,
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
-  "persistent": false,
+  "persistent": true,
   "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
@@ -31,7 +28,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Loot",
-    "path": "folders/Objects/Interface/Loot.yy",
+    "name": "Message",
+    "path": "folders/Objects/Interface/Message.yy",
   },
 }

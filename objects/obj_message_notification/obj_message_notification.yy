@@ -1,11 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_loot_menu",
-  "spriteId": {
-    "name": "spr_loot_tab",
-    "path": "sprites/spr_loot_tab/spr_loot_tab.yy",
-  },
+  "name": "obj_message_notification",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
@@ -26,12 +23,13 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Loot",
-    "path": "folders/Objects/Interface/Loot.yy",
+    "name": "Message",
+    "path": "folders/Objects/Interface/Message.yy",
   },
 }

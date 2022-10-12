@@ -34,7 +34,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Interface",
-    "path": "folders/Objects/Interface.yy",
+    "name": "Loot",
+    "path": "folders/Objects/Interface/Loot.yy",
   },
 }

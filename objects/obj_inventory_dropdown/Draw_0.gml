@@ -1,5 +1,4 @@
 /// @description Draw Text
-
 draw_self()
 draw_set_font(fnt_textbox_10)
 draw_set_colour(c_white)

@@ -64,6 +64,6 @@ if !global.immobile {
 
 if global.immobile { image_index = 0 image_speed = 0 }
 
-
+global.gold = inventory_fetch(0)
 
 

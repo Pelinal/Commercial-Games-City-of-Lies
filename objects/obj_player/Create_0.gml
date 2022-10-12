@@ -12,7 +12,7 @@ asp = 0.2 // Animation Speed
 
 /// Globals ///
 // Currencies
-global.gold = 100		// Main Currency
+global.gold = 0		// Main Currency
 
 // Attributes
 global.hp = 60			// Player Health

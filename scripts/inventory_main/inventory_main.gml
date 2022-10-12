@@ -13,7 +13,7 @@ function inventory_initialise() {
 	// Create Item Library // ID corresponds with Index
 	// Index 0: Item Name, Index 1: Description, Index 2: Inventory List
 	// Starter Items
-	global.library[0] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
+	global.library[0] = ["Gold", "The universal currency used throughout Kosmos.", global.keyitems]
 	global.library[1] = ["Rusted Sword", "A blunt, rusted old sword. You should probably consider\nreplacing it.", global.weapons]
 	global.library[2] = ["Rotten Staff", "Rotten, but still useful. Who knows for how much longer\nthough.", global.weapons]
 	global.library[3] = ["Blunt Dagger", "Aren't daggers for stabbing? How you gonna stab anyone\nwith this dull blade?", global.weapons]
@@ -86,6 +86,7 @@ function inventory_initialise() {
 	global.library[69] = ["Lariat", "A form of twist-braid necklace, perhaps meant to bring good luck.", global.accessories]
 	global.library[70] = ["Silver Lariat", "An intricately crafted silver necklace with embedded gems.", global.accessories]
 	global.library[71] = ["Gold Pendant", "Gold gold gold, everyone loves gold.", global.accessories]
+	global.library[72] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -96,7 +97,7 @@ function inventory_initialise() {
 	inventory_material_initialise()
 	
 	// Create Icon Library // Values refer to coords in ts_icons_iconset
-	global.icons[0] = 192		// Health Potion
+	global.icons[0] = 361		// Gold
 	global.icons[1] = 147		// Rusted Sword
 	global.icons[2] = 152		// Rotten Staff
 	global.icons[3] = 150		// Blunt Dagger
@@ -168,7 +169,7 @@ function inventory_initialise() {
 	global.icons[69] = 521		// Lariat
 	global.icons[70] = 522		// Silver Lariat
 	global.icons[71] = 524		// Gold Pendant
-	
+	global.icons[72] = 192		// Health Potion
 }
 
 function inventory_populate(category) {
@@ -310,10 +311,23 @@ function inventory_check(item) {
 	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ return true }
 	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ return true }
 	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ return true }
-	for (i = 0; i < array_length(global.keyitems); i ++) if global.weapons[i][0] == item			{ return true }
-	for (i = 0; i < array_length(global.materials); i ++) if global.weapons[i][0] == item			{ return true }
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.keyitems[i][0] == item			{ return true }
+	for (i = 0; i < array_length(global.materials); i ++) if global.materials[i][0] == item			{ return true }
 	
 	return false
+}
+
+function inventory_fetch(item) {
+	// Returns amount of specified item
+	
+	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ return global.consumables[i][1] }
+	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ return global.weapons[i][1] }
+	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ return global.armours[i][1] }
+	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ return global.accessories[i][1] }
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.keyitems[i][0] == item			{ return global.keyitems[i][1] }
+	for (i = 0; i < array_length(global.materials); i ++) if global.materials[i][0] == item			{ return global.materials[i][1] }
+	
+	return 0
 }
 
 function inventory_remove(item, amount) {

@@ -6,7 +6,8 @@ draw_set_colour(c_white)
 
 // Gold, Other Currencies (TBA), Health etc.
 draw_set_font(fnt_inventory_12)
-draw_text(x + 384, y + 390, "Gold: " + string(global.gold))
+draw_tile(ts_icons_iconset, global.icons[0], 0, x + 384, y + 390)
+draw_text(x + 384+32, y + 394, string(global.gold))
 
 draw_set_colour(c_grey)
 draw_rectangle(x + 384, y + 420, (x + 384) + (global.max_hp) * 3, y + 432, false) 

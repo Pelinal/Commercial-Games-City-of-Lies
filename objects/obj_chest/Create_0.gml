@@ -1,6 +1,7 @@
 /// @description 
 
-var loot, gold
+var loot
+gatherable = false
 opening = false
 open = false
 empty = false

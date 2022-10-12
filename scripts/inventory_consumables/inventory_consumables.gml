@@ -3,7 +3,7 @@
 function inventory_consumable_initialise() {
 	// Create Item Library // ID corresponds with Index
 	// Index 0: ID, Index 1: Effect, Index 3: Effect Value, Index 4: Price
-	global.c_library[0] = [0, "Restore Health", 30, 100] // 30 HP Potion
+	global.c_library[0] = [72, "Restore Health", 30, 100] // 30 HP Potion
 	global.c_library[1] = [33, "Restore Stamina", 5, 20] // Carrot
 	global.c_library[2] = [34, "Restore Stamina", 5, 20] // Onion
 	global.c_library[3] = [35, "Restore Health", 5, 20] // Potato

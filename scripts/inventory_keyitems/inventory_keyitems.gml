@@ -4,6 +4,7 @@ function inventory_keyitem_initialise() {
 	// Create Key Item Library // ID corresponds with Index
 	// Index 0: ID, Index 1: Type, Index 2: Activate Action
 	global.k_library[0] = [8, "Note", "read"] // Orders
+	global.k_library[0] = [0, "Gold", "destroy"] // Gold
 }
 
 function inventory_keyitem_add(item, amount) {

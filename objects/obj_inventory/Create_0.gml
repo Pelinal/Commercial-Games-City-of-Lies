@@ -17,16 +17,17 @@ visible = false
 can_use = false
 can_equip = false
 can_destroy = false
-item_selected = false
+//item_selected = false
 
 
 
 // TEMP - for testing functionality only
-inventory_consumable_add(0, 3)
+inventory_consumable_add(72, 3)
 inventory_consumable_add(33, 3)
 inventory_consumable_add(34, 3)
 inventory_weapon_add(1, 1)
 inventory_armour_add(4, 1)
 inventory_accessory_add(7, 1)
 inventory_keyitem_add(8, 1)
+inventory_keyitem_add(0, 100)
 inventory_material_add(9, 10)

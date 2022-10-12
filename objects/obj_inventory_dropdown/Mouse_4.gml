@@ -1,11 +1,29 @@
 /// @description React to Left click
 
 if type == "destroy" {
-	inventory_remove(chosen_item, 1)
+	if !(inventory_fetch(chosen_item) == 1) {
+		inventory_remove(chosen_item, 1)
+	} else {
+		instance_destroy(self)
+		instance_destroy(obj_inventory_button)
+		instance_destroy(obj_inventory_dropdown)
+		
+		inventory_remove(chosen_item, 1)
+		obj_inventory.tab_switched = true
+	}
 }
 else if type == "use" {
 	inventory_consumable_use(chosen_item)
-	inventory_remove(chosen_item, 1)
+	if !(inventory_fetch(chosen_item) == 1) {
+		inventory_remove(chosen_item, 1)
+	} else {
+		instance_destroy(self)
+		instance_destroy(obj_inventory_button)
+		instance_destroy(obj_inventory_dropdown)
+		
+		inventory_remove(chosen_item, 1)
+		obj_inventory.tab_switched = true
+	}
 }
 else if type == "equip" {
 	if global.current_menu == "weapons"	 { inventory_weapon_equip(chosen_item)    }

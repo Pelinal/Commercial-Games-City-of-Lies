@@ -23,11 +23,17 @@ if array_length(current_list) > 0 {
 	draw_text(x + 48, y + 4, global.library[item_id][0])
 	
 	if obj_trademenu.current_tab == "buy" {
-		draw_text(x + 152, y + 4, "x " + string(current_list[row_id][1]))	
+		draw_text(x + 152, y + 4, "x " + string(current_list[row_id][1]))
+		
+		draw_tile(ts_icons_iconset, global.icons[0], 0, x + 182, y)
+		draw_text(x + 212, y + 4, string(item_price))
+		
 		//if inventory_check_equipped(item_id) { draw_text(x + 220, y + 4, "(Equipped)")}
 	}
 	else if obj_trademenu.current_tab == "sell" {
 		draw_text(x + 152, y + 4, "x " + string(inventory_fetch(item_id)))
-		if inventory_check_equipped(item_id) { draw_text(x + 220, y + 4, "(Equipped)")}
+		draw_tile(ts_icons_iconset, global.icons[0], 0, x + 182, y)
+		draw_text(x + 212, y + 4, string(item_price))
+		if inventory_check_equipped(item_id) { draw_text(x + 244, y + 4, "(Equipped)")}
 	}
 }

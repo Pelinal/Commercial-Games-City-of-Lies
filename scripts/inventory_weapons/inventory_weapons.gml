@@ -2,7 +2,7 @@
 
 function inventory_weapon_initialise() {
 	// Create Item Library // ID corresponds with Index
-	// Index 0: ID, Index 1: Type, Index 3: Damage, Index 4: Price
+	// Index 0: ID, Index 1: Type, Index 2: Damage, Index 3: Price
 	global.w_library[0] = [1, "Sword", 10, 10] // Rusted Sword
 	global.w_library[1] = [2, "Staff", 10, 10] // Rotten Staff
 	global.w_library[2] = [3, "Dagger", 10, 10] // Blunted Dagger

@@ -333,23 +333,23 @@ function inventory_fetch(item) {
 function inventory_remove(item, amount) {
 	// Searches all Inventories for item, then removes it
 	
-	if global.current_menu == "consumables"			{ inventory_consumable_remove(item, amount) }
-	else if global.current_menu == "weapons"		{ inventory_weapon_remove(item, amount)		}
-	else if global.current_menu == "armours"		{ inventory_armour_remove(item, amount)		}
-	else if global.current_menu == "accessories"	{ inventory_accessory_remove(item, amount)	}
-	else if global.current_menu == "key items"		{ inventory_keyitem_remove(item, amount)	}
-	else if global.current_menu == "materials"		{ inventory_material_remove(item, amount)	}
+	if global.library[item][2] == global.consumables		{ inventory_consumable_remove(item, amount) }
+	else if global.library[item][2] == global.weapons		{ inventory_weapon_remove(item, amount)		}
+	else if global.library[item][2] == global.armours		{ inventory_armour_remove(item, amount)		}
+	else if global.library[item][2] == global.accessories	{ inventory_accessory_remove(item, amount)	}
+	else if global.library[item][2] == global.keyitems		{ inventory_keyitem_remove(item, amount)	}
+	else if global.library[item][2] == global.materials		{ inventory_material_remove(item, amount)	}
 }
 
-function inventory_delete(item, amount) {
+function inventory_delete(item) {
 	// Searches all Inventories for item, then deletes all copies of it
 	
-	if global.current_menu == "consumables"			{ inventory_consumable_delete(item, amount) }
-	else if global.current_menu == "weapons"		{ inventory_weapon_delete(item, amount)		}
-	else if global.current_menu == "armours"		{ inventory_armour_delete(item, amount)		}
-	else if global.current_menu == "accessories"	{ inventory_accessory_delete(item, amount)	}
-	else if global.current_menu == "key items"		{ inventory_keyitem_delete(item, amount)	}
-	else if global.current_menu == "materials"		{ inventory_material_delete(item, amount)	}
+	if global.library[item][2] == global.consumables		{ inventory_consumable_delete(item) }
+	else if global.library[item][2] == global.weapons		{ inventory_weapon_delete(item)		}
+	else if global.library[item][2] == global.armours		{ inventory_armour_delete(item)		}
+	else if global.library[item][2] == global.accessories	{ inventory_accessory_delete(item)	}
+	else if global.library[item][2] == global.keyitems		{ inventory_keyitem_delete(item)	}
+	else if global.library[item][2] == global.materials		{ inventory_material_delete(item)	}
 }
 
 function inventory_check_equipped(item) {

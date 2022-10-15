@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Trade System",
-    "path": "folders/Scripts/Trade System.yy",
+    "name": "Trade & Crafting",
+    "path": "folders/Scripts/Trade & Crafting.yy",
   },
 }

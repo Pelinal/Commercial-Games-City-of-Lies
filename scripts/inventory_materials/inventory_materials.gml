@@ -31,6 +31,16 @@ function inventory_material_initialise() {
 	global.m_library[25] = [55, "Smithing", 60] // Wool
 	global.m_library[26] = [56, "Smithing", 20] // Feather
 	global.m_library[27] = [58, "Smithing", 600] // Gold Ingot
+	// Items added w/ crafting
+	global.m_library[28] = [97, "Enchanting", 700] // Max HP Increase
+	global.m_library[29] = [98, "Enchanting", 700] // Max SP Increase
+	global.m_library[30] = [99, "Enchanting", 700] // Max MP Increase
+	global.m_library[31] = [100, "Enchanting", 350] // Resist Frost
+	global.m_library[32] = [101, "Enchanting", 400] // Resist Fire
+	global.m_library[33] = [102, "Enchanting", 450] // Resist Poison
+	global.m_library[34] = [103, "Enchanting", 500] // Buff Bartering
+	global.m_library[35] = [104, "Alchemy", 50] // Alcohol
+	global.m_library[36] = [105, "Alchemy", 60] // Venom
 }
 
 function inventory_material_add(item, amount) {

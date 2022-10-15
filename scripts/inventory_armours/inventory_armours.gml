@@ -15,6 +15,12 @@ function inventory_armour_initialise() {
 	global.ar_library[9] = [65, "Light", 2, 40, "Feet"]			// Boots
 	global.ar_library[10] = [66, "Light", 3, 90, "Feet"]		// Fur-Lined Boots
 	global.ar_library[11] = [67, "Light", 0, 110, "Feet"]		// Dress Shoes
+	// Items added w/ crafting
+	global.ar_library[12] = [89, "Light", 10, 50, "Torso"]		// Stitched Robes
+	global.ar_library[13] = [90, "Medium", 15, 70, "Torso"]		// Gambeson
+	global.ar_library[14] = [91, "Heavy", 20, 100, "Torso"]		// Bronze Mail
+	global.ar_library[15] = [92, "Heavy", 30, 160, "Torso"]		// Scale Armour
+	global.ar_library[16] = [93, "Medium", 20, 130, "Torso"]	// Rough Leathers
 	
 	// Create Global Equipped Armour list
 	global.armour_equipped[0] = -1		// 0 - Head

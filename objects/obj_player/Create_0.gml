@@ -2,6 +2,7 @@
 
 display_reset(0,true)
 image_speed = 0
+depth = 0
 
 hsp = 0 // Horizontal Speed
 vsp = 0 // Vertical Speed

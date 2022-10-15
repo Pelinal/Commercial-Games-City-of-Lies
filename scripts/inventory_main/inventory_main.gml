@@ -28,7 +28,7 @@ function inventory_initialise() {
 	// Item Addition #1 - Loot System
 	global.library[12] = ["Clover", "Four leaf clovers are the result of their contact with magical\nenergy, traces of this still remain.", global.materials]
 	global.library[13] = ["Thickthistle", "A more bulbous variant of the common thistle, without\nflowers. It can be used during alchemy.", global.materials]
-	global.library[14] = ["Capitolina Secunda", "The twin of the more common Capitolina Prima, it can be used to restore magical energy.", global.materials]
+	global.library[14] = ["Capitolina Secunda", "The twin of the more common Capitolina Prima, it can\nbe used to restore magical energy.", global.materials]
 	global.library[15] = ["Whitebulb", "Named after its unique white bulbs, Whitebulb is a powerful\nmedicinal herb.", global.materials]
 	global.library[16] = ["Nettle", "A nettle. Perhaps the most common weed in all Kosmos.", global.materials]
 	global.library[17] = ["Iron Ore", "A highly common ore, mined across the continent and used as a\nstandard for most tools.", global.materials]
@@ -82,11 +82,47 @@ function inventory_initialise() {
 	global.library[65] = ["Boots", "Sturdy footwear destined to take a beating.", global.armours]
 	global.library[66] = ["Fur-Lined Boots", "They look like boots, but real boots aren't as likely to break.\nWarm though", global.armours]
 	global.library[67] = ["Dress Shoes", "Shoes for dresses.", global.armours]
-	global.library[68] = ["Robe Charm", "A commoner's charm attached to a rope.", global.accessories]
+	global.library[68] = ["Rope Charm", "A commoner's charm attached to a rope.", global.accessories]
 	global.library[69] = ["Lariat", "A form of twist-braid necklace, perhaps meant to bring good luck.", global.accessories]
 	global.library[70] = ["Silver Lariat", "An intricately crafted silver necklace with embedded gems.", global.accessories]
 	global.library[71] = ["Gold Pendant", "Gold gold gold, everyone loves gold.", global.accessories]
 	global.library[72] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
+	// Item Expansion #2 - Crafting
+	global.library[73] = ["Stamina Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of stamina.", global.consumables]
+	global.library[74] = ["Mana Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of mana.", global.consumables]
+	global.library[75] = ["Hearty Tonic", "A unique mixture that temporarily raises Endurance.", global.consumables]
+	global.library[76] = ["Cunning Tonic", "A unique mixture that temporarily raises Dexterity.", global.consumables]
+	global.library[77] = ["Sage Tonic", "A unique mixture that temporarily raises Intelligence.", global.consumables]
+	global.library[78] = ["Agile Tonic", "A unique mixture that temporarily raises Speed.", global.consumables]
+	global.library[79] = ["Bronze Sword", "A crude but sturdily made sword, bronze is typical of many\nmercenaries in Kosmos.", global.weapons]
+	global.library[80] = ["Bronze Dagger", "A crude but sturdily made dagger, bronze is typical of many\nmercenaries in Kosmos.", global.weapons]
+	global.library[81] = ["Bronze Axe", "A crude but sturdily made axe, bronze is typical of many\nmercenaries in Kosmos.", global.weapons]
+	global.library[82] = ["Wooden Staff", "A crude but sturdily made staff.", global.weapons]
+	global.library[83] = ["Reinforced Staff", "A wooden staff reinforced with bronze, common for\nthose poorer magi in Kosmos.", global.weapons]
+	global.library[84] = ["Wooden Bow", "A crude but sturdily made bow. Doesn't come with arrows.", global.weapons]
+	global.library[85] = ["Reinforced Bow", "A wooden bow reinforced with bronze.", global.weapons]
+	global.library[86] = ["Silver Ingot", "An ingot of pure silver, used for making jewelry.", global.materials]
+	global.library[87] = ["Rubium Ingot", "An ingot of pure rubium, used for making jewelry.", global.materials]
+	global.library[88] = ["Chrome", "A block of solid shine.", global.materials]
+	global.library[89] = ["Stitched Robes", "A handmade wizard's robe, it's nice and warm.", global.armours]
+	global.library[90] = ["Gambeson", "A quilted, padded linen jacket.", global.armours]
+	global.library[91] = ["Bronze Mail", "Shoddily crafted but still an effective form of protection.", global.armours]
+	global.library[92] = ["Scale Armour", "Well-crafted bronze armour, looks like dragon scales.", global.armours]
+	global.library[93] = ["Rough Leathers", "A typical leather cuirass worn over a gambeson.", global.armours]
+	global.library[94] = ["Iron Ring", "A basic ring made of iron.", global.accessories]
+	global.library[95] = ["Silver Ring", "A basic ring made of silver.", global.accessories]
+	global.library[96] = ["Gold Ring", "A basic ring made of gold.", global.accessories]
+	// NOT ITEMS -- Enchantments just for crafting
+	global.library[97] = ["Max HP Increase", "An enchantment that increases the player's maximum\nhealth.", global.materials]
+	global.library[98] = ["Max MP Increase", "An enchantment that increases the player's maximum\nmana.", global.materials]
+	global.library[99] = ["Max SP Increase", "An enchantment that increases the player's maximum\nstamina.", global.materials]
+	global.library[100] = ["Resist Frost", "An enchantment that increases frost resistance.", global.materials]
+	global.library[101] = ["Resist Fire", "An enchantment that increases fire resistance.", global.materials]
+	global.library[102] = ["Resist Poison", "An enchantment that increases poison resistance.", global.materials]
+	global.library[103] = ["Buff Bartering", "An enchantment that buffs the Bartering skill.", global.materials]
+	// Items continue here
+	global.library[104] = ["Alcohol", "Miscellaneous alcohol solution, used during alchemical\nprocesses to craft tonics.", global.materials]
+	global.library[105] = ["Venom", "Venom from poisonous animals, used during alchemical\nprocesses to craft poisons.", global.materials]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -170,6 +206,41 @@ function inventory_initialise() {
 	global.icons[70] = 522		// Silver Lariat
 	global.icons[71] = 524		// Gold Pendant
 	global.icons[72] = 192		// Health Potion
+	// Added with Crafting
+	global.icons[73] = 194		// Stamina Potion
+	global.icons[74] = 193		// Mana Potion
+	global.icons[75] = 212		// Hearty Tonic
+	global.icons[76] = 540		// Cunning Tonic
+	global.icons[77] = 536		// Sage Tonic
+	global.icons[78] = 537		// Agile Tonic
+	global.icons[79] = 391		// Bronze Sword
+	global.icons[80] = 392		// Bronze Dagger
+	global.icons[81] = 393		// Bronze Axe
+	global.icons[82] = 152		// Wooden Staff
+	global.icons[83] = 151		// Reinforced Staff
+	global.icons[84] = 149		// Wooden Bow
+	global.icons[85] = 394		// Reinforced Bow
+	global.icons[86] = 607		// Silver Ingot
+	global.icons[87] = 591		// Rubium Ingot
+	global.icons[88] = 623		// Chrome
+	global.icons[89] = 183		// Stitched Robes
+	global.icons[90] = 168		// Gambeson
+	global.icons[91] = 434		// Bronze Mail
+	global.icons[92] = 434		// Scale Armour
+	global.icons[93] = 169		// Rough Leathers
+	global.icons[94] = 409		// Iron Ring
+	global.icons[95] = 177		// Silver Ring
+	global.icons[96] = 512		// Gold Ring
+	global.icons[97] = 32		// Max HP Increase
+	global.icons[98] = 33		// Max MP Increase
+	global.icons[99] = 112		// Max SP Increase
+	global.icons[100] = 97		// Resist Frost
+	global.icons[101] = 96		// Resist Fire
+	global.icons[102] = 2		// Resist Poison
+	global.icons[103] = 117		// Buff Bartering
+	global.icons[104] = 220		// Alcohol
+	global.icons[105] = 196		// Venom
+	
 }
 
 function inventory_populate(category) {

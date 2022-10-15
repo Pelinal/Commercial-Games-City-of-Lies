@@ -8,6 +8,9 @@ function inventory_accessory_initialise() {
 	global.ac_library[2] = [69, "Necklace", "None", 80]		// Lariat
 	global.ac_library[3] = [70, "Necklace", "None", 180]	// Silver Lariat
 	global.ac_library[4] = [71, "Necklace", "None", 340]	// Gold Pendant
+	global.ac_library[5] = [94, "Ring", "None", 70]		// Iron Ring
+	global.ac_library[6] = [95, "Ring", "None", 120]	// Silver Ring
+	global.ac_library[7] = [96, "Ring", "None", 200]	// Gold Ring
 	
 	// Create Global Equipped Accessories List
 	global.accessory_equipped[0] = -1	// 0 - Ring 1

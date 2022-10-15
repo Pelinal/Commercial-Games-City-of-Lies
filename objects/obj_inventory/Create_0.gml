@@ -4,7 +4,7 @@ inventory_initialise()
 // Loot system initialise
 loot_initialise()
 
-depth = -10
+depth = -1000
 scrollbar = false
 overview_id = -1
 tab_switched = false

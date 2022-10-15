@@ -1,5 +1,5 @@
 /// @description Initialise
 
-depth = -10
+depth = -1000
 
 loot = 0

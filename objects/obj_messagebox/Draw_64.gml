@@ -28,18 +28,40 @@ if batch == -1 {
     }
 }
 else if batch_counter <= batch {
-    for (i = 1; i < string_length(display_text[batch_counter]); i ++) {
-        draw_text(x_left, y_row, string_hash_to_newline(display_text_list[batch_counter, i]))
+	
+	if string_counter < string_length(display_text[batch_counter]) {
+		for (i = 1; i <= string_counter; i ++) {
+			draw_text(x_left, y_row, display_text_list[batch_counter, i])
+		
+			if display_text_list[batch_counter, i] == "#" || display_text_list[batch_counter, i] == "\n" {
+				x_left = x_draw-300
+				y_row += 24
+			}
+			else {
+				x_left += 12
+			}
+		}
+		if alarm_get(0) == -1 {
+			string_counter ++
+			alarm_set(0, 2) // type speed
+		}
+	}
+	if string_counter == string_length(display_text[batch_counter]) {
+		for (i = 1; i < string_length(display_text[batch_counter]); i ++) {
+	        draw_text(x_left, y_row, string_hash_to_newline(display_text_list[batch_counter, i]))
         
-        if display_text_list[batch_counter, i] == "#" {
-            x_left = x_draw-300
-            y_row += 24
-        }
-        else {
-            x_left += 12
-        }
-    }
-    if keyboard_check_pressed(vk_space) batch_counter ++
+	        if display_text_list[batch_counter, i] == "#" {
+	            x_left = x_draw-300
+	            y_row += 24
+	        }
+	        else {
+	            x_left += 12
+	        }
+		}
+	}
+	
+
+    if keyboard_check_pressed(vk_space) { batch_counter ++ string_counter = 0 }
 
 }
 

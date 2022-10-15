@@ -34,7 +34,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Trade",
-    "path": "folders/Objects/Interface/Trade.yy",
+    "name": "Trade & Crafting",
+    "path": "folders/Objects/Interface/Trade & Crafting.yy",
   },
 }

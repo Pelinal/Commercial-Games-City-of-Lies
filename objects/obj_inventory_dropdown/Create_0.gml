@@ -2,7 +2,9 @@
 
 type = -1
 chosen_item = -1
+stock_row = -1
+ingred_list = -1
 
-depth = -12
+depth = -1002
 image_index = 0
 image_speed = 0

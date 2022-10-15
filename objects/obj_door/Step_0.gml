@@ -4,7 +4,11 @@ if(distance_to_object(obj_player)) <= 32 {
         opening = true
     }
 }
-
+if(distance_to_object(obj_player)) <= 0 {
+	if !visible {
+		image_index = image_number-1
+	}
+}
 if image_index >= image_number-1 {
     opening = false
     image_speed = 0

@@ -7,15 +7,23 @@ if obj_trademenu.current_tab == "sell" {
 else if obj_trademenu.current_tab == "buy" {
 	current_list = obj_trademenu.stock_list
 }
+else if obj_trademenu.current_tab == "craft" {
+	current_list = obj_trademenu.recipe_list
+}
 
 if array_length(current_list) > 0 {
-
-	draw_self()
-
 	draw_set_alpha(1)
 	draw_set_color(c_white)
 	draw_set_font(fnt_inventory_12)
 
+	if obj_trademenu.sprite_index == spr_crafting {
+		draw_sprite_stretched(spr_button_288_32, image_index, x, y, 224, 32)
+	}
+	else {
+		draw_self()
+	}
+	
+	
 	// Draw Icon
 	draw_tile(ts_icons_iconset, global.icons[item_id], 0, x, y)
 
@@ -35,5 +43,11 @@ if array_length(current_list) > 0 {
 		draw_tile(ts_icons_iconset, global.icons[0], 0, x + 182, y)
 		draw_text(x + 212, y + 4, string(item_price))
 		if inventory_check_equipped(item_id) { draw_text(x + 244, y + 4, "(Equipped)")}
+	}
+	else if obj_trademenu.current_tab == "craft" {
+		//draw_text(x + 152, y + 4, "x " + string(inventory_fetch(item_id)))
+		draw_tile(ts_icons_iconset, global.icons[0], 0, x + 165, y)
+		draw_text(x + 195, y + 4, string(item_price))
+		//if inventory_check_equipped(item_id) { draw_text(x + 244, y + 4, "(Equipped)")}
 	}
 }

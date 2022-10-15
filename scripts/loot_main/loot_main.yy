@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Loot System",
-    "path": "folders/Scripts/Loot System.yy",
+    "name": "Loot & Gathering",
+    "path": "folders/Scripts/Loot & Gathering.yy",
   },
 }

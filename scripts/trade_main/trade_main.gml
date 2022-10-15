@@ -14,10 +14,12 @@ function trade_populate(type){
 	else if type == "general"		{ obj_trademenu.pop_list = "all"				}
 	// find vendor's items
 	else if type == "buying"		{ obj_trademenu.pop_list = obj_trademenu.stock_list }
+	// crafting menu
+	else if type == "crafting"		{ obj_trademenu.pop_list = obj_trademenu.recipe_list }
 	
 	// Create List Buttons
 	with obj_trademenu {
-		x_margin = obj_trademenu.x + 32
+		x_margin = obj_trademenu.x + 24
 		y_margin = obj_trademenu.y + 72
 
 		for (i = 0; i < array_length(pop_list); i ++) {
@@ -69,14 +71,14 @@ function trade_price(item, type) {
 	}
 	
 	if type == "sell" {
-		price *= (global.barter)/50
+		price *= (global.barter)/30
 	}
 	else if type == "buy" {
-		price /= (global.barter)/50
+		price /= (global.barter)/30
 	}
 	else if type == "craft" {
-		price *= 2
+		price *= 1.5
 	}
 	
-	return price
+	return round(price)
 }

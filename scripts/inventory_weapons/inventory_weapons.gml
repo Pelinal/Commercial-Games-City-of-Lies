@@ -5,7 +5,15 @@ function inventory_weapon_initialise() {
 	// Index 0: ID, Index 1: Type, Index 2: Damage, Index 3: Price
 	global.w_library[0] = [1, "Sword", 10, 10] // Rusted Sword
 	global.w_library[1] = [2, "Staff", 10, 10] // Rotten Staff
-	global.w_library[2] = [3, "Dagger", 10, 10] // Blunted Dagger
+	global.w_library[2] = [3, "Dagger", 7, 10] // Blunted Dagger
+	// Items added w/ crafting
+	global.w_library[3] = [79, "Sword", 20, 80]		// Bronze Sword
+	global.w_library[4] = [80, "Dagger", 15, 40]	// Bronze Dagger
+	global.w_library[5] = [81, "Axe", 25, 60]		// Bronze Axe
+	global.w_library[6] = [82, "Staff", 20, 60]		// Wooden Staff
+	global.w_library[7] = [83, "Staff", 30, 100]	// Reinforced Staff
+	global.w_library[8] = [84, "Bow", 15, 40]		// Wooden Bow
+	global.w_library[9] = [85, "Bow", 25, 60]		// Reinforced Bow
 	
 	// Create Global Equipped Weapon Variable
 	global.weapon_equipped = -1

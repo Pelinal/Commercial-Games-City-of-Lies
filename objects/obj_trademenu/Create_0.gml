@@ -1,11 +1,13 @@
 /// @description Initialise
 
-depth = -10
+depth = -1000
 
 // Core Variables
 pop_list = []
 stock_list = []
+recipe_list = []
 category = ""
+crafting_category = ""
 current_tab = "buy"
 
 // Scrolling

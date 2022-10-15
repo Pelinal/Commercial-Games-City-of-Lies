@@ -1,5 +1,6 @@
 	/// @description Respond to Right-Click
 if visible {
+	obj_inventory.overview_id = item_id
 	instance_destroy(obj_inventory_dropdown)
 
 	x_point = mouse_x

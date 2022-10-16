@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_shadow",
+  "name": "obj_shadow_cr",
   "spriteId": {
-    "name": "spr_wall_shadows",
-    "path": "sprites/spr_wall_shadows/spr_wall_shadows.yy",
+    "name": "spr_shadow_cir",
+    "path": "sprites/spr_shadow_cir/spr_shadow_cir.yy",
   },
   "solid": false,
   "visible": false,

@@ -9,6 +9,8 @@ recipe_list = []
 category = ""
 crafting_category = ""
 current_tab = "buy"
+craft_amount = 1
+ench_selected_items = [-1, -1, -1]
 
 // Scrolling
 can_scroll = false
@@ -18,4 +20,3 @@ scroll_value = 0
 // Other
 overview_id = -1
 trade_populate(category)
-

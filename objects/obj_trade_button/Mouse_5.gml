@@ -2,6 +2,7 @@
 if visible {
 	obj_trademenu.overview_id = item_id
 	instance_destroy(obj_inventory_dropdown)
+	instance_destroy(obj_plusminus)
 	
 	if current_list[row_id][1] < 1 {
 		array_delete(obj_trademenu.stock_list, row_id, 1)

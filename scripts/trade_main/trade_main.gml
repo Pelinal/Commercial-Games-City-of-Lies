@@ -18,6 +18,7 @@ function trade_populate(type){
 	else if type == "crafting"		{ obj_trademenu.pop_list = obj_trademenu.recipe_list }
 	
 	// Create List Buttons
+	
 	with obj_trademenu {
 		x_margin = obj_trademenu.x + 24
 		y_margin = obj_trademenu.y + 72

@@ -233,11 +233,11 @@ function inventory_initialise() {
 	global.icons[96] = 512		// Gold Ring
 	global.icons[97] = 32		// Max HP Increase
 	global.icons[98] = 33		// Max MP Increase
-	global.icons[99] = 112		// Max SP Increase
+	global.icons[99] = 137		// Max SP Increase
 	global.icons[100] = 97		// Resist Frost
 	global.icons[101] = 96		// Resist Fire
 	global.icons[102] = 2		// Resist Poison
-	global.icons[103] = 117		// Buff Bartering
+	global.icons[103] = 138		// Buff Bartering
 	global.icons[104] = 220		// Alcohol
 	global.icons[105] = 196		// Venom
 	
@@ -400,6 +400,20 @@ function inventory_fetch(item) {
 	
 	return 0
 }
+
+function inventory_fetch_list(item) {
+	// Returns the list corresponding to an item
+	
+	for (i = 0; i < array_length(global.consumables); i ++) if global.consumables[i][0] == item		{ return global.consumables }
+	for (i = 0; i < array_length(global.weapons); i ++) if global.weapons[i][0] == item				{ return global.weapons }
+	for (i = 0; i < array_length(global.armours); i ++) if global.armours[i][0] == item				{ return global.armours }
+	for (i = 0; i < array_length(global.accessories); i ++) if global.accessories[i][0] == item		{ return global.accessories }
+	for (i = 0; i < array_length(global.keyitems); i ++) if global.keyitems[i][0] == item			{ return global.keyitems }
+	for (i = 0; i < array_length(global.materials); i ++) if global.materials[i][0] == item			{ return global.materials }
+	
+	return 0
+}
+
 
 function inventory_remove(item, amount) {
 	// Searches all Inventories for item, then removes it

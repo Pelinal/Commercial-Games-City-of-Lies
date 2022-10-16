@@ -40,7 +40,7 @@ function crafting_initialise() {
 		alchemy_recipes[0] = [72, 10, 12, 53, true]		// Health Potion
 		alchemy_recipes[1] = [73, 13, 12, 53, true]		// Stamina Potion
 		alchemy_recipes[2] = [74, 14, 12, 53, true]		// Mana Potion
-		alchemy_recipes[3] = [75, 10, 16, 104, true]		// Endurance Potion
+		alchemy_recipes[3] = [75, 10, 16, 104, true]	// Endurance Potion
 		alchemy_recipes[4] = [76, 13, 16, 104, true]	// Dexterity Potion
 		alchemy_recipes[5] = [77, 14, 16, 104, true]	// Intelligence Potion
 		alchemy_recipes[6] = [78, 15, 16, 104, true]	// Speed Potion
@@ -73,11 +73,11 @@ function crafting_initialise() {
 		// Enchanting- always requires solite, so not listed here (can unlock extra slot for more powerful enchant)
 		enchanting_recipes[0] = [97, 27, true]		// Max HP Increase
 		enchanting_recipes[1] = [98, 30, true]		// Max MP Increase
-		enchanting_recipes[2] = [99, 26, false]		// Max SP Increase
+		enchanting_recipes[2] = [99, 26, true]		// Max SP Increase
 		enchanting_recipes[3] = [100, 28, false]	// Resist Frost
 		enchanting_recipes[4] = [101, 29, false]	// Resist Fire
 		enchanting_recipes[5] = [102, 31, false]	// Resist Poison
-		enchanting_recipes[6] = [103, 32, false]	// Buff Bartering 10pts
+		enchanting_recipes[6] = [103, 32, true]	// Buff Bartering 10pts
 		
 		
 		// Enchanting's output is created dynamically and added to library, icons, specific library also.

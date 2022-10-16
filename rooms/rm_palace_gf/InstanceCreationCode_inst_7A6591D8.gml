@@ -1,0 +1,19 @@
+// 0: Item ID, 1: Amount for sale
+stock_list[0] = [9, 5]
+stock_list[1] = [52, 5]
+stock_list[2] = [21, 5]
+stock_list[3] = [22, 5]
+stock_list[4] = [91, 5]
+stock_list[5] = [92, 5]
+stock_list[5] = [93, 5]
+stock_list[6] = [94, 5]
+stock_list[7] = [11, 15]
+stock_list[8] = [23, 10]
+stock_list[9] = [24, 5]
+stock_list[10] = [25, 1]
+stock_list[11] = [26, 10]
+stock_list[12] = [27, 10]
+crafting = true
+crafting_category = "enchanting"
+recipe_list = obj_recipebook.enchanting_recipes
+category = "materials"

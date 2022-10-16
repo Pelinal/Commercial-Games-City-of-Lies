@@ -22,7 +22,7 @@ if array_length(current_list) > 0 {
 	// Draw Name
 	draw_text(x + 48, y + 4, global.library[item_id][0])
 
-	draw_text(x + 152, y + 4, "x " + string(current_list[row_id][1]))	
+	draw_text(x + 172, y + 4, "x " + string(current_list[row_id][1]))	
 
 	if inventory_check_equipped(item_id) { draw_text(x + 220, y + 4, "(Equipped)") }
 }

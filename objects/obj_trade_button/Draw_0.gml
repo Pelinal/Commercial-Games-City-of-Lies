@@ -16,12 +16,8 @@ if array_length(current_list) > 0 {
 	draw_set_color(c_white)
 	draw_set_font(fnt_inventory_12)
 
-	if obj_trademenu.sprite_index == spr_crafting {
-		draw_sprite_stretched(spr_button_288_32, image_index, x, y, 224, 32)
-	}
-	else {
-		draw_self()
-	}
+	draw_self()
+	
 	
 	
 	// Draw Icon

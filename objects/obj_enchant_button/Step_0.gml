@@ -8,6 +8,7 @@ if y > obj_trademenu.y + 432 || y < obj_trademenu.y + 70 {
 
 if keyboard_check(vk_escape) { instance_destroy(self) }
 
+if inventory_is_enchanted(item_id) { instance_destroy(self) }
 
 if obj_manualinput.max_scroll >= 1 && obj_manualinput.can_scroll {
 	if mouse_wheel_up() { obj_manualinput.scroll_value -= 1 y -= 32 } 

@@ -21,6 +21,7 @@ if array_length(current_list) > 0 {
 	
 	
 	// Draw Icon
+	if inventory_is_enchanted(item_id) { draw_tile(ts_icons_iconset, 143, 0, x, y) }
 	draw_tile(ts_icons_iconset, global.icons[item_id], 0, x, y)
 
 	// Draw Name

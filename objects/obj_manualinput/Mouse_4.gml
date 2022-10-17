@@ -5,9 +5,17 @@
 instance_destroy(obj_enchant_button)
 if slot_type == "gear" {
 	gear_list = []
-	for (i = 0; i < array_length(global.weapons); i ++) { array_push(gear_list, global.weapons[i][0]) }
-	for (i = 0; i < array_length(global.armours); i ++) { array_push(gear_list, global.armours[i][0]) }
-	for (i = 0; i < array_length(global.accessories); i ++) { array_push(gear_list, global.accessories[i][0]) }
+	for (i = 0; i < array_length(global.weapons); i ++) { 
+		array_push(gear_list, global.weapons[i][0])
+	}
+	if obj_trademenu.overview_id != 109 && obj_trademenu.overview_id != 110 && obj_trademenu.overview_id != 111 {	/// Weapon-specific enchantments 
+		for (i = 0; i < array_length(global.armours); i ++) { 
+			array_push(gear_list, global.armours[i][0])
+		}
+		for (i = 0; i < array_length(global.accessories); i ++) { 
+			array_push(gear_list, global.accessories[i][0])
+		}
+	}
 	obj_manualinput.gear_list = gear_list
 	
 	// Create List Buttons
@@ -18,6 +26,7 @@ if slot_type == "gear" {
 
 	for (i = 0; i < array_length(gear_list); i ++) {
 		obj_manualinput.i = i
+		//if inventory_is_enchanted(gear_list[i]) { }
 		with instance_create(x_margin, y_margin, obj_enchant_button) {
 			if item_id == -1 { item_id = obj_manualinput.gear_list[obj_manualinput.i] }
 			slot_type = "gear"

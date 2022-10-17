@@ -23,6 +23,7 @@ if overview_id != -1 {
 	}
 	
 	// Icon
+	if inventory_is_enchanted(overview_id) { draw_tile(ts_icons_iconset, 143, 0, x + 644, y + 160) }
 	draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 644, y + 160)
 	
 	// Description
@@ -184,14 +185,14 @@ if overview_id != -1 {
 		else if crafting_category == "enchanting" && ench_selected_items[1] != -1 && ench_selected_items[2] == -1 {
 			draw_tile(ts_icons_iconset, global.icons[overview_row[1]], 0, x + 292, y + 128)
 			draw_tile(ts_icons_iconset, global.icons[ench_selected_items[1]], 0, x + 292, y + 248)
-			//draw_tile(ts_icons_iconset, global.icons[ench_selected_items[2]], 0, x + 292, y + 368)
+			draw_tile(ts_icons_iconset, global.icons[24], 0, x + 292, y + 368)
 			
 			// Draw Text
 			draw_set_halign(fa_center)
 			draw_set_font(fnt_textbox_10)
 			draw_text(x + 312, y + 112, global.library[overview_row[1]][0])
 			draw_text(x + 312, y + 232, global.library[ench_selected_items[1]][0])
-			//draw_text(x + 312, y + 352, global.library[ench_selected_items[2]][0])
+			draw_text(x + 312, y + 352, "Click to Add")
 			draw_set_font(fnt_inventory_12)
 			draw_text(x + 314, y + 160, string(inventory_fetch(overview_row[1])) + " / " + string(craft_amount*cc[0]))
 			draw_text(x + 314, y + 288, string(inventory_fetch(ench_selected_items[1])) + " / " + string(craft_amount*cc[1]))

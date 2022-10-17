@@ -2,15 +2,15 @@
 
 function inventory_accessory_initialise() {
 	// Create Item Library // ID corresponds with Index
-	// Index 0: ID, Index 1: Type, Index 2: Effect, Index 3: Price
-	global.ac_library[0] = [7, "Ring", "None", 0] // Signet Ring
-	global.ac_library[1] = [68, "Necklace", "None", 50]		// Robe Charm
-	global.ac_library[2] = [69, "Necklace", "None", 80]		// Lariat
-	global.ac_library[3] = [70, "Necklace", "None", 180]	// Silver Lariat
-	global.ac_library[4] = [71, "Necklace", "None", 340]	// Gold Pendant
-	global.ac_library[5] = [94, "Ring", "None", 70]		// Iron Ring
-	global.ac_library[6] = [95, "Ring", "None", 120]	// Silver Ring
-	global.ac_library[7] = [96, "Ring", "None", 200]	// Gold Ring
+	// Index 0: ID, Index 1: Type, Index 2: Effect, Index 3: Price, Index 4 (optional): Enchant Effect, Index 5: Enchant Strength
+	global.ac_library[0] = [7, "Ring", "None", 0, noone, noone] // Signet Ring
+	global.ac_library[1] = [68, "Necklace", "None", 50, noone, noone]		// Robe Charm
+	global.ac_library[2] = [69, "Necklace", "None", 80, noone, noone]		// Lariat
+	global.ac_library[3] = [70, "Necklace", "None", 180, noone, noone]	// Silver Lariat
+	global.ac_library[4] = [71, "Necklace", "None", 340, noone, noone]	// Gold Pendant
+	global.ac_library[5] = [94, "Ring", "None", 70, noone, noone]		// Iron Ring
+	global.ac_library[6] = [95, "Ring", "None", 120, noone, noone]	// Silver Ring
+	global.ac_library[7] = [96, "Ring", "None", 200, noone, noone]	// Gold Ring
 	
 	// Create Global Equipped Accessories List
 	global.accessory_equipped[0] = -1	// 0 - Ring 1

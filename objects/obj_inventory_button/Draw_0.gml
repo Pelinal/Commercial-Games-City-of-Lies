@@ -17,12 +17,13 @@ if array_length(current_list) > 0 {
 	draw_set_font(fnt_inventory_12)
 
 	// Draw Icon
+	if inventory_is_enchanted(item_id) { draw_tile(ts_icons_iconset, 143, 0, x, y) }
 	draw_tile(ts_icons_iconset, global.icons[item_id], 0, x, y)
 
 	// Draw Name
 	draw_text(x + 48, y + 4, global.library[item_id][0])
 
-	draw_text(x + 172, y + 4, "x " + string(current_list[row_id][1]))	
+	draw_text(x + 192, y + 4, "x " + string(current_list[row_id][1]))	
 
 	if inventory_check_equipped(item_id) { draw_text(x + 220, y + 4, "(Equipped)") }
 }

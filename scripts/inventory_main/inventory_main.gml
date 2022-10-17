@@ -120,9 +120,17 @@ function inventory_initialise() {
 	global.library[101] = ["Resist Fire", "An enchantment that increases fire resistance.", global.materials]
 	global.library[102] = ["Resist Poison", "An enchantment that increases poison resistance.", global.materials]
 	global.library[103] = ["Buff Bartering", "An enchantment that buffs the Bartering skill.", global.materials]
-	// Items continue here
+	// Items continue
 	global.library[104] = ["Alcohol", "Miscellaneous alcohol solution, used during alchemical\nprocesses to craft tonics.", global.materials]
 	global.library[105] = ["Venom", "Venom from poisonous animals, used during alchemical\nprocesses to craft poisons.", global.materials]
+	global.library[106] = ["Red Orb", "A red orb containing mystic flame, used to enchant\nweapons.", global.materials]
+	global.library[107] = ["Blue Orb", "A red orb containing mystic frost, used to enchant\nweapons.", global.materials]
+	global.library[108] = ["Green Orb", "A red orb containing noxious gas, used to enchant\nweapons.", global.materials]
+	// NOT ITEMS -- Enchantments
+	global.library[109] = ["Fire Damage", "An enchantment that inflicts Fire Damage on\ntouch.", global.materials]
+	global.library[110] = ["Frost Damage", "An enchantment that inflicts Frost Damage on\ntouch.", global.materials]
+	global.library[111] = ["Poison Damage", "An enchantment that inflicts Poison Damage\non touch.", global.materials]
+	// Items continue
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -240,6 +248,12 @@ function inventory_initialise() {
 	global.icons[103] = 138		// Buff Bartering
 	global.icons[104] = 220		// Alcohol
 	global.icons[105] = 196		// Venom
+	global.icons[106] = 352		// Red Orb
+	global.icons[107] = 353		// Blue Orb
+	global.icons[108] = 355		// Green Orb
+	global.icons[109] = 96		// Fire Damage
+	global.icons[110] = 97		// Frost Damage
+	global.icons[111] = 2		// Poison Damage
 	
 }
 
@@ -448,4 +462,14 @@ function inventory_check_equipped(item) {
 	else if global.accessory_equipped[1] == item	{ return true }
 	else if global.accessory_equipped[2] == item	{ return true }
 	else { return false }
+}
+
+function inventory_is_enchanted(item) {
+	for (i = 0; i < array_length(global.w_library); i ++) if global.w_library[i][0] == item		{ if global.w_library[i][4] != noone { return true } }
+	for (i = 0; i < array_length(global.ar_library); i ++) if global.ar_library[i][0] == item	{ if global.ar_library[i][5] != noone { return true } }
+	for (i = 0; i < array_length(global.ac_library); i ++) if global.ac_library[i][0] == item	{ if global.ac_library[i][4] != noone { return true } }
+	for (i = 0; i < array_length(global.k_library); i ++) if global.ac_library[i][0] == item	{ return false }
+	for (i = 0; i < array_length(global.m_library); i ++) if global.m_library[i][0] == item		{ return false }
+	
+	return false
 }

@@ -55,6 +55,12 @@ if overview_id != -1 {
 				draw_text(x + 384, y + 288, "Damage: " + string(global.w_library[i][2]) + " PTS")
 				draw_text(x + 384, y + 320, "Value: " + string(global.w_library[i][3]) + " Gold")
 				
+				if global.w_library[i][4] != noone {
+					draw_text(x + 512, y + 256, "Enchantment: " + global.w_library[i][4])
+					draw_tile(ts_icons_iconset, 143, 0, x + 644, y + 160)
+					draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 644, y + 160)
+				}
+				if global.w_library[i][5] != noone { draw_text(x + 512, y + 288, "Enchant Power: " + string(global.w_library[i][5]) + " PTS") }
 			}
 		}
 	}
@@ -65,6 +71,13 @@ if overview_id != -1 {
 				draw_text(x + 384, y + 288, "Slot: " + string(global.ar_library[i][4]))
 				draw_text(x + 384, y + 320, "Armour: " + string(global.ar_library[i][2]) + " PTS")
 				draw_text(x + 384, y + 352, "Value: " + string(global.ar_library[i][3]) + " Gold")
+				
+				if global.ar_library[i][5] != noone { 
+					draw_text(x + 512, y + 256, "Enchantment: " + global.ar_library[i][5]) 
+					draw_tile(ts_icons_iconset, 143, 0, x + 644, y + 160)
+					draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 644, y + 160)
+				}
+				if global.ar_library[i][6] != noone { draw_text(x + 512, y + 288, "Enchant Power: " + string(global.ar_library[i][6]) + " PTS") }
 			}
 		}
 	}
@@ -75,6 +88,12 @@ if overview_id != -1 {
 				draw_text(x + 384, y + 288, "Effect: " + string(global.ac_library[i][2]))
 				draw_text(x + 384, y + 320, "Value: " + string(global.ac_library[i][3]) + " Gold")
 				
+				if global.ac_library[i][4] != noone {
+					draw_text(x + 512, y + 256, "Enchantment: " + global.ac_library[i][4]) 
+					draw_tile(ts_icons_iconset, 143, 0, x + 644, y + 160)
+					draw_tile(ts_icons_iconset, global.icons[overview_id], 0, x + 644, y + 160)
+				}
+				if global.ac_library[i][5] != noone { draw_text(x + 512, y + 288, "Enchant Power: " + string(global.ac_library[i][5]) + " PTS") }
 			}
 		}
 	}

@@ -84,14 +84,14 @@ else if type == "craft" {
 		}
 	}
 	else if obj_trademenu.crafting_category == "enchanting" {
-		if inventory_fetch(ingred_list[1]) >= (1*obj_trademenu.craft_amount) && inventory_fetch(ingred_list[2]) >= (1*obj_trademenu.craft_amount) && inventory_fetch(ingred_list[3]) >= (1*obj_trademenu.craft_amount) {
+		if inventory_fetch(ingred_list[1]) >= (1*obj_trademenu.craft_amount) && inventory_fetch(obj_trademenu.ench_selected_items[1]) >= (1*obj_trademenu.craft_amount) && inventory_fetch(obj_trademenu.ench_selected_items[2]) >= (1*obj_trademenu.craft_amount) {
 			// Remove Ingredients
 			inventory_remove(ingred_list[1], obj_trademenu.craft_amount)
-			inventory_remove(ingred_list[2], obj_trademenu.craft_amount)
-			inventory_remove(ingred_list[3], obj_trademenu.craft_amount)
+			inventory_remove(obj_trademenu.ench_selected_items[1], obj_trademenu.craft_amount)
+			inventory_remove(obj_trademenu.ench_selected_items[2], obj_trademenu.craft_amount)
 			// Remove Gold
 			inventory_remove(0, (trade_price(chosen_item, "craft"))*obj_trademenu.craft_amount)
-			//add function to create enchanted item using ingredient 2 (gearpiece) and 3 (solite to determine strength)
+			crafting_create_enchanted(ingred_list[1], obj_trademenu.ench_selected_items[1], obj_trademenu.ench_selected_items[2]) //add function to create enchanted item using ingredient 2 (gearpiece) and 3 (solite to determine strength)
 			//inventory_add(ingred_list[0], obj_trademenu.craft_amount)
 		}
 	}

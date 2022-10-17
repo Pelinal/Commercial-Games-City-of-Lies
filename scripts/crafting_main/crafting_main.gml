@@ -77,11 +77,75 @@ function crafting_initialise() {
 		enchanting_recipes[3] = [100, 28, false]	// Resist Frost
 		enchanting_recipes[4] = [101, 29, false]	// Resist Fire
 		enchanting_recipes[5] = [102, 31, false]	// Resist Poison
-		enchanting_recipes[6] = [103, 32, true]	// Buff Bartering 10pts
+		enchanting_recipes[6] = [103, 32, true]		// Buff Bartering 10pts
+		enchanting_recipes[7] = [109, 106, true]	// Fire Damage
+		enchanting_recipes[8] = [110, 107, true]	// Frost Damage
+		enchanting_recipes[9] = [111, 108, true]	// Poison Damage
 		
 		
 		// Enchanting's output is created dynamically and added to library, icons, specific library also.
 	}
+}
+
+function crafting_create_enchanted(gem, gear, solite) {
+	var ench_power, ench, new_index
+	
+	if solite == 11 { ench_power = 10 * (global.enchanting /5) }		// MAX = 60 (enchanting = 30)
+	if solite == 23 { ench_power = 13.3337 * (global.enchanting /5) }	// MAX = 80
+	if solite == 24 { ench_power = 16.3337 * (global.enchanting /5) }	// MAX = 100
+	if solite == 25 { ench_power = 20 * (global.enchanting /5) } 		// MAX = 120
+	ench_power = round(ench_power)
+	
+	switch gem {
+		case 27:
+			ench = "MHP Increase"
+			break;
+		case 30:
+			ench = "MMP Increase"
+			break;
+		case 26:
+			ench = "MSP Increase"
+			break;
+		case 28:
+			ench = "Resist Frost"
+			break;
+		case 29:
+			ench = "Resist Fire"
+			break;
+		case 31:
+			ench = "Resist Poison"
+			break;
+		case 32:
+			ench = "Buff Bartering"
+			ench_power /= 2
+			break;
+		default:
+			show_message("no gem slotted")
+			break;
+	}
+	
+	// Add new entry to main item library
+	array_push(global.library, [crafting_smithing_fetch_type(gear) + " of " + ench, global.library[gear][1], global.library[gear][2]])
+	
+	new_index = array_length(global.library)-1					// Get index of new item
+	array_push(global.icons, global.icons[gear])	// Use the same icon as the old item
+	
+	// Check for corresponding gear library
+	for (i = 0; i < array_length(global.w_library); i ++) if global.w_library[i][0] == gear {
+		// if accessory // Index 4: Enchant, Index 5: Enchant Power
+		array_push(global.w_library, [new_index, global.w_library[i][1], global.w_library[i][2], global.w_library[i][3] + ench_power, ench, ench_power])
+	}
+	for (i = 0; i < array_length(global.ar_library); i ++) if global.ar_library[i][0] == gear { 
+		// if accessory // Index 5: Enchant, Index 6: Enchant Power
+		array_push(global.ar_library, [new_index, global.ar_library[i][1], global.ar_library[i][2], global.ar_library[i][3] + ench_power, global.ar_library[i][4], ench, ench_power])
+	}
+	for (i = 0; i < array_length(global.ac_library); i ++) if global.ac_library[i][0] == gear {
+		// if accessory // Index 4: Enchant, Index 5: Enchant Power
+		array_push(global.ac_library, [new_index, global.ac_library[i][1], global.ac_library[i][2], global.ac_library[i][3] + ench_power, ench, ench_power])
+	}
+	
+	// and finally, add the new item to the inventory
+	inventory_add(new_index, 1)
 }
 
 function crafting_fetch_recipes(list, category) {

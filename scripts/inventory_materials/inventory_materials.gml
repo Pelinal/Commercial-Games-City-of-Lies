@@ -41,6 +41,12 @@ function inventory_material_initialise() {
 	global.m_library[34] = [103, "Enchanting", 500] // Buff Bartering
 	global.m_library[35] = [104, "Alchemy", 50] // Alcohol
 	global.m_library[36] = [105, "Alchemy", 60] // Venom
+	global.m_library[37] = [106, "Enchanting", 100] // Red Orb
+	global.m_library[38] = [107, "Enchanting", 100] // Blue Orb
+	global.m_library[39] = [108, "Enchanting", 100] // Green Orb
+	global.m_library[40] = [109, "Enchanting", 400] // Fire Damage
+	global.m_library[41] = [110, "Enchanting", 350] // Frost Damage
+	global.m_library[42] = [111, "Enchanting", 400] // Poison Damage
 }
 
 function inventory_material_add(item, amount) {

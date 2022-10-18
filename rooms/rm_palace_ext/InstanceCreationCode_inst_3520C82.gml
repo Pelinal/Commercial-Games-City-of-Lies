@@ -9,3 +9,4 @@ crafting = true
 crafting_category = "alchemy"
 recipe_list = obj_recipebook.alchemy_recipes
 category = "weapons"
+shop_name = "Bob's Bits"

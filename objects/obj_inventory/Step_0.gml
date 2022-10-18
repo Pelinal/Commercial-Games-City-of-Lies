@@ -6,6 +6,7 @@ if (keyboard_check_pressed(vk_tab) || keyboard_check_pressed(ord("I"))) && !visi
 	y = camera_get_view_y(view_camera[0])
 	global.immobile = true
 	inventory_populate(global.current_menu)
+	scrollbar = false
 	
 	// Create List Buttons
 	x_margin = obj_inventory.x + 32
@@ -23,20 +24,22 @@ if (keyboard_check_pressed(vk_tab) || keyboard_check_pressed(ord("I"))) && !visi
 			if row_id == -1 {	
 				row_id = obj_inventory.i
 				item_id = obj_inventory.current_list[obj_inventory.i][0]
+				y_draw = 360 + (72 * obj_inventory.i)
 			}
 		}
 		y_margin += 32
 	}
 	
-	if y_margin > 432 {
-		obj_inventory.scrollbar = true
+	if i >= 9 {
+		scrollbar = true
 		
-		instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar)
-		obj_scrollbar.max_scroll = (y_margin - 432) / 32
+
+		max_scroll = (y_margin - 960) / 72
 	}
 }
 
 if keyboard_check_pressed(vk_escape) && visible {
+	scrollbar = false
 	visible = false
 	x = -854
 	y = -480
@@ -44,12 +47,12 @@ if keyboard_check_pressed(vk_escape) && visible {
 	global.immobile = false
 
 	instance_destroy(obj_inventory_dropdown)
-	instance_destroy(obj_scrollbar)
 	instance_destroy(obj_inventory_tabs)
 }
 
 if tab_switched {
 	// Create List Buttons
+	scrollbar = false
 	x_margin = obj_inventory.x + 32
 	y_margin = obj_inventory.y + 160
 	
@@ -65,16 +68,16 @@ if tab_switched {
 			if row_id == -1 {	
 				row_id = obj_inventory.i
 				item_id = obj_inventory.current_list[obj_inventory.i][0]
+				y_draw = 360 + (72 * obj_inventory.i)
 			}
 		}
 		y_margin += 32
 	}
 	
-	if y_margin > 432 {
-		obj_inventory.scrollbar = true
-		
-		instance_create(obj_inventory.x+348, obj_inventory.y+170, obj_scrollbar)
-		obj_scrollbar.max_scroll = (y_margin - 432) / 32
+	if i >= 9 {
+		scrollbar = true
+
+		max_scroll = (y_margin - 960) / 72
 	}
 	
 	tab_switched = false

@@ -7,7 +7,7 @@ y_draw = 896
 draw_sprite(spr_messagebox, 0, x_draw, y_draw)
 
 draw_set_color(c_white)
-draw_set_font(fnt_inventory_20)
+draw_set_font(fnt_textbox)
 
 
 

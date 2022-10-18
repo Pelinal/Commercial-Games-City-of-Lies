@@ -14,15 +14,23 @@ if visible {
 			else if global.current_menu == "armours" || global.current_menu == "weapons" || global.current_menu == "accessories"  {
 				type = "equip"
 			}
+			
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
 		}
 	
 		with instance_create(x_point, y_point + 32, obj_inventory_dropdown) {
 			if type = -1 {
 				type = "destroy"
 			}
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0) + 72
 		}
 	} else if global.current_menu == "key items" {
-		instance_create(x_point, y_point, obj_inventory_dropdown)
+		with instance_create(x_point, y_point, obj_inventory_dropdown) {
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
+		}
 		for (i = 0; i < array_length(global.k_library); i ++) {
 			if global.k_library[i][0] == item_id {
 				obj_inventory_dropdown.type = global.k_library[i][2]
@@ -31,6 +39,8 @@ if visible {
 	} else {
 		with instance_create(x_point, y_point, obj_inventory_dropdown) {
 			type = "destroy"
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
 		}
 	}
 

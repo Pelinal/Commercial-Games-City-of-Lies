@@ -29,6 +29,6 @@ if alarm_get(0) != 0 {
 	draw_rectangle(x_draw, y_draw, x_draw + 540, y_draw + 32, 0)
 	draw_set_colour(c_white)
 	draw_set_alpha(1)
-	draw_set_font(fnt_inventory_20)
+	draw_set_font(fnt_textbox)
 	draw_text(x_draw, y_draw, message_text)
 }

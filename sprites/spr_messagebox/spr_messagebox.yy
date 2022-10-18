@@ -67,7 +67,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Interface",
-    "path": "folders/Sprites/Interface.yy",
+    "name": "Message Box",
+    "path": "folders/Sprites/Interface/Message Box.yy",
   },
 }

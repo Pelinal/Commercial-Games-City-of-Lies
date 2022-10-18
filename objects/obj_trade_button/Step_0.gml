@@ -14,14 +14,18 @@ if obj_trademenu.current_tab != "craft" {
 		}
 	}
 }
-if obj_trademenu.sprite_index == spr_crafting { sprite_index = spr_button_216_32 } else { sprite_index = spr_button_288_32 }
+if obj_trademenu.sprite_to_draw == spr_crafting { sprite_index = spr_button_216_32 } else { sprite_index = spr_button_288_32 }
 
 if y > obj_trademenu.y + 432 || y < obj_trademenu.y + 70 {
 	visible = false
 } else { visible = true }
 
 
-if obj_trademenu.max_scroll >= 1 && obj_trademenu.can_scroll {
-	if mouse_wheel_up() { obj_trademenu.scroll_value -= 1 y -= 32 } 
-	else if mouse_wheel_down()  { obj_trademenu.scroll_value += 1 y += 32}
+if obj_trademenu.can_scroll {
+	if mouse_wheel_up() { obj_trademenu.scroll_value -= 1 y -= 32 draw_y -=72 } 
+	else if mouse_wheel_down()  { obj_trademenu.scroll_value += 1 y += 32 draw_y += 72}
 }
+
+//// failsafe
+//if obj_trademenu.scroll_value < 0 { obj_trademenu.scroll_value = 0 }
+//if obj_trademenu.scroll_value > obj_trademenu.max_scroll { obj_trademenu.scroll_value = obj_trademenu.max_scroll }

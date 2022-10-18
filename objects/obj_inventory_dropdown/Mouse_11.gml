@@ -1,3 +1,3 @@
 /// @description Highlight
 
-image_index = 0
+anim_index = 0

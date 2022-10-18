@@ -29,6 +29,7 @@
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"62a58333-e117-4318-a7d4-006127471f1b",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"26ab4ea8-077a-4f09-8f27-be2eef1a62b4",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"070ed70f-468b-44d7-a433-9572cf6a1d19",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
@@ -40,13 +41,14 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 2.0,
+    "length": 3.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"38392884-d26f-4520-8e64-299805b3e33f","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"62a58333-e117-4318-a7d4-006127471f1b","path":"sprites/spr_tradetab/spr_tradetab.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"a75d79ef-9aaa-4839-9884-aca0ad23bdbb","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"26ab4ea8-077a-4f09-8f27-be2eef1a62b4","path":"sprites/spr_tradetab/spr_tradetab.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"11778877-c27d-4ca2-8441-1d3d42eaf85f","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"070ed70f-468b-44d7-a433-9572cf6a1d19","path":"sprites/spr_tradetab/spr_tradetab.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
@@ -69,7 +71,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Interface",
-    "path": "folders/Sprites/Interface.yy",
+    "name": "Buttons",
+    "path": "folders/Sprites/Interface/Buttons.yy",
   },
 }

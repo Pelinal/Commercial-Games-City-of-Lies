@@ -67,7 +67,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Interface",
-    "path": "folders/Sprites/Interface.yy",
+    "name": "Menus",
+    "path": "folders/Sprites/Interface/Menus.yy",
   },
 }

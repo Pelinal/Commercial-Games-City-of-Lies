@@ -18,7 +18,8 @@ can_use = false
 can_equip = false
 can_destroy = false
 //item_selected = false
-
+scroll_value = 0
+max_scroll = 0
 
 
 // TEMP - for testing functionality only

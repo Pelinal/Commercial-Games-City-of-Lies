@@ -18,8 +18,8 @@ Converted description /// @description message_nametag(name_list, batch)/// @pa
 Converting GML script: ${project_dir}\scripts\inventory_initialise\inventory_initialise.gml
 Converted description /// @description inventory_initialise()
 
-Font fnt_textbox_10 has been converted to font family Power Red and Green (Regular)
-GameMaker Studio 1 font texture has been backed up at ${project_dir}\fonts\fnt_textbox_10\fnt_textbox_10.gms1.png
+Font fnt_textbox has been converted to font family Power Red and Green (Regular)
+GameMaker Studio 1 font texture has been backed up at ${project_dir}\fonts\fnt_textbox\fnt_textbox.gms1.png
 Converting GML script: ${project_dir}\objects\obj_player\Create_0.gml
 Converted description /// @description  Variables and Initialisation
 

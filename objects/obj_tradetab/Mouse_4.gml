@@ -9,17 +9,17 @@ obj_trademenu.can_scroll = false
 
 if type == "buy" {
 	obj_trademenu.current_tab = "buy"
-	obj_trademenu.sprite_index = spr_trademenu
+	obj_trademenu.sprite_to_draw = spr_trademenu
 	trade_populate("buying")
 }
 else if type == "sell" {
 	obj_trademenu.current_tab = "sell"
-	obj_trademenu.sprite_index = spr_trademenu
+	obj_trademenu.sprite_to_draw = spr_trademenu
 	trade_populate(obj_trademenu.category)
 }
 else if type == "craft" {
 	obj_trademenu.current_tab = "craft"
-	obj_trademenu.sprite_index = spr_crafting
+	obj_trademenu.sprite_to_draw = spr_crafting
 	//show_message(obj_trademenu.recipe_list)
 	trade_populate("crafting")
 	
@@ -37,6 +37,7 @@ else if type == "craft" {
 			if slot_type = -1 {
 				slot_type = "gear"
 			}
+			panel = true
 		}
 		with instance_create(obj_trademenu.x + 264, obj_trademenu.y + 338, obj_manualinput) {
 			if slot_type = -1 {

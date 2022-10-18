@@ -12,7 +12,7 @@ else {
 	draw_sprite(spr_nametag, 0, x_draw, y_draw)
 }
 draw_set_color(c_white)
-draw_set_font(fnt_inventory_20)
+draw_set_font(fnt_textbox)
 
 x_left = x_draw + 15
 y_row = y_draw + 10

@@ -11,14 +11,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 719,
+  "bbox_right": 1619,
   "bbox_top": 0,
-  "bbox_bottom": 479,
+  "bbox_bottom": 1079,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 720,
-  "height": 480,
+  "width": 1620,
+  "height": 1080,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -67,7 +67,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Interface",
-    "path": "folders/Sprites/Interface.yy",
+    "name": "Menus",
+    "path": "folders/Sprites/Interface/Menus.yy",
   },
 }

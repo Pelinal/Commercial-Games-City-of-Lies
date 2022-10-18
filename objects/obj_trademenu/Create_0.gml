@@ -17,6 +17,9 @@ can_scroll = false
 max_scroll = 0
 scroll_value = 0
 
+sprite_to_draw = spr_trademenu
+shop_name = "Merchant" // Will be shown in the top left.
+
 // Other
 overview_id = -1
 trade_populate(category)

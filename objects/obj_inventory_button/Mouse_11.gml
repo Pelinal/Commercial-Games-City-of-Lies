@@ -1,4 +1,4 @@
 /// @description Hide Button
 if visible {
-	image_index = 0
+	anim_index = 0
 }

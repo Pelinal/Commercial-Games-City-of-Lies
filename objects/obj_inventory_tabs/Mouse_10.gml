@@ -1,3 +1,3 @@
 /// @description Highlight
 
-image_index = default_index + 1
+anim_index = default_index + 1

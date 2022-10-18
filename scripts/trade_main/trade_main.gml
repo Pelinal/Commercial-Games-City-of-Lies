@@ -29,7 +29,7 @@ function trade_populate(type){
 					row_id = obj_trademenu.i
 					item_id = obj_trademenu.pop_list[obj_trademenu.i][0]
 					item_price = trade_price(item_id, obj_trademenu.current_tab)
-					
+					draw_y = (obj_trademenu.i * 72) + 162
 				}
 			}
 			y_margin += 32

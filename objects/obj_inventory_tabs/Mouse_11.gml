@@ -1,3 +1,3 @@
 /// @description Remove Highlight
 
-image_index = default_index
+anim_index = default_index

@@ -9,7 +9,8 @@ if(distance_to_object(obj_player)) <= 32 {
 			stock_list = obj_vendor.stock_list
 			category = obj_vendor.category
 			crafting_category = obj_vendor.crafting_category
-			
+			shop_name = obj_vendor.shop_name
+
 			if crafting_category == "alchemy" { 
 				recipe_list = crafting_fetch_recipes(obj_vendor.recipe_list, "alchemy")
 			}

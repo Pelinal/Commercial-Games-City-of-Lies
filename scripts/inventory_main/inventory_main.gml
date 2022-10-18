@@ -335,6 +335,7 @@ function inventory_populate(category) {
 		if default_index = -1 {	
 			image_index = 0
 			default_index = 0
+			anim_index = default_index
 			tab = "consumables"
 		}
 	}
@@ -342,6 +343,7 @@ function inventory_populate(category) {
 		if default_index = -1 {	
 			image_index = 2
 			default_index = 2
+			anim_index = default_index
 			tab = "weapons"
 		}
 	}
@@ -349,6 +351,7 @@ function inventory_populate(category) {
 		if default_index = -1 {		
 			image_index = 4
 			default_index = 4
+			anim_index = default_index
 			tab = "armours"
 		}
 	}
@@ -356,6 +359,7 @@ function inventory_populate(category) {
 		if default_index = -1 {	
 			image_index = 6
 			default_index = 6
+			anim_index = default_index
 			tab = "accessories"
 		}
 	}
@@ -363,6 +367,7 @@ function inventory_populate(category) {
 		if default_index = -1 {	
 			image_index = 8
 			default_index = 8
+			anim_index = default_index
 			tab = "key items"
 		}
 	}
@@ -370,6 +375,7 @@ function inventory_populate(category) {
 		if default_index = -1 {	
 			image_index = 10
 			default_index = 10
+			anim_index = default_index
 			tab = "materials"
 		}
 	}

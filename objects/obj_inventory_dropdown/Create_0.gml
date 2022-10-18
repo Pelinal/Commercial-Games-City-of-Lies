@@ -8,3 +8,7 @@ ingred_list = -1
 depth = -1002
 image_index = 0
 image_speed = 0
+anim_index  = 0
+
+x_draw = 0
+y_draw = 0

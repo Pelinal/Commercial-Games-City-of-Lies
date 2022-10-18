@@ -23,16 +23,20 @@ if visible {
 	if obj_trademenu.current_tab == "buy" {
 		with instance_create(x_point, y_point, obj_inventory_dropdown) {
 			type = "buy"
-			
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
 		}
 	} else if obj_trademenu.current_tab == "sell" {
 		with instance_create(x_point, y_point, obj_inventory_dropdown) {
 			type = "sell"
-
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
 		}
 	} else {
 		with instance_create(x_point, y_point, obj_inventory_dropdown) {
 			type = "craft"
+			x_draw = device_mouse_raw_x(0)
+			y_draw = device_mouse_raw_y(0)
 		}
 		obj_inventory_dropdown.ingred_list = obj_trademenu.recipe_list[row_id]
 	}

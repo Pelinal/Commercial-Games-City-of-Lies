@@ -30,6 +30,7 @@ if slot_type == "gear" {
 		with instance_create(x_margin, y_margin, obj_enchant_button) {
 			if item_id == -1 { item_id = obj_manualinput.gear_list[obj_manualinput.i] }
 			slot_type = "gear"
+			draw_y = (obj_manualinput.i * 72) + 162
 		}
 		y_margin += 32
 	}
@@ -58,6 +59,7 @@ if slot_type == "solite" {
 			if item_id == -1 {
 				item_id = obj_manualinput.solite_list[obj_manualinput.i]
 				slot_type = "solite"
+				draw_y = (obj_manualinput.i * 72) + 162
 			}
 		}
 		y_margin += 32

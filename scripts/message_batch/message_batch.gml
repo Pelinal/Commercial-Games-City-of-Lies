@@ -3,7 +3,8 @@
 /// @param  batch
 function message_batch(argument0, argument1) {
 	// MAX Line size = 50-51 Characters
-
+	
+	//instance_destroy(obj_messagebox)
 	// For some reason: Mandatory Space at the end of strings ...
 
 	text_list = argument0

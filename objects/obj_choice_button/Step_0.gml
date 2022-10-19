@@ -8,6 +8,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 		activator.choice_result = choice_text
 		with obj_messagebox {
 			if batch_counter >= batch {
+				global.immobile = false
 				instance_destroy(obj_messagebox)
 			} else {
 				batch_counter ++ string_counter = 0
@@ -17,4 +18,8 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	}
 } else {
 	image_index = 0
+}
+
+if keyboard_check(vk_escape) {
+	instance_destroy(self)
 }

@@ -82,11 +82,16 @@ function quest_track(quest_id) {
 }
 
 function quest_complete(quest_id) {
-	// Forcibly complete a quest, and all its objectives
+	// Forcibly complete a quest, and all its objectives and add all rewards to inventory
 	global.quests[quest_id][0] = false // Deactivate quest
 	global.quests[quest_id][1] = true // Set to complete
 	
 	quest_complete_all_objectives(quest_id)
+	
+	for (i = 0; i < array_length(global.quest_library[quest_id][5]); i++) {
+		// if global.quest_library[quest_id][5][i][0] != whatever the ID for EXP pseudoitem will be 
+		inventory_add(global.quest_library[quest_id][5][i][0], global.quest_library[quest_id][5][i][1])
+	}
 }
 
 function quest_abandon(quest_id) {

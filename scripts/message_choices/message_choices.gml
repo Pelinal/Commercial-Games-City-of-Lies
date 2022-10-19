@@ -7,10 +7,10 @@ function message_choices(choices=["Yes", "No"], activator){
 	// Create choice buttons
 	with obj_messagebox {
 		y_margin = y + 24
-		for (i = 0; i < array_length(choices); i ++) {
-			if i < 4 {
+		for (ii = 0; ii < array_length(choices); ii ++) {
+			if ii < 4 {
 				with instance_create(x + 334, y_margin, obj_choice_button) {
-					if choice_text == -1 { choice_text = obj_messagebox.choices[obj_messagebox.i] }
+					if choice_text == -1 { choice_text = obj_messagebox.choices[obj_messagebox.ii] }
 				}
 				y_margin += 32
 			}

@@ -1,9 +1,6 @@
 /// @description  Destroy when SPACE is pressed.
 
-
-if keyboard_check_pressed(vk_space) && batch_counter >= batch {
-    instance_destroy()
-} 
+//if batch_counter > batch { batch_counter = batch-1 }
 
 if instance_number(obj_messagebox) == 0 {
 	instance_destroy(self)

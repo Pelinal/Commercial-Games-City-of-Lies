@@ -9,6 +9,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	if mouse_check_button_pressed(mb_left) {
 		// Check for Mouse Left Pressed
 		
+		obj_questlog.overview_id = -1
 		instance_destroy(obj_quest_button)
 		
 		if dir == "left" {

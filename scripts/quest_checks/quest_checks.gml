@@ -4,7 +4,7 @@ function quest_checks(){
 	
 	// Quest 0 TEST - Bob's Errand
 	if quest_active(0) {
-		if inventory_fetch(12) > 0 && !quest_objective_is_complete(0, 0) {
+		if inventory_fetch(10) > 0 && !quest_objective_is_complete(0, 0) {
 			// Capitolina Prima (1/1)
 			quest_change_objective(0, 0, "Collect Capitolina Prima (1/1)")
 			quest_complete_objective(0, 0)

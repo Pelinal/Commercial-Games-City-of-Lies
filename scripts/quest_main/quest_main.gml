@@ -74,10 +74,13 @@ function quest_add(quest_id) {
 
 function quest_track(quest_id) {
 	// Track a quest 
-	if global.quests[quest_id][2] == false {	
-		global.quests[quest_id][2] = true
-	} else {
-		global.quests[quest_id][2] = false
+	for (i = 0; i < array_length(global.quests); i ++) {
+		if global.quests[i][2] == true {
+			if i == quest_id { global.quests[i][2] = false } // If the specified quests is tracked, untrack it
+			else { global.quests[i][2] = false }	// If it is not the specified quest, untrack it
+		} else {
+			if i == quest_id { global.quests[i][2] = true } // Track specified quest
+		}
 	}
 }
 
@@ -85,6 +88,9 @@ function quest_complete(quest_id) {
 	// Forcibly complete a quest, and all its objectives and add all rewards to inventory
 	global.quests[quest_id][0] = false // Deactivate quest
 	global.quests[quest_id][1] = true // Set to complete
+	global.quests[quest_id][2] = true // stop tracking
+	
+	global.quest_library[quest_id][1] = "Completed"
 	
 	quest_complete_all_objectives(quest_id)
 	
@@ -92,6 +98,8 @@ function quest_complete(quest_id) {
 		// if global.quest_library[quest_id][5][i][0] != whatever the ID for EXP pseudoitem will be 
 		inventory_add(global.quest_library[quest_id][5][i][0], global.quest_library[quest_id][5][i][1])
 	}
+	
+	obj_quest_tracker.visible = false
 }
 
 function quest_abandon(quest_id) {
@@ -155,6 +163,18 @@ function quest_tracked(quest_id) {
 	} else {
 		return false
 	}
+}
+
+function quest_tracked_id() {
+	// Returns ID of currently tracked quest
+	for (i = 0; i < array_length(global.quests); i ++) {
+		if global.quests[i][2] == true {
+			return i
+			break
+		}
+	}
+	
+	return noone
 }
 
 function quest_completed(quest_id) {

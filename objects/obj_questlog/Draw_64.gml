@@ -41,7 +41,11 @@ if overview_id != -1 {
 	draw_set_font(fnt_inventory_small)
 	for (i = 0; i < array_length(global.quest_library[overview_id][6]); i ++) {
 		if global.quest_objectives[overview_id][0][i] {
-			draw_tile(ts_icons_iconset, 185, 0, x + 576, obj_y)
+			if !quest_objective_is_complete(overview_id, i) {	
+				draw_tile(ts_icons_iconset, 186, 0, x + 576, obj_y)
+			} else {
+				draw_tile(ts_icons_iconset, 189, 0, x + 576, obj_y)
+			}
 			draw_text(x + 640, obj_y, global.quest_library[overview_id][6][i]) // objectives
 			obj_y += 32
 		}

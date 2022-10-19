@@ -27,6 +27,7 @@ if(distance_to_object(obj_player)) <= 32 {
 				temp_text[1] = "Et voila! It is complete. Thank you for your help\ntake these SP Potions for your time. "
 				message_batch(temp_text, 2)
 				message_nametag(temp_name, 2)
+				quest_change_desc(0, "You completed Bob's Errand.")
 				quest_complete_objective(0, 2)
 				quest_complete(0) // Complete Quest + Obtain rewards
 			}

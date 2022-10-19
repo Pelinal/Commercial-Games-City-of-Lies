@@ -1,5 +1,6 @@
 /// @description  Variables and Initialisation
 
+alarm_set(0, 60)
 display_reset(0,true)
 image_speed = 0
 depth = 0

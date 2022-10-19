@@ -5,5 +5,6 @@ if keyboard_check_pressed(vk_space) && batch_counter >= batch {
     instance_destroy()
 } 
 
-
-
+if instance_number(obj_messagebox) == 0 {
+	instance_destroy(self)
+}

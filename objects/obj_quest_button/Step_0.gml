@@ -15,6 +15,16 @@ if obj_questlog.scroll {
 if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	// Check for Mouse Enter
 	image_index = 1
+	
+	if mouse_check_button_pressed(mb_right) {
+		with instance_create(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), obj_dropdown) {
+			type = "track"
+		}
+		obj_dropdown.selected_quest = quest_id
+	}
+	if mouse_check_button_pressed(mb_left) {
+		obj_questlog.overview_id = quest_id
+	}
 } else {
 	image_index = 0
 }

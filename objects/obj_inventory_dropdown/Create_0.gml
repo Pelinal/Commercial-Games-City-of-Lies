@@ -4,6 +4,7 @@ type = -1
 chosen_item = -1
 stock_row = -1
 ingred_list = -1
+selected_quest = -1
 
 depth = -1002
 image_index = 0

@@ -96,3 +96,7 @@ else if type == "craft" {
 		}
 	}
 }
+else if type == "track" {
+	// Tracking Quests
+	quest_track(selected_quest)
+}

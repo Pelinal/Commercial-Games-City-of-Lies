@@ -3,11 +3,16 @@
 function quest_initialise(){
 	/// Initialise the global quest lists
 	
-	// 0: Active (bool), 1: Current Objective, 2: Complete (bool), 3: Tracked (bool)
-	global.quests[0] = [true, 0, false, false]
+	// 0: Active (bool), 1: Complete (bool), 2: Tracked (bool)
+	global.quests[0] = [false, false, false]
 	
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
-	global.quest_library[0] = ["Bob's Errand", "Side", "Bob has tasked you with recovering 2 herbs. Combine them with water to make a Health Potion and then return back to Bob.", "Bob", "Palace of Obedience", [72, 73], ["Craft a health potion", "Return health potion to Bob"]]
+	global.quest_library[0] = ["Bob's Errand", "Side", "Bob has tasked you with recovering 2 herbs. Combine them with water to make an\n" +
+														"Health Potion and then return back to Bob.", "Bob", "Palace of Obedience", 
+														[[73, 3]], ["Collect Capitolina Prima (0/1)", "Collect Clover (0/1)", "Return to Bob"]]
+	
+	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
+	global.quest_objectives[0] = [[true, true, false], [false, false, false]]
 }
 
 function quest_populate(category) {
@@ -35,7 +40,7 @@ function quest_populate(category) {
 					array_push(pop_list, i) // Creates list of active quest ids of specified category
 				}
 			} else {
-				if global.quests[i][2] {
+				if global.quests[i][1] {
 					array_push(pop_list, i) // Creates list of completed quest ids 
 				}
 			}
@@ -58,11 +63,59 @@ function quest_populate(category) {
 	}
 }
 
+/// Quest related actions 
+
 function quest_add(quest_id) {
-	// Sets quest to active and its objective to the first one
+	// Sets quest to active and resets all objectives
 	global.quests[quest_id][0] = true
-	global.quests[quest_id][1] = 0
+	//
+	global.quests[quest_id][1] = false
+}
+
+function quest_track(quest_id) {
+	// Track a quest 
+	if global.quests[quest_id][2] == false {	
+		global.quests[quest_id][2] = true
+	} else {
+		global.quests[quest_id][2] = false
+	}
+}
+
+function quest_complete(quest_id) {
+	// Forcibly complete a quest, and all its objectives
+	global.quests[quest_id][0] = false // Deactivate quest
+	global.quests[quest_id][1] = true // Set to complete
+	
+	quest_complete_all_objectives(quest_id)
+}
+
+function quest_abandon(quest_id) {
+	// Abandon a quest and reset its objectives
+	global.quests[quest_id][0] = false
 	global.quests[quest_id][2] = false
+	
+	quest_reset_all_objectives(quest_id)
+}
+
+/// Objective related actions
+
+function quest_complete_objective(quest_id, objective_id) {
+	// Sets specified quest objective to complete
+	global.quest_objectives[quest_id][1][objective_id] = true
+}
+
+function quest_complete_all_objectives(quest_id) {
+	for (i = 0; i < array_length(global.quest_objectives[quest_id][1]); i ++) {
+		global.quest_objectives[quest_id][1][i] = true // Set all to complete
+		global.quest_objectives[quest_id][0][i] = true // Set all to visible
+	}
+}
+
+function quest_reset_all_objectives(quest_id) {
+	for (i = 0; i < array_length(global.quest_objectives[quest_id][1]); i ++) {
+		global.quest_objectives[quest_id][1][i] = false // Set all to incomplete
+		global.quest_objectives[quest_id][0][i] = false // Set all to invisible
+	}
 }
 
 function quest_change_desc(quest_id, new_desc) {
@@ -72,38 +125,14 @@ function quest_change_objective(quest_id, objective, new_text) {
 	global.quest_library[quest_id][6][objective] = new_text
 }
 
-function quest_update(quest_id) {
-	// Progresses the chosen quest
-	if global.quests[quest_id][0] == true {
-		// If Quest is Inactive or not yet complete, go to the next objective
-		if global.quests[quest_id][1] == -1 || global.quests[quest_id][1] < array_length(global.quest_library[quest_id][6])-1 {
-			global.quests[quest_id][1] += 1
-		}
-		// Complete the quest if on final objective
-		else if global.quests[quest_id][1] >= array_length(global.quest_library[quest_id][6])-1 {
-			global.quests[quest_id][1] = array_length(global.quest_library[quest_id][6])-1 // Ensure that it is set to the final objective
-			global.quests[quest_id][2] = true
-			global.quests[quest_id][0] = false
-		}
-	}
+function quest_show_objective(quest_id, objective_id) {
+	global.quest_objectives[quest_id][0][objective_id] = true
+}
+function quest_hide_objective(quest_id, objective_id) {
+	global.quest_objectives[quest_id][0][objective_id] = false
 }
 
-function quest_complete(quest_id) {
-	// Forcibly complete a quest, regardless of current objective
-	global.quests[quest_id][0] = false // Deactivate quest
-	global.quests[quest_id][2] = true // Set to complete
-}
-
-function quest_abandon(quest_id) {
-	// Abandon a quest and reset its objectives
-	global.quests[quest_id][0] = false
-	global.quests[quest_id][1] = -1 // -1 means no objectives will be shown
-}
-
-function quest_objective(quest_id) {
-	// Returns current quest objective
-	return global.quests[quest_id][1]
-}
+/// For checking values
 
 function quest_active(quest_id) {
 	// Returns whether or not a quest is active
@@ -116,7 +145,7 @@ function quest_active(quest_id) {
 
 function quest_tracked(quest_id) {
 	// Returns whether or not a quest is tracked
-	if global.quests[quest_id][3] == true {
+	if global.quests[quest_id][2] == true {
 		return true
 	} else {
 		return false
@@ -125,9 +154,27 @@ function quest_tracked(quest_id) {
 
 function quest_completed(quest_id) {
 	// Returns whether or not a quest is complete
-	if global.quests[quest_id][2] == true {
+	if global.quests[quest_id][1] == true {
 		return true
 	} else {
 		return false
+	}
+}
+
+function quest_objective_is_complete(quest_id, objective_id) {
+	// Checks if a specified quest objective is complete
+	if global.quest_objectives[quest_id][1][objective_id] == true {
+		return true
+	} else {
+		return false	
+	}
+}
+
+function quest_objective_is_visible(quest_id, objective_id) {
+	// Checks if a specified quest objective is visible
+	if global.quest_objectives[quest_id][0][objective_id] == true {
+		return true
+	} else {
+		return false	
 	}
 }

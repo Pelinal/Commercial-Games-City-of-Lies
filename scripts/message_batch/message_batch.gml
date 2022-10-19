@@ -15,7 +15,7 @@ function message_batch(argument0, argument1) {
 	    }
 	}
 
-	instance_create(__view_get( e__VW.XView, 0 )+427, __view_get( e__VW.YView, 0 )+388, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
+	instance_create(960, 896, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
 	    obj_messagebox.display_text = text_list
 	    obj_messagebox.display_text_list = text_list_x
 	    obj_messagebox.batch = batch-1

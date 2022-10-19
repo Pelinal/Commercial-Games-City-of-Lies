@@ -22,6 +22,6 @@ if batch == -1 {
 }
 else if batch_counter <= batch {
     draw_text(x_left, y_row, string_hash_to_newline(name_list[batch_counter]))
-    if keyboard_check_pressed(vk_space) batch_counter ++
+    //if keyboard_check_pressed(vk_space) 
 }
 

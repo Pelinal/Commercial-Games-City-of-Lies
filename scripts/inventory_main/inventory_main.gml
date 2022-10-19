@@ -86,10 +86,10 @@ function inventory_initialise() {
 	global.library[69] = ["Lariat", "A form of twist-braid necklace, perhaps meant to bring good luck.", global.accessories]
 	global.library[70] = ["Silver Lariat", "An intricately crafted silver necklace with embedded gems.", global.accessories]
 	global.library[71] = ["Gold Pendant", "Gold gold gold, everyone loves gold.", global.accessories]
-	global.library[72] = ["Health Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
+	global.library[72] = ["HP Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties heal the user 30 pts.", global.consumables]
 	// Item Expansion #2 - Crafting
-	global.library[73] = ["Stamina Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of stamina.", global.consumables]
-	global.library[74] = ["Mana Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of mana.", global.consumables]
+	global.library[73] = ["SP Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of stamina.", global.consumables]
+	global.library[74] = ["MP Potion", "A potion brewed using a mixture involving Solite, its\nmagical properties restore 30 pts of mana.", global.consumables]
 	global.library[75] = ["Hearty Tonic", "A unique mixture that temporarily raises Endurance.", global.consumables]
 	global.library[76] = ["Cunning Tonic", "A unique mixture that temporarily raises Dexterity.", global.consumables]
 	global.library[77] = ["Sage Tonic", "A unique mixture that temporarily raises Intelligence.", global.consumables]

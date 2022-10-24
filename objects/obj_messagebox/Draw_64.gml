@@ -38,6 +38,7 @@ else if batch_counter <= batch {
 			if keyboard_check_pressed(vk_space) {
 				string_counter = string_length(display_text[batch_counter])
 				i = string_counter
+				alarm[1] = 30
 				skipped = true
 			}
 		

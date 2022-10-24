@@ -33,10 +33,15 @@ if !global.immobile {
     if keyboard_check (vk_shift) { movespeed = 4.5 } else { movespeed = 2.5 }
     
     // Animation Control
-    if keyboard_check_pressed(ord("W"))      { sprite_index = spr_player_up image_xscale = 1 image_speed = asp }
-    else if keyboard_check_pressed(ord("A")) { sprite_index = spr_player_leftright image_xscale = 1 image_speed = asp }
-    else if keyboard_check_pressed(ord("S")) { sprite_index = spr_player_down image_xscale = 1 image_speed = asp }
-    else if keyboard_check_pressed(ord("D")) { sprite_index = spr_player_leftright image_xscale = -1 image_speed = asp }
+    if keyboard_check(ord("W")) { sprite_index = spr_player_up image_xscale = 1 image_speed = asp }
+    else if keyboard_check(ord("A")) && !keyboard_check(ord("W")) { sprite_index = spr_player_leftright image_xscale = 1 image_speed = asp }
+    else if keyboard_check(ord("S")) && !keyboard_check(ord("A")) && !keyboard_check(ord("D")) { sprite_index = spr_player_down image_xscale = 1 image_speed = asp }
+    else if keyboard_check(ord("D")) && !keyboard_check(ord("W")) { sprite_index = spr_player_leftright image_xscale = -1 image_speed = asp }
+	// horizontal controls
+    else if keyboard_check(ord("D")) && keyboard_check(ord("W")) { sprite_index = spr_player_up }
+    else if keyboard_check(ord("A")) && keyboard_check(ord("W")) { sprite_index = spr_player_up }
+    else if keyboard_check(ord("D")) && keyboard_check(ord("S")) { sprite_index = spr_player_leftright image_xscale = -1 }
+    else if keyboard_check(ord("A")) && keyboard_check(ord("S")) { sprite_index = spr_player_leftright image_xscale = 1 }
     
     if !keyboard_check(ord("A")) && !keyboard_check(ord("D"))
     && !keyboard_check(ord("W")) && !keyboard_check(ord("S")) { image_speed = 0; image_index = 0 }

@@ -15,6 +15,7 @@ if (image_index >= image_number-1 && !open) && !gatherable {
 	
 	instance_create(x + 32, y - 80, obj_loot_menu)
 	obj_loot_menu.loot = loot
+	obj_loot_menu.chest_id = id
 	
 	with obj_loot_menu {
 		// Create buttons

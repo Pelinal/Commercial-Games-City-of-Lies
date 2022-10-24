@@ -91,7 +91,7 @@ function quest_complete(quest_id) {
 	// Forcibly complete a quest, and all its objectives and add all rewards to inventory
 	global.quests[quest_id][0] = false // Deactivate quest
 	global.quests[quest_id][1] = true // Set to complete
-	global.quests[quest_id][2] = true // stop tracking
+	global.quests[quest_id][2] = false // stop tracking
 	
 	global.quest_library[quest_id][1] = "Completed"
 	

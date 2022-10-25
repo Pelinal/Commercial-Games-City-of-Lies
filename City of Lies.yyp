@@ -11,6 +11,7 @@
     {"id":{"name":"inventory_consumables","path":"scripts/inventory_consumables/inventory_consumables.yy",},"order":1,},
     {"id":{"name":"obj_enchant_button","path":"objects/obj_enchant_button/obj_enchant_button.yy",},"order":6,},
     {"id":{"name":"obj_loot_menu","path":"objects/obj_loot_menu/obj_loot_menu.yy",},"order":0,},
+    {"id":{"name":"spr_attributebars","path":"sprites/spr_attributebars/spr_attributebars.yy",},"order":5,},
     {"id":{"name":"obj_interior_light","path":"objects/obj_interior_light/obj_interior_light.yy",},"order":6,},
     {"id":{"name":"light_remove_from_world","path":"scripts/light_remove_from_world/light_remove_from_world.yy",},"order":12,},
     {"id":{"name":"light_update","path":"scripts/light_update/light_update.yy",},"order":0,},
@@ -272,6 +273,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Map","folderPath":"folders/Objects/Interface/Map.yy","order":5,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Message","folderPath":"folders/Objects/Interface/Message.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Quest Log","folderPath":"folders/Objects/Interface/Quest Log.yy","order":4,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stats","folderPath":"folders/Objects/Interface/Stats.yy","order":6,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Trade & Crafting","folderPath":"folders/Objects/Interface/Trade & Crafting.yy","order":3,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Lighting","folderPath":"folders/Objects/Lighting.yy","order":8,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/Paths.yy","order":8,},
@@ -318,7 +320,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"World Tiles","folderPath":"folders/Tile Sets/World Tiles.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy","order":7,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stats","folderPath":"folders/Objects/Interface/Stats.yy","order":6,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

@@ -7,7 +7,7 @@
   "interpreter": 0,
   "pointRounding": 0,
   "applyKerning": 0,
-  "fontName": "Planewalker",
+  "fontName": "Pelagiad",
   "styleName": "Regular",
   "size": 20.0,
   "bold": false,

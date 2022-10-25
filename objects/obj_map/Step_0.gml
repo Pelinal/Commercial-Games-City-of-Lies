@@ -1,6 +1,6 @@
 /// @description Drag to move camera
 
-if keyboard_check_pressed(ord("M")) {
+if keyboard_check_pressed(ord("M")) && !visible {
 	visible = true 
 	x = 0 
 	y = 0 
@@ -75,7 +75,7 @@ if keyboard_check_pressed(ord("M")) {
 		local_y = 718
 	}
 }
-if keyboard_check_pressed(vk_escape) { visible = false instance_destroy(obj_districts) }
+if keyboard_check_pressed(vk_escape) && visible { visible = false instance_destroy(obj_districts) }
 
 if visible {
 	if mouse_check_button_pressed(mb_left) {

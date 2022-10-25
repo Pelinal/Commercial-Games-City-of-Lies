@@ -76,3 +76,6 @@ if !global.immobile {
 if global.immobile { image_index = 0 image_speed = 0 }
 
 global.gold = inventory_fetch(0)
+global.max_hp = 50 + (10 * (global.edr div 1))
+global.max_mp = 50 + (10 * (global.int div 1))
+global.max_sp = 50 + (10 * (global.dex div 1))

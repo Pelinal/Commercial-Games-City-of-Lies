@@ -105,3 +105,28 @@ function inventory_armour_check_equipped(item) {
 	   return true
 	}
 }
+
+function inventory_armour_fetch_rating(item) {
+	// Fetches the armour rating of a specific item
+	for (i = 0; i < array_length(global.ar_library); i ++) { if global.ar_library[i][0] == item { return global.ar_library[i][2] } }
+	return 0
+}
+
+function inventory_armour_total_rating() {
+	// Totals all the armour ratings of equipped armour and returns the value
+	rating = 0
+	if global.armour_equipped[0] != -1 {
+		rating += inventory_armour_fetch_rating(global.armour_equipped[0])
+	}
+	if global.armour_equipped[1] != -1 {
+		rating += inventory_armour_fetch_rating(global.armour_equipped[1])
+	}
+	if global.armour_equipped[2] != -1 {
+		rating += inventory_armour_fetch_rating(global.armour_equipped[2])
+	}
+	if global.armour_equipped[3] != -1 {
+		rating += inventory_armour_fetch_rating(global.armour_equipped[3])
+	}
+	
+	return rating
+}

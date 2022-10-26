@@ -45,12 +45,21 @@ global.exp = 0				// Player Current EXP
 global.exp_req = 1000		// Player EXP needed for next level
 
 // Combat Stats
+global.base_atk = 5
+global.base_def = 5
+global.base_stk = 5
+global.base_sdf = 5
+global.base_mtk = 5
+global.base_mdf = 5
+
 global.atk = 5		// Attack (current damage per physical hit)
 global.def = 5		// Defense (armour rating + buffs, determines how much damage is ignored when physically attacked)
 global.stk = 5		// Special Attack (current damage per special hit)
 global.sdf = 5		// Special Defense (determines how much damage is ignored when non-physically attacked)
 global.mtk = 5		// Magic Attack (current damage per magical hit)
 global.mdf = 5		// Magic Defense (determines how much damage is ignored when magically attacked)
+
+global.mtk_type = noone // Determines damage type of magical damage
 
 // Main Attributes
 global.spd = 5		// Speed - affects attack/movement speed

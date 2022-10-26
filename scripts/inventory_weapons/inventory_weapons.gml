@@ -79,3 +79,37 @@ function inventory_weapon_check_equipped(item) {
 	// Checks if specific weapon is equipped
 	if global.weapon_equipped == item { return true }
 }
+
+function inventory_weapon_get_damage(item) {
+	for (i = 0; i < array_length(global.w_library); i ++) {
+		// Searches for weapon and returns damage value
+		if global.w_library[i][0] == item { return global.w_library[i][2] }
+	}
+	
+	return 0
+}
+
+function inventory_weapon_get_enchant(item) {
+	// Returns the name of the enchantment on a weapon
+	for (i = 0; i < array_length(global.w_library); i ++) {
+		if global.w_library[i][0] == item {
+			return global.w_library[i][4]
+		}
+	}
+	
+	return noone
+}
+
+function inventory_weapon_get_enchant_damage(item) {
+	for (i = 0; i < array_length(global.w_library); i ++) {
+		// Searches for weapon and returns damage value
+		if global.w_library[i][0] == item {
+			if global.w_library[i][4] == "Fire Damage" || global.w_library[i][4] == "Frost Damage" || global.w_library[i][4] == "Poison Damage" {
+				global.mtk_type = global.w_library[i][4]
+				return global.w_library[i][5]
+			}
+		}
+	}
+	
+	return 0
+}

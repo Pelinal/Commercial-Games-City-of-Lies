@@ -72,9 +72,7 @@ draw_set_halign(fa_left)
 // Draw Skills
 draw_set_font(fnt_questlog_medium)
 draw_text(x + 672, y + 48, "Skills")
-draw_set_halign(fa_right)
-draw_text(x + 1775, y + 48, "Combat Stats    ")
-draw_set_halign(fa_left)
+draw_text(x + 1248, y + 48, "Combat Stats")
 draw_set_font(fnt_inventory_small)
 
 draw_text(x + 672, y + 144, "Smithing:")
@@ -87,6 +85,13 @@ draw_text(x + 672, y + 528, "Barter:")
 draw_text(x + 672, y + 576, "Lockpicking:")
 draw_text(x + 672, y + 624, "Archaeology:")
 
+draw_text(x + 1248, y + 144, "Attack:")
+draw_text(x + 1248, y + 192, "Defense:")
+draw_text(x + 1248, y + 240, "Sp. Attack:")
+draw_text(x + 1248, y + 336, "Sp. Defense:")
+draw_text(x + 1248, y + 384, "M. Attack:")
+draw_text(x + 1248, y + 432, "M. Defense:")
+
 // Skill Level text
 draw_set_halign(fa_right)
 draw_text(x + 876, y + 144, string(global.smithing div 1))
@@ -98,6 +103,14 @@ draw_text(x + 876, y + 432, string(global.staves div 1))
 draw_text(x + 876, y + 528, string(global.barter div 1))
 draw_text(x + 876, y + 576, string(global.locks div 1))
 draw_text(x + 876, y + 624, string(global.archaeology div 1))
+
+// Draw Combat Stats Text
+draw_text(x + 1727, y + 144, string(global.atk div 1))
+draw_text(x + 1727, y + 192, string(global.def div 1))
+draw_text(x + 1727, y + 240, string(global.stk div 1))
+draw_text(x + 1727, y + 336, string(global.sdf div 1))
+draw_text(x + 1727, y + 384, string(global.mtk div 1))
+draw_text(x + 1727, y + 432, string(global.mdf div 1))
 draw_set_halign(fa_left)
 
 // Draw Skill XP bars

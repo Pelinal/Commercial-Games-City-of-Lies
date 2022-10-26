@@ -119,6 +119,15 @@ function crafting_create_enchanted(gem, gear, solite) {
 			ench = "Buff Bartering"
 			ench_power /= 2
 			break;
+		case 106:
+			ench = "Fire Damage"
+			break;
+		case 107:
+			ench = "Frost Damage"
+			break;
+		case 108:
+			ench = "Poison Damage"
+			break;
 		default:
 			show_message("no gem slotted")
 			break;

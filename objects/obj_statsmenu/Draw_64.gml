@@ -124,21 +124,25 @@ draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 528, 312, 48)
 draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 576, 312, 48)
 draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 624, 312, 48)
 // BarWidth * (global.skillname - (global.skillname div 1)) // USE this for skill xp 
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 144, 312 * (global.smithing - (global.smithing div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 192, 312 * (global.alchemy - (global.alchemy div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 240, 312 * (global.enchanting - (global.enchanting div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 336, 312 * (global.blade - (global.blade div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 384, 312 * (global.archery - (global.archery div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 432, 312 * (global.staves - (global.staves div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 528, 312 * (global.barter - (global.barter div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 576, 312 * (global.locks - (global.locks div 1)), 48)
-draw_sprite_stretched(spr_attributebars, 7, x + 888, y + 624, 312 * (global.archaeology - (global.archaeology div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 144, 312 * (global.smithing - (global.smithing div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 192, 312 * (global.alchemy - (global.alchemy div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 240, 312 * (global.enchanting - (global.enchanting div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 336, 312 * (global.blade - (global.blade div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 384, 312 * (global.archery - (global.archery div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 432, 312 * (global.staves - (global.staves div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 528, 312 * (global.barter - (global.barter div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 576, 312 * (global.locks - (global.locks div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 624, 312 * (global.archaeology - (global.archaeology div 1)), 48)
 
 // Draw Skill Bar Text
 draw_set_halign(fa_center)
 
 draw_text(x + 1044, y + 150, string((global.smithing - (global.smithing div 1)) * 100) + "/100")
-draw_text(x + 1044, y + 198, string((global.alchemy - (global.alchemy div 1)) * 100) + "/100")
+
+temp_string = string((global.alchemy - (global.alchemy div 1)) * 100)
+temp_string = string_delete(temp_string, string_length(temp_string)-3, 3) + "/100"
+
+draw_text(x + 1044, y + 198, temp_string)
 draw_text(x + 1044, y + 246, string((global.enchanting - (global.enchanting div 1)) * 100) + "/100")
 draw_text(x + 1044, y + 342, string((global.blade - (global.blade div 1)) * 100) + "/100")
 draw_text(x + 1044, y + 390, string((global.archery - (global.archery div 1)) * 100) + "/100")

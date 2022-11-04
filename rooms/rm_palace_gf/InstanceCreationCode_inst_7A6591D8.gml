@@ -1,3 +1,4 @@
+depth = 1
 // 0: Item ID, 1: Amount for sale
 stock_list[0] = [9, 5]
 stock_list[1] = [52, 5]

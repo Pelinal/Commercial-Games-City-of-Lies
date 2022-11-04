@@ -1,8 +1,11 @@
 /// @description Step
 
-//if keyboard_check_pressed(ord("J")) { visible = false }
-//if keyboard_check_pressed(vk_escape) && obj_questlog.visible { visible = true 
+if obj_inventory.visible || obj_questlog.visible || obj_statsmenu.visible {
+	visible = false
+} else {
+	visible = true
+}
 
-
-//if keyboard_check_pressed(vk_alt) { visible = true }
-//if keyboard_check_pressed(vk_backspace) { visible = false }
+if quest_tracked_id() == noone {
+	visible = false	
+}

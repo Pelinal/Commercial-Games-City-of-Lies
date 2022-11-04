@@ -1,1 +1,1 @@
-global.ambientShadowIntensity = 0.8 // Nighttime
+global.ambientShadowIntensity = 0.9 // Nighttime

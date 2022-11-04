@@ -10,4 +10,4 @@ if inventory_is_enchanted(loot) { draw_tile(ts_icons_iconset_16, 143, 0, x + 4, 
 draw_tile(ts_icons_iconset_16, global.icons[loot], 0, x + 4, y + 2)
 
 // Draw Text 
-draw_text(x + 16, y + 2, global.library[loot][0] + " X" + string(amount))
+draw_text(x + 24, y + 2, global.library[loot][0] + " X" + string(amount))

@@ -17,16 +17,16 @@ if image_index >= image_number-1 {
     obj_player.y = newY
     
     if newDir == "up" {
-        with obj_player { sprite_index = spr_player_up image_xscale = 1 image_speed = asp }
+        with obj_player { sprite_index = up_sprite image_xscale = 1 image_speed = asp }
     }
     else if newDir == "left" { 
-        with obj_player { sprite_index = spr_player_leftright image_xscale = 1 image_speed = asp }
+        with obj_player { sprite_index = lr_sprite image_xscale = 1 image_speed = asp }
     }
     else if newDir == "down" {
-        with obj_player { sprite_index = spr_player_down image_xscale = 1 image_speed = asp }
+        with obj_player { sprite_index = dn_sprite image_xscale = 1 image_speed = asp }
     }
     else if newDir == "right" {
-        with obj_player { sprite_index = spr_player_leftright image_xscale = -1 image_speed = asp }
+        with obj_player { sprite_index = lr_sprite image_xscale = -1 image_speed = asp }
     }
     
     room_goto(travel_to)

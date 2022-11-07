@@ -10,7 +10,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	
 	if mouse_check_button_pressed(mb_left) && obj_setup.panel_overview != -1 {
 		
-		if type == "Close Setup" {
+		if type == "Close Setup" && string_length(global.persona[0]) > 0 {
 			obj_player.visible = true
 			obj_player.sprite_index = obj_player.dn_sprite
 			
@@ -18,7 +18,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sp = global.max_sp
 			global.mp = global.max_mp
 			
-			global.persona[0] = global.persona[0] + " Duqarte"
+			global.persona[0] = string_ucfirst(global.persona[0])
 			
 			room_goto(rm_palace_ext)
 		} else if type == "Next Setup" && string_length(global.persona[0]) > 0 {

@@ -3,6 +3,8 @@
 inventory_initialise()
 // Loot system initialise
 loot_initialise()
+// Combat Initialise
+combat_initialise()
 
 depth = -1000
 scrollbar = false

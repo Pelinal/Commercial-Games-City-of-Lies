@@ -10,8 +10,8 @@ up_sprite = noone
 dn_sprite = noone
 
 // Sprites used for attacks
-we1_sprite = noone
-we2_sprite = noone
+co_sprite = noone
+ca_sprite = noone
 
 hsp = 0 // Horizontal Speed
 vsp = 0 // Vertical Speed
@@ -91,6 +91,4 @@ global.staves = 5		// Increases hit chance + damage of staves
 global.barter = 5		// Increases sale price + decreases buy price
 global.locks = 5		// Allows you to pick different tiers of locks (4 - Basic, 8 - Standard, 16 - Complex, 22 - Master)
 global.archaeology = 5	// Allows you to decipher different tiers of Founder Writings (5 - Beginner, 10 - Average, 20 - Fluent, 30 - Loremaster)
-
-
 

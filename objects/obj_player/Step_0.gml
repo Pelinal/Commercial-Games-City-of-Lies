@@ -44,6 +44,12 @@ if !global.immobile {
     if !keyboard_check(ord("A")) && !keyboard_check(ord("D"))
     && !keyboard_check(ord("W")) && !keyboard_check(ord("S")) { image_speed = 0; image_index = 0 }
     
+	
+	// Combat Test
+	if keyboard_check_pressed(vk_f2) {
+		combat_start(0, ms_combat_1, 0, 0)
+	}
+	
     //// Message box test command
     //if keyboard_check_pressed(ord("K")) { 
     //    message("Welcome to the City of Lies, a short role-playing#"

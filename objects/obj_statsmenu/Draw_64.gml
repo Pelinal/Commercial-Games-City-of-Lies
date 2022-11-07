@@ -39,7 +39,7 @@ draw_set_valign(fa_top)
 
 
 // Draw Name, Level, EXP, and Class
-draw_text(x + 48, y + 288, "Name: " + global.persona[0])
+draw_text(x + 48, y + 288, "Name: " + global.persona[0] + " Duqarte")
 draw_sprite_stretched(spr_attributebars, 6, x + 192, y + 384, 336, 48)
 draw_sprite_stretched(spr_attributebars, 7, x + 192, y + 384, 336 * (global.exp / global.exp_req), 48)
 draw_text(x + 48, y + 336, "Class: " + string_ucfirst(global.class))

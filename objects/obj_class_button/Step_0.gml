@@ -10,7 +10,6 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 		if class_id == 0	  {
 			global.class = "mage"
 			
-			
 			global.edr = 1
 			global.dex = 3
 			global.int = 5
@@ -39,6 +38,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sdf = 10
 			global.mtk = 5
 			global.mdf = 5
+			
 		}
 		else if class_id == 2 {
 			global.class = "warrior"
@@ -62,28 +62,42 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				obj_player.lr_sprite = spr_m_warrior_lr
 				obj_player.up_sprite = spr_m_warrior_up
 				obj_player.dn_sprite = spr_m_warrior_dn
+				
+				obj_player.co_sprite = spr_m_warrior_sw
 			} else if global.class == "rogue" {
 				obj_player.lr_sprite = spr_m_rogue_lr
 				obj_player.up_sprite = spr_m_rogue_up
 				obj_player.dn_sprite = spr_m_rogue_dn
+				
+				obj_player.co_sprite = spr_m_rogue_da
 			} else if global.class == "mage" {
 				obj_player.lr_sprite = spr_m_mage_lr
 				obj_player.up_sprite = spr_m_mage_up
 				obj_player.dn_sprite = spr_m_mage_dn
+				
+				obj_player.co_sprite = spr_m_mage_st
+				obj_player.ca_sprite = spr_m_mage_ca
 			}
 		} else {
 			if global.class == "warrior" {
 				obj_player.lr_sprite = spr_f_warrior_lr
 				obj_player.up_sprite = spr_f_warrior_up
 				obj_player.dn_sprite = spr_f_warrior_dn
+				
+				obj_player.co_sprite = spr_f_warrior_sw
 			} else if global.class == "rogue" {
 				obj_player.lr_sprite = spr_f_rogue_lr
 				obj_player.up_sprite = spr_f_rogue_up
 				obj_player.dn_sprite = spr_f_rogue_dn
+				
+				obj_player.co_sprite = spr_f_rogue_da
 			} else if global.class == "mage" {
 				obj_player.lr_sprite = spr_f_mage_lr
 				obj_player.up_sprite = spr_f_mage_up
 				obj_player.dn_sprite = spr_f_mage_dn
+				
+				obj_player.co_sprite = spr_f_mage_st
+				obj_player.ca_sprite = spr_f_mage_ca
 			}
 		}
 

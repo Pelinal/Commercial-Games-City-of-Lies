@@ -65,9 +65,51 @@ function inventory_weapon_equip(item) {
 		if global.w_library[i][0] == item { type = global.w_library[i][1] } 
 	}
 	
-	if (type == "Sword" || type == "Axe") && global.class == "warrior"  { global.weapon_equipped = item }
-	if type  == "Staff" && global.class == "mage"						{ global.weapon_equipped = item }
-	if (type == "Dagger" || type == "Bow") && global.class == "rogue"	{ global.weapon_equipped = item }
+	if type == "Sword" && global.class == "warrior" {
+		global.weapon_equipped = item
+		
+		if global.persona[1] == "Male" {
+			obj_player.co_sprite = spr_m_warrior_sw
+		} else {
+			obj_player.co_sprite = spr_f_warrior_sw
+		}
+	}
+	else if type == "Axe" && global.class == "warrior" {
+		global.weapon_equipped = item
+		
+		if global.persona[1] == "Male" {
+			obj_player.co_sprite = spr_m_warrior_ax
+		} else {
+			obj_player.co_sprite = spr_f_warrior_ax
+		}
+	}
+	else if type  == "Staff" && global.class == "mage" {
+		global.weapon_equipped = item
+		
+		if global.persona[1] == "Male" {
+			obj_player.co_sprite = spr_m_mage_st
+		} else {
+			obj_player.co_sprite = spr_f_mage_st
+		}
+	}
+	else if type == "Dagger" && global.class == "rogue" {
+		global.weapon_equipped = item
+		
+		if global.persona[1] == "Male" {
+			obj_player.co_sprite = spr_m_rogue_da
+		} else {
+			obj_player.co_sprite = spr_f_rogue_da
+		}
+	}
+	else if (type == "Crossbow" || type == "Bow") && global.class == "rogue" {
+		global.weapon_equipped = item
+		
+		if global.persona[1] == "Male" {
+			obj_player.co_sprite = spr_m_rogue_bo
+		} else {
+			obj_player.co_sprite = spr_f_rogue_bo
+		}
+	}
 }
 
 function inventory_weapon_unequip() {
@@ -112,4 +154,15 @@ function inventory_weapon_get_enchant_damage(item) {
 	}
 	
 	return 0
+}
+
+function inventory_weapon_type(weapon) {
+	for (i = 0; i < array_length(global.w_library); i ++) {
+		// Searches for weapon and returns type
+		if global.w_library[i][0] == item {
+			return global.w_library[i][1]
+		}
+	}
+	
+	return noone
 }

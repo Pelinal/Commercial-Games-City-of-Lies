@@ -9,23 +9,48 @@ draw_set_colour(c_white)
 
 // Gold, Other Currencies (TBA), Health etc.
 draw_set_font(fnt_inventory_small)
-draw_tile(ts_icons_iconset_64, global.icons[0], 0, draw_x + 384*draw_offset, draw_y + 390*draw_offset)
-draw_text(draw_x + 416*draw_offset, draw_y + 394*draw_offset, string(global.gold))
+draw_tile(ts_icons_iconset_64, global.icons[0], 0, draw_x + 384*draw_offset, draw_y + 398*draw_offset)
+draw_text(draw_x + 416*draw_offset, draw_y + 404*draw_offset, string(global.gold))
 
-draw_set_colour(c_grey)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 420*draw_offset, (draw_x + 384*draw_offset) + (global.max_hp) * 3, draw_y + 432*draw_offset, false) 
-draw_set_colour(c_red)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 420*draw_offset, (draw_x + 384*draw_offset) + (global.hp) * 3, draw_y + 432*draw_offset, false)
+draw_tile(ts_icons_iconset_64, 257, 0, draw_x + 456*draw_offset, draw_y + 398*draw_offset)
+draw_text(draw_x + 488*draw_offset, draw_y + 404*draw_offset, string(global.frags))
 
-draw_set_colour(c_grey)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 440*draw_offset, (draw_x + 384*draw_offset) + (global.max_mp) * 3, draw_y + 452*draw_offset, false) 
-draw_set_colour(c_blue)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 440*draw_offset, (draw_x + 384*draw_offset) + (global.mp) * 3, draw_y + 452*draw_offset, false)
+draw_tile(ts_icons_iconset_64, 269, 0, draw_x + 528*draw_offset, draw_y + 398*draw_offset)
+draw_text(draw_x + 560*draw_offset, draw_y + 404*draw_offset, string(global.supplies))
 
-draw_set_colour(c_grey)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 460*draw_offset, (draw_x + 384*draw_offset) + (global.max_sp) * 3, draw_y + 472*draw_offset, false) 
-draw_set_colour(c_green)
-draw_rectangle(draw_x + 384*draw_offset, draw_y + 460*draw_offset, (draw_x + 384*draw_offset) + (global.sp) * 3, draw_y + 472*draw_offset, false)
+draw_tile(ts_icons_iconset_64, 270, 0, draw_x + 600*draw_offset, draw_y + 398*draw_offset)
+draw_text(draw_x + 632*draw_offset, draw_y + 404*draw_offset, string(global.contraband))
+
+
+draw_sprite_stretched(spr_attributebars, 4, draw_x + 864, draw_y + 952, 384, 38)	// HP Background
+draw_sprite_stretched(spr_attributebars, 2, draw_x + 864, draw_y + 992, 384, 38)	// MP Background
+draw_sprite_stretched(spr_attributebars, 0, draw_x + 864, draw_y + 1032, 384, 38)	// SP Background
+
+draw_sprite_stretched(spr_attributebars, 5, draw_x + 864, draw_y + 952, 384 * (global.hp / global.max_hp), 38)	// HP Bar
+draw_sprite_stretched(spr_attributebars, 3, draw_x + 864, draw_y + 992, 384 * (global.mp / global.max_mp), 38)    // MP Bar
+draw_sprite_stretched(spr_attributebars, 1, draw_x + 864, draw_y + 1032, 384 * (global.sp / global.max_sp), 38)	// SP Bar
+
+draw_set_halign(fa_center)
+draw_set_font(fnt_trademenu_small)
+draw_text(draw_x + 1056, draw_y + 956, string(global.hp) + "/" + string(global.max_hp))
+draw_text(draw_x + 1056, draw_y + 996, string(global.mp) + "/" + string(global.max_mp))
+draw_text(draw_x + 1056, draw_y + 1036, string(global.sp) + "/" + string(global.max_sp))
+draw_set_halign(fa_left)
+
+//draw_set_colour(c_grey)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 420*draw_offset, (draw_x + 384*draw_offset) + (global.max_hp) * 3, draw_y + 432*draw_offset, false) 
+//draw_set_colour(c_red)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 420*draw_offset, (draw_x + 384*draw_offset) + (global.hp) * 3, draw_y + 432*draw_offset, false)
+
+//draw_set_colour(c_grey)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 440*draw_offset, (draw_x + 384*draw_offset) + (global.max_mp) * 3, draw_y + 452*draw_offset, false) 
+//draw_set_colour(c_blue)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 440*draw_offset, (draw_x + 384*draw_offset) + (global.mp) * 3, draw_y + 452*draw_offset, false)
+
+//draw_set_colour(c_grey)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 460*draw_offset, (draw_x + 384*draw_offset) + (global.max_sp) * 3, draw_y + 472*draw_offset, false) 
+//draw_set_colour(c_green)
+//draw_rectangle(draw_x + 384*draw_offset, draw_y + 460*draw_offset, (draw_x + 384*draw_offset) + (global.sp) * 3, draw_y + 472*draw_offset, false)
 
 if overview_id != -1 {
 	// Name

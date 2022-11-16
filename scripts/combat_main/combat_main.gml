@@ -2,31 +2,36 @@
 function combat_initialise(){
 	// Create enemy/attack arrays
 	// Index 0: Name, Index 1: MHP, Index 2: MSP, Index 3: MMP, Index 4: Base Attack, Index 5: Base Defense, 
-	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Crit Rate, Index 12: Humanoid(true/false)?
-	global.enemies[0] = ["Rat", 30, 30, 0, 5, 5, 5, 5, 0, 0, 8, .1, false]
-	global.enemies[1] = ["Mugger", 50, 70, 0, 7, 5, 7, 5, 0, 0, 5, .2, true]
+	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Crit Rate, Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance?
+	global.enemies[0] = ["Rat", 30, 30, 0, 5, 5, 5, 5, 0, 0, 1, .1, false, "None", 0.0]
+	global.enemies[1] = ["Mugger", 50, 70, 0, 7, 5, 7, 5, 0, 0, 5, .2, true, "None", 0.0]
+	
+	// Create Enemy Attack Array
+	// Index 0: Attack ID, Index 1: Attack List
+	global.atks_enemy[0] = [[0, global.atks_physical]]
+	global.atks_enemy[1] = [[0, global.atks_physical], [0, global.atks_special], [3, global.atks_physical]]
 	
 	// Physical Attacks
-	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?
-	global.atks_physical[0] = ["Basic Attack", global.atk, 10, global.luk / 60, "None", 0.9, true]
-	global.atks_physical[1] = ["Low Kick", 1.05 * global.atk, 25, global.luk / 60, "Legs", 0.7, false]
-	global.atks_physical[2] = ["Shoulder Bash", 1.05 * global.atk, 25, global.luk / 60, "Arms", 0.7, false]
-	global.atks_physical[3] = ["Slash", 1.1 * global.atk, 30, global.luk / 45, "None", 0.4 + (combat_fetch_weapon_skill() / 60), true]
+	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
+	global.atks_physical[0] = ["Basic Attack", global.atk, 10, global.luk / 60, "None", 0.9, true, 115]
+	global.atks_physical[1] = ["Low Kick", 1.05 * global.atk, 25, global.luk / 60, "Legs", 0.7, false, 116]
+	global.atks_physical[2] = ["Shoulder Bash", 1.05 * global.atk, 25, global.luk / 60, "Arms", 0.7, false, 116]
+	global.atks_physical[3] = ["Slash", 1.1 * global.atk, 30, global.luk / 45, "None", 0.4 + (combat_fetch_weapon_skill() / 60), true, 115]
 	
 	// Special Attacks
-	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?
-	global.atks_special[0] = ["Rapid Strike", 0.95 * global.atk, 15, 0.5, "None", 1, true]
-	global.atks_special[1] = ["Fury", 1.25 * global.atk, 45, global.luk / 45, "None", 0.6, false]
-	global.atks_special[2] = ["Cleave", 1.2 * global.atk, 40, global.luk / 60, "Arms", 0.9, false]
-	global.atks_special[3] = ["Feint", 1.2 * global.atk, 40, global.luk / 60, "Legs", 0.9, false]
+	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
+	global.atks_special[0] = ["Rapid Strike", 0.95 * global.atk, 15, 0.5, "None", 1, true, 12]
+	global.atks_special[1] = ["Fury", 1.25 * global.atk, 45, global.luk / 45, "None", 0.6, false, 14]
+	global.atks_special[2] = ["Cleave", 1.2 * global.atk, 40, global.luk / 60, "Arms", 0.9, false, 116]
+	global.atks_special[3] = ["Feint", 1.2 * global.atk, 40, global.luk / 60, "Legs", 0.9, false, 5]
 	
 	// Magical Attacks
-	// Index 0: Name, Index 1: Magnitude, Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?
-	global.atks_magical[0] = ["Fireball", 1.2 * global.atk, 30, "Attack", "Fire", 0.6 + (combat_fetch_weapon_skill() / 90), true]
-	global.atks_magical[1] = ["Ice Spike", 1.2 * global.atk, 30, "Attack", "Frost", 0.6 + (combat_fetch_weapon_skill() / 90), false]
-	global.atks_magical[2] = ["Acid Bomb", 1.2 * global.atk, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false]
-	global.atks_magical[3] = ["Healing", global.max_hp * 0.3, 40, "Self", "Heal", 1, true]
-	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), true]
+	// Index 0: Name, Index 1: Magnitude, Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?, Index 7: Icon Index
+	global.atks_magical[0] = ["Fireball", 1.2 * global.atk, 30, "Attack", "Fire", 0.6 + (combat_fetch_weapon_skill() / 90), true, 96]
+	global.atks_magical[1] = ["Ice Spike", 1.2 * global.atk, 30, "Attack", "Frost", 0.6 + (combat_fetch_weapon_skill() / 90), false, 97]
+	global.atks_magical[2] = ["Acid Bomb", 1.2 * global.atk, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false, 2]
+	global.atks_magical[3] = ["Healing", global.max_hp * 0.3, 40, "Self", "Heal", 1, true, 140]
+	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), true, 11]
 	
 	// Battlers
 	global.battlers[0] = spr_battler_rat
@@ -39,7 +44,7 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 	instance_destroy(obj_battler)
 	instance_destroy(obj_enemy_hp)
 	
-	instance_create(0, 0, obj_combatmenu)
+	instance_create(48, 48, obj_combatmenu)
 	
 	obj_combatmenu.battleback = location
 	obj_combatmenu.battler_list = [enemy1, enemy2, enemy3, enemy4]
@@ -63,7 +68,20 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 						enemy_mp = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][3]			// Current Enemy MP
 						enemy_atk = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][4]		// Current Enemy Attack
 						enemy_def = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][5]		// Current Enemy Defense
+						enemy_stk = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][6]		// Current Enemy Special Attack
+						enemy_sdf = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][7]		// Current Enemy Special Defense
+						enemy_mtk = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][8]		// Current Enemy Magic Attack
+						enemy_mdf = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][9]		// Current Enemy Magic Defense
+						enemy_spd = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][10]		// Current Enemy Speed
 						sprite_index = global.battlers[obj_combatmenu.battler_list[obj_combatmenu.i]]		// Enemy Battler Sprite
+						
+						if global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][12] {
+							// Cripple Variables
+							enemy_arms = true
+							enemy_legs = true
+						}
+						
+						enemy_no = "Enemy " + string(obj_combatmenu.i + 1)
 						
 						obj_enemy_hp.id_list[obj_combatmenu.i] = id
 						obj_enemy_hp.enemy_list[obj_combatmenu.i] = obj_combatmenu.battler_list[obj_combatmenu.i]
@@ -78,6 +96,25 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 		with instance_create(x + 1568, y + 544, obj_player_battler) {
 			sprite_index = obj_player.co_sprite
 		}
+		
+		unmoved_actors = [obj_player_battler.id]
+		if array_length(obj_enemy_hp.id_list) == 1 {
+			unmoved_actors[1] = obj_enemy_hp.id_list[0]
+		} else if array_length(obj_enemy_hp.id_list) == 2 {
+			unmoved_actors[1] = obj_enemy_hp.id_list[0]
+			unmoved_actors[2] = obj_enemy_hp.id_list[1]
+		} else if array_length(obj_enemy_hp.id_list) == 3 {
+			unmoved_actors[1] = obj_enemy_hp.id_list[0]
+			unmoved_actors[2] = obj_enemy_hp.id_list[1]
+			unmoved_actors[3] = obj_enemy_hp.id_list[2]
+		} else if array_length(obj_enemy_hp.id_list) == 4 {
+			unmoved_actors[1] = obj_enemy_hp.id_list[0]
+			unmoved_actors[2] = obj_enemy_hp.id_list[1]
+			unmoved_actors[3] = obj_enemy_hp.id_list[2]
+			unmoved_actors[4] = obj_enemy_hp.id_list[3]
+		}
+		
+		max_turns = array_length(obj_enemy_hp.id_list) + 1
 		
 		// Create Buttons
 		x_margin = x + 96
@@ -101,6 +138,175 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 		with instance_create(x + 96, y + 960, obj_combat_button) {
 			if type == -1 {
 				type = "Items"
+			}
+		}
+	}
+}
+
+function combat_next_id() {
+	// Finds the next battler to move and returns their id
+	
+	if obj_combatmenu.unmoved_actors[0] != obj_player_battler.id {
+		fastest = obj_combatmenu.unmoved_actors[0]
+		for (i = 0; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
+			current = obj_combatmenu.unmoved_actors[i]
+			if current.enemy_spd > fastest.enemy_spd {
+					fastest = current
+			}
+		}
+		
+		array_delete(obj_combatmenu.unmoved_actors, i, 1)
+		return fastest.enemy_no
+		
+	} else {
+		fastest = obj_combatmenu.unmoved_actors[1]
+		for (i = 1; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
+			current = obj_combatmenu.unmoved_actors[i]
+			if current.enemy_spd > fastest.enemy_spd {
+					fastest = current
+			}
+		}
+		
+		if fastest.enemy_spd > global.spd {
+			array_delete(obj_combatmenu.unmoved_actors, i, 1)
+			return fastest.enemy_no
+		} else {
+			array_delete(obj_combatmenu.unmoved_actors, 0, 1)
+			return "Player"
+		}
+	}
+}
+
+function combat_populate_list(category) {
+	
+	obj_combatmenu.scroll_bar = false
+	with obj_combat_button {
+		if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
+			instance_destroy(self)
+		}
+	}
+	
+	if category == "Attacks" {
+		// Attack Type Select
+		with instance_create(x + 720, y + 768, obj_combat_button) {
+			if type == -1 {
+				type = "Physical"
+			}
+		}
+		with instance_create(x + 720, y + 832, obj_combat_button) {
+			if type == -1 {
+				type = "Special"
+			}
+		}
+	} else if category == "Physical" {
+		// Lists Known Physical Abilities
+		with obj_combatmenu {
+			
+			x_margin = obj_combatmenu.x + 720
+			y_margin = obj_combatmenu.y + 768
+			
+			for (i = 0; i < array_length(global.atks_physical); i ++) {
+				if global.atks_physical[i][6] {
+					with instance_create(x_margin, y_margin, obj_combat_button) {
+						if type == -1 {
+							type = "PhysicalAttack"
+							attack_id = obj_combatmenu.i
+						}
+					}
+					y_margin += 64
+				}
+			}
+			
+			if y_margin > 1024 {
+				scroll_bar = true
+			}
+		}
+	} else if category == "Special" {
+		// Lists Known Special Abilities
+		with obj_combatmenu {
+			
+			x_margin = obj_combatmenu.x + 720
+			y_margin = obj_combatmenu.y + 768
+			
+			for (i = 0; i < array_length(global.atks_special); i ++) {
+				if global.atks_special[i][6] {
+					with instance_create(x_margin, y_margin, obj_combat_button) {
+						if type == -1 {
+							type = "SpecialAttack"
+							attack_id = obj_combatmenu.i
+						}
+					}
+					y_margin += 64
+				}
+			}
+			
+			if y_margin > 1024 {
+				scroll_bar = true
+			}
+		}
+	} else if category == "Magic" {
+		// Lists Known Magic Abilities
+		with obj_combatmenu {
+			
+			x_margin = obj_combatmenu.x + 720
+			y_margin = obj_combatmenu.y + 768
+			
+			for (i = 0; i < array_length(global.atks_magical); i ++) {
+				if global.atks_magical[i][6] {
+					with instance_create(x_margin, y_margin, obj_combat_button) {
+						if type == -1 {
+							type = "MagicalAttack"
+							attack_id = obj_combatmenu.i
+						}
+					}
+					y_margin += 64
+				}
+			}
+			
+			if y_margin > 1024 {
+				scroll_bar = true
+			}
+		}
+	} else if category == "Items" {
+		// Attack Type Select
+		with obj_combatmenu {
+			
+			x_margin = obj_combatmenu.x + 720
+			y_margin = obj_combatmenu.y + 768
+			
+			for (i = 0; i < array_length(global.consumables); i ++) {
+				with instance_create(x_margin, y_margin, obj_combat_button) {
+					if type == -1 {
+						type = "ItemButton"
+						item_id = global.consumables[obj_combatmenu.i][0]
+					}
+				}
+					y_margin += 64
+			}
+			
+			if y_margin > 1024 {
+				scroll_bar = true
+			}
+		}
+	} else if category == "AttackSelect" {
+		// Attack Type Select
+		with obj_combatmenu {
+			
+			x_margin = obj_combatmenu.x + 720
+			y_margin = obj_combatmenu.y + 768
+			
+			for (i = 0; i < array_length(obj_enemy_hp.id_list); i ++) {
+				with instance_create(x_margin, y_margin, obj_combat_button) {
+					if type == -1 {
+						type = "EnemyTarget"
+						enemy_id = obj_enemy_hp.id_list[obj_combatmenu.i]
+					}
+				}
+					y_margin += 64
+			}
+			
+			if y_margin > 1024 {
+				scroll_bar = true
 			}
 		}
 	}
@@ -132,5 +338,18 @@ function combat_fetch_weapon_skill() {
 		}
 	} else {
 		return 0
+	}
+}
+
+function combat_text_colour(text) {
+	// Finds out what colour to draw text in
+	if string_char_at(text, 0) == "Y" {
+		return c_yellow
+	} else if string_char_at(text, 0) == "G" {
+		return c_green
+	} else if string_char_at(text, 0) == "B" {
+		return c_blue
+	} else {
+		return c_white
 	}
 }

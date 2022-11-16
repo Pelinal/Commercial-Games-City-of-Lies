@@ -5,6 +5,7 @@ draw_self()
 draw_set_alpha(1)
 draw_set_color(c_white)
 draw_set_font(fnt_inventory_small)
+draw_set_halign(fa_left)
 
 // Enemy Names
 if instance_number(obj_battler) >= 1 {

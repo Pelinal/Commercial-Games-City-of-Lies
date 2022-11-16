@@ -70,7 +70,7 @@ global.mdf = 5		// Magic Defense (determines how much damage is ignored when mag
 global.mtk_type = noone // Determines damage type of magical damage
 
 // Main Attributes
-global.spd = 5		// Speed - affects attack/movement speed
+global.spd = 10		// Speed - affects attack/movement speed
 global.edr = 5		// Endurance - affects max health
 global.dex = 5		// Dexterity - affects max stamina
 global.int = 5		// Inteligence - affects max mana

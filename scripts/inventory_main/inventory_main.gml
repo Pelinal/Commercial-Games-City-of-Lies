@@ -13,7 +13,7 @@ function inventory_initialise() {
 	// Create Item Library // ID corresponds with Index
 	// Index 0: Item Name, Index 1: Description, Index 2: Inventory List
 	// Starter Items
-	global.library[0] = ["Gold", "The universal currency used throughout Kosmos.", global.keyitems]
+	global.library[0] = ["Aurum", "The currency used exclusively in The Capital.", global.keyitems]
 	global.library[1] = ["Rusted Sword", "A blunt, rusted old sword. You should probably consider\nreplacing it.", global.weapons]
 	global.library[2] = ["Rotten Staff", "Rotten, but still useful. Who knows for how much longer\nthough.", global.weapons]
 	global.library[3] = ["Blunt Dagger", "Aren't daggers for stabbing? How you gonna stab anyone\nwith this dull blade?", global.weapons]

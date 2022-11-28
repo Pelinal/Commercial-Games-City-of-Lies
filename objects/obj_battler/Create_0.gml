@@ -22,4 +22,6 @@ enemy_mtk = 5
 enemy_mdf = 5
 enemy_spd = 5
 
+dead = false
+
 head_text = ["", ""]

@@ -159,7 +159,7 @@ function inventory_weapon_get_enchant_damage(item) {
 function inventory_weapon_type(weapon) {
 	for (i = 0; i < array_length(global.w_library); i ++) {
 		// Searches for weapon and returns type
-		if global.w_library[i][0] == item {
+		if global.w_library[i][0] == weapon {
 			return global.w_library[i][1]
 		}
 	}

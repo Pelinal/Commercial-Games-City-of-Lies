@@ -2,40 +2,41 @@
 function combat_initialise(){
 	// Create enemy/attack arrays
 	// Index 0: Name, Index 1: MHP, Index 2: MSP, Index 3: MMP, Index 4: Base Attack, Index 5: Base Defense, 
-	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Crit Rate, Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance?
-	global.enemies[0] = ["Rat", 30, 30, 0, 5, 5, 5, 5, 0, 0, 1, .1, false, "None", 0.0]
-	global.enemies[1] = ["Mugger", 50, 70, 0, 7, 5, 7, 5, 0, 0, 5, .2, true, "None", 0.0]
-	
-	// Create Enemy Attack Array
-	// Index 0: Attack ID, Index 1: Attack List
-	global.atks_enemy[0] = [[0, global.atks_physical]]
-	global.atks_enemy[1] = [[0, global.atks_physical], [0, global.atks_special], [3, global.atks_physical]]
+	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Luck, 
+	// Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance (Fire/Frost/Poison), Index 14: Casting Sprite (if applicable)
+	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 20, 3, 0, 0, 1, 3, false, "None", [0, 0, 0], noone]
+	global.enemies[1] = ["Mugger", 50, 70, 0, 35, 6, 40, 10, 0, 0, 3, 5, true, "None", [0, 0, 0.1], noone]
 	
 	// Physical Attacks
-	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
-	global.atks_physical[0] = ["Basic Attack", global.atk, 10, global.luk / 60, "None", 0.9, true, 115]
-	global.atks_physical[1] = ["Low Kick", 1.05 * global.atk, 25, global.luk / 60, "Legs", 0.7, false, 116]
-	global.atks_physical[2] = ["Shoulder Bash", 1.05 * global.atk, 25, global.luk / 60, "Arms", 0.7, false, 116]
-	global.atks_physical[3] = ["Slash", 1.1 * global.atk, 30, global.luk / 45, "None", 0.4 + (combat_fetch_weapon_skill() / 60), true, 115]
+	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
+	global.atks_physical[0] = ["Basic Attack", 1, 0, 0.0167, "None", 0.9, true, 115]
+	global.atks_physical[1] = ["Low Kick", 1.05, 10, 0.0167, "Legs", 0.7, false, 116]
+	global.atks_physical[2] = ["Shoulder Bash", 1.05, 15, 0.0167, "Arms", 0.7, false, 116]
+	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.4, true, 115]
 	
 	// Special Attacks
-	// Index 0: Name, Index 1: Damage, Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
-	global.atks_special[0] = ["Rapid Strike", 0.95 * global.atk, 15, 0.5, "None", 1, true, 12]
-	global.atks_special[1] = ["Fury", 1.25 * global.atk, 45, global.luk / 45, "None", 0.6, false, 14]
-	global.atks_special[2] = ["Cleave", 1.2 * global.atk, 40, global.luk / 60, "Arms", 0.9, false, 116]
-	global.atks_special[3] = ["Feint", 1.2 * global.atk, 40, global.luk / 60, "Legs", 0.9, false, 5]
+	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
+	global.atks_special[0] = ["Rapid Strike", 0.95, 15, 0.02, "None", 1, true, 12]
+	global.atks_special[1] = ["Fury", 1.25, 45, 0.02, "None", 0.6, false, 14]
+	global.atks_special[2] = ["Cleave", 1.2, 40, 0.0167, "Arms", 0.9, false, 116]
+	global.atks_special[3] = ["Feint", 1.2 * global.atk, 40, 0.0167, "Legs", 0.9, false, 5]
 	
 	// Magical Attacks
-	// Index 0: Name, Index 1: Magnitude, Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?, Index 7: Icon Index
-	global.atks_magical[0] = ["Fireball", 1.2 * global.atk, 30, "Attack", "Fire", 0.6 + (combat_fetch_weapon_skill() / 90), true, 96]
-	global.atks_magical[1] = ["Ice Spike", 1.2 * global.atk, 30, "Attack", "Frost", 0.6 + (combat_fetch_weapon_skill() / 90), false, 97]
-	global.atks_magical[2] = ["Acid Bomb", 1.2 * global.atk, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false, 2]
-	global.atks_magical[3] = ["Healing", global.max_hp * 0.3, 40, "Self", "Heal", 1, true, 140]
-	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), true, 11]
+	// Index 0: Name, Index 1: Magnitude (multiplier), Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?, Index 7: Icon Index
+	global.atks_magical[0] = ["Fireball", 1.2, 30, "Attack", "Fire", 0.6 + (combat_fetch_weapon_skill() / 90), true, 96]
+	global.atks_magical[1] = ["Ice Spike", 1.2, 30, "Attack", "Frost", 0.6 + (combat_fetch_weapon_skill() / 90), false, 97]
+	global.atks_magical[2] = ["Acid Bomb", 1.2, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false, 2]
+	global.atks_magical[3] = ["Healing", 0.3, 40, "Self", "Heal", 1, true, 140]
+	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), false, 11]
 	
 	// Battlers
 	global.battlers[0] = spr_battler_rat
 	global.battlers[1] = spr_battler_mugger
+	
+	// Create Enemy Attack Array
+	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 3: Known Special Attacks, Index 4: Known Magical Attacks
+	global.atks_enemy[0] = [[0]]
+	global.atks_enemy[1] = [[0, 3], [0]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone) {
@@ -74,6 +75,7 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 						enemy_mdf = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][9]		// Current Enemy Magic Defense
 						enemy_spd = global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][10]		// Current Enemy Speed
 						sprite_index = global.battlers[obj_combatmenu.battler_list[obj_combatmenu.i]]		// Enemy Battler Sprite
+						start_x = x
 						
 						if global.enemies[obj_combatmenu.battler_list[obj_combatmenu.i]][12] {
 							// Cripple Variables
@@ -155,7 +157,12 @@ function combat_next_id() {
 			}
 		}
 		
-		array_delete(obj_combatmenu.unmoved_actors, i, 1)
+		for (i = 0; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
+			if obj_combatmenu.unmoved_actors[i] == fastest {
+				array_delete(unmoved_actors, i, 1)
+			}
+		}
+		
 		return fastest.enemy_no
 		
 	} else {
@@ -343,12 +350,12 @@ function combat_fetch_weapon_skill() {
 
 function combat_text_colour(text) {
 	// Finds out what colour to draw text in
-	if string_char_at(text, 0) == "Y" {
+	if string_char_at(text, 1) == "Y" {
 		return c_yellow
-	} else if string_char_at(text, 0) == "G" {
-		return c_green
-	} else if string_char_at(text, 0) == "B" {
-		return c_blue
+	} else if string_char_at(text, 1) == "G" {
+		return c_lime
+	} else if string_char_at(text, 1) == "B" {
+		return c_aqua
 	} else {
 		return c_white
 	}

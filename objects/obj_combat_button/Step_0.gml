@@ -10,6 +10,15 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 		switch type {
 			case "Block":
 				obj_player_battler.current_move = "Block"
+				obj_combatmenu.current_display = "Attacking"
+				obj_combatmenu.alarm[0] = 30
+				with obj_combat_button {
+					if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
+						instance_destroy(self)
+					} else {
+						visible = false
+					}
+				}
 				break
 			case "Attacks":
 				obj_combatmenu.current_display = "Attacks"
@@ -35,28 +44,48 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				break
 			// ATTACKING
 			case "PhysicalAttack":
-				obj_combatmenu.current_display = "AttackSelect"
-				obj_player_battler.current_move = attack_id
-				obj_player_battler.attack_type = "Physical"
-				obj_player_battler.current_anim = "Normal"
+				if global.sp >= global.atks_physical[attack_id][2] {
+					obj_combatmenu.current_display = "AttackSelect"
+					obj_player_battler.current_move = attack_id
+					obj_player_battler.attack_type = "Physical"
+					obj_player_battler.current_anim = "Normal"
 				
-				with obj_combatmenu { combat_populate_list(current_display) }
+					with obj_combatmenu { combat_populate_list(current_display) }
+				}
 				break
 			case "SpecialAttack":
-				obj_combatmenu.current_display = "AttackSelect"
-				obj_player_battler.current_move = attack_id
-				obj_player_battler.attack_type = "Special"
-				obj_player_battler.current_anim = "Normal"
+				if global.sp >= global.atks_special[attack_id][2] {
+					obj_combatmenu.current_display = "AttackSelect"
+					obj_player_battler.current_move = attack_id
+					obj_player_battler.attack_type = "Special"
+					obj_player_battler.current_anim = "Normal"
 				
-				with obj_combatmenu { combat_populate_list(current_display) }
+					with obj_combatmenu { combat_populate_list(current_display) }
+				}
 				break
 			case "MagicalAttack":
-				obj_combatmenu.current_display = "AttackSelect"
-				obj_player_battler.current_move = attack_id
-				obj_player_battler.attack_type = "Magical"
-				obj_player_battler.current_anim = "Magic"
-				
-				with obj_combatmenu { combat_populate_list(current_display) }
+				if global.mp >= global.atks_magical[attack_id][2] {
+					obj_player_battler.current_move = attack_id
+					obj_player_battler.attack_type = "Magical"
+					obj_player_battler.current_anim = "Magic"
+					
+					if global.atks_magical[attack_id][3] != "Self" {
+						obj_combatmenu.current_display = "AttackSelect"
+						with obj_combatmenu { combat_populate_list(current_display) }
+					} else {
+						obj_combatmenu.current_display = "Attacking"
+						obj_combatmenu.current_display = "Attacking"
+						obj_combatmenu.alarm[0] = 30
+						//obj_player_battler.current_target = enemy_id
+						with obj_combat_button {
+							if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
+								instance_destroy(self)
+							} else {
+								visible = false
+							}
+						}
+					}
+				}
 				break
 			// ITEMS
 			case "ItemButton":

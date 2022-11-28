@@ -29,11 +29,23 @@ if global.class == "warrior" {
 	}
 }
 
-global.atk = global.base_atk + inventory_weapon_get_damage(global.weapon_equipped)
+if inventory_weapon_type(global.weapon_equipped) != "Staff" {
+	global.atk = global.base_atk + inventory_weapon_get_damage(global.weapon_equipped)
+} else {
+	global.atk = global.base_atk + (inventory_weapon_get_damage(global.weapon_equipped) / 2)
+}
 global.def = global.base_def + inventory_armour_total_rating()
-global.stk = global.base_stk + round((inventory_weapon_get_damage(global.weapon_equipped)) / 1.5)
+if global.class != "rogue" {
+	global.stk = global.base_stk + round((inventory_weapon_get_damage(global.weapon_equipped)))
+} else {
+	global.stk = global.base_stk + round((inventory_weapon_get_damage(global.weapon_equipped) / 1.5 ))
+}
 global.sdf = global.base_sdf + round(inventory_armour_total_rating() / 1.5)
-global.mtk = global.base_mtk + inventory_weapon_get_damage(global.weapon_equipped) / 2
+if inventory_weapon_type(global.weapon_equipped) != "Staff" {
+	global.mtk = global.base_mtk + inventory_weapon_get_damage(global.weapon_equipped) / 2
+} else {
+	global.mtk = global.base_mtk + inventory_weapon_get_damage(global.weapon_equipped)
+}
 global.mdf = global.base_mdf + inventory_armour_total_rating() / 2
 
 quest_checks()

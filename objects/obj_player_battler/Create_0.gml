@@ -11,3 +11,7 @@ current_target = noone
 attack_type = "Physical"
 consumable_to_use = -1
 head_text = ["", ""]
+
+player_arms = true
+player_legs = true
+blocking = false

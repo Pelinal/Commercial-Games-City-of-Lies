@@ -20,6 +20,23 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			
 			global.persona[0] = string_ucfirst(global.persona[0])
 			
+			if global.class == "warrior" {
+				inventory_add(1, 1) // Rusted Sword
+				inventory_add(4, 1) // Dented Chainmail
+				inventory_weapon_equip(1)
+				inventory_armour_equip(4)
+			} else if global.class == "rogue" {
+				inventory_add(3, 1) // Blunt Dagger
+				inventory_add(6, 1) // Drifters Jacket
+				inventory_weapon_equip(3)
+				inventory_armour_equip(6)
+			} else if global.class = "mage" {
+				inventory_add(2, 1) // Rotten Staff
+				inventory_add(5, 1) // Tattered Robes
+				inventory_weapon_equip(2)
+				inventory_armour_equip(5)
+			}
+			
 			room_goto(rm_palace_ext)
 		} else if type == "Next Setup" && string_length(global.persona[0]) > 0 {
 			obj_setup.phase = 2

@@ -9,7 +9,7 @@ if !global.immobile {
     // Movement and Collision
     if(place_meeting(x,y + vsp , obj_wall)) && !keyboard_check(vk_control) {
         while(!place_meeting(x,y+sign(vsp),obj_wall)){
-            y += sign(vsp);
+            y += 0(vsp);
         }
         vsp = 0;
     }
@@ -47,7 +47,7 @@ if !global.immobile {
 	
 	// Combat Test
 	if keyboard_check_pressed(vk_f2) {
-		combat_start(0, ms_combat_1, 0, 0)
+		combat_start(0, ms_combat_1, 0)
 	}
 	
     //// Message box test command

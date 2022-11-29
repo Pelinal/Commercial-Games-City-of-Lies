@@ -52,3 +52,29 @@ if current_display == "Attacking" {
 	draw_text(x + 1056, y + 900, string(global.mp) + "/" + string(global.max_mp))
 	draw_text(x + 1056, y + 964, string(global.sp) + "/" + string(global.max_sp))
 }
+
+if current_display == "Victory" {
+	draw_set_color(c_white)
+	draw_set_font(fnt_questlog_28)
+	draw_set_halign(fa_center)
+	draw_text(x + 960, y + 128, "Victory")
+	draw_set_halign(fa_left)
+	draw_set_font(fnt_inventory_small)
+	draw_text(384, 256, "XP Gained: " + string(kill_xp))
+	y_margin = 320
+	for (i = 0; i < array_length(rewards_list); i ++) {
+		draw_tile(ts_icons_iconset_64, global.icons[rewards_list[i][0]], 0, 384, y_margin)
+		draw_text(456, y_margin, string(global.library[rewards_list[i][0]][0]) + " x" + string(rewards_list[i][1]))
+		y_margin += 64
+	}
+}
+
+if current_display == "Defeat" {
+	draw_set_color(c_white)
+	draw_set_font(fnt_questlog_28)
+	draw_set_halign(fa_center)
+	draw_text(x + 960, y + 128, "Defeat")
+	draw_set_halign(fa_left)
+	draw_set_font(fnt_inventory_small)
+	draw_text(384, 256, "You ran out of HP and blacked out...")
+}

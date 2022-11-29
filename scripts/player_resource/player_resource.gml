@@ -36,3 +36,18 @@ function damage_sp(amount) {
 		global.sp = 0
 	}
 }
+function add_xp(amount) {
+	if global.exp + amount <= global.exp_req {
+		global.exp += amount
+		amount = 0
+	} else {
+		amount -= global.exp_req - global.exp		// Find remainder
+		global.exp += global.exp_req - global.exp	// Add exp to next level
+	}
+	
+	if global.exp >= global.exp_req {
+		global.exp = amount
+		global.exp_req = round(global.exp_req * 1.079775166) 
+		global.level += 1
+	}
+}

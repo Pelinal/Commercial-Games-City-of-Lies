@@ -92,6 +92,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				obj_combatmenu.current_display = "Attacking"
 				obj_player_battler.current_move = "Consumable"
 				obj_player_battler.consumable_to_use = item_id
+				inventory_remove(item_id, 1)
 				
 				with obj_combat_button {
 					if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
@@ -114,13 +115,41 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 					}
 				}
 				break
-			default:
-				with obj_combat_button {
-					if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
-						instance_destroy(self)
-					}
+			case "OKRewards":
+				add_xp(obj_combatmenu.kill_xp)
+				for (i = 0; i < array_length(obj_combatmenu.rewards_list); i ++) {
+					inventory_add(obj_combatmenu.rewards_list[i][0], obj_combatmenu.rewards_list[i][1])
 				}
-				obj_combatmenu.current_display = "Default"
+				
+				instance_destroy(obj_combat_button)
+				instance_destroy(obj_combatmenu)
+				instance_destroy(obj_battler)
+				instance_destroy(obj_player_battler)
+				instance_destroy(obj_enemy_hp)
+				global.immobile = false
+				global.hp = global.max_hp
+				global.sp = global.max_sp
+				global.mp = global.max_mp
+			case "OKDefeat":
+				instance_destroy(obj_combat_button)
+				instance_destroy(obj_combatmenu)
+				instance_destroy(obj_battler)
+				instance_destroy(obj_player_battler)
+				instance_destroy(obj_enemy_hp)
+				global.immobile = false
+				global.hp = global.max_hp
+				global.sp = global.max_sp
+				global.mp = global.max_mp
+				instance_destroy(self)
+			default:
+				if instance_number(obj_combatmenu) > 0 {
+					with obj_combat_button {
+						if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
+							instance_destroy(self)
+						}
+					}
+					obj_combatmenu.current_display = "Default"
+				}
 				break
 		}
 	}
@@ -128,30 +157,36 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	image_index = 0
 }
 
-if mouse_check_button_pressed(mb_right) || keyboard_check_pressed(vk_escape) {
-	if obj_combatmenu.current_display != "Attacking" {
-		with obj_combat_button {
-			if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
-				instance_destroy(self)
+if type == "OKRewards" || type == "OKDefeat" { 
+	depth = -1006
+}
+
+if instance_number(obj_combatmenu) > 0 {
+	if mouse_check_button_pressed(mb_right) || keyboard_check_pressed(vk_escape) {
+		if obj_combatmenu.current_display != "Attacking" {
+			with obj_combat_button {
+				if type != "Block" && type != "Attacks" && type != "Magic" && type != "Items" {
+					instance_destroy(self)
+				} else {
+					visible = true
+				}
+			}
+			obj_combatmenu.current_display = "Default"
+		}
+	}
+
+	if obj_combatmenu.scroll_bar {
+		if type == "PhysicalAttack" || type == "SpecialAttack" || type == "MagicalAttack" || type == "ItemButton" {
+			if y >= 1024 || y < 768 {
+				visible = false
 			} else {
 				visible = true
 			}
-		}
-		obj_combatmenu.current_display = "Default"
-	}
-}
-
-if obj_combatmenu.scroll_bar {
-	if type == "PhysicalAttack" || type == "SpecialAttack" || type == "MagicalAttack" || type == "ItemButton" {
-		if y >= 1024 || y < 768 {
-			visible = false
-		} else {
-			visible = true
-		}
-		if mouse_wheel_up() {
-			y -= 64
-		} else if mouse_wheel_down() {
-			y += 64
+			if mouse_wheel_up() {
+				y -= 64
+			} else if mouse_wheel_down() {
+				y += 64
+			}
 		}
 	}
 }

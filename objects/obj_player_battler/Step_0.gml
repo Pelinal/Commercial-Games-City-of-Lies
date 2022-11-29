@@ -192,7 +192,7 @@ if image_index >= image_number-1 {
 						case "Heal":
 							self.head_text[0] = "G" + string(damage)
 							alarm[0] = 30
-							restore_hp(global.atks_magical[current_move][1])
+							restore_hp(global.max_hp * global.atks_magical[current_move][1])
 							break
 					}
 				}

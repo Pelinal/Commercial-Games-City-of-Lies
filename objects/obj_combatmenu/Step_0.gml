@@ -15,8 +15,8 @@ if current_display == "Attacking" {
 		with obj_combat_button {
 			visible = true
 		}
-		restore_sp(global.max_sp * 0.05) // Restore 5% of SP Per turn
-		restore_mp(global.max_mp * 0.05) // Restore 5% of MP Per turn
+		restore_sp(global.max_sp * 0.1) // Restore 10% of SP Per turn
+		restore_mp(global.max_mp * 0.1) // Restore 10% of MP Per turn
 		
 		with obj_battler {
 			enemy_sp += global.enemies[enemy_id][2] * 0.1 // Enemies restore 10 % SP 
@@ -46,6 +46,30 @@ if current_display == "Attacking" {
 		turn_counter = 0
 		current_display = "Default"
 	}
+} else if current_display == "Victory" || current_display == "Defeat" { 
+	image_index = 2
 } else {
 	image_index = 0
+}
+
+if combat_enemies_defeated() && current_display != "Victory" {
+	turn = "None"
+	current_display = "Victory"
+	depth = -1005
+	obj_enemy_hp.visible = false
+	instance_destroy(obj_combat_button)
+	with instance_create(x + 720, x + 832, obj_combat_button) { 
+		type = "OKRewards"
+	}
+}
+
+if global.hp <= 0 && current_display != "Defeat" {
+	turn = "None"
+	current_display = "Defeat"
+	depth = -1005
+	obj_enemy_hp.visible = false
+	instance_destroy(obj_combat_button)
+	with instance_create(x + 720, x + 832, obj_combat_button) { 
+		type = "OKDefeat"
+	}
 }

@@ -20,3 +20,7 @@ max_turns = 0
 
 // Used to provide updates during battles
 battle_text = ["", "", ""]
+
+// Rewards
+rewards_list = []
+kill_xp = 0

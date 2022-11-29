@@ -39,6 +39,10 @@ if type == "PhysicalAttack" {
 	draw_set_halign(fa_center)
 	draw_text(x + 240, y + 12, global.enemies[enemy_id.enemy_id][0])
 	draw_set_halign(fa_left)
+} else if type == "OKRewards" || type == "OKDefeat" {
+	draw_set_halign(fa_center)
+	draw_text(x + 240, y + 12, "Ok")
+	draw_set_halign(fa_left)
 } else {
 	draw_set_halign(fa_center)
 	draw_text(x + 240, y + 12, string_ucfirst(type))

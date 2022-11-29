@@ -47,7 +47,9 @@ if !global.immobile {
 	
 	// Combat Test
 	if keyboard_check_pressed(vk_f2) {
-		combat_start(0, ms_combat_1, 0)
+		combat_start(0, ms_combat_1, 0, 0, noone, noone, [[0, 100]])
+	} else if keyboard_check_pressed(vk_f3) {
+		combat_start(0, ms_combat_1, 0, noone, noone, noone, [[0, 50]])
 	}
 	
     //// Message box test command

@@ -3,9 +3,9 @@ function combat_initialise(){
 	// Create enemy/attack arrays
 	// Index 0: Name, Index 1: MHP, Index 2: MSP, Index 3: MMP, Index 4: Base Attack, Index 5: Base Defense, 
 	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Luck, 
-	// Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance (Fire/Frost/Poison), Index 14: Casting Sprite (if applicable)
-	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 20, 3, 0, 0, 1, 3, false, "None", [0, 0, 0], noone]
-	global.enemies[1] = ["Mugger", 50, 70, 0, 35, 6, 40, 10, 0, 0, 3, 5, true, "None", [0, 0, 0.1], noone]
+	// Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance (Fire/Frost/Poison), Index 14: Casting Sprite (if applicable), Index 15: XP from Kill
+	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 20, 3, 0, 0, 1, 3, false, [0, 0, 0], noone, 50]
+	global.enemies[1] = ["Mugger", 50, 70, 0, 35, 6, 40, 10, 0, 0, 3, 5, true, [0, 0, 0.1], noone, 75]
 	
 	// Physical Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
@@ -39,7 +39,7 @@ function combat_initialise(){
 	global.atks_enemy[1] = [[0, 3], [0]]
 }
 
-function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone) {
+function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {
 	instance_destroy(obj_combat_button)
 	instance_destroy(obj_combatmenu)
 	instance_destroy(obj_battler)
@@ -61,6 +61,7 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 		
 		for (i = 0; i < array_length(battler_list); i ++) {
 			if battler_list[i] != noone {
+				kill_xp += global.enemies[battler_list[i]][15]
 				with instance_create(x_margin, y_margin, obj_battler) {
 					if enemy_id == -1 {
 						enemy_id = obj_combatmenu.battler_list[obj_combatmenu.i]
@@ -94,6 +95,8 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 			x_margin += 128
 			y_margin -= 128
 		}
+		
+		obj_combatmenu.rewards_list = reward_array
 		
 		with instance_create(x + 1568, y + 544, obj_player_battler) {
 			sprite_index = obj_player.co_sprite
@@ -358,5 +361,21 @@ function combat_text_colour(text) {
 		return c_aqua
 	} else {
 		return c_white
+	}
+}
+
+function combat_enemies_defeated() {
+	var dead_count = 0
+	for (i = 0; i < array_length(obj_enemy_hp.id_list); i ++) {
+		// Check all enemies to see if they have the 'dead' boolean as true
+		if obj_enemy_hp.id_list[i].dead {
+			dead_count += 1
+		}
+	}
+	
+	if dead_count >= array_length(obj_enemy_hp.id_list) {
+		return true
+	} else {
+		return false
 	}
 }

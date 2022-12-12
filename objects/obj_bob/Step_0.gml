@@ -9,14 +9,14 @@ if(distance_to_object(obj_player)) <= 32 {
 			if !quest_active(0) && !quest_completed(0) {
 				temp_name[0] = "Bob"
 				temp_text[0] = "Hello there friend! May I interest you in my wares?\nOr perhaps you wish to help me with something...? "
-				message_batch(temp_text, 1)
+				message(temp_text, 1)
 				message_nametag(temp_name, 1)
 				message_choices(["Trade", "Help?", "Leave"], id)
 			}
 			else if quest_active(0) && !quest_completed(0) && !quest_objective_is_visible(0, 2) {
 				temp_name[0] = "Bob"
 				temp_text[0] = "Hello again! Have you found those herbs yet? Or do\nyou wish to trade or craft? "
-				message_batch(temp_text, 1)
+				message(temp_text, 1)
 				message_nametag(temp_name, 1)
 				message_choices(["Trade", "Leave"], id)
 			}
@@ -25,7 +25,7 @@ if(distance_to_object(obj_player)) <= 32 {
 				temp_text[0] = "Aha! I see you have the herbs I need! Please let\nme make the potion now "
 				temp_name[1] = "Bob"
 				temp_text[1] = "Et voila! It is complete. Thank you for your help\ntake these SP Potions for your time. "
-				message_batch(temp_text, 2)
+				message(temp_text, 2)
 				message_nametag(temp_name, 2)
 				quest_change_desc(0, "You completed Bob's Errand.")
 				quest_complete_objective(0, 2)
@@ -75,7 +75,7 @@ if choice_result == "Trade" {
 	
 	choice_result = -1
 } else if choice_result == "Help?" {
-	message_batch(["Ah yes, I need some help making more potions for my\n" +
+	message(["Ah yes, I need some help making more potions for my\n" +
 					"customers. Would you find some herbs for me so I\ncan" +
 					"craft them? I will reward you for your troubles\nof course. "], 1)
 	quest_add(0) // Add Quest to craft health potion

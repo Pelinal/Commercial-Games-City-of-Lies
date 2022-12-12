@@ -11,6 +11,7 @@ crafting_category = ""
 current_tab = "buy"
 craft_amount = 1
 ench_selected_items = [-1, -1, -1]
+current_vendor = noone
 
 // Scrolling
 can_scroll = false

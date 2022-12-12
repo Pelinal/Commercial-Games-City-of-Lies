@@ -4,6 +4,8 @@ display_reset(0, true)
 image_speed = 0
 depth = 0
 
+intro_text = false
+
 // Sprites used for animations
 lr_sprite = noone
 up_sprite = noone

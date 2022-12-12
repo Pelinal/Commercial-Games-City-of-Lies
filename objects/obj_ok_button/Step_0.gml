@@ -37,7 +37,10 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				inventory_armour_equip(5)
 			}
 			
-			room_goto(rm_palace_ext)
+			room_goto(rm_docks_new_ext)
+			
+			obj_player.x = 338
+			obj_player.y = 239
 		} else if type == "Next Setup" && string_length(global.persona[0]) > 0 {
 			obj_setup.phase = 2
 			with instance_create(896, 668, obj_ok_button) {

@@ -10,18 +10,18 @@ obj_trademenu.can_scroll = false
 if type == "buy" {
 	obj_trademenu.current_tab = "buy"
 	obj_trademenu.sprite_to_draw = spr_trademenu
-	trade_populate("buying")
+	with obj_trademenu { trade_populate("buying") }
 }
 else if type == "sell" {
 	obj_trademenu.current_tab = "sell"
 	obj_trademenu.sprite_to_draw = spr_trademenu
-	trade_populate(obj_trademenu.category)
+	with obj_trademenu {  trade_populate(obj_trademenu.category) }
 }
 else if type == "craft" {
 	obj_trademenu.current_tab = "craft"
 	obj_trademenu.sprite_to_draw = spr_crafting
 	//show_message(obj_trademenu.recipe_list)
-	trade_populate("crafting")
+	with obj_trademenu { trade_populate("crafting") }
 	
 	with instance_create(obj_trademenu.x + 276, obj_trademenu.y + 444, obj_plusminus) {
 		type = "plus"

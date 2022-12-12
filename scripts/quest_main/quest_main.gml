@@ -4,17 +4,18 @@ function quest_initialise(){
 	/// Initialise the global quest lists
 	
 	// 0: Active (bool), 1: Complete (bool), 2: Tracked (bool)
-	global.quests[0] = [false, false, false]
-	global.quests[1] = [true, false, false]
+	global.quests[0] = [true, false, false]
+	global.quests[1] = [false, false, false]
 	
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
-	global.quest_library[0] = ["Bob's Errand", "Side", "Bob has tasked you with recovering 2 herbs. Combine them with water to make an\n" +
-														"Health Potion and then return back to Bob.", "Bob", "Palace of Obedience", 
-														[[73, 3]], ["Collect Capitolina Prima (0/1)", "Collect Clover (0/1)", "Return to Bob"]]
-	global.quest_library[1] = ["Quest 2", "Side", "The Second Quest, duh.", "Josh", "Palace of Obedience", [[86, 69]], ["Be excellent to each other."]]
+	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family\n" +
+														"once lived here, ask around the port for clues.", "None", "Docklands",
+														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus"]]
+														
+	global.quest_library[1] = ["The Job", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
 	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
-	global.quest_objectives[0] = [[true, true, false], [false, false, false]]
+	global.quest_objectives[0] = [[true, false, false], [false, false, false]]
 	global.quest_objectives[1] = [[true], [false]]
 }
 

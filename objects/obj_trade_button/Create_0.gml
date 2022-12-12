@@ -11,3 +11,4 @@ row_id = -1				// ID of row corresponding to button
 item_price = 0			// Price of item in list
 overview_row = -1
 craft_amount = 1
+current_list = []

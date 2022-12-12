@@ -3,10 +3,10 @@ Converted builtin - line 32: view_xview[0] -> __view_get( e__VW.XView, 0 )
 Converted builtin - line 32: view_yview[0] -> __view_get( e__VW.YView, 0 )
 Converted description /// @description message(text)/// @param text
 
-Converting GML script: ${project_dir}\scripts\message_batch\message_batch.gml
+Converting GML script: ${project_dir}\scripts\message\message.gml
 Converted builtin - line 15: view_xview[0] -> __view_get( e__VW.XView, 0 )
 Converted builtin - line 15: view_yview[0] -> __view_get( e__VW.YView, 0 )
-Converted description /// @description message_batch(text_list, batch)/// @param text_list
+Converted description /// @description message(text_list, batch)/// @param text_list
 /// @param  batch
 
 Converting GML script: ${project_dir}\scripts\message_nametag\message_nametag.gml

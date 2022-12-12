@@ -1,6 +1,6 @@
 /// @description message(text)
 /// @param text
-function message(argument0) {
+function message_old(argument0) {
 	// MAX Line size = 50-51 Characters
 
 	text = argument0

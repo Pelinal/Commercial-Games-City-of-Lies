@@ -8,4 +8,4 @@ type = -1
 
 obj_trademenu.current_tab = "buy"
 
-trade_populate("buying")
+with obj_trademenu { trade_populate("buying") }

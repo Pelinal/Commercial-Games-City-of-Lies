@@ -9,7 +9,7 @@ if !global.immobile {
     // Movement and Collision
     if(place_meeting(x,y + vsp , obj_wall)) && !keyboard_check(vk_control) {
         while(!place_meeting(x,y+sign(vsp),obj_wall)){
-            y += 0(vsp);
+            y += sign(vsp);
         }
         vsp = 0;
     }
@@ -68,7 +68,7 @@ if !global.immobile {
     //    temp_text[1] = "And here's another one. "
     //    temp_name[2] = "Patriarch Koluss"
     //    temp_text[2] = "Last but not least, here's one more. "
-    //    message_batch(temp_text, 3)
+    //    message(temp_text, 3)
     //    message_nametag(temp_name, 3)
     //}
 	

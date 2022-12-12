@@ -7,13 +7,19 @@ if room != rm_setup {
 		obj_quest_tracker.visible = false
 		global.immobile = true
 		quest_populate(current_tab)
+		
+		if quest_tracked_id() >= 0 {
+			obj_questlog.overview_id = quest_tracked_id()
+		} else {
+			obj_questlog.overview_id = -1
+		}
+	
 		visible = true
 	}
 
 	if keyboard_check_pressed(vk_escape) && visible {
 		visible = false
 		global.immobile = false
-		obj_questlog.overview_id = -1
 	
 		if quest_tracked_id() >= 0 {
 			obj_quest_tracker.visible = true

@@ -1,16 +1,23 @@
 /// @description Check for trademenu visibility
 
+
+//if row_id >= array_length(obj_trademenu.stock_list) {
+//	instance_destroy(self)
+//}
+
 if obj_trademenu.current_tab != "craft" {
-	if obj_trademenu.stock_list[row_id][1] <= 0 && obj_trademenu.current_tab == "buy" {
-		array_delete(obj_trademenu.stock_list, row_id, 1)
-		instance_destroy(self)
-		instance_destroy(obj_trade_button)
-		trade_populate("buying")
-	}
 	if obj_trademenu.current_tab == "sell" && inventory_fetch(item_id) <= 0 {
 		instance_destroy(self)
 		instance_destroy(obj_trade_button)
-		trade_populate(obj_trademenu.category)
+		with obj_trademenu { trade_populate(obj_trademenu.category) }
+		
+	}
+	
+	if obj_trademenu.current_tab == "buy" && obj_trademenu.current_vendor.stock_list[row_id][1] <= 0 {
+		array_delete(obj_trademenu.stock_list, row_id, 1)
+		instance_destroy(self)
+		instance_destroy(obj_trade_button)
+		with obj_trademenu { trade_populate("buying") }
 	}
 }
 if obj_trademenu.sprite_to_draw == spr_crafting { sprite_index = spr_button_216_32 } else { sprite_index = spr_button_288_32 }

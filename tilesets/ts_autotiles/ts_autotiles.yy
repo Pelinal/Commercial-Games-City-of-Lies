@@ -233,6 +233,24 @@
         380,
         330,
       ],"closed_edge":false,},
+    {"resourceType":"GMAutoTileSet","resourceVersion":"1.0","name":"autotile_1","tiles":[
+        298,
+        263,
+        262,
+        286,
+        251,
+        297,
+        249,
+        285,
+        250,
+        261,
+        299,
+        287,
+        310,
+        309,
+        311,
+        274,
+      ],"closed_edge":false,},
   ],
   "tileAnimationFrames": [
     {"resourceType":"GMTileAnimation","resourceVersion":"1.0","name":"animation_1","frames":[
@@ -620,7 +638,7 @@
         526,
       ],},
   ],
-  "tileAnimationSpeed": 10.0,
+  "tileAnimationSpeed": 1.0,
   "tileAnimation": {
     "FrameData": [
       0,

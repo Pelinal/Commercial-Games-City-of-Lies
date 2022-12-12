@@ -10,10 +10,10 @@ if visible {
 		instance_destroy(obj_trade_button)
 	
 		if obj_trademenu.current_tab = "buy" {
-			trade_populate("buying")
+			with obj_trademenu { trade_populate("buying") }
 		}
 		else if obj_trademenu.current_tab = "sell" {
-			trade_populate(obj_trademenu.category)
+			with obj_trademenu { trade_populate(obj_trademenu.category) }
 		}
 	}
 	

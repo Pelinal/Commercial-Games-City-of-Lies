@@ -131,6 +131,7 @@ function inventory_initialise() {
 	global.library[110] = ["Frost Damage", "An enchantment that inflicts Frost Damage on\ntouch.", global.materials]
 	global.library[111] = ["Poison Damage", "An enchantment that inflicts Poison Damage\non touch.", global.materials]
 	// Items continue
+	global.library[112] = ["EXP", "Experience Points Item", global.keyitems] /// SPECIAL: NOT AN ITEM (Used for quest rewards only)
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -254,6 +255,7 @@ function inventory_initialise() {
 	global.icons[109] = 96		// Fire Damage
 	global.icons[110] = 97		// Frost Damage
 	global.icons[111] = 2		// Poison Damage
+	global.icons[112] = 123		// EXP
 	
 }
 

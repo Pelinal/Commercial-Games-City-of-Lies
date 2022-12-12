@@ -26,14 +26,29 @@ if current_district != -1 {
 	draw_set_halign(fa_left)
 }
 
+switch room {
+	case rm_palace_ext:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1758 * image_xscale), y_icon_origin + (865 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_palace_gf:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1800 * image_xscale), y_icon_origin + (905 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_new_ext:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1451 * image_xscale), y_icon_origin + (748 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_promenade_ext:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1495 * image_xscale), y_icon_origin + (705 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+}
+
 if room == rm_palace_ext {
-	draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1758 * image_xscale), y_icon_origin + (865 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+	
 	
 	//draw_set_font(fnt_textbox)
 	//draw_set_colour(c_black)
 	//draw_text(x_icon_origin + (1758 * image_xscale) + 24, y_icon_origin + (865 * image_yscale) - 6, "Player")
 } else if room == rm_palace_gf {
-	draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1800 * image_xscale), y_icon_origin + (905 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+	
 	
 	//draw_set_font(fnt_textbox)
 	//draw_set_colour(c_black)

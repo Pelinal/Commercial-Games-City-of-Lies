@@ -10,12 +10,12 @@ function quest_initialise(){
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
 	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family\n" +
 														"once lived here, ask around the port for clues.", "None", "Docklands",
-														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus"]]
+														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect"]]
 														
 	global.quest_library[1] = ["The Job", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
 	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
-	global.quest_objectives[0] = [[true, false, false], [false, false, false]]
+	global.quest_objectives[0] = [[true, false, false, false, false], [false, false, false, false, false]]
 	global.quest_objectives[1] = [[true], [false]]
 }
 

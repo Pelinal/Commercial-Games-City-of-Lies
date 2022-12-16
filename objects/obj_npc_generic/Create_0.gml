@@ -12,6 +12,12 @@ walk_distance = 64  // Amount to walk both - and + on the axis from original pos
 current_dir = -1 // The current direction (-1 Left, 1 Right)
 
 char_type = "Sailor 1" // Refers to the sprites to be used
+char_name = "Name"	// The unique character name
+
+choice_result = -1 // Used on objects that have choices
+
+in_dialogue = false
+pre_dir = 1
 
 /// SPRITES
 lr_sprite = spr_sailor_1_lr

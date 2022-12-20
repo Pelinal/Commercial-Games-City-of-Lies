@@ -12,6 +12,6 @@ function message_nametag(argument0, argument1) {
 	    obj_nametag.batch = batch-1
 	}
 
-
+	obj_nametag.batch_counter = 0
 
 }

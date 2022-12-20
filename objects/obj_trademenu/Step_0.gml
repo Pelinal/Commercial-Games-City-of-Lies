@@ -13,3 +13,5 @@ if keyboard_check(vk_escape) {
 // failsafe
 if scroll_value < max_scroll { scroll_value = 0 }
 if scroll_value > max_scroll { scroll_value = max_scroll }
+
+global.immobile = true

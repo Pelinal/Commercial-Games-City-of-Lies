@@ -74,6 +74,8 @@ function quest_add(quest_id) {
 	global.quests[quest_id][0] = true
 	//
 	global.quests[quest_id][1] = false
+	
+	message_notification("Started Quest: " + global.quest_library[quest_id][0])
 }
 
 function quest_track(quest_id) {
@@ -104,6 +106,8 @@ function quest_complete(quest_id) {
 	}
 	
 	obj_quest_tracker.visible = false
+	
+	message_notification("Completed Quest: " + global.quest_library[quest_id][0])
 }
 
 function quest_abandon(quest_id) {
@@ -112,6 +116,7 @@ function quest_abandon(quest_id) {
 	global.quests[quest_id][2] = false
 	
 	quest_reset_all_objectives(quest_id)
+	message_notification("Abandoned Quest: " + global.quest_library[quest_id][0])
 }
 
 /// Objective related actions
@@ -119,6 +124,7 @@ function quest_abandon(quest_id) {
 function quest_complete_objective(quest_id, objective_id) {
 	// Sets specified quest objective to complete
 	global.quest_objectives[quest_id][1][objective_id] = true
+	message_notification("Updated Quest: " + global.quest_library[quest_id][0])
 }
 
 function quest_complete_all_objectives(quest_id) {
@@ -126,6 +132,7 @@ function quest_complete_all_objectives(quest_id) {
 		global.quest_objectives[quest_id][1][i] = true // Set all to complete
 		global.quest_objectives[quest_id][0][i] = true // Set all to visible
 	}
+	message_notification("Updated Quest: " + global.quest_library[quest_id][0])
 }
 
 function quest_reset_all_objectives(quest_id) {

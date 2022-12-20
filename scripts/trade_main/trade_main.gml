@@ -23,7 +23,7 @@ function trade_populate(type){
 		x_margin = obj_trademenu.x + 24
 		y_margin = obj_trademenu.y + 72
 
-		for (i = 0; i < array_length(pop_list); i ++) {
+		for (i = 0; i < array_length(obj_trademenu.pop_list); i ++) {
 			with instance_create(x_margin, y_margin, obj_trade_button) {
 				if row_id == -1 {	
 					row_id = obj_trademenu.i

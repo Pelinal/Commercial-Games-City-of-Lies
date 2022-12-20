@@ -35,7 +35,8 @@ function message_old(argument0) {
 	    obj_messagebox.display_text = text
 	    obj_messagebox.display_text_list = text_list
 	}
-
+	
+	obj_messagebox.batch_counter = 0
 
 
 }

@@ -70,28 +70,33 @@ if(distance_to_object(obj_player)) <= 32 {
 	}
 }
 
-if choice_result != -1 {
-	switch char_name {
-		case "Rasaara":
-			if choice_result == "Bribe (50)" && inventory_fetch(0) >= 50 {
-				inventory_remove(0, 50)
-				var temp_name, temp_text
-				temp_name[0] = "Rasaara"
-				temp_text[0] = "Ahh thats much better! It's all coming back to\n" +
-							   "me. You need to speak with my boss, Meriaas.\n" +
-							   "He hangs around on the Promenade, just east of\n" +
-							   "here. He'll know something for sure. "
-				quest_complete_objective(0, 1) // Complete "Ask Around Port"
-				quest_show_objective(0, 3)	   // Add Objective "Speak to Meriaas"
-				choice_result = -1
-			}
-			break
-		default:
-			choice_result = -1
-			in_dialogue = false
-			global.immobile = false
-			break
+if choice_result == "Bribe (50)" && char_name == "Rasaara" {
+	if inventory_fetch(0) >= 50 {
+		inventory_remove(0, 50)
+		var temp_name, temp_text
+		temp_name[0] = "Rasaara"
+		temp_text[0] = "Ahh thats much better! It's all coming back to\n" +
+						"me. You need to speak with my boss, Meriaas.\n" +
+						"He hangs around on the Promenade, just east of\n" +
+						"here. He'll know something for sure. "
+		message(temp_text, 1)
+		message_nametag(temp_name, 1)
+		quest_complete_objective(0, 1) // Complete "Ask Around Port"
+		quest_show_objective(0, 3)	   // Add Objective "Speak to Meriaas"
+		choice_result = -1
+	} else {
+		var temp_name, temp_text
+		temp_name[0] = "Rasaara"
+		temp_text[0] = "That's nice... but it seems you're a little low\n" +
+						"on coin at the moment. Come back when you can\n" +
+						"afford my information. "
+		message(temp_text, 1)
+		message_nametag(temp_name, 1)
+		choice_result = -1
 	}
+} else {
+	choice_result = -1
+	global.immobile = false
 }
 
 // Walking

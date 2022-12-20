@@ -1,7 +1,7 @@
 /// @description Engage Trading
 
 if(distance_to_object(obj_player)) <= 32 {
-    if keyboard_check(vk_space) && !global.immobile {
+    if keyboard_check(vk_space) && !global.immobile && instance_number(obj_trademenu) == 0 {
         global.immobile = true
 		
 		// Create Tabs

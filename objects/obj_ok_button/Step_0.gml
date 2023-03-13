@@ -37,7 +37,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				inventory_armour_equip(5)
 			}
 			
-			room_goto(rm_docks_new_ext)
+			room_goto(rm_intro)
 			
 			obj_player.x = 338
 			obj_player.y = 239

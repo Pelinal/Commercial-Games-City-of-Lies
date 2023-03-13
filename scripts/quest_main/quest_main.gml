@@ -10,12 +10,12 @@ function quest_initialise(){
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
 	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family\n" +
 														"once lived here, ask around the port for clues.", "None", "Docklands",
-														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect"]]
+														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse of Ruffians", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building"]]
 														
-	global.quest_library[1] = ["The Job", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
+	global.quest_library[1] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
 	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
-	global.quest_objectives[0] = [[true, false, false, false, false], [false, false, false, false, false]]
+	global.quest_objectives[0] = [[true, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[1] = [[true], [false]]
 }
 
@@ -91,14 +91,14 @@ function quest_track(quest_id) {
 }
 
 function quest_complete(quest_id) {
-	// Forcibly complete a quest, and all its objectives and add all rewards to inventory
+	// Forcibly complete a quest, and add all rewards to inventory
 	global.quests[quest_id][0] = false // Deactivate quest
 	global.quests[quest_id][1] = true // Set to complete
 	global.quests[quest_id][2] = false // stop tracking
 	
 	global.quest_library[quest_id][1] = "Completed"
 	
-	quest_complete_all_objectives(quest_id)
+	//quest_complete_all_objectives(quest_id)
 	
 	for (i = 0; i < array_length(global.quest_library[quest_id][5]); i++) {
 		// if global.quest_library[quest_id][5][i][0] != whatever the ID for EXP pseudoitem will be 

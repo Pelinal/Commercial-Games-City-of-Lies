@@ -13,11 +13,13 @@ if obj_trademenu.current_tab != "craft" {
 		
 	}
 	
-	if obj_trademenu.current_tab == "buy" && obj_trademenu.current_vendor.stock_list[row_id][1] <= 0 {
-		array_delete(obj_trademenu.stock_list, row_id, 1)
-		instance_destroy(self)
-		instance_destroy(obj_trade_button)
-		with obj_trademenu { trade_populate("buying") }
+	if obj_trademenu.current_vendor != noone {
+		if obj_trademenu.current_tab == "buy" && obj_trademenu.current_vendor.stock_list[row_id][1] <= 0 {
+			array_delete(obj_trademenu.stock_list, row_id, 1)
+			instance_destroy(self)
+			instance_destroy(obj_trade_button)
+			with obj_trademenu { trade_populate("buying") }
+		}
 	}
 }
 if obj_trademenu.sprite_to_draw == spr_crafting { sprite_index = spr_button_216_32 } else { sprite_index = spr_button_288_32 }

@@ -3,4 +3,4 @@
 depth = -1000
 
 loot = 0
-chest_id = 0
+chest_id = noone

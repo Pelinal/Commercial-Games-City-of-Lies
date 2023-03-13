@@ -55,9 +55,12 @@ if current_display == "Attacking" {
 if combat_enemies_defeated() && current_display != "Victory" {
 	turn = "None"
 	current_display = "Victory"
+	obj_player.prev_battle = "Victory"
 	depth = -1005
 	obj_enemy_hp.visible = false
 	instance_destroy(obj_combat_button)
+	audio_stop_sound(music_id)
+	audio_resume_all()
 	with instance_create(x + 720, x + 832, obj_combat_button) { 
 		type = "OKRewards"
 	}
@@ -66,9 +69,12 @@ if combat_enemies_defeated() && current_display != "Victory" {
 if global.hp <= 0 && current_display != "Defeat" {
 	turn = "None"
 	current_display = "Defeat"
+	obj_player.prev_battle = "Defeat"
 	depth = -1005
 	obj_enemy_hp.visible = false
 	instance_destroy(obj_combat_button)
+	audio_stop_sound(music_id)
+	audio_resume_all()
 	with instance_create(x + 720, x + 832, obj_combat_button) { 
 		type = "OKDefeat"
 	}

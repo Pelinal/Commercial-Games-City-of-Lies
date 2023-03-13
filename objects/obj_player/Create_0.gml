@@ -18,9 +18,11 @@ ca_sprite = noone
 hsp = 0 // Horizontal Speed
 vsp = 0 // Vertical Speed
 
-movespeed = 2.5 // Movement Speed (for both directions)
+base_speed = 3
+movespeed = 0.833333333 // Movement Speed (for both directions)
 asp = 0.2 // Animation Speed
 
+prev_battle = noone
 
 /// Globals ///
 // Currencies
@@ -93,4 +95,4 @@ global.staves = 5		// Increases hit chance + damage of staves
 global.barter = 5		// Increases sale price + decreases buy price
 global.locks = 5		// Allows you to pick different tiers of locks (4 - Basic, 8 - Standard, 16 - Complex, 22 - Master)
 global.archaeology = 5	// Allows you to decipher different tiers of Founder Writings (5 - Beginner, 10 - Average, 20 - Fluent, 30 - Loremaster)
-
+global.charisma = 5		// Allows you to persaude/intimidate people in dialogue (5 - Pragmatic, 10 - Stubborn, 15 - Resolute, 22 - Unwavering, 30 - Ignorant)

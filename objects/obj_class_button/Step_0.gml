@@ -38,7 +38,6 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sdf = 10
 			global.mtk = 5
 			global.mdf = 5
-			
 		}
 		else if class_id == 2 {
 			global.class = "warrior"

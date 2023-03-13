@@ -81,7 +81,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Docklands",
-    "path": "folders/Sprites/Characters/Docklands.yy",
+    "name": "Sailors",
+    "path": "folders/Sprites/Characters/Docklands/Sailors.yy",
   },
 }

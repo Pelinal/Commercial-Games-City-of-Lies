@@ -11,7 +11,26 @@ function trade_populate(type){
 	else if type == "accessories"	{ obj_trademenu.pop_list = global.accessories	}
 	else if type == "key items"		{ obj_trademenu.pop_list = global.keyitems		}
 	else if type == "materials"		{ obj_trademenu.pop_list = global.materials		}
-	else if type == "general"		{ obj_trademenu.pop_list = "all"				}
+	else if type == "general"		{
+		obj_trademenu.pop_list = []
+		for (var iv = 0; iv < array_length(global.consumables); iv ++) {
+			array_push(obj_trademenu.pop_list, global.consumables[iv])
+		}
+		for (var iv = 0; iv < array_length(global.armours); iv ++) {
+			array_push(obj_trademenu.pop_list, global.armours[iv])
+		}
+		for (var iv = 0; iv < array_length(global.weapons); iv ++) {
+			array_push(obj_trademenu.pop_list, global.weapons[iv])
+		}
+		for (var iv = 0; iv < array_length(global.accessories); iv ++) {
+			array_push(obj_trademenu.pop_list, global.accessories[iv])
+		}
+		for (var iv = 0; iv < array_length(global.materials); iv ++) {
+			array_push(obj_trademenu.pop_list, global.materials[iv])
+		}
+		show_debug_message("POP LIST: " + string(obj_trademenu.pop_list))
+		show_debug_message("CON LIST: " + string(global.consumables))
+	}
 	// find vendor's items
 	else if type == "buying"		{ obj_trademenu.pop_list = obj_trademenu.stock_list }
 	// crafting menu
@@ -23,13 +42,13 @@ function trade_populate(type){
 		x_margin = obj_trademenu.x + 24
 		y_margin = obj_trademenu.y + 72
 
-		for (i = 0; i < array_length(obj_trademenu.pop_list); i ++) {
+		for (var i = 0; i < array_length(obj_trademenu.pop_list); i ++) {
 			with instance_create(x_margin, y_margin, obj_trade_button) {
-				if row_id == -1 {	
-					row_id = obj_trademenu.i
-					item_id = obj_trademenu.pop_list[obj_trademenu.i][0]
+				if row_id == -1 {
+					row_id = i
+					item_id = obj_trademenu.pop_list[i][0]
 					item_price = trade_price(item_id, obj_trademenu.current_tab)
-					draw_y = (obj_trademenu.i * 72) + 162
+					draw_y = (i * 72) + 162
 				}
 			}
 			y_margin += 32
@@ -72,10 +91,10 @@ function trade_price(item, type) {
 	}
 	
 	if type == "sell" {
-		price *= (global.barter)/30
+		price *= (global.barter)/15
 	}
 	else if type == "buy" {
-		price /= (global.barter)/30
+		price /= (global.barter)/15
 	}
 	else if type == "craft" {
 		price *= 1.5

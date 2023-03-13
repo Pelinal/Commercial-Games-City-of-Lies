@@ -52,7 +52,7 @@ if image_index >= image_number-1 {
 	if attack_type == "Physical" {
 		damage = global.atks_physical[current_move][1] * global.atk
 		chance = global.atks_physical[current_move][5] + (combat_fetch_weapon_skill() / 60)
-		crit = global.atks_physical[current_move][3] * global.luk
+		crit = global.atks_physical[current_move][3] * (global.luk/25)
 		cost = global.atks_physical[current_move][2]
 		cripple = global.atks_physical[current_move][4]
 		

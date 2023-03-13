@@ -39,6 +39,9 @@ switch room {
 	case rm_docks_promenade_ext:
 		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1495 * image_xscale), y_icon_origin + (705 * image_yscale), 23 * image_xscale, 36 * image_yscale)
 		break
+	case rm_docks_south_ext:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1451 * image_xscale), y_icon_origin + (900 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
 }
 
 if room == rm_palace_ext {

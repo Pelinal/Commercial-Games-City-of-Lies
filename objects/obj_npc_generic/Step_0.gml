@@ -28,7 +28,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			temp_name[0] = char_name
 			switch char_name {
 				case "Rasaara":
-					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) {
+					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) && quest_objective_is_visible(0, 1) {
 						criteria = true
 						temp_text[0] = "Do I know anything about the Duqarte family?\n" +
 									   "I might... but I'm afraid my lips are sealed\n" +
@@ -38,8 +38,8 @@ if(distance_to_object(obj_player)) <= 32 {
 						choices = ["Bribe (50)", "Leave"]
 					}
 					break
-				case "Quintan":
-					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) {
+				case "Quintas":
+					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) && quest_objective_is_visible(0, 1) {
 						criteria = true
 						temp_text[0] = "What's that? You want to know about the\n" +
 									   "Duqartes? I don't know anything about that.\n" +
@@ -48,7 +48,7 @@ if(distance_to_object(obj_player)) <= 32 {
 					}
 					break
 				case "Aelian the Drunkard":
-					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) {
+					if quest_active(0) && !quest_completed(0) && !quest_objective_is_complete(0, 1) && quest_objective_is_visible(0, 1) {
 						criteria = true
 						temp_text[0] = "Two-cart-whatnow? Leaf me bee! I'm takin' in\n" +
 									   "the sytes an' yoor in the wey! Bee gyon! *burp*  "

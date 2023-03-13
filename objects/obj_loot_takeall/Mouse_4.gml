@@ -12,6 +12,8 @@ if index >= 4 { inventory_add(loot[3][0], loot[3][1])	message_notification(globa
 if index >= 5 { inventory_add(loot[4][0], loot[4][1])	message_notification(global.library[loot[4][0]][0] + " X" + string(loot[4][1]) + " added to inventory")}
 if index >= 6 { inventory_add(loot[5][0], loot[5][1])	message_notification(global.library[loot[5][0]][0] + " X" + string(loot[5][1]) + " added to inventory")}
 
+obj_loot_menu.chest_id.open = false
+obj_loot_menu.chest_id.empty = true
 instance_destroy(obj_loot_menu)
 instance_destroy(obj_loot_button)
 global.immobile = false

@@ -48,4 +48,11 @@ if inventory_weapon_type(global.weapon_equipped) != "Staff" {
 }
 global.mdf = global.base_mdf + inventory_armour_total_rating() / 2
 
+// Item Un-Hider
+//with obj_chest {
+//	if room == loc_room {
+//		instance_activate_object(id)
+//	}
+//}
+
 quest_checks()

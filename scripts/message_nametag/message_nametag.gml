@@ -1,6 +1,6 @@
 /// @description message_nametag(name_list, batch)
-/// @param name_list
-/// @param  batch
+/// @param NameList
+/// @param BatchAmount
 function message_nametag(argument0, argument1) {
 	// Script used to enable display of Nametags on textboxes
 

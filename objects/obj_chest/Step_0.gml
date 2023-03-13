@@ -43,8 +43,9 @@ else if gatherable && opening {
 	
 	global.immobile = true
 	
-	instance_create(x + 32, y - 80, obj_loot_menu)
-	obj_loot_menu.loot = loot
+	var loot_menu = instance_create(x + 32, y - 80, obj_loot_menu)
+	loot_menu.loot = loot
+	loot_menu.chest_id = id
 	
 	with obj_loot_menu {
 		// Create buttons
@@ -68,3 +69,13 @@ else if gatherable && opening {
 	open = true
 }
 
+if !empty && open && instance_number(obj_loot_menu) == 0 {
+	open = false
+}
+
+if empty  {
+	image_index = image_number-1
+	open = true
+	opening = false
+	loot = []
+} 

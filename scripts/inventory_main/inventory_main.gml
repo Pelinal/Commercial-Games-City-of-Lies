@@ -132,6 +132,8 @@ function inventory_initialise() {
 	global.library[111] = ["Poison Damage", "An enchantment that inflicts Poison Damage\non touch.", global.materials]
 	// Items continue
 	global.library[112] = ["EXP", "Experience Points Item", global.keyitems] /// SPECIAL: NOT AN ITEM (Used for quest rewards only)
+	// For Main Quest #1
+	global.library[113] = ["Compromising Letter", "A highly compromising letter detailing\nall the nefarious dealings of Prefect Carus.", global.keyitems]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -256,6 +258,7 @@ function inventory_initialise() {
 	global.icons[110] = 97		// Frost Damage
 	global.icons[111] = 2		// Poison Damage
 	global.icons[112] = 123		// EXP
+	global.icons[113] = 227		// Compromising Letter
 	
 }
 
@@ -395,6 +398,8 @@ function inventory_add(item, amount) {
 	if !owned {
 		array_push(category, [item, amount])
 	}
+	
+	//message_notification(global.library[item][0] + " X " + string(amount) + " added to Inventory")
 }
 
 function inventory_check(item) {
@@ -446,6 +451,8 @@ function inventory_remove(item, amount) {
 	else if global.library[item][2] == global.accessories	{ inventory_accessory_remove(item, amount)	}
 	else if global.library[item][2] == global.keyitems		{ inventory_keyitem_remove(item, amount)	}
 	else if global.library[item][2] == global.materials		{ inventory_material_remove(item, amount)	}
+	
+	//message_notification(global.library[item][0] + " X " + string(amount) + " removed from Inventory")
 }
 
 function inventory_delete(item) {

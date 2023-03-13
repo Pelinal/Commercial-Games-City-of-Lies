@@ -4,22 +4,27 @@ function combat_initialise(){
 	// Index 0: Name, Index 1: MHP, Index 2: MSP, Index 3: MMP, Index 4: Base Attack, Index 5: Base Defense, 
 	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Luck, 
 	// Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance (Fire/Frost/Poison), Index 14: Casting Sprite (if applicable), Index 15: XP from Kill
-	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 20, 3, 0, 0, 1, 3, false, [0, 0, 0], noone, 50]
-	global.enemies[1] = ["Mugger", 50, 70, 0, 35, 6, 40, 10, 0, 0, 3, 5, true, [0, 0, 0.1], noone, 75]
+	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 3, 3, 0, 0, 1, 0, false, [0, 0, 0], noone, 50]
+	global.enemies[1] = ["Mugger", 50, 70, 0, 5, 6, 3, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
+	global.enemies[2] = ["Sailor", 50, 70, 0, 5, 6, 6, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
+	global.enemies[3] = ["Cpt. Neman", 75, 85, 0, 8, 8, 7, 10, 0, 0, 0, 3, true, [0, 0, 0.25], noone, 150]
+	
+	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	
 	// Physical Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
-	global.atks_physical[0] = ["Basic Attack", 1, 0, 0.0167, "None", 0.9, true, 115]
-	global.atks_physical[1] = ["Low Kick", 1.05, 10, 0.0167, "Legs", 0.7, false, 116]
-	global.atks_physical[2] = ["Shoulder Bash", 1.05, 15, 0.0167, "Arms", 0.7, false, 116]
-	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.4, true, 115]
+	global.atks_physical[0] = ["Basic Attack", 1, 0, 0.1, "None", 0.9, true, 115]
+	global.atks_physical[1] = ["Low Kick", 1.05, 10, 0.2, "Legs", 0.7, false, 116]
+	global.atks_physical[2] = ["Shoulder Bash", 1.05, 15, 0.2, "Arms", 0.7, false, 116]
+	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.25, true, 115]
+	global.atks_physical[4] = ["Cleave", 1.1, 20, 0.45, "None", 0.25, true, 115]
 	
 	// Special Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
-	global.atks_special[0] = ["Rapid Strike", 0.95, 15, 0.02, "None", 1, true, 12]
-	global.atks_special[1] = ["Fury", 1.25, 45, 0.02, "None", 0.6, false, 14]
-	global.atks_special[2] = ["Cleave", 1.2, 40, 0.0167, "Arms", 0.9, false, 116]
-	global.atks_special[3] = ["Feint", 1.2 * global.atk, 40, 0.0167, "Legs", 0.9, false, 5]
+	global.atks_special[0] = ["Rapid Strike", 0.95, 15, 0.25, "None", 1, true, 12]
+	global.atks_special[1] = ["Fury", 1.25, 45, 0.2, "None", 0.6, false, 14]
+	global.atks_special[2] = ["Quickdraw", 1.2, 40, 0.25, "Arms", 0.9, false, 116]
+	global.atks_special[3] = ["Feint", 1.2, 40, 0.5, "Legs", 0.9, false, 5]
 	
 	// Magical Attacks
 	// Index 0: Name, Index 1: Magnitude (multiplier), Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?, Index 7: Icon Index
@@ -32,11 +37,15 @@ function combat_initialise(){
 	// Battlers
 	global.battlers[0] = spr_battler_rat
 	global.battlers[1] = spr_battler_mugger
+	global.battlers[2] = spr_battler_sailor
+	global.battlers[3] = spr_battler_neman
 	
 	// Create Enemy Attack Array
-	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 3: Known Special Attacks, Index 4: Known Magical Attacks
+	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 2: Known Special Attacks, Index 3: Known Magical Attacks
 	global.atks_enemy[0] = [[0]]
-	global.atks_enemy[1] = [[0, 3], [0]]
+	global.atks_enemy[1] = [[0], [0]]
+	global.atks_enemy[2] = [[0], [0]]
+	global.atks_enemy[3] = [[0], [0]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {
@@ -49,15 +58,16 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 	
 	obj_combatmenu.battleback = location
 	obj_combatmenu.battler_list = [enemy1, enemy2, enemy3, enemy4]
+	audio_pause_all()
 	audio_play_sound(music, 100, true)
 	
 	instance_create(obj_combatmenu.x, obj_combatmenu.y, obj_enemy_hp)
-	
+	obj_combatmenu.music_id = music
 	with obj_combatmenu {
 		
 		// Create Battlers
 		x_margin = x + 288
-		y_margin = y + 512
+		y_margin = y + 480
 		
 		for (i = 0; i < array_length(battler_list); i ++) {
 			if battler_list[i] != noone {

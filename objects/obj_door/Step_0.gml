@@ -1,7 +1,19 @@
 if(distance_to_object(obj_player)) <= 32 {
-    if keyboard_check(vk_space) && !opening {
-        image_speed = 0.4
-        opening = true
+    if keyboard_check(vk_space) && !opening  {
+		if !locked && !conditional {
+	        image_speed = 0.4
+	        opening = true
+		} else if locked {
+			// TBA
+			message_notification("The Door is Locked")
+		} else if conditional {
+			if condition {
+				image_speed = 0.4
+				opening = true
+			} else {
+				message_notification("You cannot go here now")
+			}
+		}
     }
 }
 if(distance_to_object(obj_player)) <= 0 {

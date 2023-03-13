@@ -15,6 +15,7 @@ if type == "buy" {
 else if type == "sell" {
 	obj_trademenu.current_tab = "sell"
 	obj_trademenu.sprite_to_draw = spr_trademenu
+	obj_trademenu.pop_list = []
 	with obj_trademenu {  trade_populate(obj_trademenu.category) }
 }
 else if type == "craft" {

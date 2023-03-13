@@ -1,4 +1,5 @@
 /// @description  Movement, Collision and Animations
+
 if !global.immobile {
     // Take keyboard inputs
     if keyboard_check(ord("W"))      { vsp = -movespeed }
@@ -28,7 +29,7 @@ if !global.immobile {
     if !keyboard_check(ord("W")) || !keyboard_check(ord("S")) { vsp = 0 }
     
     // Sprint
-    if keyboard_check (vk_shift) { movespeed = 4.5 } else { movespeed = 2.5 }
+    if keyboard_check (vk_shift) { movespeed = 6 + (base_speed * (global.spd/30)) } else { movespeed = 3 + (base_speed * (global.spd/30)) }
     
     // Animation Control
     if keyboard_check(ord("W")) { sprite_index = up_sprite image_xscale = 1 image_speed = asp }
@@ -50,6 +51,19 @@ if !global.immobile {
 		combat_start(0, ms_combat_1, 0, 0, noone, noone, [[0, 100]])
 	} else if keyboard_check_pressed(vk_f3) {
 		combat_start(0, ms_combat_1, 0, noone, noone, noone, [[0, 50]])
+	}
+	
+	// Immobile During Messages
+	if instance_number(obj_messagebox) > 0 {
+		global.immobile = false
+	}
+	
+	// Debug palace
+	if keyboard_check_pressed(vk_f4) {
+		// Teleport to palace
+		room_goto(rm_palace_ext)
+		obj_player.x = 977
+		obj_player.y = 564
 	}
 	
     //// Message box test command

@@ -36,7 +36,7 @@ if choice_result == "Tell Him" || choice_result == "Lie" {
 					   "city? "
 	}
 	temp_name[1] =  global.persona[0]
-	temp_text[1] =  "*You tell him of your mission to discover you long\n" +
+	temp_text[1] =  "*You tell him of the mission to discover your long\n" +
 					"lost family, and how it led to this city* "
 	temp_name[2] =  "Harbourmaster Farso"
 	temp_text[2] =  "Ahh, so it is your family you seek? Well yes... I\n" +
@@ -142,14 +142,14 @@ if choice_result == "Tell Him" || choice_result == "Lie" {
 	if instance_number(obj_messagebox) < 1 {
 		var temp_name, temp_text
 		temp_name[0] = "Harbourmaster Farso"
-		temp_text[0] = "Hmm... you want to know about Prefect Valus? He\n" +
+		temp_text[0] = "Hmm... you want to know about Prefect Carus? He\n" +
 						"is our local governor, of sorts. It's his duty to\n " +
 						"manage the day to day affairs of the Docklands -\n" +
 						"one of the many prefectures by which the city is \n" +
 						"divided. "
 		temp_name[1] = "Harbourmaster Farso"
 		temp_text[1] = "All Prefects are elected from members of the Vox,\n" +
-						"our governing body. Valus is a traditionalist, and\n" +
+						"our governing body. Carus is a traditionalist, and\n" +
 						"is heavily against reform, especially concerned you\n" +
 						"outsiders. "
 		temp_name[2] = "Harbourmaster Farso"

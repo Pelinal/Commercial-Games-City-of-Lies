@@ -6,6 +6,7 @@ function inventory_keyitem_initialise() {
 	global.k_library[0] = [8, "Note", "read"] // Orders
 	global.k_library[1] = [0, "Gold", "destroy"] // Gold
 	global.k_library[2] = [112, "EXP", "destroy"] // EXP - NOT AN ACTUAL ITEM
+	global.k_library[3] = [113, "Letter", "read"] // Compromising Letter
 }
 
 function inventory_keyitem_add(item, amount) {

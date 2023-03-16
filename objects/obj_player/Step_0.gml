@@ -1,11 +1,11 @@
 /// @description  Movement, Collision and Animations
 
-if !global.immobile {
+if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(obj_combatmenu) == 0 {
     // Take keyboard inputs
-    if keyboard_check(ord("W"))      { vsp = -movespeed }
-    else if keyboard_check(ord("S")) { vsp =  movespeed }
-    if keyboard_check(ord("A"))      { hsp = -movespeed }
-    else if keyboard_check(ord("D")) { hsp =  movespeed }
+    if keyboard_check(ord("W"))			{ vsp = -movespeed }
+    else if keyboard_check(ord("S"))	{ vsp =  movespeed }
+    if keyboard_check(ord("A"))			{ hsp = -movespeed }
+    else if keyboard_check(ord("D")) 	{ hsp =  movespeed }
     
     // Movement and Collision
     if(place_meeting(x,y + vsp , obj_wall)) && !keyboard_check(vk_control) {

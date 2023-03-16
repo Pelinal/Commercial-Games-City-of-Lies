@@ -62,10 +62,28 @@ if choice_result == "Tell Him" || choice_result == "Lie" {
 		
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
-		message_choices(["Questions", "Leave"], id)
 		
+		choice_result = "HarbourmasterMapGive"
+	}
+} else if choice_result == "HarbourmasterMapGive" {
+	if instance_number(obj_messagebox) < 1 {
+		if inventory_fetch(114) == 0 {
+			inventory_add(114, 1)
+			message_notification("Capital Map X 1 added to inventory (I to View)")
+		}
+		var temp_name, temp_text
+		temp_name[0] = "Harbourmaster Farso"
+		temp_text[0] = "Oh and take this, it's a map of the city, should\n" +
+					   "prove useful in your search. Now then is there\n" +
+					   "anything else I can help with? "
+		
+		message(temp_text, 1)
+		message_nametag(temp_name, 1)
+		
+		message_choices(["Questions", "Leave"], id)
 	}
 } else if choice_result == "Leave" {
+	quest_change_desc(0, "After speaking with the Harbourmaster he has suggested asking around the port for clues, or speaking directly with the local Prefect in his manor.")
 	quest_complete_objective(0, 0)
 	quest_show_objective(0, 1)
 	quest_show_objective(0, 2)

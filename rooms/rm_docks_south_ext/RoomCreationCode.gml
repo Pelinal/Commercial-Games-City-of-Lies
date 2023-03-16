@@ -5,6 +5,8 @@ if !obj_player.intro_text {
 	obj_player.intro_text = true
 }
 
+area_notification("Entering: South Docks, Docklands")
+
 if !audio_is_playing(ms_docks_1) {
 	audio_stop_all()
 	audio_play_sound(ms_docks_1, 50, true)

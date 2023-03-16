@@ -1,6 +1,6 @@
 /// @description  Destroy when SPACE is pressed.
 
-
+global.immobile = true
 //if keyboard_check_pressed(vk_space) && batch_counter >= batch {
 //	if !choices_enabled {
 //		instance_destroy(self)

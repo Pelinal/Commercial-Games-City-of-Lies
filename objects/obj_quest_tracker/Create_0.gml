@@ -2,3 +2,4 @@
 
 depth = -1000
 visible = false
+mode = "closed"

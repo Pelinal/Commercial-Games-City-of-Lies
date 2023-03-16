@@ -1,5 +1,5 @@
 /// @description React to Display Changes
-
+global.immobile = true
 if current_display == "Attacking" {
 	image_index = 1
 	if turn == "None" && turn_counter < max_turns {

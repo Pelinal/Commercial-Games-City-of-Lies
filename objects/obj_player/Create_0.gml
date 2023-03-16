@@ -36,11 +36,12 @@ global.immobile = false // Determines whether or not the player can move
 global.persona[0] = "John Duqarte" // Name
 global.persona[1] = "Male"		   // Gender
 global.persona[2] = "Mr"		   // Title #1
-global.persona[3] = "Sir"		   // Title #2
-global.persona[4] = "Lord"		   // Title #3
-global.persona[5] = "He"		   // Pronoun #1
-global.persona[6] = "Him"		   // Pronoun #2
-global.persona[7] = "His"		   // Pronoun #3
+global.persona[3] = "sir"		   // Title #2
+global.persona[4] = "lord"		   // Title #3
+global.persona[5] = "he"		   // Pronoun #1
+global.persona[6] = "him"		   // Pronoun #2
+global.persona[7] = "his"		   // Pronoun #3
+global.persona[8] = "son"		   // Pronoun #4
 
 // Attributes
 global.hp = 70			// Player Health

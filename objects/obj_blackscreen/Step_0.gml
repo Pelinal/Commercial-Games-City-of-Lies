@@ -2,16 +2,21 @@
 global.immobile = true
 if fade == "FadeIn" {
 	// Fade from Black
-	image_alpha = 1
-	do {
-		image_alpha -= (0.0166666667 / duration) // Convert Seconds into Frames
+	if image_alpha = 1 {
+		do {
+			image_alpha -= (0.0166666667 / duration) // Convert Seconds into Frames
+		}
+		until image_alpha <= 0
 	}
-	until image_alpha <= 0
+	if image_alpha <= 0 { global.immobile = false instance_destroy(self) }
 } else {
 	// Fade to Black
-	image_alpha = 0
-	do {
-		image_alpha += (0.0166666667 / duration) // Convert Seconds into Frames
+	if image_alpha = 0 {
+		do {
+			image_alpha += (0.0166666667 / duration) // Convert Seconds into Frames
+		}
+		until image_alpha >= 1
 	}
-	until image_alpha >= 1
+	if image_alpha >= 1 { global.immobile = false instance_destroy(self) }
 }
+

@@ -77,6 +77,7 @@ if choice_result == "Carus01" {
 	}
 } else if choice_result == "Carus02" {
 	if instance_number(obj_messagebox) == 0 {
+		quest_change_desc(0, "Using blackmail I managed to get the Prefect to reveal the location of a property formerly owned by my family. It is a derelict building with a blue roof in the western side of the South Docks.")
 		quest_complete_objective(0, 4) // Complete "Blackmail the Prefect"
 		quest_show_objective(0, 8)
 		//scene_actor_move(id, ["L", "L", "L", "L", "L", "L", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"], true)

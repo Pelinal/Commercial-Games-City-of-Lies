@@ -36,6 +36,10 @@ if(distance_to_object(obj_player)) <= 32 {
 						batch_no = 1
 						choice_enabled = true
 						choices = ["Bribe (50)", "Leave"]
+					} else {
+						criteria = true
+						temp_text[0] = "I have nothing to say to you, beat it! "
+						batch_no = 1
 					}
 					break
 				case "Quintas":
@@ -45,6 +49,11 @@ if(distance_to_object(obj_player)) <= 32 {
 									   "Duqartes? I don't know anything about that.\n" +
 									   "Now, if you mind, I'm quite busy. "
 						batch_no = 1
+					} else {
+						criteria = true
+						temp_text[0] = "A newcomer, eh? I'd love to stay and chat\n" +
+									   "but I am quite busy, farewell "
+						batch_no = 1
 					}
 					break
 				case "Aelian the Drunkard":
@@ -52,6 +61,11 @@ if(distance_to_object(obj_player)) <= 32 {
 						criteria = true
 						temp_text[0] = "Two-cart-whatnow? Leaf me bee! I'm takin' in\n" +
 									   "the sytes an' yoor in the wey! Bee gyon! *burp*  "
+						batch_no = 1
+					} else {
+						criteria = true
+						temp_text[0] = "A noocomer en town ey? Mr pree-fekt won't\n" +
+									   "like tyhat, nope in deyd *burp*  "
 						batch_no = 1
 					}
 					break
@@ -75,14 +89,14 @@ if choice_result == "Bribe (50)" && char_name == "Rasaara" {
 		inventory_remove(0, 50)
 		var temp_name, temp_text
 		temp_name[0] = "Rasaara"
-		temp_text[0] = "Ahh thats much better! It's all coming back to\n" +
-						"me. You need to speak with my boss, Meriaas.\n" +
-						"He hangs around on the Promenade, just east of\n" +
-						"here. He'll know something for sure. "
+		temp_text[0] = string_wordwrap_width("Ahh thats much better! It's all coming back to me. You need to speak with my boss, Meriaas. " +
+											 "He hangs around on the Promenade, east of here. Wears a purple jacket. He'll know something for sure. ", 472, "\n", false)
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
 		quest_complete_objective(0, 1) // Complete "Ask Around Port"
 		quest_show_objective(0, 3)	   // Add Objective "Speak to Meriaas"
+		var temp_string = 
+		quest_change_desc(0, global.quest_library[0][2] + " A dockworker has told me to speak to their boss, Meriaas. He wears a purple coat and is east of the docks.")
 		choice_result = -1
 	} else {
 		var temp_name, temp_text

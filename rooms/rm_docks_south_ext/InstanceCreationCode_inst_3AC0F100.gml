@@ -6,3 +6,4 @@ newDir = "up"
 locked = false
 conditional = true
 condition = false
+depth = 500

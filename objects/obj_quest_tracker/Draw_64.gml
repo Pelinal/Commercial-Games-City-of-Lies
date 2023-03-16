@@ -32,6 +32,13 @@ if quest_tracked_id() >= 0 {
 		
 	}
 	
+	if mode == "expanded" {
+		// Draw Desc
+		image_index = 1
+		draw_text(x + 24, y + 224, string_wordwrap_width(global.quest_library[quest_id][2], 384, "\n", false))
+	} else {
+		image_index = 0
+	}
 	
 	
 }

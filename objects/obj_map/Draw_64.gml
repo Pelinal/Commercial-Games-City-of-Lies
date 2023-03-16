@@ -10,6 +10,7 @@ draw_set_color(c_white)
 draw_text(48, 1032, "X: " + string(x))
 draw_text(144, 1032, "Y: " + string(y))
 draw_text(240, 1032, "Zoom: " + string((image_xscale)*100) + "%")
+draw_text(48, 24, "Press ESC to Close Map")
 
 draw_set_font(fnt_questlog_large)
 draw_text(48, 48, "The Capital")
@@ -40,7 +41,19 @@ switch room {
 		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1495 * image_xscale), y_icon_origin + (705 * image_yscale), 23 * image_xscale, 36 * image_yscale)
 		break
 	case rm_docks_south_ext:
-		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1451 * image_xscale), y_icon_origin + (900 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1458 * image_xscale), y_icon_origin + (790 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_south_warehouse_01:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1498 * image_xscale), y_icon_origin + (812 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_promenade_manor_gf:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1493 * image_xscale), y_icon_origin + (675 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_promenade_inn_gf:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1498 * image_xscale), y_icon_origin + (725 * image_yscale), 23 * image_xscale, 36 * image_yscale)
+		break
+	case rm_docks_promenade_inn_1f:
+		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1498 * image_xscale), y_icon_origin + (725 * image_yscale), 23 * image_xscale, 36 * image_yscale)
 		break
 }
 

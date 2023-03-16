@@ -1,12 +1,17 @@
 if(distance_to_object(obj_player)) <= 32 {
-    if keyboard_check(vk_space) && !opening  {
+    if keyboard_check(vk_space) && !opening && !global.immobile {
 		if !locked && !conditional {
 	        image_speed = 0.4
 	        opening = true
 		} else if locked {
-			// TBA
-			message_notification("The Door is Locked")
-		} else if conditional {
+			if global.locks >= lock_level {
+				message_notification("Door Unlocked")
+				global.locks += 0.1
+				locked = false
+			} else {
+				message_notification("Requires Lockpicking Level " + string(lock_level))
+			}
+		} else if conditional && !locked {
 			if condition {
 				image_speed = 0.4
 				opening = true

@@ -9,8 +9,7 @@ if(distance_to_object(obj_player)) <= 32 {
 		temp_name[0] = "Commander Luxia"
 		temp_text[0] =  "Look, if you have business with the Prefect be \n" +
 						"swift, he does not tolerate the presence of\n" +
-						"outsiders for long... and neither do I.\n" +
-						"small favour for me. "
+						"outsiders for long and neither do I. "
 				
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)

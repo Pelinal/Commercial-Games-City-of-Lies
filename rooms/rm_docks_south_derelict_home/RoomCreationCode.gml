@@ -1,0 +1,1 @@
+area_notification("Entering: Warehouse No.3")

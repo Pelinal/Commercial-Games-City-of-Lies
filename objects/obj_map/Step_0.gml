@@ -1,6 +1,6 @@
 	/// @description Drag to move camera
 if room != rm_setup {
-	if keyboard_check_pressed(ord("M")) && !visible && !global.immobile {
+	if keyboard_check_pressed(ord("M")) && !visible && !global.immobile && inventory_fetch(114) > 0 {
 		visible = true
 		global.immobile = true
 		x = 0 

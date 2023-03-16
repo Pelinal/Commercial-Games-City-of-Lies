@@ -134,6 +134,8 @@ function inventory_initialise() {
 	global.library[112] = ["EXP", "Experience Points Item", global.keyitems] /// SPECIAL: NOT AN ITEM (Used for quest rewards only)
 	// For Main Quest #1
 	global.library[113] = ["Compromising Letter", "A highly compromising letter detailing\nall the nefarious dealings of Prefect Carus.", global.keyitems]
+	// Additions 14/03/23
+	global.library[114] = ["Capital Map", "A comprehensive map of The Capital and its\ndistricts. Press M to open it.", global.keyitems]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -258,7 +260,8 @@ function inventory_initialise() {
 	global.icons[110] = 97		// Frost Damage
 	global.icons[111] = 2		// Poison Damage
 	global.icons[112] = 123		// EXP
-	global.icons[113] = 227		// Compromising Letter
+	global.icons[113] = 236		// Compromising Letter
+	global.icons[114] = 231		// Capital Map
 	
 }
 

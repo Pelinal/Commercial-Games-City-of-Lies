@@ -1,7 +1,14 @@
 /// @description Open the Chest
+loot = global.chests[chests_id]
+if array_length(loot) == 0 {
+	image_index = image_number-1
+	open = true
+	empty = true
+	opening = false
+}
 
 if(distance_to_object(obj_player)) <= 32 {
-    if keyboard_check(vk_space) && !opening && !open && !empty {
+    if keyboard_check(vk_space) && !opening && !open && !empty && global.chests[chests_id] != [] {
         image_speed = 0.4
         opening = true
     }

@@ -23,7 +23,7 @@ if(distance_to_object(obj_player)) <= 32 {
 				temp_name[0] =  "Sofia"
 				temp_text[0] =  "You again? Didn't I just say I was busy?\n" +
 								"Or perhaps I didn't... what can Carus'\n" +
-								"slav... *ahem* secretary do for you? "
+								"sla... *ahem* secretary do for you? "
 				
 				message(temp_text, 1)
 				message_nametag(temp_name, 1)
@@ -38,6 +38,16 @@ if(distance_to_object(obj_player)) <= 32 {
 				message(temp_text, 1)
 				message_nametag(temp_name, 1)
 			}
+		} else {
+			var temp_name, temp_text
+			temp_name[0] =  "Sofia"
+			temp_text[0] =  "How does the Prefect expect me to sort all\n" +
+							"this paperwork?! It doesn't even have the\n" +
+							"simplest form of organisation. But... don't\n" +
+							"mind me. Speak to Carus, if you will. "
+				
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
 		}
 	}
 }
@@ -70,6 +80,8 @@ if choice_result == "Evidence" {
 		
 		persaude = "success"
 		inventory_add(113, 1) // Add "Compromising Letter"
+		message_notification(global.library[113][0] + " X " + string(1) + " added to Inventory")
+		quest_change_desc(0, "I have received compromising documents on Carus' illegal activities, this should be enough to get him to talk.")
 		choice_result = -1
 	} else {
 		var temp_name, temp_text

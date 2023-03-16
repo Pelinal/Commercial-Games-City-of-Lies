@@ -4,19 +4,35 @@ function quest_initialise(){
 	/// Initialise the global quest lists
 	
 	// 0: Active (bool), 1: Complete (bool), 2: Tracked (bool)
-	global.quests[0] = [true, false, false]
-	global.quests[1] = [false, false, false]
+	global.quests[0] = [true, false, false] // First Main Quest
+	global.quests[1] = [false, false, false] // Second Main Quest
+	global.quests[2] = [false, false, false] // Side Chain 1 pt 1 - Murder Investigation (Speak to witnesses, Investigate body, meet detective, go to hideout to plan, sleep there, attacked in sleep!, they get away)
+	global.quests[3] = [false, false, false] // Side Chain 1 pt 2 - Murder Investigation (Go to the place where the next murder will take place, HIDE, stop the next murder, un-mask the killer. Its a ..... need a twist of some kind? Perhaps someone who helps u betrays you?)
+	global.quests[4] = [false, false, false] // Side Chain 1 pt 3 - Murder Investigation (return to Geraud, report criminal to the Prefect, get paid, bid farewell to Geraud, for now)
+	global.quests[5] = [false, false, false] // Side Chain 2 pt 1 - Rival Merchants ( Make this quest involve going to a ruin somehow)
+	global.quests[6] = [false, false, false] // Side Chain 2 pt 2 - Rival Merchants
 	
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
-	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family\n" +
-														"once lived here, ask around the port for clues.", "None", "Docklands",
-														[[112, 100]], ["Speak to Harbourmaster Farso", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse of Ruffians", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building"]]
+	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family once lived here, ask around the port for clues.", "None", "Docklands",
+														[[112, 300]], ["Speak to the Harbourmaster", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse 3", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building"]]
 														
-	global.quest_library[1] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
+	global.quest_library[1] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 400]], ["OBJECTIVES."]]
+	global.quest_library[2] = ["Foreign Aid", "Side",  "The inkeep spoke of murders occurring in Docklands recently. The killer appears to target foreigners and the Prefect has done nothing to deal with the criminal. You should find the detective in his home on the promenade and help investigate.", "Bertram", "Docklands", 
+													   [[112, 150]], ["Speak with the Detective", "Speak to Witnesses", "Inspect the Body", "Speak with Geraud", "Go to Geraud's House", "Speak to Geraud", "Inspect the Board", "Sleep", "Defend Yourself!", "Speak to Geraud"]]
+	
+	global.quest_library[3] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
+	global.quest_library[4] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
+	global.quest_library[5] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
+	global.quest_library[6] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
 	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
 	global.quest_objectives[0] = [[true, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[1] = [[true], [false]]
+	global.quest_objectives[2] = [[false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false]]
+	global.quest_objectives[3] = [[true], [false]]
+	global.quest_objectives[4] = [[true], [false]]
+	global.quest_objectives[5] = [[true], [false]]
+	global.quest_objectives[6] = [[true], [false]]
 }
 
 function quest_populate(category) {
@@ -75,7 +91,7 @@ function quest_add(quest_id) {
 	//
 	global.quests[quest_id][1] = false
 	
-	message_notification("Started Quest: " + global.quest_library[quest_id][0])
+	message_notification("Started Quest: " + global.quest_library[quest_id][0] + " (J to view)")
 }
 
 function quest_track(quest_id) {
@@ -124,7 +140,7 @@ function quest_abandon(quest_id) {
 function quest_complete_objective(quest_id, objective_id) {
 	// Sets specified quest objective to complete
 	global.quest_objectives[quest_id][1][objective_id] = true
-	message_notification("Updated Quest: " + global.quest_library[quest_id][0])
+	message_notification("Updated Quest: " + global.quest_library[quest_id][0] + " (J to view)")
 }
 
 function quest_complete_all_objectives(quest_id) {
@@ -132,7 +148,7 @@ function quest_complete_all_objectives(quest_id) {
 		global.quest_objectives[quest_id][1][i] = true // Set all to complete
 		global.quest_objectives[quest_id][0][i] = true // Set all to visible
 	}
-	message_notification("Updated Quest: " + global.quest_library[quest_id][0])
+	message_notification("Updated Quest: " + global.quest_library[quest_id][0] + " (J to view)")
 }
 
 function quest_reset_all_objectives(quest_id) {

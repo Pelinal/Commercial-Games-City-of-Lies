@@ -34,7 +34,7 @@ if overview_id != -1 {
 	draw_set_halign(fa_left)
 	draw_set_font(fnt_inventory_small)
 	// Body
-	draw_text(x + 576, y + 240, global.quest_library[overview_id][2]) // description
+	draw_text(x + 576, y + 192, string_wordwrap_width(global.quest_library[overview_id][2], 1120, "\n", false)) // description
 	draw_set_font(fnt_questlog_medium)
 	draw_text(x + 576, y + 360, "Objectives")
 	obj_y = y + 420

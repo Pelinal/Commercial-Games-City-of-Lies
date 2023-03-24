@@ -19,7 +19,7 @@ function find_nearest_inn(){
 		case rm_docks_south_ext:
 			inn_room = rm_docks_promenade_inn_gf
 			break
-		case rm_docks_south_warehouse_01:
+		case rm_docks_south_warehouse_03:
 			inn_room = rm_docks_promenade_inn_gf
 			break
 		default:

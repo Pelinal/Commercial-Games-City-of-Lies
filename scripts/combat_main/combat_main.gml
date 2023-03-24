@@ -8,6 +8,7 @@ function combat_initialise(){
 	global.enemies[1] = ["Mugger", 50, 70, 0, 5, 6, 3, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[2] = ["Sailor", 50, 70, 0, 5, 6, 6, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[3] = ["Cpt. Neman", 75, 85, 0, 8, 8, 7, 10, 0, 0, 0, 3, true, [0, 0, 0.25], noone, 150]
+	global.enemies[4] = ["Cdr. Luxia", 2000, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
 	
 	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	
@@ -18,6 +19,7 @@ function combat_initialise(){
 	global.atks_physical[2] = ["Shoulder Bash", 1.05, 15, 0.2, "Arms", 0.7, false, 116]
 	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.25, true, 115]
 	global.atks_physical[4] = ["Cleave", 1.1, 20, 0.45, "None", 0.25, true, 115]
+	global.atks_physical[5] = ["Cinderblade", 2, 0, 0.8, "None", 0.8, false, 96] // Luxia's special move
 	
 	// Special Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
@@ -39,6 +41,7 @@ function combat_initialise(){
 	global.battlers[1] = spr_battler_mugger
 	global.battlers[2] = spr_battler_sailor
 	global.battlers[3] = spr_battler_neman
+	global.battlers[4] = spr_battler_luxia
 	
 	// Create Enemy Attack Array
 	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 2: Known Special Attacks, Index 3: Known Magical Attacks
@@ -46,6 +49,7 @@ function combat_initialise(){
 	global.atks_enemy[1] = [[0], [0]]
 	global.atks_enemy[2] = [[0], [0]]
 	global.atks_enemy[3] = [[0], [0]]
+	global.atks_enemy[4] = [[0, 5]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {
@@ -160,39 +164,54 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 
 function combat_next_id() {
 	// Finds the next battler to move and returns their id
-	
-	if obj_combatmenu.unmoved_actors[0] != obj_player_battler.id {
+	var fastest, fastest_i
+	show_debug_message("Player ID: " + string(obj_player_battler.id))
+	if obj_combatmenu.unmoved_actors[0] != obj_player_battler.id && array_length(obj_combatmenu.unmoved_actors) > 1 {
 		fastest = obj_combatmenu.unmoved_actors[0]
+		fastest_i = 0
+		show_debug_message("Before Deletion: " + string(unmoved_actors))
 		for (i = 0; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
-			current = obj_combatmenu.unmoved_actors[i]
+			var current = obj_combatmenu.unmoved_actors[i]
 			if current.enemy_spd > fastest.enemy_spd {
 					fastest = current
+					fastest_i = i
 			}
 		}
 		
-		for (i = 0; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
-			if obj_combatmenu.unmoved_actors[i] == fastest {
-				array_delete(unmoved_actors, i, 1)
-			}
-		}
+		array_delete(unmoved_actors, fastest_i, 1)
+		
+		show_debug_message("After Deletion: " + string(unmoved_actors))
 		
 		return fastest.enemy_no
 		
-	} else {
+	} else if obj_combatmenu.unmoved_actors[0] == obj_player_battler.id && array_length(obj_combatmenu.unmoved_actors) > 1 {
 		fastest = obj_combatmenu.unmoved_actors[1]
+		fastest_i = 1
+		show_debug_message("Before Deletion (else): " + string(unmoved_actors))
 		for (i = 1; i < array_length(obj_combatmenu.unmoved_actors); i ++) {
-			current = obj_combatmenu.unmoved_actors[i]
+			var current = obj_combatmenu.unmoved_actors[i]
 			if current.enemy_spd > fastest.enemy_spd {
 					fastest = current
+					fastest_i = i
 			}
 		}
 		
 		if fastest.enemy_spd > global.spd {
-			array_delete(obj_combatmenu.unmoved_actors, i, 1)
+			array_delete(obj_combatmenu.unmoved_actors, fastest_i, 1)
 			return fastest.enemy_no
 		} else {
 			array_delete(obj_combatmenu.unmoved_actors, 0, 1)
 			return "Player"
+		}
+	} else if array_length(obj_combatmenu.unmoved_actors) == 1 {
+		if obj_combatmenu.unmoved_actors[0] == obj_player_battler.id {
+			array_delete(obj_combatmenu.unmoved_actors, 0, 1)
+			return "Player"
+		} else {
+			var enemynum = obj_combatmenu.unmoved_actors[0].enemy_no
+			array_delete(obj_combatmenu.unmoved_actors, 0, 1)
+			return enemynum
+			
 		}
 	}
 }

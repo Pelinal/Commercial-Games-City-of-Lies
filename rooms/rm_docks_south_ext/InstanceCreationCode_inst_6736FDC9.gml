@@ -1,7 +1,7 @@
 visible = true
-travel_to = rm_docks_south_warehouse_01
-newX = 432
-newY = 560
+travel_to = rm_docks_south_derelict_home
+newX = 208
+newY = 320
 newDir = "up"
 lock_level = 1 // Req: Lockpicking 1
 locked = true

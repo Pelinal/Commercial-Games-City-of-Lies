@@ -147,6 +147,7 @@ if choice_result == "Accept" && char_name == "Captain Neman" {
 		quest_complete_objective(0, 5) // Complete "Clear Warehouse of Ruffians"
 		quest_show_objective(0, 6)	   // Add Objective "Return to Meriaas"
 		obj_player.prev_battle = noone
+		dead = true
 		choice_result = -1
 	} else if obj_player.prev_battle == "Defeat" {
 		find_nearest_inn() 

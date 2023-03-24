@@ -43,7 +43,7 @@ switch room {
 	case rm_docks_south_ext:
 		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1458 * image_xscale), y_icon_origin + (790 * image_yscale), 23 * image_xscale, 36 * image_yscale)
 		break
-	case rm_docks_south_warehouse_01:
+	case rm_docks_south_warehouse_03:
 		draw_sprite_stretched(spr_mapicon_player, 0, x_icon_origin + (1498 * image_xscale), y_icon_origin + (812 * image_yscale), 23 * image_xscale, 36 * image_yscale)
 		break
 	case rm_docks_promenade_manor_gf:

@@ -26,7 +26,7 @@ if current_display == "Attacking" {
 			if enemy_mp > global.enemies[enemy_id][3] { enemy_sp = global.enemies[enemy_id][3] }
 		}
 		
-		unmoved_actors = [obj_player_battler.id]
+		unmoved_actors[0] = obj_player_battler.id
 		if array_length(obj_enemy_hp.id_list) == 1 {
 			unmoved_actors[1] = obj_enemy_hp.id_list[0]
 		} else if array_length(obj_enemy_hp.id_list) == 2 {

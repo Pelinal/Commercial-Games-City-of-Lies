@@ -14,7 +14,7 @@ function quest_initialise(){
 	
 	// 0: Name, 1: Type, 2: Desc, 3: Quest Giver, 4: Location, 5: Reward(s), 6: Objectives
 	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family once lived here, ask around the port for clues.", "None", "Docklands",
-														[[112, 300]], ["Speak to the Harbourmaster", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse 3", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building"]]
+														[[112, 300]], ["Speak to the Harbourmaster", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse 3", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building", "Defend Yourself!"]]
 														
 	global.quest_library[1] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 400]], ["OBJECTIVES."]]
 	global.quest_library[2] = ["Foreign Aid", "Side",  "The inkeep spoke of murders occurring in Docklands recently. The killer appears to target foreigners and the Prefect has done nothing to deal with the criminal. You should find the detective in his home on the promenade and help investigate.", "Bertram", "Docklands", 
@@ -26,7 +26,7 @@ function quest_initialise(){
 	global.quest_library[6] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
 	// 3D Array (index = quest id, 1st list = visibility, 2nd list = complete/yea/nay)
-	global.quest_objectives[0] = [[true, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false]]
+	global.quest_objectives[0] = [[true, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[1] = [[true], [false]]
 	global.quest_objectives[2] = [[false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[3] = [[true], [false]]

@@ -9,4 +9,12 @@ lr_sprite = spr_commander_lr
 dn_sprite = spr_commander_dn
 up_sprite = spr_commander_up
 
+move_list = []
+moving = false
+move_i = -1
+move_x = 0
+move_y = 0
+
+onetimemove = false
+
 in_dialogue = false

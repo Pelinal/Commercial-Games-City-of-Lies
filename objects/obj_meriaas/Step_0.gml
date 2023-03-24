@@ -84,10 +84,13 @@ if choice_result == "Meriaas01" {
 		message_notification(global.library[113][0] + " X 1 added to Inventory")
 		quest_change_desc(0, "I have received compromising documents on Carus' illegal activities, this should be enough to get him to talk.")
 		quest_complete_objective(0, 6)
-		//scene_actor_move(id, ["L", "L", "L", "L", "L", "L", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"], false) // REDO this so that it takes [Direction, AmountX32] input instead
-		//scene_screen_to_black(1)
-		//alarm[0] = 75
 		
+		move_list = ["L", "L", "L", "L", "L", "L", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "END"]
+		moving = true
+		move_i = 0
+		move_x = x
+		move_y = y
+		alarm[0] = 1
 		choice_result = -1
 	}
 }

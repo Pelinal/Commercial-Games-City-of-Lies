@@ -1,23 +1,13 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scene_screen_to_black(fade_duration){
+function scene_screen_fade(fade_speed=0.05, goto_rm=noone, room_x=0, room_y=0) {
 	// Fades to Black
-	if instance_number(obj_blackscreen) == 0 {
-		var blackscreen = instance_create_depth(0,0,-2000, obj_blackscreen)
-		blackscreen.duration = fade_duration
-		blackscreen.fade = "FadeOut"
-		blackscreen.image_alpha = 0
-	} else {
-		return	
-	}
-}
-function scene_screen_from_black(fade_duration){
-	// Fades from Black
-	if instance_number(obj_blackscreen) == 0 {
-		var blackscreen = instance_create_depth(0,0,-2000, obj_blackscreen)
-		blackscreen.duration = fade_duration
-		blackscreen.fade = "FadeIn"
-		blackscreen.image_alpha = 1
+	if instance_number(obj_fade) == 0 {
+		var fade_obj = instance_create_depth(0,0,-2000, obj_fade)
+		fade_obj.fsp = fade_speed
+		fade_obj.rm_to_goto = goto_rm
+		fade_obj.rm_x = room_x
+		fade_obj.rm_y = room_y
 	} else {
 		return	
 	}

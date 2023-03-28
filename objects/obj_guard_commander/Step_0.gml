@@ -71,6 +71,10 @@ if choice_result == "MQ1BossBattle" {
 	if instance_number(obj_messagebox) == 0 {
 		quest_complete_objective(0, 9) // Quest Complete
 		quest_complete(0) // Complete Quest in Log
+		quest_add(1) // Start MQ2 - 'The Syndicate'
+		quest_show_objective(1, 0)
+		quest_track(1)
+		scene_screen_fade(0.05, rm_docks_promenade_manor_1b, 880, 112)
 		choice_result = -1
 	}
 }

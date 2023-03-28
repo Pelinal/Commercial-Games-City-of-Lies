@@ -5,6 +5,9 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	// Check for Mouse Enter
 	image_index = 1
 	
+	obj_combatmenu.skill_overview_id = attack_id
+	obj_combatmenu.skill_overview_type = type
+	
 	if mouse_check_button_pressed(mb_left) {
 		
 		switch type {
@@ -121,15 +124,39 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 					inventory_add(obj_combatmenu.rewards_list[i][0], obj_combatmenu.rewards_list[i][1])
 				}
 				
+				// Add Weapon XP
+				if inventory_weapon_type(global.weapon_equipped) != -1 {
+					switch inventory_weapon_type(global.weapon_equipped) {
+						case "Sword":
+							global.blade += random_range(0.05, 0.15)
+							break
+						case "Axe":
+							global.blade += random_range(0.05, 0.15)
+							break
+						case "Dagger":
+							global.blade += random_range(0.05, 0.15)
+							break
+						case "Bow":
+							global.archery += random_range(0.05, 0.15)
+							break
+						case "Crossbow":
+							global.archery += random_range(0.05, 0.15)
+							break
+						case "Staff":
+							global.staves += random_range(0.06, 0.17)
+							break
+					}
+				}
+				
 				instance_destroy(obj_combat_button)
 				instance_destroy(obj_combatmenu)
 				instance_destroy(obj_battler)
 				instance_destroy(obj_player_battler)
 				instance_destroy(obj_enemy_hp)
 				global.immobile = false
-				global.hp = global.max_hp
-				global.sp = global.max_sp
-				global.mp = global.max_mp
+				//global.hp = global.max_hp
+				//global.sp = global.max_sp
+				//global.mp = global.max_mp
 			case "OKDefeat":
 				instance_destroy(obj_combat_button)
 				instance_destroy(obj_combatmenu)
@@ -137,6 +164,31 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				instance_destroy(obj_player_battler)
 				instance_destroy(obj_enemy_hp)
 				global.immobile = false
+				
+				// Add Weapon XP
+				if inventory_weapon_type(global.weapon_equipped) != -1 {
+					switch inventory_weapon_type(global.weapon_equipped) {
+						case "Sword":
+							global.blade += random_range(0.025, 0.1)
+							break
+						case "Axe":
+							global.blade += random_range(0.025, 0.1)
+							break
+						case "Dagger":
+							global.blade += random_range(0.025, 0.1)
+							break
+						case "Bow":
+							global.archery += random_range(0.025, 0.1)
+							break
+						case "Crossbow":
+							global.archery += random_range(0.025, 0.1)
+							break
+						case "Staff":
+							global.staves += random_range(0.03, 0.12)
+							break
+					}
+				}
+				
 				global.hp = global.max_hp
 				global.sp = global.max_sp
 				global.mp = global.max_mp

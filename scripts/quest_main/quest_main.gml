@@ -16,7 +16,7 @@ function quest_initialise(){
 	global.quest_library[0] = ["The Newcomer", "Main", "You have arrived in The Capital, following a rumour that your family once lived here, ask around the port for clues.", "None", "Docklands",
 														[[112, 300]], ["Speak to the Harbourmaster", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse 3", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building", "Defend Yourself!"]]
 														
-	global.quest_library[1] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 400]], ["OBJECTIVES."]]
+	global.quest_library[1] = ["The Syndicate", "Main", "You have been betrayed! The location Carus gave you was a trap and now you have been imprisoned.", "None", "Docklands", [[112, 400]], ["Talk to Cellmate"]]
 	global.quest_library[2] = ["Foreign Aid", "Side",  "The inkeep spoke of murders occurring in Docklands recently. The killer appears to target foreigners and the Prefect has done nothing to deal with the criminal. You should find the detective in his home on the promenade and help investigate.", "Bertram", "Docklands", 
 													   [[112, 150]], ["Speak with the Detective", "Speak to Witnesses", "Inspect the Body", "Speak with Geraud", "Go to Geraud's House", "Speak to Geraud", "Inspect the Board", "Sleep", "Defend Yourself!", "Speak to Geraud"]]
 	

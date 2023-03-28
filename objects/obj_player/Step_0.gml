@@ -1,5 +1,7 @@
 /// @description  Movement, Collision and Animations
 
+
+
 if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(obj_combatmenu) == 0 {
     // Take keyboard inputs
     if keyboard_check(ord("W"))			{ vsp = -movespeed }
@@ -49,8 +51,6 @@ if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(o
 	// Combat Test
 	if keyboard_check_pressed(vk_f2) {
 		combat_start(0, ms_combat_1, 0, 0, noone, noone, [[0, 100]])
-	} else if keyboard_check_pressed(vk_f3) {
-		combat_start(0, ms_combat_1, 0, noone, noone, noone, [[0, 50]])
 	}
 	
 	// Immobile During Messages
@@ -64,6 +64,11 @@ if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(o
 		room_goto(rm_palace_ext)
 		obj_player.x = 977
 		obj_player.y = 564
+	}
+	
+	/// Quest Cheat Command
+	if keyboard_check_pressed(vk_f6) {
+		global.quest_objectives[0] = [[true, true, true, true, true, true, true, true, true, false], [true, true, true, true, true, true, true, true, false, false]]
 	}
 	
     //// Message box test command
@@ -93,7 +98,7 @@ if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(o
 	//}
 }
 
-if global.immobile { image_index = 0 image_speed = 0 }
+if global.immobile || instance_number(obj_messagebox) > 0 { image_index = 0 image_speed = 0 }
 
 global.gold = inventory_fetch(0)
 global.max_hp = 50 + (10 * (global.edr div 1))

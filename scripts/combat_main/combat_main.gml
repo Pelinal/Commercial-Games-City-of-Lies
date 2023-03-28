@@ -8,7 +8,7 @@ function combat_initialise(){
 	global.enemies[1] = ["Mugger", 50, 70, 0, 5, 6, 3, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[2] = ["Sailor", 50, 70, 0, 5, 6, 6, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[3] = ["Cpt. Neman", 75, 85, 0, 8, 8, 7, 10, 0, 0, 0, 3, true, [0, 0, 0.25], noone, 150]
-	global.enemies[4] = ["Cdr. Luxia", 2000, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
+	global.enemies[4] = ["Cdr. Luxia", 300, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
 	
 	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	

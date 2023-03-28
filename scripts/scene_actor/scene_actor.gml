@@ -4,6 +4,7 @@
 /// @param Actor
 /// @param Move
 function scene_actor_move(actor, move, old_x, old_y){
+	global.immobile = true
 	
 	// Moves the Chosen Actor using the movement
 	// L - Left, R - Right, U - Up, D - Down
@@ -67,6 +68,7 @@ function scene_actor_move(actor, move, old_x, old_y){
 			return true
 		}
 	} else if move == "END" {
+		global.immobile = false
 		instance_destroy(actor)	
 	}
 

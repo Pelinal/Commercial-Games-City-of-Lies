@@ -31,6 +31,34 @@ if current_display == "Default" {
 	draw_set_halign(fa_left)
 } 
 
+if obj_combatmenu.current_display == "Physical" && skill_overview_id != -1 {
+	draw_set_font(fnt_inventory_small)
+	draw_tile(ts_icons_iconset_128, global.atks_physical[skill_overview_id][7], 0, x + 1700, y + 768)
+	draw_text(x + 1392, y + 768, "Name: " + string(global.atks_physical[skill_overview_id][0])) // Skill Name
+	draw_text(x + 1392, y + 832, "Damage: " + string(global.atks_physical[skill_overview_id][1] * global.atk)) // Damage
+	draw_text(x + 1392, y + 896, "SP Cost: " + string(global.atks_physical[skill_overview_id][2])) // SP Cost
+	draw_text(x + 1392, y + 960, "Critical: " + string(global.atks_physical[skill_overview_id][3]*100) + "%") // Crit Chance
+	draw_text(x + 1640, y + 960, "Cripple?: " + string(global.atks_physical[skill_overview_id][4])) // Crit Chance
+}
+if obj_combatmenu.current_display == "Special" && skill_overview_id != -1 {
+	draw_set_font(fnt_inventory_small)
+	draw_tile(ts_icons_iconset_128, global.atks_special[skill_overview_id][7], 0, x + 1700, y + 768)
+	draw_text(x + 1392, y + 768, "Name: " + string(global.atks_special[skill_overview_id][0])) // Skill Name
+	draw_text(x + 1392, y + 832, "Damage: " + string(global.atks_special[skill_overview_id][1] * global.atk)) // Damage
+	draw_text(x + 1392, y + 896, "SP Cost: " + string(global.atks_special[skill_overview_id][2])) // SP Cost
+	draw_text(x + 1392, y + 960, "Critical: " + string(global.atks_special[skill_overview_id][3]*100) + "%") // Crit Chance
+	draw_text(x + 1640, y + 960, "Cripple?: " + string(global.atks_special[skill_overview_id][4])) // Crit Chance
+}
+if obj_combatmenu.current_display == "Magic" && skill_overview_id != -1 {
+	draw_set_font(fnt_inventory_small)
+	draw_tile(ts_icons_iconset_128, global.atks_magical[skill_overview_id][7], 0, x + 1700, y + 768)
+	draw_text(x + 1392, y + 768, "Name: " + string(global.atks_magical[skill_overview_id][0])) // Skill Name
+	draw_text(x + 1392, y + 832, "Damage: " + string(global.atks_magical[skill_overview_id][1] * global.atk)) // Damage
+	draw_text(x + 1392, y + 896, "MP Cost: " + string(global.atks_magical[skill_overview_id][2])) // MP Cost
+	draw_text(x + 1392, y + 960, "Type: " + string(global.atks_magical[skill_overview_id][3])) // Type
+	draw_text(x + 1640, y + 960, "Element: " + string(global.atks_magical[skill_overview_id][4])) // element
+}
+
 if current_display == "Attacking" {
 	draw_text(x + 384, y + 768, global.persona[0] + " Duqarte")
 

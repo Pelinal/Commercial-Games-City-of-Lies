@@ -24,3 +24,7 @@ battle_text = ["", "", ""]
 // Rewards
 rewards_list = []
 kill_xp = 0
+
+// used for skill overviews
+skill_overview_id = -1
+skill_overview_type = "none"

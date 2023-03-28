@@ -16,7 +16,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 	// Check for Mouse Enter
 	image_index = 1
 	
-	if mouse_check_button_pressed(mb_right) && global.quest_library[quest_id][1] != "Completed" {
+	if mouse_check_button_pressed(mb_right) && global.quest_library[quest_id][1] != "Completed" && instance_number(obj_dropdown) == 0 {
 		if quest_tracked(quest_id) {
 			with instance_create(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), obj_dropdown) {
 				type = "untrack"

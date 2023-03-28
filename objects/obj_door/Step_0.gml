@@ -30,9 +30,13 @@ if image_index >= image_number-1 {
     opening = false
     image_speed = 0
     
-    obj_player.x = newX
-    obj_player.y = newY
+    //obj_player.x = newX
+    //obj_player.y = newY
     
+	if instance_number(obj_fade) == 0 {
+		scene_screen_fade(0.035, travel_to, newX, newY)
+	}
+	
     if newDir == "up" {
         with obj_player { sprite_index = up_sprite image_xscale = 1 image_speed = asp }
     }
@@ -46,7 +50,7 @@ if image_index >= image_number-1 {
         with obj_player { sprite_index = lr_sprite image_xscale = -1 image_speed = asp }
     }
     
-    room_goto(travel_to)
+    //room_goto(travel_to)
 }
 
 

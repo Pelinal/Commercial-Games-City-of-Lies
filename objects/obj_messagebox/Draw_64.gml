@@ -34,7 +34,7 @@ else if batch_counter <= batch {
 	if string_counter < string_length(display_text[batch_counter]) && !skipped {
 		for (i = 1; i <= string_counter; i ++) {
 			draw_text(x_left, y_row, display_text_list[batch_counter, i])
-			
+			if !audio_is_playing(se_click) { audio_play_sound(se_click, 10, 0) }
 			if keyboard_check_pressed(vk_space) {
 				string_counter = string_length(display_text[batch_counter])
 				i = string_counter

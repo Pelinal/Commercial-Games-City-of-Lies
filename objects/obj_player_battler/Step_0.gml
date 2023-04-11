@@ -1,9 +1,11 @@
 /// @description Attack!
 
+var sound = noone
+
 if obj_combatmenu.turn == "Player" {
 	blocking = false
 	if current_move != "Block" && current_move != "Consumable" && current_anim == "Normal" {
-		
+		sound = se_attack_normal
 		if x > 672 {
 			x -= 30
 		} else {
@@ -15,18 +17,23 @@ if obj_combatmenu.turn == "Player" {
 			image_speed = 0.5
 		}
 	} else if current_move == "Consumable" {
+		sound = se_non_attack
 		inventory_consumable_use(consumable_to_use)
+		audio_play_sound(sound, 10, 0)
 		obj_combatmenu.turn = "None"
 		obj_combatmenu.alarm[0] = 120
 		exit;
 	} else if current_move == "Block" {
+		sound = se_attack_block
 		// Posibility to add a custom animation in here
 		blocking = true
 		head_text[1] = "BLOCK"
 		alarm[0] = 45
+		audio_play_sound(sound, 10, 0)
 		obj_combatmenu.turn = "None"
 		obj_combatmenu.alarm[0] = 120
 	} else if current_anim != "Normal" {
+		sound = se_attack_magic
 		sprite_index = obj_player.ca_sprite
 		image_speed = 0.5
 	} 
@@ -43,7 +50,7 @@ if obj_combatmenu.turn == "Player" {
 }
 
 if image_index >= image_number-1 {
-	
+	audio_play_sound(sound, 10, 0)
 	image_index = 0
 	image_speed = 0
 	
@@ -227,10 +234,11 @@ if image_index >= image_number-1 {
 		}
 	}
 	
-	if current_target.enemy_hp <= 0 {
-		current_target.dead = true
+	if current_target != noone {
+		if current_target.enemy_hp <= 0 {
+			current_target.dead = true
+		}
 	}
-	
 	obj_combatmenu.turn = "None"
 	obj_combatmenu.alarm[0] = 120
 }

@@ -47,7 +47,9 @@ function add_xp(amount) {
 	
 	if global.exp >= global.exp_req {
 		global.exp = amount
-		global.exp_req = round(global.exp_req * 1.079775166) 
+		global.exp_req = round(global.exp_req * 1.079775166)
+		audio_play_sound(se_levelup, 100, 0)
 		global.level += 1
+		message_notification("Level " + string(global.level) + " Reached!")
 	}
 }

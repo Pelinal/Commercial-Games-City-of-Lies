@@ -83,7 +83,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Docklands",
-    "path": "folders/Sprites/Characters/Docklands.yy",
+    "name": "Prefect",
+    "path": "folders/Sprites/Characters/Docklands/Prefect.yy",
   },
 }

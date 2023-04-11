@@ -8,11 +8,12 @@ if a == 1 {
 		obj_player.x = rm_x
 		obj_player.y = rm_y
 	}
+	if destroy_this != noone { instance_destroy(destroy_this) }
 	fade = -1; // Fade In again
 }
 
 if a == 0 && fade == -1 {
-	
+	if sound_to_play != noone { audio_play_sound(sound_to_play, 100, false) }
 	instance_destroy(self);
 }
 

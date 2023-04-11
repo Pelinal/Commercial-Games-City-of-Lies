@@ -63,7 +63,7 @@ function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy
 	obj_combatmenu.battleback = location
 	obj_combatmenu.battler_list = [enemy1, enemy2, enemy3, enemy4]
 	audio_pause_all()
-	audio_play_sound(music, 100, true)
+	audio_play_sound(music, 50, true)
 	
 	instance_create(obj_combatmenu.x, obj_combatmenu.y, obj_enemy_hp)
 	obj_combatmenu.music_id = music

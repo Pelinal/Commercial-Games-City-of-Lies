@@ -11,6 +11,16 @@ switch char_type {
 		dn_sprite = spr_sailor_2_dn
 		lr_sprite = spr_sailor_2_lr
 		break
+	case "Guard 1":
+		up_sprite = spr_guard_m_up
+		dn_sprite = spr_guard_m_dn
+		lr_sprite = spr_guard_m_lr
+		break
+	case "Guard 2":
+		up_sprite = spr_guard_f_up
+		dn_sprite = spr_guard_f_dn
+		lr_sprite = spr_guard_f_lr
+		break
 }
 
 // Talking

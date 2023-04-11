@@ -1,6 +1,8 @@
 /// @description  Movement, Collision and Animations
 
-
+if keyboard_check_pressed(vk_alt) {
+	audio_stop_all()
+}
 
 if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(obj_combatmenu) == 0 {
     // Take keyboard inputs

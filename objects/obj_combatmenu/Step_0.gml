@@ -48,6 +48,7 @@ if current_display == "Attacking" {
 	}
 } else if current_display == "Victory" || current_display == "Defeat" { 
 	image_index = 2
+	
 } else {
 	image_index = 0
 }
@@ -60,7 +61,7 @@ if combat_enemies_defeated() && current_display != "Victory" {
 	obj_enemy_hp.visible = false
 	instance_destroy(obj_combat_button)
 	audio_stop_sound(music_id)
-	audio_resume_all()
+	audio_play_sound(se_victory, 100, 0)
 	with instance_create(x + 720, x + 832, obj_combat_button) { 
 		type = "OKRewards"
 	}
@@ -74,7 +75,7 @@ if global.hp <= 0 && current_display != "Defeat" {
 	obj_enemy_hp.visible = false
 	instance_destroy(obj_combat_button)
 	audio_stop_sound(music_id)
-	audio_resume_all()
+	audio_play_sound(se_defeat, 100, 0)
 	with instance_create(x + 720, x + 832, obj_combat_button) { 
 		type = "OKDefeat"
 	}

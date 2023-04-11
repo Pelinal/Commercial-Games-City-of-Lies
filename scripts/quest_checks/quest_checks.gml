@@ -10,4 +10,7 @@ function quest_checks(){
 			quest_show_objective(0, 4)
 		}
 	}
+	
+	// MQ02 - "The Syndicate"
+	
 }

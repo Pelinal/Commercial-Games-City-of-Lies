@@ -7,3 +7,5 @@ fade = 1; // 1 - IN, -1 - OUT
 rm_to_goto = noone;
 rm_x = 0;
 rm_y = 0;
+sound_to_play = noone;
+destroy_this = noone;

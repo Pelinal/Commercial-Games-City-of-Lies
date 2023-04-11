@@ -6,7 +6,7 @@
 		
 //	}
 //}
-
+var sound = noone
 if not dead {
 	if obj_combatmenu.turn == enemy_no {
 		if x < 1300 {
@@ -23,13 +23,16 @@ if not dead {
 		}
 	
 		if x >= 1300 && image_speed == 0 {
-			if current_anim == "Normal" {	
+			if current_anim == "Normal" {
+				sound = se_attack_normal
 				image_speed = 0.5
 			} else {
+				sound = se_attack_magic
 				sprite_index = global.enemies[enemy_id][14]
 				image_speed = 0.5
 			}
 		} else if current_move == "Consumable" {
+			sound = se_non_attack
 			inventory_consumable_use(consumable_to_use)
 			exit;
 		}
@@ -43,7 +46,7 @@ if not dead {
 	}
 
 	if image_index >= image_number-1 {
-	
+		audio_play_sound(sound, 10, 0)
 		image_index = 0
 		image_speed = 0
 	

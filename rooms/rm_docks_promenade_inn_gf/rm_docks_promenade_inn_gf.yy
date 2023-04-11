@@ -116,6 +116,6 @@
   },
   "parent": {
     "name": "Interiors",
-    "path": "folders/Rooms/Docks/Interiors.yy",
+    "path": "folders/Rooms/Docklands/Interiors.yy",
   },
 }

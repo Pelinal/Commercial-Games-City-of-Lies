@@ -164,7 +164,7 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				instance_destroy(obj_player_battler)
 				instance_destroy(obj_enemy_hp)
 				global.immobile = false
-				
+				audio_resume_all()
 				// Add Weapon XP
 				if inventory_weapon_type(global.weapon_equipped) != -1 {
 					switch inventory_weapon_type(global.weapon_equipped) {
@@ -189,9 +189,10 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 					}
 				}
 				
-				global.hp = global.max_hp
-				global.sp = global.max_sp
-				global.mp = global.max_mp
+				if global.hp == 0 && instance_number(obj_messagebox) == 0 { find_nearest_inn() }
+				else { global.hp = global.max_hp global.sp = global.max_sp global.mp = global.max_mp }
+				
+				
 				instance_destroy(self)
 			default:
 				if instance_number(obj_combatmenu) > 0 {

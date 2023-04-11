@@ -8,7 +8,7 @@ function scene_actor_move(actor, move, old_x, old_y){
 	
 	// Moves the Chosen Actor using the movement
 	// L - Left, R - Right, U - Up, D - Down
-	var walk_speed = 6
+	var walk_speed = 4
 	
 	if move == "L" {
 		actor.sprite_index = actor.lr_sprite

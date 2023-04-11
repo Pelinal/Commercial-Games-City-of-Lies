@@ -259,7 +259,7 @@ function inventory_initialise() {
 	global.icons[109] = 96		// Fire Damage
 	global.icons[110] = 97		// Frost Damage
 	global.icons[111] = 2		// Poison Damage
-	global.icons[112] = 123		// EXP
+	global.icons[112] = 102		// EXP
 	global.icons[113] = 236		// Compromising Letter
 	global.icons[114] = 231		// Capital Map
 	
@@ -393,6 +393,12 @@ function inventory_add(item, amount) {
 	// Adds an item to the corresponding inventory
 	category = global.library[item][2]
 	owned = false
+	
+	if item == 112 {
+		add_xp(amount)
+		return
+	}
+	
 	for (i = 0; i < array_length(category); i ++) if category[i][0] == item {
 		category[i][1] += amount
 		owned = true

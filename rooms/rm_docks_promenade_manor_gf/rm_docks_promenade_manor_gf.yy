@@ -6,7 +6,7 @@
   "volume": 1.0,
   "parentRoom": null,
   "views": [
-    {"inherit":false,"visible":true,"xview":0,"yview":0,"wview":640,"hview":360,"xport":0,"yport":0,"wport":1920,"hport":1080,"hborder":427,"vborder":240,"hspeed":-1,"vspeed":-1,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"inherit":false,"visible":true,"xview":0,"yview":0,"wview":854,"hview":480,"xport":0,"yport":0,"wport":1920,"hport":1080,"hborder":427,"vborder":240,"hspeed":-1,"vspeed":-1,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"inherit":false,"visible":false,"xview":0,"yview":0,"wview":1366,"hview":768,"xport":0,"yport":0,"wport":1366,"hport":768,"hborder":32,"vborder":32,"hspeed":-1,"vspeed":-1,"objectId":null,},
     {"inherit":false,"visible":false,"xview":0,"yview":0,"wview":1366,"hview":768,"xport":0,"yport":0,"wport":1366,"hport":768,"hborder":32,"vborder":32,"hspeed":-1,"vspeed":-1,"objectId":null,},
     {"inherit":false,"visible":false,"xview":0,"yview":0,"wview":1366,"hview":768,"xport":0,"yport":0,"wport":1366,"hport":768,"hborder":32,"vborder":32,"hspeed":-1,"vspeed":-1,"objectId":null,},
@@ -18,7 +18,7 @@
   "layers": [
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_2","instances":[],"visible":true,"depth":-300,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Roofs","tilesetId":{"name":"ts_autotiles","path":"tilesets/ts_autotiles/ts_autotiles.yy",},"x":0,"y":0,"tiles":{"TileDataFormat":1,"SerialiseWidth":28,"SerialiseHeight":22,"TileCompressedData":[
--3,-2147483648,1,348,-20,349,1,350,-3,-2147483648,4,328,337,337,360,-20,-2147483648,8,360,337,337,327,326,-2147483648,-2147483648,360,-20,-2147483648,
+-3,-2147483648,1,328,-20,337,8,327,0,-2147483648,-2147483648,328,337,337,317,-20,-2147483648,8,330,337,337,327,326,-2147483648,-2147483648,360,-20,-2147483648,
 8,360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,
 -2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,
 360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,-2147483648,-2147483648,360,-20,-2147483648,8,360,-2147483648,-2147483648,324,326,-2147483648,
@@ -269,6 +269,6 @@
   },
   "parent": {
     "name": "Interiors",
-    "path": "folders/Rooms/Docks/Interiors.yy",
+    "path": "folders/Rooms/Docklands/Interiors.yy",
   },
 }

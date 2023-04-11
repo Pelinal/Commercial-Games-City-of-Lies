@@ -8,6 +8,10 @@ function loot_initialise() {
 	global.chests[0][3] = [18, irandom_range(1, 2)]
 	// Chest 2 - Promenade
 	global.chests[1][0] = [0, irandom_range(1, 15) * global.luk]
+	// Chest 3 - Manor (Placeholder)
+	global.chests[2][0] = [0, irandom_range(1, 15) * global.luk]
+	// Chest 4 - Caves
+	global.chests[3][0] = [0, irandom_range(1, 80)]
 	show_debug_message("Chests[] on Init: " + string(global.chests))
 	
 	

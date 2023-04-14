@@ -17,12 +17,12 @@ function quest_initialise(){
 														[[112, 400]], ["Speak to the Harbourmaster", "Ask Around the Port", "Speak to Prefect Carus", "Speak to Meriaas", "Blackmail the Prefect", "Clear Warehouse 3", "Return to Meriaas", "Find Blackmail Evidence", "Go to Derelict Building", "Defend Yourself!"]]
 														
 	global.quest_library[1] = ["The Syndicate", "Main", "You have been betrayed! The location Carus gave you was a trap and now you have been imprisoned.", "None", "Docklands", 
-														[[112, 600]], ["Talk to Cellmate", "Escape!", "Speak to 'Friend'", "Gather Copper Ore (0/3)", "Return to Erasmus", "Craft Pickaxe", "Find a Rope", "Return to Erasmus", "Go to the Surface"]]
+														[[112, 600]], ["Talk to Cellmate", "Escape!", "Speak to 'Friend'", "Gather Copper Ore ("+ string(inventory_fetch(9)) + "/3)", "Return to Erasmus", "Craft Weapon", "Find a Rope", "Return to Erasmus", "Go to the Surface"]]
 	global.quest_library[2] = ["Foreign Aid", "Side",  "The inkeep spoke of murders occurring in Docklands recently. The killer appears to target foreigners and the Prefect has done nothing to deal with the criminal. You should find the detective in his home on the promenade and help investigate.", "Bertram", "Docklands", 
 														[[112, 300]], ["Speak with the Detective", "Speak to Witnesses", "Inspect the Body", "Speak with Geraud", "Go to Geraud's House", "Speak to Geraud", "Inspect the Board", "Sleep", "Defend Yourself!", "Speak to Geraud"]]
 	
 	global.quest_library[3] = ["Ruins of Pontastra", "Side", "You and Mattias have discovered a buried Founder ruin in the cave system below the Promenade. Perhaps there is hidden treasure to be found in there?", "Mattias", "Docklands", 
-														[[112, 400]], ["Solve Bridge Puzzle"]]
+														[[112, 400]], ["Find the Hidden Treasure"]]
 	global.quest_library[4] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	global.quest_library[5] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	global.quest_library[6] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]

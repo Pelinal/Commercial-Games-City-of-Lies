@@ -4,9 +4,9 @@
 if(distance_to_object(obj_player)) <= 32 {
     if keyboard_check_pressed(vk_space) && !global.immobile && instance_number(obj_messagebox) == 0 {
 		global.immobile = true
-		in_dialogue = true
 		if quest_active(1) && !quest_completed(1) && !quest_objective_is_complete(1, 0) {
 			// Current Objective: NONE
+			in_dialogue = true
 			var temp_name, temp_text
 			temp_name[0] = "Mattia"
 			temp_text[0] = string_wordwrap_width("So he tricked you too? Heh, that racist old man has it out for us it seems. What did you do to get put in here? ", 450, "\n")
@@ -14,6 +14,14 @@ if(distance_to_object(obj_player)) <= 32 {
 			message(temp_text, 1)
 			message_nametag(temp_name, 1)
 			message_choices(["Tell Him", "Who Are You?"], id)
+		} else if quest_active(1) && !quest_completed(1) && quest_objective_is_visible(1, 2) {
+			in_dialogue = true
+			var temp_name, temp_text
+			temp_name[0] = "Mattia"
+			temp_text[0] = string_wordwrap_width("My friend! I am afraid we're not homefree just yet, you'll want to speak with Erasmus. He's just here. ", 450, "\n")
+			
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
 		} else {
 			global.immobile = false
 			in_dialogue = false
@@ -111,7 +119,7 @@ if choice_result == "Leave" {
 } else if choice_result == "1,2,3..." {
 	if instance_number(obj_messagebox) == 0 {
 		// Face both toward boulder
-		
+		in_dialogue = false
 		quest_show_objective(1,1)
 		quest_complete_objective(1,0)
 		
@@ -127,7 +135,7 @@ if choice_result == "Leave" {
 } else if choice_result == "MattiaMQ2Walk1" {
 	if instance_number(obj_boulder) == 0 && instance_number(obj_messagebox) == 0 {
 		temp_name[0] = "Mattia"
-		temp_text[0] = string_wordwrap_width("What did I tell you, just in time! Come now, let's get out of here! ", 500, "\n")
+		temp_text[0] = string_wordwrap_width("What did I tell you, just in time! Come now, let's get out of here! ", 450, "\n")
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
 		choice_result = "MattiaMQ2Walk2"
@@ -144,10 +152,9 @@ if choice_result == "Leave" {
 		
 		choice_result = "Leave"
 	}
-} else {
-	choice_result = -1
-	in_dialogue = false
 }
+
+if instance_number(obj_messagebox) == 0 && choice_result == -1 { in_dialogue = false }
 
 if in_dialogue {
 	//alarm[0] = 30

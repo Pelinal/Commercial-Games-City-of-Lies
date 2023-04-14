@@ -136,6 +136,9 @@ function inventory_initialise() {
 	global.library[113] = ["Compromising Letter", "A highly compromising letter detailing\nall the nefarious dealings of Prefect Carus.", global.keyitems]
 	// Additions 14/03/23
 	global.library[114] = ["Capital Map", "A comprehensive map of The Capital and its\ndistricts. Press M to open it.", global.keyitems]
+	// Added 12/04/23
+	global.library[115] = ["Bronze Staff", "A powerful staff plated with solid bronze.", global.weapons]
+	global.library[116] = ["Old Rope", "An old rope found in a ruin, might hold for a while.", global.keyitems]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -262,6 +265,8 @@ function inventory_initialise() {
 	global.icons[112] = 102		// EXP
 	global.icons[113] = 236		// Compromising Letter
 	global.icons[114] = 231		// Capital Map
+	global.icons[115] = 151		// Bronze Staff
+	global.icons[116] = 275		// Old Rope
 	
 }
 

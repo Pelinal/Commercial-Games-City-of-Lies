@@ -1,5 +1,6 @@
 /// @description Open the Chest
-loot = global.chests[chests_id]
+
+if !gatherable { loot = global.chests[chests_id] }
 if array_length(loot) == 0 {
 	image_index = image_number-1
 	open = true
@@ -85,4 +86,6 @@ if empty  {
 	open = true
 	opening = false
 	loot = []
+	
+	if gatherable { instance_destroy(self) }
 } 

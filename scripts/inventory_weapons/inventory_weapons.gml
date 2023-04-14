@@ -14,6 +14,7 @@ function inventory_weapon_initialise() {
 	global.w_library[7] = [83, "Staff", 30, 100, noone, noone]	// Reinforced Staff
 	global.w_library[8] = [84, "Bow", 15, 40, noone, noone]		// Wooden Bow
 	global.w_library[9] = [85, "Bow", 25, 60, noone, noone]		// Reinforced Bow
+	global.w_library[10] = [115, "Staff", 25, 80, noone, noone]		// Bronze Staff
 	
 	// Create Global Equipped Weapon Variable
 	global.weapon_equipped = -1

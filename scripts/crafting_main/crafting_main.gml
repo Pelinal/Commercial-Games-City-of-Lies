@@ -49,11 +49,12 @@ function crafting_initialise() {
 		// Smithing- requires 1 ore for dagger, 2 for axe/staff, and 3 for sword. Wood/leather is always one less (but not ever = to 0)
 		smithing_weapon_recipes[0] = [79, 9, 21, 22, true]		// Bronze Sword
 		smithing_weapon_recipes[1] = [80, 9, 21, 22, true]		// Bronze Dagger
-		smithing_weapon_recipes[2] = [81, 9, 21, 22, false]		// Bronze Axe
-		smithing_weapon_recipes[3] = [82, 21, 21, 22, true]		// Wooden Staff
+		smithing_weapon_recipes[2] = [81, 9, 21, 22, true]		// Bronze Axe
+		smithing_weapon_recipes[3] = [82, 21, 21, 22, false]	// Wooden Staff
 		smithing_weapon_recipes[4] = [83, 9, 21, 22, false]		// Reinforced Staff
-		smithing_weapon_recipes[5] = [84, 21, 52, 22, true]		// Wooden Bow
+		smithing_weapon_recipes[5] = [84, 21, 52, 22, false]	// Wooden Bow
 		smithing_weapon_recipes[6] = [85, 21, 9, 22, false]		// Reinforced Bow
+		smithing_weapon_recipes[7] = [115, 9, 21, 22, true]		// Bronze-plated Staff
 		
 		smithing_armour_recipes[0] = [89, 52, 52, 52, true]		// Stitched Robes
 		smithing_armour_recipes[1] = [90, 52, 52, 22, true]		// Gambeson

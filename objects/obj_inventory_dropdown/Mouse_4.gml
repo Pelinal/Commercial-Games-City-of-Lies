@@ -82,6 +82,7 @@ else if type == "craft" {
 			inventory_remove(ingred_list[3], cc[2])
 			// Remove Gold
 			inventory_remove(0, trade_price(chosen_item, "craft"))
+			inventory_add(ingred_list[0], obj_trademenu.craft_amount)
 			global.smithing += choose(0.01, 0.03, 0.03, 0.05, 0.05, 0.05, 0.07)
 		}
 	}

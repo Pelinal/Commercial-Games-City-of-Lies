@@ -12,6 +12,8 @@ function loot_initialise() {
 	global.chests[2][0] = [0, irandom_range(1, 15) * global.luk]
 	// Chest 4 - Caves
 	global.chests[3][0] = [0, irandom_range(1, 80)]
+	// Chest 5 - Ruins 1
+	global.chests[4][0] = [116, 1] // Quest Item: Old Rope
 	show_debug_message("Chests[] on Init: " + string(global.chests))
 	
 	

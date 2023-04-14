@@ -3,11 +3,12 @@
 function inventory_keyitem_initialise() {
 	// Create Key Item Library // ID corresponds with Index
 	// Index 0: ID, Index 1: Type, Index 2: Activate Action
-	global.k_library[0] = [8, "Note", "read"] // Orders
+	global.k_library[0] = [8, "Document", "read"] // Orders
 	global.k_library[1] = [0, "Gold", "destroy"] // Gold
 	global.k_library[2] = [112, "EXP", "none"] // EXP - NOT AN ACTUAL ITEM
-	global.k_library[3] = [113, "Letter", "read"] // Compromising Letter
-	global.k_library[4] = [114, "Map", "none"] // Capital Map
+	global.k_library[3] = [113, "Document", "read"] // Compromising Letter
+	global.k_library[4] = [114, "Document", "none"] // Capital Map
+	global.k_library[5] = [116, "Material", "none"] // Old Rope
 }
 
 function inventory_keyitem_add(item, amount) {

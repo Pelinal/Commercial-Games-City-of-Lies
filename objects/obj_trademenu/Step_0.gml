@@ -6,7 +6,7 @@ if keyboard_check(vk_escape) {
 	instance_destroy(obj_tradetab)
 	instance_destroy(obj_plusminus)
 	
-	obj_vendor.trading = false
+	current_vendor.trading = false
 	global.immobile = false
 }
 

@@ -173,7 +173,7 @@ if image_index >= image_number-1 {
 	} else if attack_type == "Magical" {
 		damage = global.atks_magical[current_move][1] * global.mtk
 		chance = global.atks_magical[current_move][5] + (combat_fetch_weapon_skill() / 60)
-		cost = global.atks_magical[current_move][2] * global.luk
+		cost = global.atks_magical[current_move][2]
 		var type = global.atks_magical[current_move][3]
 		var element = global.atks_magical[current_move][4]
 		

@@ -15,18 +15,22 @@ function message(text_list, batch=1, show_textbox=true) {
 	}
 	
 	if show_textbox {
-		instance_create(960, 896, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
-		    obj_messagebox.display_text = text_list
-		    obj_messagebox.display_text_list = text_list_x
-		    obj_messagebox.batch = batch-1
+		if instance_number(obj_messagebox) == 0 {
+			instance_create(960, 896, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
+			    obj_messagebox.display_text = text_list
+			    obj_messagebox.display_text_list = text_list_x
+			    obj_messagebox.batch = batch-1
+			}
 		}
 	} else {
-		instance_create(960, 896, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
-		    obj_messagebox.display_text = text_list
-		    obj_messagebox.display_text_list = text_list_x
-		    obj_messagebox.batch = batch-1
+		if instance_number(obj_messagebox) == 0 {
+			instance_create(960, 896, obj_messagebox) { // CHARACTER LIMIT for 1 line: 62-4 characters
+			    obj_messagebox.display_text = text_list
+			    obj_messagebox.display_text_list = text_list_x
+			    obj_messagebox.batch = batch-1
 			
-			sprite_index = noone
+				sprite_index = noone
+			}
 		}
 	}
 }

@@ -4,7 +4,7 @@
   "name": "ms_combat_luxia",
   "conversionMode": 0,
   "compression": 2,
-  "volume": 0.5,
+  "volume": 0.22,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,

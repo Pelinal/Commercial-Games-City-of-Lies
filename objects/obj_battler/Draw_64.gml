@@ -1,6 +1,6 @@
 /// @description Draw Self + Dmg Nums?
 
-draw_self()
+if sprite_index != noone { draw_self() }
 
 draw_set_halign(fa_center)
 draw_set_font(fnt_damage_no)

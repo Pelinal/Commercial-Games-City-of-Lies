@@ -49,6 +49,10 @@ if choice_result == "MQ1BossBattle" {
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
 		
+		global.hp = global.max_hp
+		global.sp = global.max_sp
+		global.mp = global.max_mp
+		
 		// Go to Prison
 		obj_player.prev_battle = noone
 		choice_result = "MQ1BossEnd"
@@ -61,6 +65,10 @@ if choice_result == "MQ1BossBattle" {
 		
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
+		
+		global.hp = global.max_hp
+		global.sp = global.max_sp
+		global.mp = global.max_mp
 		
 		obj_player.prev_battle = noone
 		choice_result = "MQ1BossEnd"

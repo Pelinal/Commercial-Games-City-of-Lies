@@ -38,6 +38,35 @@ switch char_type {
 			walk_distance = 0
 		}
 		break
+	case "Bat":
+		if !dead {
+			up_sprite = spr_bat_up
+			dn_sprite = spr_bat_dn
+			lr_sprite = spr_bat_lr
+		} else {
+			instance_destroy(self)
+		}
+		break
+	case "Rat":
+		if !dead {
+			up_sprite = spr_rat_up
+			dn_sprite = spr_rat_dn
+			lr_sprite = spr_rat_lr
+		} else {
+			instance_destroy(self)
+		}
+		break
+	case "Hydra":
+		if !dead {
+			up_sprite = spr_snakeboss_lr
+			dn_sprite = spr_snakeboss_lr
+			lr_sprite = spr_snakeboss_lr
+		} else {
+			instance_destroy(self)
+		}
+		break
+	default:
+		break
 }
 
 // Talking
@@ -83,6 +112,33 @@ if(distance_to_object(obj_player)) <= 32 {
 				choice_enabled = true
 				autoevent_fired = true
 				choices = ["Accept", "[Attack]"]
+				break
+			case "Cave Bat": 
+				criteria = true
+				temp_text[0] = "*The bat swoops in to attack!*"
+				batch_no = 1
+				choice_enabled = false
+				
+				choice_result = "BatBattle"
+				autoevent_fired = true
+				break
+			case "Cave Rat": 
+				criteria = true
+				temp_text[0] = "*The rat lunges at you!*"
+				batch_no = 1
+				choice_enabled = false
+				
+				choice_result = "RatBattle"
+				autoevent_fired = true
+				break
+			case "Ancient Hydra": 
+				criteria = true
+				temp_text[0] = "*A fury of snake-heads attack!*"
+				batch_no = 1
+				choice_enabled = false
+				
+				choice_result = "HydraBattle"
+				autoevent_fired = true
 				break
 			default:
 				break
@@ -154,6 +210,32 @@ if choice_result == "Accept" && char_name == "Captain Neman" {
 		obj_player.prev_battle = noone
 		choice_result = -1
 	}
+} else if choice_result == "BatBattle" {
+	if instance_number(obj_messagebox) == 0 {
+		combat_start(0, ms_combat_1, 5, noone, noone, noone, [[22, irandom(3)], [36, irandom(2)]])
+		choice_result = "GenericBattleResult"
+	}
+} else if choice_result == "RatBattle" {
+	if instance_number(obj_messagebox) == 0 {
+		combat_start(0, ms_combat_1, 0, noone, noone, noone, [[22, irandom(2)], [36, choose(0,0,0,1,1)]])
+		choice_result = "GenericBattleResult"
+	}
+} else if choice_result == "HydraBattle" {
+	if instance_number(obj_messagebox) == 0 {
+		combat_start(0, ms_combat_luxia, 6, noone, noone, noone, [[22, irandom(4)], [36, irandom(3)], [0, irandom(80)]])
+		choice_result = "GenericBattleResult"
+	}
+} else if choice_result = "GenericBattleResult" {
+	if obj_player.prev_battle == "Victory" {
+		dead = true
+		walk_speed = 0
+		obj_player.prev_battle = noone
+		choice_result = -1
+	} else if obj_player.prev_battle == "Defeat" {
+		find_nearest_inn() 
+		obj_player.prev_battle = noone
+		choice_result = -1
+	}
 } else {
 	choice_result = -1
 	global.immobile = false
@@ -171,7 +253,7 @@ if walk_axis == "X" {
 	}
 }
 
-if alarm[0] == -1 && !in_dialogue {
+if alarm[0] == -1 && !in_dialogue && instance_number(obj_combatmenu) == 0 {
 	
 	if walk_axis == "X" && ((abs(x - obj_player.x) > 32 || abs(y - obj_player.y) > 8)) {
 		image_speed = 0.3
@@ -186,13 +268,19 @@ if alarm[0] == -1 && !in_dialogue {
 		if current_dir == 1 && y >= origin_y + walk_distance { alarm[0] = wait_time * 60 }
 		else if current_dir == -1 && y <= origin_y - walk_distance { alarm[0] = wait_time * 60 }
 	} else {
+		if char_type != "Bat" {
+			image_speed = 0
+			image_index = 0
+		}
+	}
+} else {
+	if char_type != "Bat" {
 		image_speed = 0
 		image_index = 0
 	}
-} else {
-	image_speed = 0
-	image_index = 0
 }
+
+if char_type == "Hydra" { image_speed = 0.2 }
 
 if in_dialogue {
 	alarm[0] = 30

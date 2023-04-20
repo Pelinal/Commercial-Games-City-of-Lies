@@ -119,6 +119,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_43B5C1F2","properties":[],"isDnd":false,"objectId":{"name":"obj_guard_commander","path":"objects/obj_guard_commander/obj_guard_commander.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":true,"inheritItemSettings":false,"x":592.0,"y":288.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_B8644AD","properties":[],"isDnd":false,"objectId":{"name":"obj_guard_commander","path":"objects/obj_guard_commander/obj_guard_commander.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":544.0,"y":240.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3AAE1D9","properties":[],"isDnd":false,"objectId":{"name":"obj_carus_secretary","path":"objects/obj_carus_secretary/obj_carus_secretary.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":704.0,"y":240.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_723C9E2","properties":[],"isDnd":false,"objectId":{"name":"obj_chest","path":"objects/obj_chest/obj_chest.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":32.0,"y":96.0,},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Decor3","tilesetId":{"name":"ts_palace","path":"tilesets/ts_palace/ts_palace.yy",},"x":0,"y":0,"tiles":{"TileDataFormat":1,"SerialiseWidth":28,"SerialiseHeight":22,"TileCompressedData":[
 -144,-2147483648,1,526,-27,-2147483648,2,534,518,-34,-2147483648,4,510,-2147483648,-2147483648,510,-404,-2147483648,],},"visible":true,"depth":300,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
@@ -245,6 +246,7 @@
     {"name":"inst_6B066F","path":"rooms/rm_docks_promenade_manor_gf/rm_docks_promenade_manor_gf.yy",},
     {"name":"inst_8AE6607","path":"rooms/rm_docks_promenade_manor_gf/rm_docks_promenade_manor_gf.yy",},
     {"name":"inst_32675DA6","path":"rooms/rm_docks_promenade_manor_gf/rm_docks_promenade_manor_gf.yy",},
+    {"name":"inst_723C9E2","path":"rooms/rm_docks_promenade_manor_gf/rm_docks_promenade_manor_gf.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

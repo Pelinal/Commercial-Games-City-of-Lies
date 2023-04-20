@@ -53,7 +53,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			temp_name[0] =  "Erasmus"
 			temp_text[0] =  string_wordwrap_width("I hope you like the new weapon, should keep you better protected from whatever vermin infest these caves. ", 452, "\n")
 			temp_name[1] =  "Erasmus"
-			temp_text[1] =  string_wordwrap_width("Next thing we'll need to get out of here, as  I said, is a rope. I would wager there would be some in that ruin east of here, haven't been down there yet myself. Usually avoid such places, so be careful if you go there. ", 452, "\n")
+			temp_text[1] =  string_wordwrap_width("Next thing we'll need to get out of here, is a rope. I wager there is some in that ruin east of here, haven't been down there yet myself. I usually avoid such places, so be careful if you go there. ", 452, "\n")
 			message(temp_text, 2)
 			message_nametag(temp_name, 2)
 		} else if quest_active(1) && quest_objective_is_visible(1, 7) && !quest_objective_is_complete(1, 7) {
@@ -62,13 +62,24 @@ if(distance_to_object(obj_player)) <= 32 {
 			var temp_name, temp_text
 			temp_name[0] =  "Erasmus"
 			temp_text[0] =  string_wordwrap_width("Ah I see you found a rope! It's a bit old, but it should do the trick. Give me a moment and I'll repair the ladder. ", 452, "\n")
-			//scene_screen_fade(0.035)
+			
 			message(temp_text, 1)
 			message_nametag(temp_name, 1)
 			
 			inventory_remove(116, 1)
 			
-			choice_result = "MQ2ErasmusRope"
+			choice_result = "MQ2ErasmusFade"
+		} else if quest_active(1) && quest_objective_is_visible(1, 7) && quest_objective_is_complete(1, 7) {
+			// Got a rope
+			in_dialogue = true
+			var temp_name, temp_text
+			temp_name[0] =  "Erasmus"
+			temp_text[0] =  string_wordwrap_width("I'll meet you up there, go speak with the boss. ", 452, "\n")
+			
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
+			
+			choice_result = -1
 		}
 	}
 }
@@ -115,12 +126,17 @@ if choice_result == "MQ2FirstCraft" {
 		
 		choice_result = -1
 	}
-
+} else if choice_result == "MQ2ErasmusFade" {
+	if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0 {
+		scene_screen_fade(0.02)
+		quest_complete_objective(1, 7)
+		quest_show_objective(1, 8)
+		choice_result = "MQ2ErasmusRope"
+	}
 } else if choice_result == "MQ2ErasmusRope" {
 	if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0 {
-		global.immobile = true
 		
-		in_dialogue = true
+		choice_result = "MQ2QuestUpdateRope"
 		var temp_name, temp_text
 		temp_name[0] =  "Erasmus"
 		temp_text[0] =  string_wordwrap_width("There, it's all fixed, you should be able to use the eastern exit to the surface now. You two go and speak with the boss, I have some errands I need to run here before I follow. ", 452, "\n")
@@ -134,14 +150,16 @@ if choice_result == "MQ2FirstCraft" {
 		message(temp_text, 2)
 		message_nametag(temp_name, 2)
 		
-		choice_result = "MQ2QuestUpdateRope"
+		
 	}
 } else if choice_result == "MQ2QuestUpdateRope" {
 	if instance_number(obj_messagebox) == 0 {
-		quest_complete_objective(1, 7)
-		quest_show_objective(1, 8)
+		
 		quest_change_desc(1, "The ladder has been repaired, and I can finally escape the caves! Erasmus said the exit was on the eastern side of the cave.")
+		choice_result = -1
 	}
+} else if choice_result = -1 {
+	in_dialogue = false
 }
 
 if instance_number(obj_messagebox) == 0 && choice_result == -1 { in_dialogue = false }

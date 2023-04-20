@@ -17,6 +17,7 @@ if(distance_to_object(obj_player)) <= 32 {
 
 if (image_index >= image_number-1 && !open) && !gatherable {
     opening = false
+	audio_play_sound(se_chest_open, 10, 0)
     image_speed = 0
 	
 	global.immobile = true

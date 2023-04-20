@@ -8,14 +8,26 @@ function loot_initialise() {
 	global.chests[0][3] = [18, irandom_range(1, 2)]
 	// Chest 2 - Promenade
 	global.chests[1][0] = [0, irandom_range(1, 15) * global.luk]
-	// Chest 3 - Manor (Placeholder)
-	global.chests[2][0] = [0, irandom_range(1, 15) * global.luk]
-	// Chest 4 - Caves
+	// Chest 3 - Manor 
+	global.chests[2][0] = [63, 1]
+	global.chests[2][1] = [66, 1]
+	global.chests[2][2] = [0, 100]
+	// Chest 4 - Caves West
 	global.chests[3][0] = [0, irandom_range(1, 80)]
 	// Chest 5 - Ruins 1
 	global.chests[4][0] = [116, 1] // Quest Item: Old Rope
 	show_debug_message("Chests[] on Init: " + string(global.chests))
-	
+	// Chest 6 - Caves East
+	global.chests[5][0] = [72, 1]
+	global.chests[5][1] = [38, irandom_range(1, 4)]
+	// Chest 7 - Ruins 2
+	global.chests[6][0] = [0, irandom_range(40, 90)]
+	global.chests[6][1] = [21, irandom_range(1, 4)]
+	global.chests[6][2] = [22, irandom_range(1, 4)]
+	// Chest 8 - S. Docks 1
+	global.chests[7][0] = [0, irandom_range(20, 40)]
+	global.chests[7][1] = [50, irandom_range(1, 3)]
+	global.chests[7][2] = [54, irandom_range(1, 2)]
 	
 	// Initialise the  lootlists // Index 0: ID, Index 1: Level Required to Spawn, Index 2: Base Chance
 	

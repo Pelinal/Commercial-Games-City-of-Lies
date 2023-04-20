@@ -1,0 +1,1 @@
+area_notification("Entering: Twinsmiths' Arms & Armour")

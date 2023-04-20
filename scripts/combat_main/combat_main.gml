@@ -4,11 +4,13 @@ function combat_initialise(){
 	// Index 0: Name, Index 1: MHP, Index 2: MSP, Index 3: MMP, Index 4: Base Attack, Index 5: Base Defense, 
 	// Index 6: Sp. Attack, Index 7: Sp. Defense, Index 8: M. Attack, Index 9: M. Defense, Index 10: Speed, Index 11: Luck, 
 	// Index 12: Humanoid(true/false)?, Index 13: Elemental Resistance (Fire/Frost/Poison), Index 14: Casting Sprite (if applicable), Index 15: XP from Kill
-	global.enemies[0] = ["Rat", 30, 30, 0, 20, 3, 3, 3, 0, 0, 1, 0, false, [0, 0, 0], noone, 50]
+	global.enemies[0] = ["Rat", 30, 30, 0, 10, 3, 3, 3, 0, 0, 1, 1, false, [0, 0, 0], noone, 50]
 	global.enemies[1] = ["Mugger", 50, 70, 0, 5, 6, 3, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[2] = ["Sailor", 50, 70, 0, 5, 6, 6, 10, 0, 0, 0, 3, true, [0, 0, 0.1], noone, 75]
 	global.enemies[3] = ["Cpt. Neman", 75, 85, 0, 8, 8, 7, 10, 0, 0, 0, 3, true, [0, 0, 0.25], noone, 150]
 	global.enemies[4] = ["Cdr. Luxia", 300, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
+	global.enemies[5] = ["Bat", 60, 85, 0, 13, 8, 7, 10, 0, 0, 3, 4, false, [0, 0, 0], noone, 75]
+	global.enemies[6] = ["Hydra", 120, 100, 30, 13, 10, 10, 8, 2, 2, 1, 6, false, [0, 0, 0.8], noone, 200]
 	
 	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	
@@ -20,6 +22,7 @@ function combat_initialise(){
 	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.25, true, 115]
 	global.atks_physical[4] = ["Cleave", 1.1, 20, 0.45, "None", 0.25, true, 115]
 	global.atks_physical[5] = ["Cinderblade", 2, 0, 0.8, "None", 0.8, false, 96] // Luxia's special move
+	global.atks_physical[6] = ["Bite", 1.1, 15, 0.25, "Legs", 0.8, false, 116] // Stronger animal move
 	
 	// Special Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
@@ -35,6 +38,7 @@ function combat_initialise(){
 	global.atks_magical[2] = ["Acid Bomb", 1.2, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false, 2]
 	global.atks_magical[3] = ["Healing", 0.3, 40, "Self", "Heal", 1, true, 140]
 	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), false, 11]
+	global.atks_magical[5] = ["Hydrabreath", 1.225, 30, "Attack", "Poison", 0.6, false, 2]
 	
 	// Battlers
 	global.battlers[0] = spr_battler_rat
@@ -42,14 +46,18 @@ function combat_initialise(){
 	global.battlers[2] = spr_battler_sailor
 	global.battlers[3] = spr_battler_neman
 	global.battlers[4] = spr_battler_luxia
+	global.battlers[5] = spr_battler_bat
+	global.battlers[6] = spr_battler_snakeboss
 	
 	// Create Enemy Attack Array
 	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 2: Known Special Attacks, Index 3: Known Magical Attacks
-	global.atks_enemy[0] = [[0]]
+	global.atks_enemy[0] = [[0, 6]]
 	global.atks_enemy[1] = [[0], [0]]
 	global.atks_enemy[2] = [[0], [0]]
 	global.atks_enemy[3] = [[0], [0]]
 	global.atks_enemy[4] = [[0, 5]]
+	global.atks_enemy[5] = [[0, 6], [0, 1]]
+	global.atks_enemy[6] = [[0, 6], [0], [5]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {

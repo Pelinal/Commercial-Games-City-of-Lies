@@ -22,6 +22,9 @@ function find_nearest_inn(){
 		case rm_docks_south_warehouse_03:
 			inn_room = rm_docks_promenade_inn_gf
 			break
+		case rm_docks_promenade_manor_cave:
+			inn_room = rm_docks_promenade_manor_cave
+			break
 		default:
 			break
 	}
@@ -30,6 +33,10 @@ function find_nearest_inn(){
 		case rm_docks_promenade_inn_gf:
 			bed_x = 332
 			bed_y = 400
+			break
+		case rm_docks_promenade_manor_cave:
+			bed_x = 1040
+			bed_y = 240
 			break
 		default:
 			bed_x = inn_room.room_width / 2

@@ -6,7 +6,7 @@
 		
 //	}
 //}
-var sound = noone
+var sound = se_attack_normal
 if not dead {
 	if obj_combatmenu.turn == enemy_no {
 		if x < 1300 {
@@ -174,7 +174,7 @@ if not dead {
 				}
 			} else {
 				head_text[0] = "FAILED"
-				alarm[0] = 30
+				obj_player_battler.alarm[0] = 30
 			}
 		} else if current_movetype == 2 {
 			damage = global.atks_magical[current_move][1] * enemy_mtk
@@ -236,7 +236,7 @@ if not dead {
 				}
 			} else {
 				head_text[0] = "FAILED"
-				alarm[0] = 30
+				obj_player_battler.alarm[0] = 30
 			}
 		}
 	

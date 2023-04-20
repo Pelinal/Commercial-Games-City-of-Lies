@@ -1,9 +1,9 @@
 visible = true
 sprite_index = spr_door5
 travel_to = rm_docks_promenade_manor_ruins
-newX = 2960
-newY = 848
+newX = 1952
+newY = 96
 newDir = "down"
 locked = false
 conditional = false
-condition = true
+condition = false

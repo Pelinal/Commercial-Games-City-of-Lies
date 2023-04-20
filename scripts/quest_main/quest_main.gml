@@ -21,9 +21,9 @@ function quest_initialise(){
 	global.quest_library[2] = ["Foreign Aid", "Side",  "The inkeep spoke of murders occurring in Docklands recently. The killer appears to target foreigners and the Prefect has done nothing to deal with the criminal. You should find the detective in his home on the promenade and help investigate.", "Bertram", "Docklands", 
 														[[112, 300]], ["Speak with the Detective", "Speak to Witnesses", "Inspect the Body", "Speak with Geraud", "Go to Geraud's House", "Speak to Geraud", "Inspect the Board", "Sleep", "Defend Yourself!", "Speak to Geraud"]]
 	
-	global.quest_library[3] = ["Ruins of Pontastra", "Side", "You and Mattias have discovered a buried Founder ruin in the cave system below the Promenade. Perhaps there is hidden treasure to be found in there?", "Mattias", "Docklands", 
-														[[112, 400]], ["Find the Hidden Treasure"]]
-	global.quest_library[4] = ["Fatal Romance", "Side", "I spoke with a woman, Erika, on the Promenade who claimed her fiancé had been keeping secrets from her and that it may affect their upcoming marriage. If I can find him and figure out what he's been hiding maybe I can confirm her suspicions, or reassure her? ", "Erika Weisse", "Docklands", [[112, 200]], ["Find Erika's Fiancé", "Return to Erika"]]
+	global.quest_library[3] = ["Ruins of Pontastra", "Side", "You and Mattias have discovered a buried Founder ruin in the cave system below the Promenade. Perhaps there is hidden treasure to be found in there?", "Mattia", "Docklands", 
+														[[112, 400]], ["Follow Mattia", "Solve the Puzzle", "Claim the Treasure", "Return to Mattia"]]
+	global.quest_library[4] = ["Fatal Romance", "Side", "I spoke with a woman, Erika, on the Promenade who claimed her fiancée had been keeping secrets from her and that it may affect their upcoming marriage. If I can find him and figure out what he's been hiding maybe I can confirm her suspicions, or reassure her? ", "Erika Weisse", "Docklands", [[112, 200]], ["Find Erika's Fiancé", "Return to Erika"]]
 	global.quest_library[5] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	global.quest_library[6] = ["Warm Welcome", "Main", "DESCRIPTION.", "QUEST_GIVER", "Docklands", [[112, 100]], ["OBJECTIVES."]]
 	
@@ -31,7 +31,7 @@ function quest_initialise(){
 	global.quest_objectives[0] = [[true, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[1] = [[true, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false]]
 	global.quest_objectives[2] = [[false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false]]
-	global.quest_objectives[3] = [[true], [false]]
+	global.quest_objectives[3] = [[true, false, false, false], [false, false, false, false]]
 	global.quest_objectives[4] = [[true, false], [false, false]]
 	global.quest_objectives[5] = [[true], [false]]
 	global.quest_objectives[6] = [[true], [false]]

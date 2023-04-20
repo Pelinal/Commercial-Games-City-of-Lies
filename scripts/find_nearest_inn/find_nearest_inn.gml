@@ -22,7 +22,16 @@ function find_nearest_inn(){
 		case rm_docks_south_warehouse_03:
 			inn_room = rm_docks_promenade_inn_gf
 			break
+		case rm_docks_promenade_shop:
+			inn_room = rm_docks_promenade_inn_gf
+			break
 		case rm_docks_promenade_manor_cave:
+			inn_room = rm_docks_promenade_manor_cave
+			break
+		case rm_docks_promenade_manor_ruins:
+			inn_room = rm_docks_promenade_manor_cave
+			break
+		case rm_docks_promenade_manor_1b:
 			inn_room = rm_docks_promenade_manor_cave
 			break
 		default:

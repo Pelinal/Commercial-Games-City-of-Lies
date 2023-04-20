@@ -8,6 +8,10 @@ if a == 1 {
 		obj_player.x = rm_x
 		obj_player.y = rm_y
 	}
+	if object_to_move != noone {
+		object_to_move.x = rm_x
+		object_to_move.y = rm_y
+	}
 	if destroy_this != noone { instance_destroy(destroy_this) }
 	fade = -1; // Fade In again
 }

@@ -36,7 +36,7 @@ function inventory_initialise() {
 	global.library[19] = ["Meteoric Ore", "A rare variant of iron ore, can be combined with other ores\nto forge excellent gear.", global.materials]
 	global.library[20] = ["Crystaline Ore", "Mysterious ore that has be permanently altered by the presence\nof magic entites. If it can be forged, the results would be spectacular.", global.materials]
 	global.library[21] = ["Wood", "Cut from trees, has a variety of uses.", global.materials]
-	global.library[22] = ["Leather", "Obtained from hunting, can be used when making weapons and armour.", global.materials]
+	global.library[22] = ["Leather", "Obtained from hunting, can be used when making\nweapons and armour.", global.materials]
 	global.library[23] = ["Solite Dust", "A crushed mixture of solite and other trace minerals.", global.materials]
 	global.library[24] = ["Pure Solite", "Perfectly pure solite, stores intense magic energy.", global.materials]
 	global.library[25] = ["Cerephelium", "A recently formed solite crystal, the magic it possesses is almost\ntoo much, staring at it for too long may make you blind.", global.materials]
@@ -139,6 +139,10 @@ function inventory_initialise() {
 	// Added 12/04/23
 	global.library[115] = ["Bronze Staff", "A powerful staff plated with solid bronze.", global.weapons]
 	global.library[116] = ["Old Rope", "An old rope found in a ruin, might hold for a while.", global.keyitems]
+	// Added 20/04/23
+	global.library[117] = ["Founder Codex", "An ancient data repository, it needs to be deciphered.", global.keyitems]
+	global.library[118] = ["Cyanide", "Drink this for a quick death.", global.consumables]
+	global.library[119] = ["Omnistaff", "Just an OP test weapon, that's all.", global.weapons]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -267,6 +271,9 @@ function inventory_initialise() {
 	global.icons[114] = 231		// Capital Map
 	global.icons[115] = 151		// Bronze Staff
 	global.icons[116] = 275		// Old Rope
+	global.icons[117] = 113		// Founder Codex
+	global.icons[118] = 196		// Cyanide
+	global.icons[119] = 420		// Omnistaff
 	
 }
 

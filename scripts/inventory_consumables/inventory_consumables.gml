@@ -33,6 +33,7 @@ function inventory_consumable_initialise() {
 	global.c_library[26] = [76, "Buff Dexterity", 30, 150]		// Cunning Tonic
 	global.c_library[27] = [77, "Buff Intelligence", 30, 150]	// Sage Tonic
 	global.c_library[28] = [78, "Buff Speed", 30, 150]			// Agile Tonic
+	global.c_library[29] = [118, "Instant Death", 9999, 0]		// Cyanide
 }
 
 function inventory_consumable_add(item, amount) {
@@ -89,45 +90,45 @@ function inventory_consumable_use(item) {
 		case "Restore Health":
 			global.hp += item_effect_value
 			if global.hp > global.max_hp { global.hp = global.max_hp }
-		break
+			break
 		case "Damage Health":
 			global.hp -= item_effect_value
 			if global.hp < 0 { global.hp = 0 }
-		break
+			break
 		case "Restore Mana":
 			global.mp += item_effect_value
 			if global.mp > global.max_mp { global.mp = global.max_mp }
-		break
+			break
 		case "Damage Mana":
 			global.mp -= item_effect_value
 			if global.mp < 0 { global.mp = 0 }
-		break
+			break
 		case "Restore Stamina":
 			global.sp += item_effect_value
 			if global.sp > global.max_sp { global.sp = global.max_sp }
-		break
+			break
 		case "Damage Stamina":
 			global.sp -= item_effect_value
 			if global.sp < 0 { global.sp = 0 }
-		break
+			break
 		case "Restore Health and Stamina":
 			global.sp += item_effect_value
 			global.hp += item_effect_value
 			if global.sp > global.max_sp { global.sp = global.max_sp }
 			if global.hp > global.max_hp { global.hp = global.max_hp }
-		break
+			break
 		case "Restore Health and Mana":
 			global.mp += item_effect_value
 			global.hp += item_effect_value
 			if global.mp > global.max_mp { global.mp = global.max_mp }
 			if global.hp > global.max_hp { global.hp = global.max_hp }
-		break
+			break
 		case "Restore Mana and Stamina":
 			global.mp += item_effect_value
 			global.sp += item_effect_value
 			if global.mp > global.max_mp { global.mp = global.max_mp }
 			if global.sp > global.max_sp { global.sp = global.max_sp }
-		break
+			break
 		case "Restore all Attributes":
 			global.mp += item_effect_value
 			global.sp += item_effect_value
@@ -135,15 +136,22 @@ function inventory_consumable_use(item) {
 			if global.mp > global.max_mp { global.mp = global.max_mp }
 			if global.sp > global.max_sp { global.sp = global.max_sp }
 			if global.hp > global.max_hp { global.hp = global.max_hp }
-		break
+			break
 		case "Loopy Shroom Effect":
 			// TBA - Will temporarily change shaders to random colours
-		break
+			break
 		case "Rope Effect":
 			// TBA - Used to escape dungeons
-		break
+			break
 		case "None":
 			// Does nothing
+			break
+		case "Instant Death":
+			// Instantly kills the player
+			global.hp = 0
+			find_nearest_inn()
+			break
+			
 		break
 	}
 }

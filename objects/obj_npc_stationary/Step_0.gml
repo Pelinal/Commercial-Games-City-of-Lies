@@ -51,11 +51,21 @@ switch char_type {
 		dn_sprite = spr_npc_4_dn
 		lr_sprite = spr_npc_4_lr
 		break
+	case "Monolith":
+		up_sprite = spr_activate
+		dn_sprite = spr_activate
+		lr_sprite = spr_activate
+		image_alpha = 0
+		break
 	default:
 		up_sprite = spr_sailor_1_up
 		dn_sprite = spr_sailor_1_dn
 		lr_sprite = spr_sailor_1_lr
 		break
+}
+
+if char_type == "Monolith" && quest_objective_is_complete(3, 1) {
+	instance_destroy(self)
 }
 
 if(distance_to_object(obj_player)) <= 32 {
@@ -282,6 +292,33 @@ if(distance_to_object(obj_player)) <= 32 {
 					//message_choices(["Yes", "No"], id)
 					choice_result = -1
 				}
+			}
+		} else if char_name == "Monolith: S--o's Design" && !quest_objective_is_complete(3, 1) && quest_objective_is_visible(3, 1) {
+			if instance_number(obj_messagebox) == 0 {
+				var temp_name, temp_text
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("The monolith reads: 'We have been given a grand task by our glorious leader, this bridge shall rival all others. S--o has a plan we believe will work. Soon our great city will cross the mighty sea!'... Activate the monolith? ", 445, "\n")
+				message(temp_text, 1)
+				message_nametag(temp_name, 1)
+				message_choices(["Yes", "No"], id)
+			}
+		} else if char_name == "Monolith: Mea Culpa" && !quest_objective_is_complete(3, 1) && quest_objective_is_visible(3, 1) {
+			if instance_number(obj_messagebox) == 0 {
+				var temp_name, temp_text
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("The monolith reads: 'S--o has been fired, his plan failed, this is a disaster! Now we cannot agree on anything and some fools still think the old plan will work... I have a better idea, however.'... Activate the monolith? ", 445, "\n")
+				message(temp_text, 1)
+				message_nametag(temp_name, 1)
+				message_choices(["Yes", "No"], id)
+			}
+		} else if char_name == "Monolith: Ponta Auctora" && !quest_objective_is_complete(3, 1) && quest_objective_is_visible(3, 1) {
+			if instance_number(obj_messagebox) == 0 {
+				var temp_name, temp_text
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("The monolith reads: 'After months of no progress myself and the other engineers have finally reconciled. I presented my plan to them and they all believe it will work. I shall call it Auctora, may it stand for all eternity.'... Activate the monolith? ", 445, "\n")
+				message(temp_text, 1)
+				message_nametag(temp_name, 1)
+				message_choices(["Yes", "No"], id)
 			}
 		} else {
 			global.immobile = false
@@ -511,9 +548,37 @@ if char_name == "Farah al-Jidaq" {
 			in_dialogue = false
 		}
 	}
+} 
+
+if char_type == "Monolith" {
+	if choice_result == "Yes" {
+		if obj_monomanager.monoliths[0] == noone { obj_monomanager.monoliths[0] = id choice_result = "MonoCorrect" }
+		else if obj_monomanager.monoliths[0] != noone && obj_monomanager.monoliths[1] == noone { obj_monomanager.monoliths[1] = id choice_result = "MonoCorrect" }
+		else if obj_monomanager.monoliths[0] != noone && obj_monomanager.monoliths[1] != noone && obj_monomanager.monoliths[2] == noone { obj_monomanager.monoliths[2] = id choice_result = "MonoCorrect" }
+		show_debug_message("Monoliths: " + string(obj_monomanager.monoliths))
+	} else if choice_result == "MonoCorrect" {
+		audio_play_sound(se_correct, 50, 0)
+		choice_result = -1
+	} else if choice_result == "AutomatonBattle" {
+		if instance_number(obj_messagebox) == 0 {
+			combat_start(0, ms_combat_1, 7, noone, noone, noone, [[86, irandom(2)], [88, irandom(3)], [choose(11, 11, 11, 11, 11, 11, 23, 23, 23, 24), irandom(2)]])
+			choice_result = "SQ2PrevAutoBattle"
+		}
+	} else if choice_result == "SQ2PrevAutoBattle" {
+		if instance_number(obj_combatmenu) == 0 {
+			if obj_player.prev_battle == "Victory" {
+				obj_player.prev_battle = noone
+				choice_result = -1
+			} else if obj_player.prev_battle == "Defeat" {
+				find_nearest_inn()
+				obj_player.prev_battle = noone
+				choice_result = -1
+			}
+		}
+	}
 }
 
-if choice_result == "Leave" {
+if choice_result == "Leave" || choice_result == "No" {
 	in_dialogue = false
 	choice_result = -1
 }

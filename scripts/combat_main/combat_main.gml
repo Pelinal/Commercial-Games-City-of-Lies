@@ -10,7 +10,8 @@ function combat_initialise(){
 	global.enemies[3] = ["Cpt. Neman", 75, 85, 0, 8, 8, 7, 10, 0, 0, 0, 3, true, [0, 0, 0.25], noone, 150]
 	global.enemies[4] = ["Cdr. Luxia", 300, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
 	global.enemies[5] = ["Bat", 60, 85, 0, 13, 8, 7, 10, 0, 0, 3, 4, false, [0, 0, 0], noone, 75]
-	global.enemies[6] = ["Hydra", 120, 100, 30, 13, 10, 10, 8, 2, 2, 1, 6, false, [0, 0, 0.8], noone, 200]
+	global.enemies[6] = ["Hydra", 120, 100, 30, 13, 10, 10, 8, 12, 2, 1, 6, false, [0, 0, 0.8], noone, 200]
+	global.enemies[7] = ["Automaton", 100, 100, 50, 15, 10, 10, 10, 16, 3, 0, 6, true, [0.5, 0.5, 0.5], noone, 250]
 	
 	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	
@@ -39,6 +40,7 @@ function combat_initialise(){
 	global.atks_magical[3] = ["Healing", 0.3, 40, "Self", "Heal", 1, true, 140]
 	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), false, 11]
 	global.atks_magical[5] = ["Hydrabreath", 1.225, 30, "Attack", "Poison", 0.6, false, 2]
+	global.atks_magical[6] = ["Hot Steam", 1.33, 40, "Attack", "Fire", 0.8, false, 96]
 	
 	// Battlers
 	global.battlers[0] = spr_battler_rat
@@ -48,6 +50,7 @@ function combat_initialise(){
 	global.battlers[4] = spr_battler_luxia
 	global.battlers[5] = spr_battler_bat
 	global.battlers[6] = spr_battler_snakeboss
+	global.battlers[7] = spr_battler_automaton
 	
 	// Create Enemy Attack Array
 	// Index 0: Attack ID, Index 1: Known Physical Attacks, Index 2: Known Special Attacks, Index 3: Known Magical Attacks
@@ -58,6 +61,7 @@ function combat_initialise(){
 	global.atks_enemy[4] = [[0, 5]]
 	global.atks_enemy[5] = [[0, 6], [0, 1]]
 	global.atks_enemy[6] = [[0, 6], [0], [5]]
+	global.atks_enemy[7] = [[0, 2, 4], [1, 3], [6]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {

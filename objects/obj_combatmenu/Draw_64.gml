@@ -89,11 +89,13 @@ if current_display == "Victory" {
 	draw_set_halign(fa_left)
 	draw_set_font(fnt_inventory_small)
 	draw_text(384, 256, "XP Gained: " + string(kill_xp))
-	y_margin = 320
-	for (i = 0; i < array_length(rewards_list); i ++) {
-		draw_tile(ts_icons_iconset_64, global.icons[rewards_list[i][0]], 0, 384, y_margin)
-		draw_text(456, y_margin, string(global.library[rewards_list[i][0]][0]) + " x" + string(rewards_list[i][1]))
-		y_margin += 64
+	if array_length(rewards_list) > 0 {
+		y_margin = 320
+		for (i = 0; i < array_length(rewards_list); i ++) {
+		
+			if rewards_list[i][1] > 0 { draw_tile(ts_icons_iconset_64, global.icons[rewards_list[i][0]], 0, 384, y_margin) draw_text(456, y_margin, string(global.library[rewards_list[i][0]][0]) + " x" + string(rewards_list[i][1])) }
+			y_margin += 64
+		}
 	}
 }
 

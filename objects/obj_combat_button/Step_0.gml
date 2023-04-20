@@ -120,8 +120,14 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 				break
 			case "OKRewards":
 				add_xp(obj_combatmenu.kill_xp)
-				for (i = 0; i < array_length(obj_combatmenu.rewards_list); i ++) {
-					inventory_add(obj_combatmenu.rewards_list[i][0], obj_combatmenu.rewards_list[i][1])
+				if array_length(obj_combatmenu.rewards_list) > 0 {
+					for (i = 0; i < array_length(obj_combatmenu.rewards_list); i ++) {
+						if obj_combatmenu.rewards_list[i][1] > 0 {
+							inventory_add(obj_combatmenu.rewards_list[i][0], obj_combatmenu.rewards_list[i][1])
+						} else {
+							continue
+						}
+					}
 				}
 				
 				// Add Weapon XP

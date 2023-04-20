@@ -37,8 +37,13 @@ if image_index >= image_number-1 {
     //obj_player.y = newY
     
 	if instance_number(obj_fade) == 0 {
-		if visible { scene_screen_fade(0.035, travel_to, newX, newY, se_door_close) }
-		else { audio_play_sound(se_transfer, 100, false) scene_screen_fade(0.035, travel_to, newX, newY) }
+		if room != travel_to {
+			if visible { scene_screen_fade(0.035, travel_to, newX, newY, se_door_close) }
+			else { audio_play_sound(se_transfer, 100, false) scene_screen_fade(0.035, travel_to, newX, newY) }
+		} else {
+			if visible { scene_screen_fade(0.035, noone, newX, newY, se_door_close, noone, obj_player) }
+			else { audio_play_sound(se_transfer, 100, false) scene_screen_fade(0.035, noone, newX, newY, noone, noone, obj_player) }
+		}
 	}
 	
     if newDir == "up" {

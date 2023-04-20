@@ -7,14 +7,15 @@ function inventory_weapon_initialise() {
 	global.w_library[1] = [2, "Staff", 10, 10, noone, noone] // Rotten Staff
 	global.w_library[2] = [3, "Dagger", 7, 10, noone, noone] // Blunted Dagger
 	// Items added w/ crafting
-	global.w_library[3] = [79, "Sword", 20, 80, noone, noone]		// Bronze Sword
-	global.w_library[4] = [80, "Dagger", 15, 40, noone, noone]	// Bronze Dagger
-	global.w_library[5] = [81, "Axe", 25, 60, noone, noone]		// Bronze Axe
-	global.w_library[6] = [82, "Staff", 20, 60, noone, noone]		// Wooden Staff
-	global.w_library[7] = [83, "Staff", 30, 100, noone, noone]	// Reinforced Staff
-	global.w_library[8] = [84, "Bow", 15, 40, noone, noone]		// Wooden Bow
-	global.w_library[9] = [85, "Bow", 25, 60, noone, noone]		// Reinforced Bow
-	global.w_library[10] = [115, "Staff", 25, 80, noone, noone]		// Bronze Staff
+	global.w_library[3] = [79, "Sword", 20, 80, noone, noone]				// Bronze Sword
+	global.w_library[4] = [80, "Dagger", 15, 40, noone, noone]				// Bronze Dagger
+	global.w_library[5] = [81, "Axe", 25, 60, noone, noone]					// Bronze Axe
+	global.w_library[6] = [82, "Staff", 20, 60, noone, noone]				// Wooden Staff
+	global.w_library[7] = [83, "Staff", 30, 100, noone, noone]				// Reinforced Staff
+	global.w_library[8] = [84, "Bow", 15, 40, noone, noone]					// Wooden Bow
+	global.w_library[9] = [85, "Bow", 25, 60, noone, noone]					// Reinforced Bow
+	global.w_library[10] = [115, "Staff", 25, 80, noone, noone]				// Bronze Staff
+	global.w_library[11] = [119, "Staff", 100, 0, "MMP Increase", 100]		// The Omnistaff
 	
 	// Create Global Equipped Weapon Variable
 	global.weapon_equipped = -1

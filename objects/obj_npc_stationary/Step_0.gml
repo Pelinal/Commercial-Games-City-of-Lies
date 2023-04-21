@@ -57,6 +57,16 @@ switch char_type {
 		lr_sprite = spr_activate
 		image_alpha = 0
 		break
+	case "Hans":
+		up_sprite = spr_fiance_up
+		dn_sprite = spr_fiance_dn
+		lr_sprite = spr_fiance_lr
+		break
+	case "Letter":
+		up_sprite = spr_letter
+		dn_sprite = spr_letter
+		lr_sprite = spr_letter
+		break
 	default:
 		up_sprite = spr_sailor_1_up
 		dn_sprite = spr_sailor_1_dn
@@ -68,7 +78,7 @@ if char_type == "Monolith" && quest_objective_is_complete(3, 1) {
 	instance_destroy(self)
 }
 
-if(distance_to_object(obj_player)) <= 32 {
+if(distance_to_object(obj_player)) <= 24 {
     if keyboard_check_pressed(vk_space) && !global.immobile && instance_number(obj_messagebox) == 0 {
 		global.immobile = true
 		in_dialogue = true
@@ -145,7 +155,7 @@ if(distance_to_object(obj_player)) <= 32 {
 				message_nametag(temp_name, 8)
 				choice_result = "SQ4Start"
 				//message_choices(["Yes", "No"], id)
-			} else {
+			} else if met_me && !quest_objective_is_complete(4, 0) {
 				var temp_name, temp_text
 				temp_name[0] = char_name
 				temp_text[0] = string_wordwrap_width("Oh hello again " + global.persona[0] + ". I don't mean to be rude, but could I be alone for a bit? ", 455, "\n")
@@ -153,6 +163,22 @@ if(distance_to_object(obj_player)) <= 32 {
 				message_nametag(temp_name, 1)
 				//message_choices(["Yes", "No"], id)
 				choice_result = -1
+			} else if met_me && !quest_complete(4) && quest_objective_is_complete(4, 0) && quest_objective_is_visible(4, 2) {
+				// The bad ending
+				var temp_name, temp_text
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("Oh hello again " + global.persona[0] + ". Did you need something? ", 445, "\n")
+				temp_name[1] = global.persona[0]
+				temp_text[1] = string_wordwrap_width("I spoke with Hans, your fiancée. He refuses to tell me or you about his secret. I tried to convince him I'm sorry. ", 445, "\n")
+				temp_name[2] = char_name
+				temp_text[2] = string_wordwrap_width("You did, even when I didn't ask? Oh you are thoughtful. Now I know for sure I cannot marry him. I will call off all preparations, thanks for helping me see clearly. Farewell. ", 445, "\n")
+				
+				quest_complete_objective(4, 2)
+				quest_complete(4)
+				quest_change_desc(4, "Shame about Erika and Hans, I guess happy endings only exist in storybooks...")
+				
+				message(temp_text, 3)
+				message_nametag(temp_name, 3)
 			}
 		} else if char_name == "Laena Galo" {
 			if !met_me {
@@ -218,19 +244,19 @@ if(distance_to_object(obj_player)) <= 32 {
 				// Promenade Soldier in square
 				var temp_name, temp_text
 				temp_name[0] = char_name
-				temp_text[0] = string_wordwrap_width("*stiffens at your approach* Halt outsider! State your business. ", 446, "\n")
+				temp_text[0] = string_wordwrap_width("*stiffens at your approach* Halt outsider! State your business. ", 450, "\n")
 				temp_name[1] = global.persona[0]
-				temp_text[1] = string_wordwrap_width("Sorry to startle you. I have just recently arrived in the city. ", 446, "\n")
+				temp_text[1] = string_wordwrap_width("Sorry to startle you. I have just recently arrived in the city. ", 450, "\n")
 				temp_name[2] = char_name
-				temp_text[2] = string_wordwrap_width("*relaxes slightly* Very well. What do you want? ", 446, "\n")
+				temp_text[2] = string_wordwrap_width("*relaxes slightly* Very well. What do you want? ", 450, "\n")
 				temp_name[3] = global.persona[0]
-				temp_text[3] = string_wordwrap_width("I was curious about the city, perhaps you could tell me a bit about it? ", 446, "\n")
+				temp_text[3] = string_wordwrap_width("I was curious about the city, perhaps you could tell me a bit about it? ", 450, "\n")
 				temp_name[4] = char_name
-				temp_text[4] = string_wordwrap_width("I'm afraid I'm not much of a tour guide. My job is to keep the peace and ensure the safety of the Docklands' citizens. ", 446, "\n")
+				temp_text[4] = string_wordwrap_width("I'm afraid I'm not much of a tour guide. My job is to keep the peace and ensure the safety of the Docklands' citizens. ", 450, "\n")
 				temp_name[5] = char_name
-				temp_text[5] = string_wordwrap_width("But... If you're just asking. I suppose there is the Prefect's manor north of here, that's pretty old. In fact most of the city is rebuilt from the ruins them Founders left behind. Oh and of course the Palace south of here is very impressive and ancient. ", 446, "\n")
+				temp_text[5] = string_wordwrap_width("But... If you're just asking. I suppose there is the Prefect's manor north of here, that's pretty old. In fact most of the city is rebuilt from the ruins them Founders left behind. Oh and of course the Palace south of here is very impressive and ancient. ", 450, "\n")
 				temp_name[6] = char_name
-				temp_text[6] = string_wordwrap_width("Like I said, not a tour guide. Now, if you'll excuse me I need to get back to my rounds. Stay out of trouble, outsider. ", 446, "\n")
+				temp_text[6] = string_wordwrap_width("Like I said, not a tour guide. Now, if you'll excuse me I need to get back to my rounds. Stay out of trouble, outsider. ", 450, "\n")
 				
 				message(temp_text, 7)
 				message_nametag(temp_name, 7)
@@ -320,12 +346,95 @@ if(distance_to_object(obj_player)) <= 32 {
 				message_nametag(temp_name, 1)
 				message_choices(["Yes", "No"], id)
 			}
+		} else if char_name == "Hans Zimann" {
+			if instance_number(obj_messagebox) == 0 {
+				if !quest_active(4) && !quest_completed(4) {
+					if !met_me {
+						// Fiance
+						var temp_name, temp_text
+						temp_name[0] = char_name
+						temp_text[0] = string_wordwrap_width("Go away stranger, can't you see I'm drowning my sorrows? ", 455, "\n")
+					
+						message(temp_text, 1)
+						message_nametag(temp_name, 1)
+						met_me = true
+						//message_choices(["Yes", "No"], id)
+						choice_result = -1
+					} else {
+						var temp_name, temp_text
+						temp_name[0] = char_name
+						temp_text[0] = string_wordwrap_width("Leave me be. ", 455, "\n")
+					
+						message(temp_text, 1)
+						message_nametag(temp_name, 1)
+						//message_choices(["Yes", "No"], id)
+						choice_result = -1
+					}
+				}
+				
+				if quest_active(4) && !quest_completed(4) && !quest_objective_is_complete(4, 0) {
+					if !met_me {
+						// Fiance
+						var temp_name, temp_text
+						temp_name[0] = char_name
+						temp_text[0] = string_wordwrap_width("Go away stranger, can't you see I'm drowning my sorrows? ", 455, "\n")
+					
+						message(temp_text, 1)
+						message_nametag(temp_name, 1)
+						met_me = true
+						message_choices(["Fiancée?", "Leave"], id)
+					} else {
+						var temp_name, temp_text
+						temp_name[0] = char_name
+						temp_text[0] = string_wordwrap_width("You again? I said leave me be. ", 455, "\n")
+					
+						message(temp_text, 1)
+						message_nametag(temp_name, 1)
+						message_choices(["Fiancée?", "Leave"], id)
+					}
+				}
+			}
+		} else if char_name == "Letter from Erika" {
+			// Read Erika's Letter
+			if quest_active(4) && !quest_objective_is_complete(4, 1) {
+				var temp_name, temp_text
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("A letter with intricate handwriting lies at your feet... ", 445, "\n")
+				temp_name[1] = char_name
+				temp_text[1] = string_wordwrap_width("Its reads: 'Dear Stranger, thank you for your help. Hans told me about his condition and we aren't going to waste a moment! We are to be married tomorrow and then we travel the world. Thank you again kind stranger, you've saved us.' ", 445, "\n")
+					
+				message(temp_text, 2)
+				message_nametag(temp_name, 2)
+				
+				add_xp(100) // XP bonus for being epic
+				quest_complete_objective(4, 1)
+				quest_change_desc(4, "It seems Erika and Hans will have a happy ending after all...")
+				quest_complete(4)
+				instance_destroy(self)
+			} else {
+				choice_result = -1
+			}
 		} else {
 			global.immobile = false
 			in_dialogue = false
 		}
 	}
 }
+
+if char_name == "Hans Zimann" && quest_objective_is_complete(4, 0) {
+	instance_destroy(self)
+}
+if char_name == "Erika Weisse" && (quest_objective_is_complete(4, 0) && quest_objective_is_visible(4, 1)) {
+	with instance_create(x, y, obj_npc_stationary) {
+		sprite_index = spr_letter
+		char_type = "Letter"
+		char_name = "Letter from Erika"
+	}
+	instance_destroy(self)
+}
+//if char_name == "Letter from Erika" && quest_complete(4) {
+//	instance_destroy(self)
+//}
 
 if char_name == "Farah al-Jidaq" {
 	if choice_result == "FarahInn01" {
@@ -542,13 +651,109 @@ if char_name == "Farah al-Jidaq" {
 			met_me = true
 			quest_add(4)
 			quest_show_objective(4, 0)
+			quest_track(4)
 			sprite_index = lr_sprite
 			image_xscale = 1
 			choice_result = -1
 			in_dialogue = false
 		}
 	}
-} 
+} else if char_name == "Hans Zimann" {
+	if choice_result == "Fiancée?" {
+		if instance_number(obj_messagebox) == 0 {
+			temp_name[0] = char_name
+			temp_text[0] = string_wordwrap_width("Oh so you've been speaking to Erika, have you? She says I'm keeping secrets from her, that she can't trust me... ", 445, "\n")
+			temp_name[1] = global.persona[0]
+			temp_text[1] = string_wordwrap_width("Well are you? Keeping secrets from her? ", 445, "\n")
+			temp_name[2] = char_name
+			temp_text[2] = string_wordwrap_width("*sigh* Yes. ", 445, "\n")
+			temp_name[3] = char_name
+			temp_text[3] = string_wordwrap_width("I want to tell her, I really do, but I don't want to hurt her. I really love her, you know, I'm afraid she would treat me differently if I told her. ", 445, "\n")
+			temp_name[4] = global.persona[0]
+			temp_text[4] = string_wordwrap_width("It doesn't sound like a terrible secret, what are you not telling her? ", 445, "\n")
+			temp_name[5] = char_name
+			temp_text[5] = string_wordwrap_width("*sigh* Well I suppose someone should know... just in case I... Anyway. I have this illness you see, and not one that can be cured. My doctor told me that I only have a year to live. ", 445, "\n")
+			temp_name[6] = global.persona[0]
+			temp_text[6] = string_wordwrap_width("That's awful, I am sorry. But you have to tell her, or I will. ", 445, "\n")
+			
+			message(temp_text, 7)
+			message_nametag(temp_name, 7)
+			choice_result = "SQ4Choice"
+			//quest_show_objective(4, 0)
+		}
+	} else if choice_result == "SQ4Choice" {
+		if instance_number(obj_messagebox) == 0 {
+			temp_name[0] = char_name
+			temp_text[0] = string_wordwrap_width("You can't! She'll end up worrying about me and will waste time trying to help me. I just want us to live a normal life together, call it my final wish. ", 445, "\n")
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
+			message_choices(["Convince (" + string(global.charisma * 20) + "%)", "I'll Tell Her", "I Won't Tell"], id)
+		}
+	} else if choice_result == "Convince (" + string(global.charisma * 20) + "%)" {
+		if instance_number(obj_messagebox) == 0 {
+			if random(1) <= (global.charisma * 0.2) {
+				// Successful Persuade
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("Damn it you're right. If I have to die, I want to be with those I love first. I'll go and tell her, thanks for talking some sense into me friend. ", 445, "\n")
+			
+				message(temp_text, 1)
+				message_nametag(temp_name, 1)
+			
+				choice_result = "SQ4Fade"
+			} else {
+				// Failed Persuade
+				temp_name[0] = char_name
+				temp_text[0] = string_wordwrap_width("I won't do that do her, I refuse. Let her have what happiness remains in our lives. ", 445, "\n")
+			
+				message(temp_text, 1)
+				message_nametag(temp_name, 1)
+				message_choices(["I'll Tell Her", "I Won't Tell"], id)
+			}
+		}
+	} else if choice_result == "I'll Tell Her" {
+		if instance_number(obj_messagebox) == 0 {
+			// He is forced to tell her
+		
+			temp_name[0] = char_name
+			temp_text[0] = string_wordwrap_width("Argh, damn you! If anyone is telling her, it has to be me. I'll go do it now, hopefully she can forgive me... ", 445, "\n")
+			
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
+			choice_result = "SQ4Fade"
+		}
+	} else if choice_result == "I Won't Tell" {
+		if instance_number(obj_messagebox) == 0 {
+			// He is forced to tell her
+		
+			temp_name[0] = char_name
+			temp_text[0] = string_wordwrap_width("Thank you, friend. This is for the best, farewell. ", 445, "\n")
+			
+			message(temp_text, 1)
+			message_nametag(temp_name, 1)
+			choice_result = "SQ4BadEnd"
+		}
+	} else if choice_result == "SQ4Fade" {
+		if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0  {
+			scene_screen_fade(0.035, noone, -1920, -1080, se_transfer, noone, id)
+			choice_result = "SQ4GoodEnd"
+		}
+	} else if choice_result == "SQ4GoodEnd" {
+		if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0  {
+			quest_complete_objective(4, 0)
+			quest_show_objective(4, 1)
+			quest_change_desc(4, "I successfully convinced Hans to return to Erika and tell her about his illness. I should return to her and see the response.")
+			instance_destroy(self)
+			choice_result = -1
+		}
+	} else if choice_result == "SQ4BadEnd" {
+		if instance_number(obj_messagebox) == 0 {
+			quest_complete_objective(4, 0)
+			quest_show_objective(4, 2)
+			quest_change_desc(4, "I was unable to convince Hans to talk to Erika. I have promised not to tell her about Hans' illness, I should return to her nonetheless.")
+			choice_result = -1
+		}
+	}
+}
 
 if char_type == "Monolith" {
 	if choice_result == "Yes" {

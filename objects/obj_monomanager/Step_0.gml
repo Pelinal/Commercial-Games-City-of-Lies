@@ -48,6 +48,13 @@ if monoliths[0] != noone && monoliths[1] != noone && monoliths[2] != noone {
 	add_xp(150)
 	quest_show_objective(3, 2) // Claim the Treasure?
 	quest_complete_objective(3, 1)
+	
+	with obj_door {
+		if condition == false {
+			condition = true
+		}
+	}
+	
 	quest_change_desc(3, "I have successfully solved the monolith puzzle, the door to the east room should now be open. ")
 	instance_destroy(self)
 }

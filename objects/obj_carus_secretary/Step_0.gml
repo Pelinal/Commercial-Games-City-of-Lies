@@ -21,9 +21,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			if persaude != "failed" {
 				var temp_name, temp_text
 				temp_name[0] =  "Sofia"
-				temp_text[0] =  "You again? Didn't I just say I was busy?\n" +
-								"Or perhaps I didn't... what can Carus'\n" +
-								"sla... *ahem* secretary do for you? "
+				temp_text[0] =  string_wordwrap_width("Have we met? Didn't I just say I was busy?. Or perhaps I didn't... what can Carus' sla... *ahem* secretary do for you? ", 442, "\n")
 				
 				message(temp_text, 1)
 				message_nametag(temp_name, 1)
@@ -31,9 +29,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			} else {
 				var temp_name, temp_text
 				temp_name[0] =  "Sofia"
-				temp_text[0] =  "I already told you I can't! Now\n" +
-								"please leave me alone before he\n" +
-								"suspects something. "
+				temp_text[0] =  string_wordwrap_width("I already told you I can't! Now please leave me alone before he suspects something. ", 442, "\n")
 		
 				message(temp_text, 1)
 				message_nametag(temp_name, 1)
@@ -41,10 +37,7 @@ if(distance_to_object(obj_player)) <= 32 {
 		} else {
 			var temp_name, temp_text
 			temp_name[0] =  "Sofia"
-			temp_text[0] =  "How does the Prefect expect me to sort all\n" +
-							"this paperwork?! It doesn't even have the\n" +
-							"simplest form of organisation. But... don't\n" +
-							"mind me. Speak to Carus, if you will. "
+			temp_text[0] =  string_wordwrap_width("How does the Prefect expect me to sort all this paperwork?! It doesn't even have the simplest form of organisation. But... don't mind me. Speak to Carus, if you will. ", 442, "\n")
 				
 			message(temp_text, 1)
 			message_nametag(temp_name, 1)
@@ -56,29 +49,23 @@ if choice_result == "Evidence" {
 	if instance_number(obj_messagebox) < 1 {
 		var temp_name, temp_text
 		temp_name[0] =  "Sofia"
-		temp_text[0] =  "What?! You wan't me to help you to\n" +
-						"blackmail my boss? No way! As much\n" +
-						"as I'd like to see him squirm, it\n" +
-						"isn't worth risking my job over."
+		temp_text[0] =  string_wordwrap_width("What?! You wan't me to help you to blackmail my boss? No way! As much as I'd like to see him squirm, it isn't worth risking my job over it. ", 442, "\n")
 					
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
-		message_choices(["Persaude (25%)", "Leave"], id)
+		message_choices(["Persaude (" + string(global.charisma * 10) + "%)", "Leave"], id)
 	}
-} else if choice_result == "Persaude (25%)" {
-	if random(1) <= 0.25 {
+} else if choice_result == "Persaude (" + string(global.charisma * 10) + "%)" {
+	if random(1) <= global.charisma * 0.1 {
 		var temp_name, temp_text
 		temp_name[0] =  "Sofia"
-		temp_text[0] =  "Oh alright! I wan't to see him\n" +
-						"get what he deserves anyway, so\n" +
-						"here. A letter with highly illegal\n" +
-						"activities that the Prefect had a\n" +
-						"hand in. Now go. We never spoke. "
+		temp_text[0] =  string_wordwrap_width("Oh alright! I wan't to see him get what he deserves anyway, so here. A letter with highly illegal activities that the Prefect had a hand in. Now go. We never spoke. ", 442, "\n")
 		
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
 		
 		persaude = "success"
+		global.charisma += irandom_range(0.1, 0.35)
 		inventory_add(113, 1) // Add "Compromising Letter"
 		message_notification(global.library[113][0] + " X " + string(1) + " added to Inventory")
 		quest_change_desc(0, "I have received compromising documents on Carus' illegal activities, this should be enough to get him to talk.")
@@ -86,10 +73,11 @@ if choice_result == "Evidence" {
 	} else {
 		var temp_name, temp_text
 		temp_name[0] =  "Sofia"
-		temp_text[0] =  "I already told you I can't! Now\n" +
-						"please leave me alone before he\n" +
-						"suspects something. "
+		temp_text[0] =  string_wordwrap_width("I already told you I can't! Now " +
+						"please leave me alone before he " +
+						"suspects something. ", 442, "\n")
 		
+		global.charisma += irandom_range(0.05, 0.15)
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
 		

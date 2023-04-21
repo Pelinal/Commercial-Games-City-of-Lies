@@ -5,5 +5,5 @@ newX = 1792
 newY = 96
 newDir = "down"
 locked = false
-conditional = false
-condition = true
+//conditional = false
+//condition = true

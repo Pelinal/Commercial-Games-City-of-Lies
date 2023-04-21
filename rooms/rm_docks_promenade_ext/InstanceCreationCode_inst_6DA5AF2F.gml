@@ -5,3 +5,5 @@ newX = 436
 newY = 636
 newDir = "up"
 locked = false
+conditional = true
+condition = !quest_completed(1)

@@ -129,32 +129,31 @@ if choice_result == "MQ2FirstCraft" {
 } else if choice_result == "MQ2ErasmusFade" {
 	if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0 {
 		scene_screen_fade(0.02)
-		quest_complete_objective(1, 7)
-		quest_show_objective(1, 8)
+		
 		choice_result = "MQ2ErasmusRope"
 	}
 } else if choice_result == "MQ2ErasmusRope" {
 	if instance_number(obj_messagebox) == 0 && instance_number(obj_fade) == 0 {
 		
-		choice_result = "MQ2QuestUpdateRope"
-		var temp_name, temp_text
-		temp_name[0] =  "Erasmus"
-		temp_text[0] =  string_wordwrap_width("There, it's all fixed, you should be able to use the eastern exit to the surface now. You two go and speak with the boss, I have some errands I need to run here before I follow. ", 452, "\n")
-		temp_name[1] =  "Mattia"
-		temp_text[1] =  string_wordwrap_width("I'll meet you there as well, I'm going to search for some more treasure before I leave! Good luck with the boss! ", 452, "\n")
+		
+		//var temp_text = []
+		//temp_text[0] =  
+		//temp_text[1] =  string_wordwrap_width("I'll meet you there as well, I'm going to search for some more treasure before I leave! Good luck with the boss! ", 452, "\n")
 		
 		with obj_mattia_arosio {
 			sprite_index = up_sprite
 		}
 		
-		message(temp_text, 2)
-		message_nametag(temp_name, 2)
 		
+		message([string_wordwrap_width("There, it's all fixed, you should be able to use the eastern exit to the surface now. You two go and speak with the boss, I have some errands I need to run here before I follow. ", 452, "\n")], 1)
+		message_nametag(["Erasmus"], 1)
 		
+		choice_result = "MQ2QuestUpdateRope"
 	}
 } else if choice_result == "MQ2QuestUpdateRope" {
 	if instance_number(obj_messagebox) == 0 {
-		
+		quest_complete_objective(1, 7)
+		quest_show_objective(1, 8)
 		quest_change_desc(1, "The ladder has been repaired, and I can finally escape the caves! Erasmus said the exit was on the eastern side of the cave.")
 		choice_result = -1
 	}

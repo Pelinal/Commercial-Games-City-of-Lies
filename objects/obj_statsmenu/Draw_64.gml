@@ -84,6 +84,7 @@ draw_text(x + 672, y + 432, "Staves:")
 draw_text(x + 672, y + 528, "Barter:")
 draw_text(x + 672, y + 576, "Lockpicking:")
 draw_text(x + 672, y + 624, "Archaeology:")
+draw_text(x + 672, y + 672, "Charisma:")
 
 draw_text(x + 1248, y + 144, "Attack:")
 draw_text(x + 1248, y + 192, "Defense:")
@@ -103,6 +104,7 @@ draw_text(x + 876, y + 432, string(global.staves div 1))
 draw_text(x + 876, y + 528, string(global.barter div 1))
 draw_text(x + 876, y + 576, string(global.locks div 1))
 draw_text(x + 876, y + 624, string(global.archaeology div 1))
+draw_text(x + 876, y + 672, string(global.charisma div 1))
 
 // Draw Combat Stats Text
 draw_text(x + 1727, y + 144, string(global.atk div 1))
@@ -123,6 +125,7 @@ draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 432, 312, 48)
 draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 528, 312, 48)
 draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 576, 312, 48)
 draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 624, 312, 48)
+draw_sprite_stretched(spr_attributebars, 6, x + 888, y + 672, 312, 48)
 // BarWidth * (global.skillname - (global.skillname div 1)) // USE this for skill xp 
 draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 144, 312 * (global.smithing - (global.smithing div 1)), 48)
 draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 192, 312 * (global.alchemy - (global.alchemy div 1)), 48)
@@ -133,6 +136,7 @@ draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 432, 312 * (global.stav
 draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 528, 312 * (global.barter - (global.barter div 1)), 48)
 draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 576, 312 * (global.locks - (global.locks div 1)), 48)
 draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 624, 312 * (global.archaeology - (global.archaeology div 1)), 48)
+draw_sprite_stretched(spr_attributebars, 7, x + 889, y + 672, 312 * (global.charisma - (global.charisma div 1)), 48)
 
 // Draw Skill Bar Text
 draw_set_halign(fa_center)
@@ -150,5 +154,6 @@ draw_text(x + 1044, y + 438, string((global.staves - (global.staves div 1)) * 10
 draw_text(x + 1044, y + 534, string((global.barter - (global.barter div 1)) * 100) + "/100")
 draw_text(x + 1044, y + 582, string((global.locks - (global.locks div 1)) * 100) + "/100")
 draw_text(x + 1044, y + 630, string((global.archaeology - (global.archaeology div 1)) * 100) + "/100")
+draw_text(x + 1044, y + 678, string((global.charisma - (global.charisma div 1)) * 100) + "/100")
 
 draw_set_halign(fa_left)

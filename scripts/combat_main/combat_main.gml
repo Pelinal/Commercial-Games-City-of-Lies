@@ -11,36 +11,38 @@ function combat_initialise(){
 	global.enemies[4] = ["Cdr. Luxia", 300, 2000, 2000, 20, 20, 15, 15, 15, 10, 10, 20, true, [0.25, 0.25, 0.25], noone, 1000]
 	global.enemies[5] = ["Bat", 60, 85, 0, 13, 8, 7, 10, 0, 0, 3, 4, false, [0, 0, 0], noone, 75]
 	global.enemies[6] = ["Hydra", 120, 100, 30, 13, 10, 10, 8, 12, 2, 1, 6, false, [0, 0, 0.8], noone, 200]
-	global.enemies[7] = ["Automaton", 100, 100, 50, 15, 10, 10, 10, 16, 3, 0, 6, true, [0.5, 0.5, 0.5], noone, 250]
+	global.enemies[7] = ["Automaton", 100, 100, 50, 15, 10, 10, 10, 16, 3, 0, 6, true, [0.5, 0.5, 0.5], noone, 150]
 	
 	///////// 0.833333333 crit chance == GUARANTEED CRIT
 	
 	// Physical Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
 	global.atks_physical[0] = ["Basic Attack", 1, 0, 0.1, "None", 0.9, true, 115]
-	global.atks_physical[1] = ["Low Kick", 1.05, 10, 0.2, "Legs", 0.7, false, 116]
+	global.atks_physical[1] = ["Low Kick", 1.15, 20, 0.2, "Legs", 0.7, false, 116]
 	global.atks_physical[2] = ["Shoulder Bash", 1.05, 15, 0.2, "Arms", 0.7, false, 116]
-	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.25, true, 115]
-	global.atks_physical[4] = ["Cleave", 1.1, 20, 0.45, "None", 0.25, true, 115]
+	global.atks_physical[3] = ["Slash", 1.1, 20, 0.45, "None", 0.6, true, 115]
+	global.atks_physical[4] = ["Cleave", 1.225, 30, 0.45, "None", 0.65, false, 115]
 	global.atks_physical[5] = ["Cinderblade", 2, 0, 0.8, "None", 0.8, false, 96] // Luxia's special move
-	global.atks_physical[6] = ["Bite", 1.1, 15, 0.25, "Legs", 0.8, false, 116] // Stronger animal move
+	global.atks_physical[6] = ["Bite", 1.125, 15, 0.45, "Legs", 0.8, false, 116] // Stronger animal move
+	global.atks_physical[7] = ["Hemorrhage", 1.5, 50, 0.25, "None", 0.5, false, 11]
 	
 	// Special Attacks
 	// Index 0: Name, Index 1: Damage (Multiplier), Index 2: Stamina Cost, Index 3: Crit Chance, Index 4: Limb Targeted, Index 5: Hit Rate, Index 6: Learnt(true/false)?, Index 7: Icon Index
 	global.atks_special[0] = ["Rapid Strike", 0.95, 15, 0.25, "None", 1, true, 12]
-	global.atks_special[1] = ["Fury", 1.25, 45, 0.2, "None", 0.6, false, 14]
+	global.atks_special[1] = ["Fury", 1.175, 45, 0.2, "None", 0.6, false, 14]
 	global.atks_special[2] = ["Quickdraw", 1.2, 40, 0.25, "Arms", 0.9, false, 116]
-	global.atks_special[3] = ["Feint", 1.2, 40, 0.5, "Legs", 0.9, false, 5]
+	global.atks_special[3] = ["Feint", 1.25, 40, 0.5, "Legs", 0.9, false, 5]
 	
 	// Magical Attacks
 	// Index 0: Name, Index 1: Magnitude (multiplier), Index 2: MP Cost, Index 3: Type, Index 4: Element, Index 5: Hit Rate, Index 6: Learn (true/false)?, Index 7: Icon Index
 	global.atks_magical[0] = ["Fireball", 1.2, 30, "Attack", "Fire", 0.6 + (combat_fetch_weapon_skill() / 90), true, 96]
 	global.atks_magical[1] = ["Ice Spike", 1.2, 30, "Attack", "Frost", 0.6 + (combat_fetch_weapon_skill() / 90), false, 97]
 	global.atks_magical[2] = ["Acid Bomb", 1.2, 30, "Attack", "Poison", 0.6 + (combat_fetch_weapon_skill() / 90), false, 2]
-	global.atks_magical[3] = ["Healing", 0.3, 40, "Self", "Heal", 1, true, 140]
+	global.atks_magical[3] = ["Healing", 0.33, 40, "Self", "Heal", 1, true, 140]
 	global.atks_magical[4] = ["Cripple", 1, 40, "Status", "Cripple Random", 0.3 + (combat_fetch_weapon_skill() / 90), false, 11]
 	global.atks_magical[5] = ["Hydrabreath", 1.225, 30, "Attack", "Poison", 0.6, false, 2]
 	global.atks_magical[6] = ["Hot Steam", 1.33, 40, "Attack", "Fire", 0.8, false, 96]
+	global.atks_magical[7] = ["Great Healing", 0.66, 80, "Self", "Heal", 1, false, 140]
 	
 	// Battlers
 	global.battlers[0] = spr_battler_rat
@@ -418,5 +420,18 @@ function combat_enemies_defeated() {
 		return true
 	} else {
 		return false
+	}
+}
+
+function add_skill(type, skill_id) {
+	if type == "M" {
+		// Magic 
+		global.atks_magical[skill_id][6] = true
+	} else if type == "S" {
+		// Special
+		global.atks_special[skill_id][6] = true
+	} else if type == "N" {
+		// Normal
+		global.atks_physical[skill_id][6] = true
 	}
 }

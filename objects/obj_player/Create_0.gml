@@ -88,12 +88,12 @@ global.alchemy = 5		// Acts as a requirement to use higher tiers of Recipe Books
 global.enchanting = 5	// Acts as a requirement to use higher tiers of Recipe Books + Increases power of enchantments
 
 // Weapon Skills
-global.blade = 5		// Increases hit chance + damage of bladed weapons
-global.archery = 5		// Increases hit chance + damage of bows/crossbows
-global.staves = 5		// Increases hit chance + damage of staves
+global.blade = 1		// Increases hit chance + damage of bladed weapons
+global.archery = 1		// Increases hit chance + damage of bows/crossbows
+global.staves = 1		// Increases hit chance + damage of staves
 
 // Misc Skills
-global.barter = 5		// Increases sale price + decreases buy price
-global.locks = 5		// Allows you to pick different tiers of locks (4 - Basic, 8 - Standard, 16 - Complex, 22 - Master)
-global.archaeology = 5	// Allows you to decipher different tiers of Founder Writings (5 - Beginner, 10 - Average, 20 - Fluent, 30 - Loremaster)
-global.charisma = 5		// Allows you to persaude/intimidate people in dialogue (5 - Pragmatic, 10 - Stubborn, 15 - Resolute, 22 - Unwavering, 30 - Ignorant)
+global.barter = 3		// Increases sale price + decreases buy price
+global.locks = 2		// Allows you to pick different tiers of locks (4 - Basic, 8 - Standard, 16 - Complex, 22 - Master)
+global.archaeology = 1	// Allows you to decipher different tiers of Founder Writings (5 - Beginner, 10 - Average, 20 - Fluent, 30 - Loremaster)
+global.charisma = 2		// Allows you to persaude/intimidate people in dialogue (5 - Pragmatic, 10 - Stubborn, 15 - Resolute, 22 - Unwavering, 30 - Ignorant)

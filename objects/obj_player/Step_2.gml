@@ -1,32 +1,46 @@
 /// @description UpdatePing
 
 if global.class == "warrior" {
-	repeat(global.level) {
-		global.base_atk = round(12 * 1.1)
-		global.base_def = round(12 * 1.1)
-		global.base_stk = round(5 * 1.1)
-		global.base_sdf = round(5 * 1.1)
-		global.base_mtk = round(3 * 1.1)
-		global.base_mdf = round(3 * 1.1)
-	}
+	global.base_atk = round(12 * power(1.1, global.level))
+	global.base_def = round(12 * power(1.1, global.level))
+	global.base_stk = round(5 * power(1.1, global.level))
+	global.base_sdf = round(5 * power(1.1, global.level))
+	global.base_mtk = round(3 * power(1.1, global.level))
+	global.base_mdf = round(3 * power(1.1, global.level))
+	
+	global.edr = round(6 * power(1.1, global.level))
+	global.int = round(1 * power(1.1, global.level))
+	global.dex = round(4 * power(1.1, global.level))
+	global.spd = round(1 * power(1.1, global.level))
+	global.luk = round(3 * power(1.1, global.level))
+	
 } else if global.class == "rogue" {
-	repeat(global.level) {
-		global.base_atk = round(5 * 1.1)
-		global.base_def = round(7 * 1.1)
-		global.base_stk = round(10 * 1.1)
-		global.base_sdf = round(10 * 1.1)
-		global.base_mtk = round(5 * 1.1)
-		global.base_mdf = round(5 * 1.1)
-	}
+	global.base_atk = round(5 * power(1.1, global.level))
+	global.base_def = round(7 * power(1.1, global.level))
+	global.base_stk = round(10 * power(1.1, global.level))
+	global.base_sdf = round(10 * power(1.1, global.level))
+	global.base_mtk = round(5 * power(1.1, global.level))
+	global.base_mdf = round(5 * power(1.1, global.level))
+	
+	global.edr = round(2 * power(1.1, global.level))
+	global.int = round(1 * power(1.1, global.level))
+	global.dex = round(5 * power(1.1, global.level))
+	global.spd = round(4 * power(1.1, global.level))
+	global.luk = round(5 * power(1.1, global.level))
+	
 } else if global.class == "mage" {
-	repeat(global.level) {
-		global.base_atk = round(7 * 1.1)
-		global.base_def = round(5 * 1.1)
-		global.base_stk = round(7 * 1.1)
-		global.base_sdf = round(7 * 1.1)
-		global.base_mtk = round(10 * 1.1)
-		global.base_mdf = round(10 * 1.1)
-	}
+	global.base_atk = round(7 * power(1.1, global.level))
+	global.base_def = round(5 * power(1.1, global.level))
+	global.base_stk = round(7 * power(1.1, global.level))
+	global.base_sdf = round(7 * power(1.1, global.level))
+	global.base_mtk = round(10 * power(1.1, global.level))
+	global.base_mdf = round(10 * power(1.1, global.level))
+	
+	global.edr = round(1 * power(1.1, global.level))
+	global.int = round(5 * power(1.1, global.level))
+	global.dex = round(3 * power(1.1, global.level))
+	global.spd = round(3 * power(1.1, global.level))
+	global.luk = round(1 * power(1.1, global.level))
 }
 
 if inventory_weapon_type(global.weapon_equipped) != "Staff" {

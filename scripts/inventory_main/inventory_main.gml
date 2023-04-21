@@ -143,6 +143,16 @@ function inventory_initialise() {
 	global.library[117] = ["Founder Codex", "An ancient data repository, it needs to be deciphered.", global.keyitems]
 	global.library[118] = ["Cyanide", "Drink this for a quick death.", global.consumables]
 	global.library[119] = ["Omnistaff", "Just an OP test weapon, that's all.", global.weapons]
+	// Added 21/04/23
+	global.library[120] = ["Skill: Cleave", "Unlocks the Physical Skill 'Cleave' requires\nBlades skill of 5.", global.consumables]
+	global.library[121] = ["Skill: Low Kick", "Unlocks the Physical Skill 'Low Kick'\nrequires Blades skill of 5.", global.consumables]
+	global.library[122] = ["Skill: Hemorrhage", "Unlocks the Physical Skill 'Hemorrhage'\nrequires Blades skill of 7.", global.consumables]
+	global.library[123] = ["Skill: Fury", "Unlocks the Special Skill 'Fury'\nrequires Blades skill of 5.", global.consumables]
+	global.library[124] = ["Skill: Quickdraw", "Unlocks the Special Skill 'Quickdraw'\nrequires Archery skill of 3.", global.consumables]
+	global.library[125] = ["Skill: Feint", "Unlocks the Special Skill 'Feint'\nrequires Blades skill of 7.", global.consumables]
+	global.library[126] = ["Skill: Ice Spike", "Unlocks the Magic Skill 'Ice Spike'\nrequires Staves skill of 5.", global.consumables]
+	global.library[127] = ["Skill: Acid Bomb", "Unlocks the Magic Skill 'Acid Bomb'\nrequires Staves skill of 5.", global.consumables]
+	global.library[128] = ["Skill: G. Healing", "Unlocks the Magic Skill 'Great Healing'\nrequires Staves skill of 6.", global.consumables]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -274,6 +284,15 @@ function inventory_initialise() {
 	global.icons[117] = 113		// Founder Codex
 	global.icons[118] = 196		// Cyanide
 	global.icons[119] = 420		// Omnistaff
+	global.icons[120] = 368		// Training Book (N)
+	global.icons[121] = 368		// Training Book (N)
+	global.icons[122] = 368		// Training Book (N)
+	global.icons[123] = 370		// Training Book (S)
+	global.icons[124] = 370		// Training Book (S)
+	global.icons[125] = 370		// Training Book (S)
+	global.icons[126] = 371		// Training Book (M)
+	global.icons[127] = 371		// Training Book (M)
+	global.icons[128] = 371		// Training Book (M)
 	
 }
 

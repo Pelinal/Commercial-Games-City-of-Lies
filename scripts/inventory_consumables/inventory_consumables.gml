@@ -34,6 +34,16 @@ function inventory_consumable_initialise() {
 	global.c_library[27] = [77, "Buff Intelligence", 30, 150]	// Sage Tonic
 	global.c_library[28] = [78, "Buff Speed", 30, 150]			// Agile Tonic
 	global.c_library[29] = [118, "Instant Death", 9999, 0]		// Cyanide
+	// Last Additions?
+	global.c_library[30] = [120, "Skill: Cleave", 1, 100]		// Training Book (N)
+	global.c_library[31] = [121, "Skill: Low Kick", 1, 125]		// Training Book (N)
+	global.c_library[32] = [122, "Skill: Hemorrhage", 1, 200]	// Training Book (N)
+	global.c_library[33] = [123, "Skill: Fury", 1, 100]		    // Training Book (S)
+	global.c_library[34] = [124, "Skill: Quickdraw", 1, 75]		// Training Book (S)
+	global.c_library[35] = [125, "Skill: Feint", 1, 150]		// Training Book (S)
+	global.c_library[36] = [126, "Skill: Ice Spike", 1, 125]		// Training Book (M)
+	global.c_library[37] = [127, "Skill: Acid Bomb", 1, 125]		// Training Book (M)
+	global.c_library[38] = [128, "Skill: Great Healing", 1, 250]	// Training Book (M)
 }
 
 function inventory_consumable_add(item, amount) {
@@ -149,9 +159,91 @@ function inventory_consumable_use(item) {
 		case "Instant Death":
 			// Instantly kills the player
 			global.hp = 0
-			find_nearest_inn()
+			if instance_number(obj_combatmenu) == 0 { find_nearest_inn() }
 			break
-			
-		break
+		case "Skill: Cleave" :
+			if global.blade >= 5 {
+				add_skill("N", 4)
+				message_notification("Skill Added: Cleave")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Blade Lv.5 Required")
+			}
+			break
+		case "Skill: Low Kick" :
+			if global.blade >= 5 {
+				add_skill("N", 1)
+				message_notification("Skill Added: Low Kick")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Blade Lv.5 Required")
+			}
+			break
+		case "Skill: Hemorrhage" :
+			if global.blade >= 7 {
+				add_skill("N", 7)
+				message_notification("Skill Added: Hemorrhage")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Blade Lv.7 Required")
+			}
+			break
+		case "Skill: Fury" :
+			if global.blade >= 5 {
+				add_skill("S", 1)
+				message_notification("Skill Added: Fury")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Blade Lv.5 Required")
+			}
+			break
+		case "Skill: Quickdraw" :
+			if global.archery >= 3 {
+				add_skill("S", 2)
+				message_notification("Skill Added: Quickdraw")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Archery Lv.3 Required")
+			}
+			break
+		case "Skill: Feint" :
+			if global.blade >= 7 {
+				add_skill("S", 3)
+				message_notification("Skill Added: Feint")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Blade Lv.7 Required")
+			}
+			break
+		case "Skill: Ice Spike" :
+			if global.staves >= 5 {
+				add_skill("M", 1)
+				message_notification("Skill Added: Ice Spike")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Staves Lv.5 Required")
+			}
+			break
+		case "Skill: Acid Bomb" :
+			if global.staves >= 5 {
+				add_skill("M", 2)
+				message_notification("Skill Added: Acid Bomb")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Staves Lv.5 Required")
+			}
+			break
+		case "Skill: Great Healing":
+			if global.staves >= 6 {
+				add_skill("M", 7)
+				message_notification("Skill Added: Great Healing")
+			} else {
+				inventory_add(item, 1)
+				message_notification("Can't Use: Staves Lv.6 Required")
+			}
+			break
+		
+		default:
+			break
 	}
 }

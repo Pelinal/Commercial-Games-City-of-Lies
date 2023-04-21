@@ -39,6 +39,7 @@ else if type == "buy" {
 	if inventory_fetch(0) >= trade_price(chosen_item, "buy") {
 		inventory_remove(0, trade_price(chosen_item, "buy"))
 		inventory_add(chosen_item, 1)
+		global.barter += random_range(0.05, 0.15)
 		obj_trademenu.stock_list[stock_row][1] --
 	}
 }
@@ -46,7 +47,9 @@ else if type == "sell" {
 	if inventory_fetch(chosen_item) > 0 {
 		inventory_add(0, trade_price(chosen_item, "sell"))
 		inventory_remove(chosen_item, 1)
-			
+		
+		global.barter += random_range(0.025, 0.3)
+		
 		in_list = false
 		for (i = 0; i < array_length(obj_trademenu.stock_list); i ++) {
 			if obj_trademenu.stock_list[i][0] == chosen_item {

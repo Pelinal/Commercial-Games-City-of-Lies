@@ -22,6 +22,23 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sdf = 7
 			global.mtk = 10
 			global.mdf = 10
+			
+			// Skills
+			// Craft Skills
+			global.smithing = 1		
+			global.alchemy = 3		
+			global.enchanting = 5	
+
+			// Weapon Skills
+			global.blade = 1		
+			global.archery = 1		
+			global.staves = 5		
+
+			// Misc Skills
+			global.barter = 5		
+			global.locks = 1		
+			global.archaeology = 5	
+			global.charisma = 3
 		}
 		else if class_id == 1 {
 			global.class = "rogue"
@@ -38,6 +55,23 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sdf = 10
 			global.mtk = 5
 			global.mdf = 5
+			
+			// Skills
+			// Craft Skills
+			global.smithing = 3		
+			global.alchemy = 5		
+			global.enchanting = 1	
+
+			// Weapon Skills
+			global.blade = 5		
+			global.archery = 3		
+			global.staves = 1		
+
+			// Misc Skills
+			global.barter = 5		
+			global.locks = 3		
+			global.archaeology = 1	
+			global.charisma = 5
 		}
 		else if class_id == 2 {
 			global.class = "warrior"
@@ -54,6 +88,23 @@ if position_meeting(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) {
 			global.sdf = 5
 			global.mtk = 3
 			global.mdf = 3
+			
+			// Skills
+			// Craft Skills
+			global.smithing = 5	
+			global.alchemy = 1	
+			global.enchanting = 3	
+
+			// Weapon Skills
+			global.blade = 7		
+			global.archery = 1		
+			global.staves = 1		
+
+			// Misc Skills
+			global.barter = 5		
+			global.locks = 3		
+			global.archaeology = 1	
+			global.charisma = 3
 		}
 	
 		if global.persona[1] == "Male" {

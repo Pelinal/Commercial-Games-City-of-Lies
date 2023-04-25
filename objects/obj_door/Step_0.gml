@@ -1,5 +1,5 @@
 if(distance_to_object(obj_player)) <= 32 {
-    if keyboard_check_pressed(vk_space) && !opening && !global.immobile {
+    if keyboard_check_pressed(vk_space) && visible && !opening && !global.immobile {
 		if !locked && !conditional {
 	        image_speed = 0.4
 			if visible { audio_play_sound(se_door_open, 100, false) }
@@ -25,8 +25,10 @@ if(distance_to_object(obj_player)) <= 32 {
     }
 }
 if(distance_to_object(obj_player)) <= 0 {
-	if !visible {
-		image_index = image_number-1
+	if (conditional && condition) || !conditional {
+		if !visible {
+			image_index = image_number-1
+		}
 	}
 }
 if image_index >= image_number-1 {

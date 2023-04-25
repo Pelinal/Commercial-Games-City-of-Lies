@@ -5,4 +5,4 @@ newY = 1056
 newDir = "up"
 locked = false
 conditional = true
-condition = (instance_number(obj_boulder) == 0)
+condition = false

@@ -1,9 +1,5 @@
 /// @description  Movement, Collision and Animations
 
-if keyboard_check_pressed(vk_alt) {
-	audio_stop_all()
-}
-
 if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(obj_combatmenu) == 0 {
     // Take keyboard inputs
     if keyboard_check(ord("W"))			{ vsp = -movespeed }
@@ -50,23 +46,23 @@ if !global.immobile && instance_number(obj_messagebox) == 0 && instance_number(o
     && !keyboard_check(ord("W")) && !keyboard_check(ord("S")) { image_speed = 0; image_index = 0 }
     
 	
-	// Combat Test
-	if keyboard_check_pressed(vk_f2) {
-		combat_start(0, ms_combat_1, 0, 0, noone, noone, [[0, 100]])
-	}
+	//// Combat Test
+	//if keyboard_check_pressed(vk_f2) {
+	//	combat_start(0, ms_combat_1, 0, 0, noone, noone, [[0, 100]])
+	//}
 	
 	// Immobile During Messages
 	if instance_number(obj_messagebox) > 0 {
 		global.immobile = false
 	}
 	
-	// Debug palace
-	if keyboard_check_pressed(vk_f4) {
-		// Teleport to palace
-		room_goto(rm_palace_ext)
-		obj_player.x = 977
-		obj_player.y = 564
-	}
+	//// Debug palace
+	//if keyboard_check_pressed(vk_f4) {
+	//	// Teleport to palace
+	//	room_goto(rm_palace_ext)
+	//	obj_player.x = 977
+	//	obj_player.y = 564
+	//}
 	
 	/// Quest Cheat Command
 	if keyboard_check_pressed(vk_f6) {

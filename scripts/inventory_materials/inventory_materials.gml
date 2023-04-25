@@ -47,6 +47,7 @@ function inventory_material_initialise() {
 	global.m_library[40] = [109, "Enchanting", 400] // Fire Damage
 	global.m_library[41] = [110, "Enchanting", 350] // Frost Damage
 	global.m_library[42] = [111, "Enchanting", 400] // Poison Damage
+	global.m_library[43] = [88, "Smithing", 300] // Chrome
 }
 
 function inventory_material_add(item, amount) {

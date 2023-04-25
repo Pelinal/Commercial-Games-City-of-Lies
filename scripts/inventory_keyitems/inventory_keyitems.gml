@@ -10,6 +10,7 @@ function inventory_keyitem_initialise() {
 	global.k_library[4] = [114, "Document", "none"] // Capital Map
 	global.k_library[5] = [116, "Material", "none"] // Old Rope
 	global.k_library[6] = [117, "Relic", "none"] // Founder Codex
+	global.k_library[7] = [129, "Tool", "none"] // pickaxe
 }
 
 function inventory_keyitem_add(item, amount) {

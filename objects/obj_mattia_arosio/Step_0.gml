@@ -185,6 +185,11 @@ if choice_result == "Leave" {
 		temp_text[0] = string_wordwrap_width("What did I tell you, just in time! Come now, let's get out of here! ", 450, "\n")
 		message(temp_text, 1)
 		message_nametag(temp_name, 1)
+		with obj_door{
+			if conditional {
+				condition = true
+			}
+		}
 		choice_result = "MattiaMQ2Walk2"
 	}
 } else if choice_result == "MattiaMQ2Walk2" {

@@ -16,6 +16,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			temp_name[3] =  "Erasmus"
 			temp_text[3] =  string_wordwrap_width("Here, take this pickaxe and gather some of the copper ore around here, should look like pale grey rocks with green veins on them. There's plenty in this cave, though three chunks ought to do it. After that, we can focus on repairing the ladder. ", 452, "\n")
 			
+			inventory_add(129, 1)
 			quest_complete_objective(1, 2)
 			quest_show_objective(1, 3)
 			quest_change_desc(1, "After speaking with our savior, Erasmus, he has tasked me with retrieving three pieces of copper ore from the cave. They are pale rocks with green speckles on them.")
@@ -56,7 +57,7 @@ if(distance_to_object(obj_player)) <= 32 {
 			temp_text[1] =  string_wordwrap_width("Next thing we'll need to get out of here, is a rope. I wager there is some in that ruin east of here, haven't been down there yet myself. I usually avoid such places, so be careful if you go there. ", 452, "\n")
 			message(temp_text, 2)
 			message_nametag(temp_name, 2)
-		} else if quest_active(1) && quest_objective_is_visible(1, 7) && !quest_objective_is_complete(1, 7) {
+		} else if quest_active(1) && quest_objective_is_visible(1, 7) && !quest_objective_is_complete(1, 7) && inventory_fetch(116) > 0 {
 			// Got a rope
 			in_dialogue = true
 			var temp_name, temp_text
@@ -67,6 +68,13 @@ if(distance_to_object(obj_player)) <= 32 {
 			message_nametag(temp_name, 1)
 			
 			inventory_remove(116, 1)
+			
+			with obj_door {
+				if sprite_index == spr_fixed_ladder && image_alpha == 0 {
+					image_alpha = 1
+					condition = true
+				}
+			}
 			
 			choice_result = "MQ2ErasmusFade"
 		} else if quest_active(1) && quest_objective_is_visible(1, 7) && quest_objective_is_complete(1, 7) {

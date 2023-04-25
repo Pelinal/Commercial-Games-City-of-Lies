@@ -5,4 +5,5 @@ newY = 560
 newDir = "up"
 lock_level = 1 // Req: Lockpicking 7
 locked = true
-conditional = false
+condition = false
+conditional = true

@@ -50,6 +50,6 @@ function add_xp(amount) {
 		global.exp_req = round(global.exp_req * 1.079775166)
 		audio_play_sound(se_levelup, 100, 0)
 		global.level += 1
-		message_notification("Level " + string(global.level) + " Reached!")
+		message_notification("Level " + string(global.level) + " Reached! (C to View)")
 	}
 }

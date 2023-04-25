@@ -39,13 +39,6 @@ function quest_checks(){
 				quest_complete_objective(1, 6)
 				quest_show_objective(1, 7)
 				
-				with obj_door {
-					if sprite_index == spr_fixed_ladder && image_alpha == 0 {
-						image_alpha = 1
-						condition = true
-					}
-				}
-				
 				quest_change_desc(1, "I found an old rope near the entrance to a ruin. I should return to Erasmus so he can repair the ladder and we can get out of here!")
 			}
 		}

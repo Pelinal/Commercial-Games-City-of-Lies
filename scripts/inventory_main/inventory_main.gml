@@ -153,6 +153,7 @@ function inventory_initialise() {
 	global.library[126] = ["Skill: Ice Spike", "Unlocks the Magic Skill 'Ice Spike'\nrequires Staves skill of 5.", global.consumables]
 	global.library[127] = ["Skill: Acid Bomb", "Unlocks the Magic Skill 'Acid Bomb'\nrequires Staves skill of 5.", global.consumables]
 	global.library[128] = ["Skill: G. Healing", "Unlocks the Magic Skill 'Great Healing'\nrequires Staves skill of 6.", global.consumables]
+	global.library[129] = ["Pickaxe", "Allows you to break ore and\ncollect it from rocks.", global.keyitems]
 	
 	// Call Externals
 	inventory_consumable_initialise()
@@ -293,6 +294,7 @@ function inventory_initialise() {
 	global.icons[126] = 371		// Training Book (M)
 	global.icons[127] = 371		// Training Book (M)
 	global.icons[128] = 371		// Training Book (M)
+	global.icons[129] = 276		// Pickaxe
 	
 }
 

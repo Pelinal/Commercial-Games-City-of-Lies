@@ -10,8 +10,15 @@ if array_length(loot) == 0 {
 
 if(distance_to_object(obj_player)) <= 32 {
     if keyboard_check(vk_space) && !opening && !open && !empty && global.chests[chests_id] != [] {
-        image_speed = 0.4
-        opening = true
+		if !gatherable {
+	        image_speed = 0.4
+	        opening = true
+		} else if gatherable && inventory_fetch(129) > 0 {
+			image_speed = 0.4
+	        opening = true
+		} else if gatherable && inventory_fetch(129) == 0 {
+			message_notification("You lack the required tool")
+		}
     }
 }
 
@@ -46,7 +53,7 @@ if (image_index >= image_number-1 && !open) && !gatherable {
 	}
 	open = true
 }
-else if gatherable && opening {
+else if gatherable && opening && inventory_fetch(129) > 0 {
 	opening = false
     image_speed = 0
 	

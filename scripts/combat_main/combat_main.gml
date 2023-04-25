@@ -62,8 +62,8 @@ function combat_initialise(){
 	global.atks_enemy[3] = [[0], [0]]
 	global.atks_enemy[4] = [[0, 5]]
 	global.atks_enemy[5] = [[0, 6], [0, 1]]
-	global.atks_enemy[6] = [[0, 6], [0], [5]]
-	global.atks_enemy[7] = [[0, 2, 4], [1, 3], [6]]
+	global.atks_enemy[6] = [[0, 6,7], [0]]
+	global.atks_enemy[7] = [[0, 4, 7], [1, 3]]
 }
 
 function combat_start(location, music, enemy1, enemy2=noone, enemy3=noone, enemy4=noone, reward_array=[0,10]) {

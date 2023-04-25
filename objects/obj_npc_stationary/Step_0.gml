@@ -423,13 +423,17 @@ if(distance_to_object(obj_player)) <= 24 {
 
 if char_name == "Hans Zimann" && quest_objective_is_complete(4, 0) {
 	instance_destroy(self)
+} else if char_name == "Hans Zimann" && quest_completed(4) {
+	instance_destroy(self)
 }
-if char_name == "Erika Weisse" && (quest_objective_is_complete(4, 0) && quest_objective_is_visible(4, 1)) {
+if char_name == "Erika Weisse" && (quest_objective_is_complete(4, 0) && quest_objective_is_visible(4, 1) && !quest_objective_is_complete(4, 1)) {
 	with instance_create(x, y, obj_npc_stationary) {
 		sprite_index = spr_letter
 		char_type = "Letter"
 		char_name = "Letter from Erika"
 	}
+	instance_destroy(self)
+} else if char_name == "Erika Weisse" && quest_completed(4) {
 	instance_destroy(self)
 }
 //if char_name == "Letter from Erika" && quest_complete(4) {
@@ -687,7 +691,7 @@ if char_name == "Farah al-Jidaq" {
 			temp_text[0] = string_wordwrap_width("You can't! She'll end up worrying about me and will waste time trying to help me. I just want us to live a normal life together, call it my final wish. ", 445, "\n")
 			message(temp_text, 1)
 			message_nametag(temp_name, 1)
-			message_choices(["Convince (" + string(global.charisma * 20) + "%)", "I'll Tell Her", "I Won't Tell"], id)
+			message_choices(["Convince (" + string(global.charisma * 20) + "%)", "I'll Tell Her"], id)
 		}
 	} else if choice_result == "Convince (" + string(global.charisma * 20) + "%)" {
 		if instance_number(obj_messagebox) == 0 {
@@ -707,7 +711,7 @@ if char_name == "Farah al-Jidaq" {
 			
 				message(temp_text, 1)
 				message_nametag(temp_name, 1)
-				message_choices(["I'll Tell Her", "I Won't Tell"], id)
+				message_choices(["I'll Tell Her"], id)
 			}
 		}
 	} else if choice_result == "I'll Tell Her" {
